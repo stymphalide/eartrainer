@@ -14,9 +14,9 @@ This project is being created as a programming project in Informatics class with
 	- [x] Gradle Command
 	- [x] Git init
 	- [x] Copy this readme
-	- [ ] Add .gitignore
-	- [ ] Add .gitattributes
-	- [ ] Add already defined deps
+	- [x] Add .gitignore
+	- [x] Add .gitattributes
+	- [x] Add already defined deps
 	- [ ] Create predefined directory structure
 	- [ ] Write first classes
 	- [ ] Write first tests
