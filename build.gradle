@@ -33,7 +33,7 @@ repositories {
 
     // Use local directory as repository
     flatDir {
-    	dirs 'build/libs'
+    	dirs 'lib'
     }
 }
 
