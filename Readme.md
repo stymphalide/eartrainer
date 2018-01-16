@@ -217,6 +217,7 @@ Everything we stumble upon doing research comes into this part.
 - [JavaFX Wikipedia](https://de.wikipedia.org/wiki/JavaFX)
 - [JavaFx API](https://docs.oracle.com/javase/8/javafx/api/toc.htm "JavaFX API")
 - [FXML Sources](https://docs.oracle.com/javafx/2/fxml_get_started/jfxpub-fxml_get_started.htm)
+- [100 javafx tutorials](http://javafxjq.blogspot.ch)
 
 ### JFugue
 - [Some basic examples](http://www.jfugue.org/examples.html "jfugue examples")
