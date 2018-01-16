@@ -220,6 +220,7 @@ Everything we stumble upon doing research comes into this part.
 
 ### JFugue
 - [Some basic examples](http://www.jfugue.org/examples.html "jfugue examples")
+- [Compose music like a pro rapid music programming with java jfugue](https://www.techrepublic.com/article/compose-music-like-a-pro-rapid-music-programming-with-java-jfugue/)
 
 ## License
 To be determined
