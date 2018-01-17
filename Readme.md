@@ -179,6 +179,7 @@ Interface | Angelo
 JavaFX | Angelo
 Gradle Build | Angelo
 jFugue | Tobias
+Game Logic | Tobias
 Music Theory | Tobias
 Music Composition | Tobias
 
