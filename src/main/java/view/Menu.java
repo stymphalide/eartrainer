@@ -1,3 +1,5 @@
+package view;
+
 import javafx.application.Application;
 import javafx.event.ActionEvent; 
 import javafx.event.EventHandler; 
@@ -6,8 +8,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button; 
 import javafx.scene.control.Label; 
 import javafx.scene.layout.GridPane; 
-import javafx.stage.Stage; 
-
+import javafx.stage.Stage;
 
 public class Menu extends Application {
 	public void print() {
@@ -27,8 +28,8 @@ public class Menu extends Application {
             @Override 
             public void handle(ActionEvent event) { 
                 label.setText("Hello World!"); 
-            } 
-        }); 
+            }
+        });
          
         GridPane grid = new GridPane(); 
         grid.setAlignment(Pos.CENTER); 
@@ -36,13 +37,13 @@ public class Menu extends Application {
         grid.setVgap(5); 
         grid.add(label, 0, 0); 
         grid.add(butt, 0, 1); 
-        grid.setGridLinesVisible(false); 
+        grid.setGridLinesVisible(true); 
 
         Scene scene = new Scene(grid, 250, 150); 
         primaryStage.setScene(scene); 
         primaryStage.show(); 
     }
-    public void start_app() {
+    public void start_view() {
     	launch();
     }
 }

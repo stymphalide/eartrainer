@@ -1,3 +1,5 @@
+import view.Menu;
+
 public class App {
     public String getGreeting() {
         return "Hello world.";
@@ -8,6 +10,9 @@ public class App {
         // Creates the menu from the interface.
         // @TODO Make the interface a package and import it.
         Menu menu = new Menu();
-        menu.start_app();
+        menu.start_view();
+
+
+        
     }
 }
