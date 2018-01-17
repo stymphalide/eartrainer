@@ -63,3 +63,4 @@ jfx {
     // minimal requirement for jfxNative-task
     //vendor = 'YourName'
 }
+
