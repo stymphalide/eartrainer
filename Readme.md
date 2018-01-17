@@ -1,5 +1,5 @@
 # Eartrainer
-This project is being created as a programming project in Informatics class with Ms Vazquez in January 2018.
+This project is being created as a programming project in informatics class with Ms Vazquez in January 2018.
 
 [Download](#download) and [install](#installation).
 
@@ -10,32 +10,35 @@ This project is being created as a programming project in Informatics class with
 [Code of Conduct](#code-of-conduct)
 
 ## TODOS
-- [ ] Initialise Project
-	- [x] Gradle Command
+- [ ] Initialise Project.
+	- [x] Gradle init
 	- [x] Git init
-	- [x] Copy this readme
-	- [x] Add .gitignore
-	- [x] Add .gitattributes
-	- [x] Add already defined deps
-	- [ ] Create predefined directory structure
-	- [ ] Write first classes
-	- [ ] Write first tests
-	- [x] Push to github
-- [ ] Create the Project Dossier for MSI
-	- [ ] Add a Project Description 1/4 page
+	- [x] Copy this readme.
+	- [x] Add .gitignore.
+	- [x] Add .gitattributes.
+	- [x] Add already defined deps.
+	- [ ] Create predefined directory structure.
+	- [ ] Write first classes.
+	- [ ] Write first tests.
+	- [x] Push to github.
+- [ ] Create the Project Dossier for MSI.
+	- [ ] Add a Project Description 1/4 page.
 	- [ ] Definition of the Problem
 	- [ ] Analysis of the Requirements
 	- [ ] Specifications
 	- [ ] Draft (UML)
 	- [ ] Copy Implementation
 	- [ ] Results and Tests
-- [ ] Finish the Project
-	- [ ] Write a working interface
-	- [ ] Write a working application
+- [ ] Finish the Project.
+	- [ ] Write a working interface.
+	- [ ] Write a working application.
 	- [ ] Add Salt and Pepper!!!
-- [ ] Create the Project Dossier for MSII
+- [ ] Create the Project Dossier for MSII.
 	- [ ] Write the TODO for this part.
-- [ ] Have a Beer where we celebrate the finished Project
+- [ ] Have a Beer where we celebrate the finished Project!!!
+	- [ ] Evaluate over an appropriate location.
+	- [ ] Go to the bar and order a beer.
+	- [ ] Enjoy!!!
 
 ## The Idea
 A game based on the game of [set](https://en.wikipedia.org/wiki/Set_(game) "Wikipedia").
@@ -110,13 +113,18 @@ A higher level library could be jFugue:
 
 
 ## Time Schedule
-List of important dates.
 
-- [ ] 19.01.2018: Project Goals + Additional Goals defined
+### List of important dates.
+- [x] 19.01.2018: Project Goals + Additional Goals defined
 - [ ] 14.02.2018: [Milestone I](http://www.vazquez-informatik.ch/files/AKSA_ProgProjLE1_MilestoneI.pdf "milestone1")
 - [ ] 21.03.2018: [Milestone II](http://www.vazquez-informatik.ch/files/AKSA_ProgProjLE1_MilestoneII.pdf "milestone2")
 
-[//]: # (@TODO: Make it exacter -> intermediate steps)
+### Short Term Planing (due 'til 26.01.)
+- [ ] Get used to the libraries.
+- [ ] Define project structure. -> Define rough class structure.
+- [ ] Implement basic classes.
+- [ ] Write project description for MSI.
+- [ ] Discuss level design.
 
 
 ## Project Structure
