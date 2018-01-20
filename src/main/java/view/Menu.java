@@ -1,49 +1,90 @@
 package view;
 
 import javafx.application.Application;
-import javafx.event.ActionEvent; 
+import javafx.application.Platform;
 import javafx.event.EventHandler; 
 import javafx.geometry.Pos; 
+import javafx.scene.input.MouseEvent; 
 import javafx.scene.Scene; 
+import javafx.scene.text.Font;
 import javafx.scene.control.Button; 
 import javafx.scene.control.Label; 
-import javafx.scene.layout.GridPane; 
+import javafx.scene.layout.VBox; 
+import javafx.scene.layout.HBox; 
 import javafx.stage.Stage;
 
 public class Menu extends Application {
-	public void print() {
-		System.out.println("Hello World");
-	}
+    Stage primaryStage;
+    Scene scene;
+
 	@Override
-	public void start(Stage primaryStage) { 
-        System.out.println("start() called"); 
-        primaryStage.setTitle("Hello World!"); 
-        Button butt = new Button(); 
-        butt.setText("Click here!"); 
-        final Label label = new Label(""); 
-        label.setAlignment(Pos.CENTER); 
-        label.setStyle("-fx-border-width:1px; -fx-border-color: black;"); 
-        label.setMinSize(87, 20); 
-        butt.setOnAction(new EventHandler<ActionEvent>() { 
-            @Override 
-            public void handle(ActionEvent event) { 
-                label.setText("Hello World!"); 
+	public void start(Stage primaryStage) throws Exception { 
+        primaryStage = primaryStage;
+        primaryStage.setTitle("eartrainer - Menu");
+
+        Label title = new Label("Eartrainer"); 
+        title.setFont(new Font(40));
+        title.setAlignment(Pos.CENTER);
+
+        // Level 1 Setup
+        String level1Description = "Some description";
+        final Label level1Label = new Label("");
+        level1Label.setAlignment(Pos.BOTTOM_RIGHT);
+
+
+        // https://stackoverflow.com/questions/20143548/hover-effect-over-icon
+        Button level1Start = new Button("Level 1");
+        level1Start.setAlignment(Pos.CENTER);
+        level1Start.setOnMouseEntered(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent t) {
+                showLevelDescription(level1Label, level1Description);
             }
         });
-         
-        GridPane grid = new GridPane(); 
-        grid.setAlignment(Pos.CENTER); 
-        grid.setHgap(5); 
-        grid.setVgap(5); 
-        grid.add(label, 0, 0); 
-        grid.add(butt, 0, 1); 
-        grid.setGridLinesVisible(true); 
+        level1Start.setOnMouseExited(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent t) {
+                hideLevelDescription(level1Label);
+            }
+        });
+        level1Start.setOnAction(e -> {
+            startLevel(1);
+        });
 
-        Scene scene = new Scene(grid, 250, 150); 
-        primaryStage.setScene(scene); 
+
+        Button exitButton = new Button();
+        exitButton.setText("Exit");
+        exitButton.setOnAction(e -> {
+            Platform.exit();
+        });
+
+        HBox titleRow = new HBox(50, title);
+        titleRow.setAlignment(Pos.CENTER);
+
+        HBox level1Row = new HBox(50, level1Start, level1Label);
+
+        HBox nav = new HBox(50, exitButton);
+        nav.setAlignment(Pos.BOTTOM_RIGHT);
+
+        VBox root = new VBox(50, titleRow, level1Row, nav);
+
+        scene = new Scene(root, 500, 500);
+        primaryStage.setScene(scene);
         primaryStage.show(); 
     }
-    public void start_view() {
-    	launch();
+    private void showLevelDescription(Label label, String description) {
+        label.setText(description);
+    }
+    private void hideLevelDescription(Label label) {
+        label.setText("");
+    }
+    private void startLevel(int level) {
+        // TODO: Implement class.
+        //Level.render(level, primaryStage);
+    }
+
+    public Stage render() {
+    	Application.launch();
+        return primaryStage;
     }
 }
