@@ -173,7 +173,7 @@ A Build tool for our application. Takes the task of compiling the code and runni
 
 ### Graphical User Interface
 After the 'coding part' and the testing part we should decide on which libraries to use to accomplish out task. One thing that needs to be covered is the how to make the Graphical User Interface. We are going to use Java's go-to tool, namely javafx.
- - [JavaFx API](https://docs.oracle.com/javase/8/javafx/api/toc.htm "JavaFX API")
+ - [JavaFX API](https://docs.oracle.com/javase/8/javafx/api/toc.htm "JavaFX API")
  - [JavaFX Tutorial](http://code.makery.ch/library/javafx-8-tutorial/ "JavaFX Tutorial")
  - [Use JavaFX's WebView](https://docs.oracle.com/javafx/2/webview/jfxpub-webview.htm "JavaFX WebView")
 
@@ -282,11 +282,11 @@ Based on the requirements in the Milestone I file.
 
 ```java
 /*
-* Date: 20.01.2018
-* Project Name: Eartrainer
-* Names: Angelo Birrer G4L and Tobias Seefeld G4L
-* Main Sources: TBD
-* Code Management: logic: Tobias Seefeld G4L | view: Angelo Birrer G4L
+    Date: 20.01.2018
+    Project Name: Eartrainer
+    Names: Angelo Birrer G4L and Tobias Seefeld G4L
+    Main Sources: JavaFX API
+    Code Management: logic: Tobias Seefeld G4L | view: Angelo Birrer G4L
 */
 ```
 
@@ -308,10 +308,12 @@ Everything we stumble upon doing research comes into this part.
 ### JavaFX
 - [JavaFX Guide](https://javabeginners.de/Frameworks/JavaFX/index.php)
 - [JavaFX Wikipedia](https://de.wikipedia.org/wiki/JavaFX)
-- [JavaFx API](https://docs.oracle.com/javase/8/javafx/api/toc.htm "JavaFX API")
+- [JavaFX API](https://docs.oracle.com/javase/8/javafx/api/toc.htm "JavaFX API")
 - [FXML Sources](https://docs.oracle.com/javafx/2/fxml_get_started/jfxpub-fxml_get_started.htm)
 - [100 javafx tutorials](http://javafxjq.blogspot.ch)
-- (http://www.learningaboutelectronics.com/Articles/How-to-create-multiple-scenes-and-switch-between-scenes-in-JavaFX.php)
+- [How to create multiple scenes and switch between scenes in JavaFX](http://www.learningaboutelectronics.com/Articles/How-to-create-multiple-scenes-and-switch-between-scenes-in-JavaFX.php)
+-[Hover Effect Over Icon](https://stackoverflow.com/questions/20143548/hover-effect-over-icon)
+
 ### JFugue
 - [Some basic examples](http://www.jfugue.org/examples.html "jfugue examples")
 - [Compose music like a pro rapid music programming with java jfugue](https://www.techrepublic.com/article/compose-music-like-a-pro-rapid-music-programming-with-java-jfugue/)
