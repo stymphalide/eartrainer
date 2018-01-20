@@ -13,46 +13,58 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 public class App extends Application {
-    Scene menuScene;
+    Menu menu = new Menu();
     Scene levelScene;
     Stage window;
+
+    Button backToMenu = new Button("Main Menu");
+    //Button nextLevel = new Button();
+    Button startLevel1 = new Button();
+    Button confirm = new Button("Confirm");
 
     @Override
     public void start(Stage primaryStage) throws Exception {
         window = primaryStage;
-        Menu menu = new Menu();
-        Button levelStartButton = new Button();
-       
 
-        menuScene = menu.render(levelStartButton);
-        levelStartButton.setOnAction(e -> {
-            setUpLevel();
+        startLevel1.setOnAction(e -> {
+            setUpLevel(1);
+        });
+        backToMenu.setOnAction(e -> {
+            setUpMenu();
         });
 
-
-        window.setTitle("eartrainer - Menu");
-        window.setScene(menuScene);
+        setUpMenu();
         //primaryStage.setMaximized(true);
         window.show();
     }
-    private void setUpLevel() {
-        window.setTitle("eartrainer - Level 1");
-        Button confirmButton = new Button();
-        
-        logic.Level level = new logic.Level(1);
-        view.Level levelView = new view.Level();
-        levelScene = levelView.render(level, confirmButton);
-        window.setScene(levelScene);
-        confirmButton.setOnAction(e -> {
-            level.increaseN();
-            Scene newScene = levelView.render(level, confirmButton);
-            window.setScene(newScene);
-        });
-
-/*        viewAfterLevel afterLevel = new view.AfterLevel();
-        afterLevelScene = afterLevel.render(level);
-        window.setScene(afterLevelScene);*/
+    private void setUpMenu() {
+        Scene menuScene = menu.render(startLevel1);
+        window.setTitle("eartrainer - Menu");
+        window.setScene(menuScene);
     }
+    private void setUpLevel(int nLevel) {
+        window.setTitle("eartrainer - Level " + nLevel);
+        Button confirm = new Button();
+        
+        logic.Level level = new logic.Level(nLevel);
+        view.Level levelView = new view.Level();
+        levelScene = levelView.renderActive(level, confirm);
+        window.setScene(levelScene);
+        
+        confirm.setOnAction(e -> {
+            if (level.isFinished()) {
+                Scene newScene = levelView.renderFinished(level, backToMenu, startLevel1);
+                window.setScene(newScene);
+            } else {
+
+                level.increaseN();
+                Scene newScene = levelView.renderActive(level, confirm);
+                window.setScene(newScene);
+            }
+            
+        });
+    }
+
 
     public static void main(String[] args) {
         launch(args);

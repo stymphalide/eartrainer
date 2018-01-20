@@ -15,11 +15,7 @@ import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 
 public class Level {
-    public Scene render(logic.Level level, Button confirmButton) {
-        if(level.isFinished()) return renderFinishedLevel(level);
-        else return renderActiveLevel(level, confirmButton); 
-    }
-    private Scene renderActiveLevel(logic.Level level, Button confirmButton) {
+    public Scene renderActive(logic.Level level, Button confirmButton) {
         Label label = new Label("level " + level.getLevel());
         VBox root = new VBox(50);
         Label n = new Label("" + level.getN());
@@ -31,12 +27,14 @@ public class Level {
         Scene scene = new Scene(root, 500, 500);
         return scene;
     }
-    private Scene renderFinishedLevel(logic.Level level) {
+    public Scene renderFinished(logic.Level level, Button backToMenu, Button playAgain) {
         VBox root = new VBox(50);
+
+        playAgain.setText("Play Again");
 
         Label label = new Label("Game Finished");
 
-        root.getChildren().addAll(label);
+        root.getChildren().addAll(label, backToMenu, playAgain);
 
         Scene scene = new Scene(root, 500, 500);
         return scene;
