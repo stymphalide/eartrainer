@@ -311,7 +311,7 @@ Everything we stumble upon doing research comes into this part.
 - [JavaFx API](https://docs.oracle.com/javase/8/javafx/api/toc.htm "JavaFX API")
 - [FXML Sources](https://docs.oracle.com/javafx/2/fxml_get_started/jfxpub-fxml_get_started.htm)
 - [100 javafx tutorials](http://javafxjq.blogspot.ch)
-
+- (http://www.learningaboutelectronics.com/Articles/How-to-create-multiple-scenes-and-switch-between-scenes-in-JavaFX.php)
 ### JFugue
 - [Some basic examples](http://www.jfugue.org/examples.html "jfugue examples")
 - [Compose music like a pro rapid music programming with java jfugue](https://www.techrepublic.com/article/compose-music-like-a-pro-rapid-music-programming-with-java-jfugue/)

@@ -1,6 +1,5 @@
 package view;
 
-import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.event.EventHandler;
 import javafx.geometry.Pos;
@@ -14,16 +13,11 @@ import javafx.scene.layout.VBox;
 import javafx.scene.layout.HBox; 
 import javafx.stage.Stage;
 
-public class Menu extends Application {
-    public Stage primaryStage;
+public class Menu {
     Scene scene;
-
-	@Override
-	public void start(Stage primaryStage) throws Exception { 
-        primaryStage = primaryStage;
-        primaryStage.setTitle("eartrainer - Menu");
-
-        Label title = new Label("Eartrainer"); 
+    public Scene render(Button level1Start) {
+        // This function is being called by the main method.
+    	 Label title = new Label("Eartrainer"); 
         title.setFont(new Font(40));
         title.setAlignment(Pos.CENTER);
 
@@ -32,7 +26,7 @@ public class Menu extends Application {
         final Label level1Label = new Label("");
 
         // https://stackoverflow.com/questions/20143548/hover-effect-over-icon
-        Button level1Start = new Button("Level 1");
+        level1Start.setText("Level 1");
         level1Start.setOnMouseEntered(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent t) {
@@ -45,10 +39,6 @@ public class Menu extends Application {
                 hideLevelDescription(level1Label);
             }
         });
-        level1Start.setOnAction(e -> {
-            startLevel(1);
-        });
-
 
         Button exitButton = new Button();
         exitButton.setText("Exit");
@@ -68,23 +58,12 @@ public class Menu extends Application {
 
         VBox root = new VBox(50, titleRow, level1Row, nav);
 
-        scene = new Scene(root, 500, 500);
-        primaryStage.setScene(scene);
-        //primaryStage.setMaximized(true);
-        primaryStage.show(); 
+        return new Scene(root, 500, 500);
     }
     private void showLevelDescription(Label label, String description) {
         label.setText(description);
     }
     private void hideLevelDescription(Label label) {
         label.setText("");
-    }
-    private void startLevel(int level) {
-        // TODO: Implement class.
-        //Level.render(level, primaryStage);
-    }
-    public void render() {
-        // This function is being called by the main method.
-    	Application.launch();
     }
 }
