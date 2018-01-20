@@ -86,7 +86,7 @@ The list of intervals to choose from is:
 
 For the ranges we have taken the range of a piano and cut it roughly in three parts.
 
-![The Range of a Piano](https://raw.githubusercontent.com/stymphalide/eartrainer/resources/range_piano_coloured.png)
+![The Range of a Piano](resources/range_piano_coloured.png)
 
 (image source: https://i.stack.imgur.com/MpiRg.png)
 
