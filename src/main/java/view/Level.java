@@ -15,19 +15,28 @@ import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 
 public class Level {
-    public Scene render(logic.Level level) {
+    public Scene render(logic.Level level, Button confirmButton) {
+        if(level.isFinished()) return renderFinishedLevel(level);
+        else return renderActiveLevel(level, confirmButton); 
+    }
+    private Scene renderActiveLevel(logic.Level level, Button confirmButton) {
         Label label = new Label("level " + level.getLevel());
         VBox root = new VBox(50);
         Label n = new Label("" + level.getN());
 
-        Button button = new Button("Increase N");
-        button.setOnAction(e -> {
-            level.increaseN();
-            n.setText("" + level.getN());
-        });
+        confirmButton.setText("Increase N");
 
+        root.getChildren().addAll(label, confirmButton, n);
 
-        root.getChildren().addAll(label, button, n);
+        Scene scene = new Scene(root, 500, 500);
+        return scene;
+    }
+    private Scene renderFinishedLevel(logic.Level level) {
+        VBox root = new VBox(50);
+
+        Label label = new Label("Game Finished");
+
+        root.getChildren().addAll(label);
 
         Scene scene = new Scene(root, 500, 500);
         return scene;

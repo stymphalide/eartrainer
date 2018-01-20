@@ -15,7 +15,6 @@ import javafx.stage.Stage;
 public class App extends Application {
     Scene menuScene;
     Scene levelScene;
-    Scene afterLevelScene;
     Stage window;
 
     @Override
@@ -23,10 +22,13 @@ public class App extends Application {
         window = primaryStage;
         Menu menu = new Menu();
         Button levelStartButton = new Button();
+       
+
         menuScene = menu.render(levelStartButton);
         levelStartButton.setOnAction(e -> {
             setUpLevel();
         });
+
 
         window.setTitle("eartrainer - Menu");
         window.setScene(menuScene);
@@ -35,11 +37,17 @@ public class App extends Application {
     }
     private void setUpLevel() {
         window.setTitle("eartrainer - Level 1");
+        Button confirmButton = new Button();
+        
         logic.Level level = new logic.Level(1);
         view.Level levelView = new view.Level();
-        Scene levelScene = levelView.render(level);
+        levelScene = levelView.render(level, confirmButton);
         window.setScene(levelScene);
-
+        confirmButton.setOnAction(e -> {
+            level.increaseN();
+            Scene newScene = levelView.render(level, confirmButton);
+            window.setScene(newScene);
+        });
 
 /*        viewAfterLevel afterLevel = new view.AfterLevel();
         afterLevelScene = afterLevel.render(level);
