@@ -1,13 +1,13 @@
 # Eartrainer
-This project is being created as a programming project in informatics class with Ms Vazquez in January 2018.
+This project is being created as a programming project in informatics class supervised by Ms Vazquez in January - March 2018.
 
-[Download](#download) and [install](#installation).
+The code can be download in [Download](#download) and [install](#installation) section.
 
 [Time Schedule](#time-schedule)
 
-[Project Goals](#project-goals)
+These are our [Project Goals](#project-goals).
 
-[Code of Conduct](#code-of-conduct)
+We try to stick to this [Code of Conduct](#code-of-conduct).
 
 ## TODOS
 - [ ] Initialise Project.
@@ -52,6 +52,7 @@ A game based on the game of set.
 *[..] Given any two cards from the deck there is one and only one other card that forms a set with them.*
 
 *In the standard Set game, the dealer lays out cards on the table until either twelve are laid down or someone sees a set and calls "Set!". The player who called "Set" takes the cards in the set, and the dealer continues to deal out cards until twelve are on the table. A player who sees a set among the twelve cards calls "Set" and takes the three cards, and the dealer lays three more cards on the table.*
+
 Source: https://en.wikipedia.org/wiki/Set_(game)
 
 ### An Example of a Set
@@ -85,15 +86,20 @@ The list of intervals to choose from is:
 
 For the ranges we have taken the range of a piano and cut it roughly in three parts.
 
-![The Range of a Piano](https://i.stack.imgur.com/MpiRg.png)
+![The Range of a Piano](https://raw.githubusercontent.com/stymphalide/eartrainer/resources/range_piano_coloured.png)
 
-The low range spans from the (According to [Scientific Pitch Notation](https://en.wikipedia.org/wiki/Scientific_pitch_notation)) zeroth octave to the second.
-(C0-B2)
+(image source: https://i.stack.imgur.com/MpiRg.png)
 
-The middle range spans from the third octave to the fifth.
+The blue keys indicate the start of a range whereas the red keys indicate the end of a range.
+
+
+The low range spans from the, according to [Scientific Pitch Notation](https://en.wikipedia.org/wiki/Scientific_pitch_notation), zeroth octave to the second.
+(A0-B2)
+
+The middle range spans from the third octave to the fifth octave.
 (C3-B5)
 
-The high range spans from the sixth to the eigth.
+The high range spans from the sixth to the eigth octave.
 (C6-B8)
 
 #### Instruments
@@ -134,28 +140,27 @@ To get an overview over this tool checkout:
  - [A Markdown Cheatsheet](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet "Markdown Cheatsheet")
  - [A Markdown Editor](https://jbt.github.io/markdown-editor/ "markdown editor")
 
-Note: Since Windows and Linux handles line endings differently there has to be some set up in a .gitattributes file. (Also because of gradle)
+Note: Since Windows and Linux handles line endings differently there has to be some set up in a .gitattributes file.
 [Dealing with line endings](https://help.github.com/articles/dealing-with-line-endings/)
 
 ### Gradle
 A Build tool for our application. Takes the task of compiling the code and running tests away from us. Can also be used to create a `.jar` file. It also sets up a basic project, and most importantly can be used as a plugin in eclipse. This way we can make sure, that the setup of our application 'fits' for the IDE but can still be developed outside.
  - [Gradle Build Tool](https://gradle.org/ "gradle build tool") with tutorials on how to use it
- - [Eclipse Plugin Installation guide](http://www.vogella.com/tutorials/EclipseGradle/article.html "gradle plugin for eclipe") Remark: Make sure to install `gradle 4.4.1` or the corresponding version. I don't know if there can be conflicts if we use different versions (though I doubt that).
+ - [Eclipse Plugin Installation guide](http://www.vogella.com/tutorials/EclipseGradle/article.html "gradle plugin for eclipe") Remark: Make sure to install `gradle 4.4.1` or the corresponding version.
  - [Github source code](https://github.com/gradle/gradle "gradle")
  - [Add dependencies](https://stackoverflow.com/questions/20700053/how-to-add-local-jar-file-dependency-to-build-gradle-file "gradle dependency stackoverflow")
- - [The Maven Architecture]((https://maven.apache.org/guides/introduction/introduction-to-the-standard-directory-layout.html))
+ - [The Maven Architecture](https://maven.apache.org/guides/introduction/introduction-to-the-standard-directory-layout.html)
 
 
 ### Testing
  - [JUnit on Github](https://github.com/junit-team/junit4 "source code") 
  - [Getting started with junit](https://github.com/junit-team/junit4/wiki/Getting-started "getting started with junit")
- - [junit dcoumentation](http://junit.org/junit4/javadoc/latest/ "junit documentation") (Don't get eye cancer!)
- - [Why Testing?](https://www.quora.com/Why-is-testing-code-important "why testing is important") (Note we are probably only going to do 	the first category of tests that he describes.)
- - [TDD](https://www.agilealliance.org/glossary/tdd/ "tdd") would be nice if we could actually implement some parts of the test-driven paradigm. (Note that under time pressure this is not going to work.)
+ - [junit dcoumentation](http://junit.org/junit4/javadoc/latest/ "junit documentation")
+ - [Why Testing?](https://www.quora.com/Why-is-testing-code-important "why testing is important") (Note: We are probably only going to do the first category of tests that he describes.)
+ - [TDD](https://www.agilealliance.org/glossary/tdd/ "tdd") would be nice if we could actually implement some parts of the test-driven paradigm. (Note: Under time pressure this is not going to work.)
 
 ### Front End
 After the 'coding part' and the testing part we should decide on which libraries to use to accomplish out task. One thing that needs to be covered is the how to make the Graphical User Interface (Something that I consider highly overrated!!!). We are going to use Java's go-to tool, namely javafx.
-Why the fuck does anyone write such shit???
  - [JavaFx API](https://docs.oracle.com/javase/8/javafx/api/toc.htm "JavaFX API") (Don't get eye cancer here!!!)
  - [JavaFX Tutorial](http://code.makery.ch/library/javafx-8-tutorial/ "JavaFX Tutorial")
  - [Use JavaFX's WebView](https://docs.oracle.com/javafx/2/webview/jfxpub-webview.htm "JavaFX WebView") Could be used to just use html5 and css3 as well as js? to render the view. (This approach could be considered cheating)
