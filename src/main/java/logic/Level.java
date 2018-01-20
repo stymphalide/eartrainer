@@ -10,13 +10,14 @@ public class Level {
         this.isFinished = false;
         this.n = 0;
     }
-    public void increaseN() {
+    public void nextQuestion() {
         n++;
     }
 
     public boolean isFinished() {
-        return n > 10;
+        return n >= 10;
     }
+    
     public int getN() {
         return n;
     }

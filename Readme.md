@@ -297,7 +297,7 @@ Based on the requirements in the Milestone I file.
 - Every Class has a `/*classdoc*/` comment where the usage of the class is described.
 - After every import there is a `// What is this for` comment
 - Important variables (Probably instance variables of the class) are explained
-- Important Functions (Those that are used by the main function?) are explained
+- Important methods (Those that are used by the main method?) are explained
 - Larger code fragments such as (Nestings, loops, constructors etc.)
 - Copy-pasted stackoverflow code has to be marked.
 - Larger imported code bits are stated on top of the class with source. (I hope this will not happen too often.)

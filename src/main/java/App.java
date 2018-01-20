@@ -7,7 +7,7 @@
 */
 
 /* classdoc
-    In this class holds the whole application together. It inherits from the javafx Application.
+    This class holds the whole application together. It inherits from the javafx Application.
     The class has the following attributes:
     - Menu menu;
     - Stage window;
@@ -63,9 +63,9 @@
 */
 
 import javafx.application.Application; // Application class from which JavaFX application extend. [JavaFX API]
-import javafx.scene.control.Button; // A simple Button Control. Can be a event Target and Contains text and/or graphic [JavaFX API].
-import javafx.scene.Scene; // The JavaFX Scene class is the container for all content in a scene graph. The background of the scene is filled as specified by the fill property. [JavaFX API]
-import javafx.stage.Stage; // The JavaFX Stage class is the top level JavaFX container. The primary Stage is constructed by the platform. Additional Stage objects may be constructed by the application. [JavaFX API]
+import javafx.scene.control.Button;    // A simple Button Control. Can be a event Target and Contains text and/or graphic [JavaFX API].
+import javafx.scene.Scene;             // The JavaFX Scene class is the container for all content in a scene graph. The background of the scene is filled as specified by the fill property. [JavaFX API]
+import javafx.stage.Stage;             // The JavaFX Stage class is the top level JavaFX container. The primary Stage is constructed by the platform. Additional Stage objects may be constructed by the application. [JavaFX API]
 
 public class App extends Application {
     Stage window;
