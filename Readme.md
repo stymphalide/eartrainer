@@ -120,11 +120,11 @@ A higher level library could be jFugue:
 - [ ] 21.03.2018: [Milestone II](http://www.vazquez-informatik.ch/files/AKSA_ProgProjLE1_MilestoneII.pdf "milestone2")
 
 ### Short Term Planing (due 'til 26.01.)
+- [x] Discuss level design.
 - [ ] Get used to the libraries.
 - [ ] Define project structure. -> Define rough class structure.
 - [ ] Implement basic classes.
 - [ ] Write project description for MSI.
-- [ ] Discuss level design.
 
 
 ## Project Structure
