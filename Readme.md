@@ -78,7 +78,7 @@ In the first level of the game the list of intervals, range and instruments are 
 #### Intervals
 
 The list of intervals to choose from is:
-- Perfect fourth ![Perfect fourth](https://upload.wikimedia.org/wikipedia/commons/c/c3/Perfect_fourth_on_C.png)
+- Perfect fourth ![Perfect fourth](resources/perfect_fourth.png)
 - Perfect fifth ![Perfect fifth](https://upload.wikimedia.org/wikipedia/commons/thumb/9/91/Perfect_fifth_on_C.png/220px-Perfect_fifth_on_C.png)
 - Perfect octave ![Perfect octave](https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/Perfect_octave_on_C.png/220px-Perfect_octave_on_C.png)
 
@@ -92,14 +92,13 @@ For the ranges we have taken the range of a piano and cut it roughly in three pa
 
 The blue keys indicate the start of a range whereas the red keys indicate the end of a range.
 
+The pitches are listed in [Scientific Pitch Notation](https://en.wikipedia.org/wiki/Scientific_pitch_notation).
 
-The low range spans from the, according to [Scientific Pitch Notation](https://en.wikipedia.org/wiki/Scientific_pitch_notation), zeroth octave to the second.
+- The low range spans from the zeroth octave to the second.
 (A0-B2)
-
-The middle range spans from the third octave to the fifth octave.
+- The middle range spans from the third octave to the fifth octave.
 (C3-B5)
-
-The high range spans from the sixth to the eigth octave.
+- The high range spans from the sixth to the eigth octave.
 (C6-B8)
 
 #### Instruments
@@ -122,7 +121,7 @@ This is a knob that we can not turn, the default orders are:
 
 Interval | Range | Order | Instrument
 ---------|-------|-------|-----------
-perfect fifth | low (C0 - B2) | upwards | piano
+perfect fifth | low (A0 - B2) | upwards | piano
 perfect fourth | middle (C3 - B5) | downwards | strings
 perfect octave | high (C6 - B8) | at the same time | brass
 
