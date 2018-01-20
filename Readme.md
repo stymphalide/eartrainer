@@ -43,18 +43,22 @@ This project is being created as a programming project in informatics class with
 ## The Idea
 A game based on the game of set.
 
+### The Game
 *Set is a real-time card game [...]. The deck consists of 81 cards varying in four features: number (one, two, or three); symbol (diamond, squiggle, oval); shading (solid, striped, or open); and colo[u]r (red, green, or purple). Each possible combination of features (e.g., a card with three striped green diamonds) appears precisely once in the deck. [...] Several Games can be played with these cards, all involving the concept of a set. A set consists of three cards satisfying all of these conditions:*
 - *They all have the same number or have three different numbers.*
 - *They all have the same symbol or have three different symbols.*
 - *They all have the same shading or have three different shadings.*
+
 *[..] Given any two cards from the deck there is one and only one other card that forms a set with them.*
 
 *In the standard Set game, the dealer lays out cards on the table until either twelve are laid down or someone sees a set and calls "Set!". The player who called "Set" takes the cards in the set, and the dealer continues to deal out cards until twelve are on the table. A player who sees a set among the twelve cards calls "Set" and takes the three cards, and the dealer lays three more cards on the table.*
+Source: https://en.wikipedia.org/wiki/Set_(game)
+
+### An Example of a Set
 
 ![An example of a set](https://upload.wikimedia.org/wikipedia/commons/8/8f/Set-game-cards.png)
 
-Source: https://en.wikipedia.org/wiki/Set_(game)
-
+### Our Tweaks
 However, we do not want to create a clone of this game but rather convert it into something new.
 Our idea is to use this notion of a set and apply it to music. 
 Instead of having a 4x3 grid where one has to find a set, we will use a simpler version of the game.
@@ -73,14 +77,15 @@ In the first level of the game the list of intervals, range and instruments are 
 #### Intervals
 
 The list of intervals to choose from is:
-- ![Perfect fourth](https://upload.wikimedia.org/wikipedia/commons/c/c3/Perfect_fourth_on_C.png)
-- ![Perfect fifth](https://upload.wikimedia.org/wikipedia/commons/thumb/9/91/Perfect_fifth_on_C.png/220px-Perfect_fifth_on_C.png)
-- ![Perfect octave](https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/Perfect_octave_on_C.png/220px-Perfect_octave_on_C.png)
+- Perfect fourth ![Perfect fourth](https://upload.wikimedia.org/wikipedia/commons/c/c3/Perfect_fourth_on_C.png)
+- Perfect fifth ![Perfect fifth](https://upload.wikimedia.org/wikipedia/commons/thumb/9/91/Perfect_fifth_on_C.png/220px-Perfect_fifth_on_C.png)
+- Perfect octave ![Perfect octave](https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/Perfect_octave_on_C.png/220px-Perfect_octave_on_C.png)
 
 #### Ranges
 
 For the ranges we have taken the range of a piano and cut it roughly in three parts.
-![The Range of a Piano](https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/Perfect_octave_on_C.png/220px-Perfect_octave_on_C.png)
+
+![The Range of a Piano](https://i.stack.imgur.com/MpiRg.png)
 
 The low range spans from the (According to [Scientific Pitch Notation](https://en.wikipedia.org/wiki/Scientific_pitch_notation)) zeroth octave to the second.
 (C0-B2)
@@ -114,7 +119,6 @@ Interval | Range | Order | Instrument
 perfect fifth | low (C0 - B2) | upwards | piano
 perfect fourth | middle (C3 - B5) | downwards | strings
 perfect octave | high (C6 - B8) | at the same time | brass
-
 
 
 [//]: # (@TODO: Refactor this into a project description part)
