@@ -2,8 +2,9 @@ package view;
 
 import javafx.application.Application;
 import javafx.application.Platform;
-import javafx.event.EventHandler; 
-import javafx.geometry.Pos; 
+import javafx.event.EventHandler;
+import javafx.geometry.Pos;
+import javafx.geometry.Insets;
 import javafx.scene.input.MouseEvent; 
 import javafx.scene.Scene; 
 import javafx.scene.text.Font;
@@ -14,7 +15,7 @@ import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 
 public class Menu extends Application {
-    Stage primaryStage;
+    public Stage primaryStage;
     Scene scene;
 
 	@Override
@@ -29,12 +30,9 @@ public class Menu extends Application {
         // Level 1 Setup
         String level1Description = "Some description";
         final Label level1Label = new Label("");
-        level1Label.setAlignment(Pos.BOTTOM_RIGHT);
-
 
         // https://stackoverflow.com/questions/20143548/hover-effect-over-icon
         Button level1Start = new Button("Level 1");
-        level1Start.setAlignment(Pos.CENTER);
         level1Start.setOnMouseEntered(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent t) {
@@ -62,14 +60,17 @@ public class Menu extends Application {
         titleRow.setAlignment(Pos.CENTER);
 
         HBox level1Row = new HBox(50, level1Start, level1Label);
+        level1Row.setMargin(level1Start, new Insets(0, 50, 0, 50));
 
         HBox nav = new HBox(50, exitButton);
+        nav.setMargin(exitButton, new Insets(0, 50, 0, 50));
         nav.setAlignment(Pos.BOTTOM_RIGHT);
 
         VBox root = new VBox(50, titleRow, level1Row, nav);
 
         scene = new Scene(root, 500, 500);
         primaryStage.setScene(scene);
+        //primaryStage.setMaximized(true);
         primaryStage.show(); 
     }
     private void showLevelDescription(Label label, String description) {
@@ -82,9 +83,8 @@ public class Menu extends Application {
         // TODO: Implement class.
         //Level.render(level, primaryStage);
     }
-
-    public Stage render() {
+    public void render() {
+        // This function is being called by the main method.
     	Application.launch();
-        return primaryStage;
     }
 }
