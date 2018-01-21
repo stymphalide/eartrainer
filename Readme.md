@@ -117,7 +117,7 @@ Note that strings and brass are not specific instruments but rather a group of i
 This is a knob that we can not turn, the default orders are:
 - Upwards - meaning the lower note is played before the higher.
 - Downwards - meaning the higher note is played before the lower.
-- At the same time - both notes are played simultaneously.
+- Chordal - both notes are played simultaneously.
 
 #### Overview
 
@@ -125,7 +125,7 @@ Interval | Range | Order | Instrument
 ---------|-------|-------|-----------
 perfect fifth | low (A0 - B2) | upwards | piano
 perfect fourth | middle (C3 - B5) | downwards | strings
-perfect octave | high (C6 - B8) | at the same time | brass
+perfect octave | high (C6 - B8) | chordal | brass
 
 
 [//]: # (@TODO: Refactor this into a project description part)
