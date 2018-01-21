@@ -63,5 +63,5 @@ jfx {
     mainClass = 'App'
     
     // minimal requirement for jfxNative-task
-    //vendor = 'YourName'
+    vendor = 'resources/jar'
 }
