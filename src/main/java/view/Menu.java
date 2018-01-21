@@ -106,7 +106,7 @@ public class Menu {
         label.setText("");
     }
     private String getLevelDescription(int level) throws IOException {
-        String path = "./src/resources/descriptions/level_" + level + ".txt";
+        String path = "./resources/descriptions/level_" + level + ".txt";
         return FileUtils.readFileToString(new File(path), "UTF-8");
     }
 
