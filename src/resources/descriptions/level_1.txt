@@ -1,0 +1,4 @@
+- Intervals: perfect fourth, perfect fifth, perfect octave.
+- Ranges: A0-B2, C3-B5, C6-B8.
+- Instruments: Piano, Strings, Brass.
+- Order: Upwards, Downwards, At the Same Time.

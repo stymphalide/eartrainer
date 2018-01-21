@@ -24,7 +24,7 @@ public class Level {
 
         root.getChildren().addAll(label, confirmButton, n);
 
-        Scene scene = new Scene(root, 500, 500);
+        Scene scene = new Scene(root, 700, 500);
         return scene;
     }
     public Scene renderFinished(logic.Level level, Button backToMenu, Button playAgain) {
@@ -36,7 +36,7 @@ public class Level {
 
         root.getChildren().addAll(label, backToMenu, playAgain);
 
-        Scene scene = new Scene(root, 500, 500);
+        Scene scene = new Scene(root, 700, 500);
         return scene;
     }
 }
