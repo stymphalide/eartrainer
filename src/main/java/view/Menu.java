@@ -33,9 +33,9 @@ package view;
 /*
     Main Sources: JavaFX API; 100 JavaFX Tutorials
 */
-import java.io.File;                    //
-import java.io.IOException;             //
-import org.apache.commons.io.FileUtils; //
+import java.io.File;                    // An abstract representation of file and directory pathnames. [File API]
+import java.io.IOException;             // Signals that an I/O exception of some sort has occurred. [IOException API]
+import org.apache.commons.io.FileUtils; // General file manipulation utilities. [FileUtils API]
 
 import javafx.application.Platform;     // Application platform support class. [JavaFX API] (The exit() method from this class is needed.)
 import javafx.geometry.Pos;             // A set of values for describing vertical and horizontal positioning and alignment. [JavaFX API]
@@ -63,6 +63,7 @@ public class Menu {
         // Level 1 Setup
 
         String description = "Not Found Description";
+        // Inspired by: [How to Catch Exceptions]
         try {
             description = getLevelDescription(1);
         } catch (IOException e) {

@@ -310,13 +310,19 @@ Everything we stumble upon doing research comes into this part.
 - [JavaFX Wikipedia](https://de.wikipedia.org/wiki/JavaFX)
 - [JavaFX API](https://docs.oracle.com/javase/8/javafx/api/toc.htm "JavaFX API")
 - [FXML Sources](https://docs.oracle.com/javafx/2/fxml_get_started/jfxpub-fxml_get_started.htm)
-- [100 javafx tutorials](http://javafxjq.blogspot.ch)
+- [100 JavaFX Tutorials](http://javafxjq.blogspot.ch)
 - [How to create multiple scenes and switch between scenes in JavaFX](http://www.learningaboutelectronics.com/Articles/How-to-create-multiple-scenes-and-switch-between-scenes-in-JavaFX.php)
 -[Hover Effect Over Icon](https://stackoverflow.com/questions/20143548/hover-effect-over-icon)
 
 ### JFugue
 - [Some basic examples](http://www.jfugue.org/examples.html "jfugue examples")
 - [Compose music like a pro rapid music programming with java jfugue](https://www.techrepublic.com/article/compose-music-like-a-pro-rapid-music-programming-with-java-jfugue/)
+
+### Others
+- [File API](https://docs.oracle.com/javase/8/docs/api/java/io/File1.html)
+- [IOException API](https://docs.oracle.com/javase/8/docs/api/java/io/IOException.html)
+- [FileUtils API](https://commons.apache.org/proper/commons-io/javadocs/api-2.5/org/apache/commons/io/FileUtils.html)
+- [How to Catch Exceptions](https://stackoverflow.com/questions/8707906/unreported-exception-java-io-ioexception-must-be-caught-or-declared-to-be-throw)
 
 ## License
 To be determined
