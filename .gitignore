@@ -2,3 +2,7 @@
 build/*
 # Gradle needs not be traced from now on.
 .gradle/*
+.project
+bin/*
+/.gradle/
+/build/
