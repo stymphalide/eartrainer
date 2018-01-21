@@ -3,3 +3,4 @@ build/*
 # Gradle needs not be traced from now on.
 .gradle/*
 /build/
+/.gradle/
