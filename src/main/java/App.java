@@ -8,6 +8,6 @@ public class App {
     public static void main(String[] args) {
         //System.out.println(new App().getGreeting());
         Level level = new Level();
-        System.out.println("You have answered "+level.correctAnswers+" Questions correctly.");
+        System.out.println("You have answered "+level.correctAnswers+" Questions correctly!!");
     }
 }
