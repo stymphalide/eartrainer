@@ -1,6 +1,7 @@
 package view;
 
-//private logic.Level logicLevel;
+import java.util.*;
+
 import javafx.collections.ObservableList;
 import javafx.geometry.Pos;
 import javafx.geometry.Insets;
@@ -32,17 +33,22 @@ public class Level {
         card1Button.setAlignment(Pos.CENTER);
         // ComboBoxes
         
+        List<String> sampleElements = new ArrayList();
+
+        sampleElements.add("Hello");
+        sampleElements.add("world");
+
         ComboBox<String> cmbInstruments = new ComboBox();
-        setUpComboBox("Instruments", cmbInstruments);
+        setUpComboBox("Instruments", cmbInstruments, sampleElements);
 
         ComboBox<String> cmbOrders = new ComboBox();
-        setUpComboBox("Orders", cmbOrders);
+        setUpComboBox("Orders", cmbOrders, sampleElements);
         
         ComboBox<String> cmbRanges = new ComboBox();
-        setUpComboBox("Ranges", cmbRanges);
+        setUpComboBox("Ranges", cmbRanges, sampleElements);
         
         ComboBox<String> cmbIntervals = new ComboBox();
-        setUpComboBox("Intervals", cmbIntervals);
+        setUpComboBox("Intervals", cmbIntervals, sampleElements);
 
         VBox comboBoxes = new VBox(20, 
                                    cmbInstruments, 
@@ -77,14 +83,12 @@ public class Level {
         Scene scene = new Scene(root, 700, 500);
         return scene;
     }
-    private void setUpComboBox(String placeholder, ComboBox<String> cmb, List<> allowedFeatures) {
+    private void setUpComboBox(String placeholder, ComboBox<String> cmb, List<String> allowedFeatures) {
         Label phLabel = new Label(placeholder);
-        ObservableList<String> elements = new ObservableList();
         for (int i = 0; i <  allowedFeatures.size(); i++) {
-            String name = allowedFeatures.get(i).getName();
-            elements.add(name);
+            String name = allowedFeatures.get(i); // .get(i).getName();
+            cmb.getItems().add(name);
         }
-        cmb.setButtonCell(phLabel);
     }
 
 }
