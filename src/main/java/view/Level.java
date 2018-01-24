@@ -2,10 +2,8 @@ package view;
 
 //private logic.Level logicLevel;
 
-import javafx.event.EventHandler;
 import javafx.geometry.Pos;
 import javafx.geometry.Insets;
-import javafx.scene.input.MouseEvent; 
 import javafx.scene.Scene;
 import javafx.scene.text.Font;
 import javafx.scene.control.Button; 
@@ -16,13 +14,36 @@ import javafx.stage.Stage;
 
 public class Level {
     public Scene renderActive(logic.Level level, Button confirmButton) {
-        Label label = new Label("level " + level.getLevelNumber());
-        VBox root = new VBox(50);
-        Label n = new Label("1");
 
-        confirmButton.setText("Increase N");
+        // Title Row
+        Label title = new Label("Level " + level.getLevelNumber());
+        title.setFont(new Font(40));
+    
+        HBox titleRow = new HBox(50, title);
+        titleRow.setAlignment(Pos.CENTER);
 
-        root.getChildren().addAll(label, confirmButton, n);
+        // Main Part
+        //  Card 1
+        /*"
+        logic.Question question = level.getQuestion();
+        logic.Card card1 = question.getCard1();
+        logic.Card card2 = question.getCard2();
+    */
+        Button card1Button = new Button("Listen to the first Interval");
+        Button card2Button = new Button("Listen to the second Interval");
+
+
+        HBox mainRow = new HBox(50, card1Button, card2Button);
+
+
+        // Navigation
+        confirmButton.setText("Confirm");
+
+        HBox nav = new HBox(50, confirmButton);
+        nav.setAlignment(Pos.CENTER);
+
+
+        VBox root = new VBox(50, titleRow, mainRow, nav);
 
         Scene scene = new Scene(root, 700, 500);
         return scene;
