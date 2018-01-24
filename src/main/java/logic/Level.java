@@ -1,37 +1,37 @@
 package logic;
 
-import java.util.List
+import java.util.List;
 
-public interface Level {
+public abstract class Level {
+    int levelNumber;
 
-    int correctAnswers;
-    int wrongAnswers;
+    Level(int n) {
+        this.levelNumber = n;
+    }
 
-    public Level(int n);
+    public abstract List<logic.Range> getAllowedRanges();
 
-    public List<logic.Range> getAllowedRanges()
+    public abstract List<logic.Instrument> getAllowedInstruments();
 
-    public List<logic.Instrument> getAllowedInstruments()
+    public abstract List<logic.Interval> getAllowedIntervals();
 
-    public List<logic.Interval> getAllowedIntervals()
+    public abstract List<logic.Order> getAllowedOrders();
 
-    public List<logic.Order> getAllowedOrders()
+    public abstract int getCorrectAnswers();
 
-    public int getCorrectAnswers()
+    public abstract int getWrongAnswers();
 
-    public int getWrongAnswers()
+    public abstract int getTotalAnswers();
 
-    public int getTotalAnswers()
+    public abstract int getTotalQuestions();
 
-    public int getTotalQuestions()
+    public abstract logic.Question getQuestion();
 
-    public logic.Question getQuestion()
+    public abstract void play();
 
-    public void play()
+    public abstract logic.Card correctAnswer(logic.Question question, logic.Card proposedAnswer);
 
-    public logic.Card validateAnswer(logic.Question question, logic.Card proposedAnswer)
-
-    public boolean validateAnswer(logic.Question question, logic.Card proposedAnswer)
+    public abstract boolean validateAnswer(logic.Question question, logic.Card proposedAnswer);
 }
 
 
