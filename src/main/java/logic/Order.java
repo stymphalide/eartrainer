@@ -1,13 +1,10 @@
 package logic;
 
 
-public class Order {
-    String name;
+public class Order extends Feature {
 
-    Order(String order) {
+    public Order(String order) {
+        super(order, "order");
         this.name = order;
-    }
-    public String getOrderName() {
-        return this.name;
     }
 }

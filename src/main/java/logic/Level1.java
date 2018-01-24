@@ -73,6 +73,16 @@ public class Level1 extends Level {
 		// TODO Auto-generated method stub
 	}
 
+	@Override
+	public Card correctAnswer(Question question, Card card) {
+		return new Card(); // @TODO: Implementate this and delete constructor
+	}
+
+	@Override
+	public boolean validateAnswer(Question question, Card card) {
+		return true; // @TODO: Implementate this properly
+	}
+
 	private ArrayList<Instrument> instantiateInstruments(String instrument1, String instrument2, String instrument3){
 		ArrayList<Instrument> instruments = new ArrayList();
 		instruments.add(new Instrument(instrument1));

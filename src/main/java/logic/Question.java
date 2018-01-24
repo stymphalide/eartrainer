@@ -3,29 +3,48 @@ package logic;
 import java.util.*;
 
 public class Question {
-    Card card1;
-    Card card2;
+    private Card card1;
+    private Card card2;
     
+    // @TODO: Maybe add another variable in the level: allowed Features.
     public Question(List<Instrument> allowedInstruments,
     				List<Order> allowedOrders,
     				List<Range> allowedRanges,
     				List<Interval> allowedIntervals) {
-    	Random random = new Random();
-    	int[] card1 = {random.nextInt(3), random.nextInt(3), random.nextInt(3), random.nextInt(3)};
-    	int[] card2 = new int[4];
+
+        int length = 4;
+        int bound = allowedInstruments.size(); // Assuming the size of every list is the same.
+    	int[] card1Indices = randomCardIndices(length, bound);
+        int[] card2Indices;
     	do {
-    		card2[0] = random.nextInt(3);
-    		card2[1] = random.nextInt(3);
-    		card2[2] = random.nextInt(3);
-    		card2[3] = random.nextInt(3);
-    	}while(card1 == card2);
-    	this.card1 = new Card(allowedInstruments.get(card1[0]),
-    						  allowedOrders.get(card1[1]),
-    						  allowedRanges.get(card1[2]),
-    						  allowedIntervals.get(card1[3]));
-    	this.card2 = new Card(allowedInstruments.get(card2[0]),
-				  			  allowedOrders.get(card2[1]),
-				  			  allowedRanges.get(card2[2]),
-				  			  allowedIntervals.get(card2[3]));
+    		card2Indices = randomCardIndices(length, bound);
+    	} while(card1Indices == card2Indices);
+
+    	this.card1 = generateCard(card1Indices, allowedInstruments, allowedOrders, allowedRanges, allowedIntervals);
+    	this.card2 = generateCard(card2Indices, allowedInstruments, allowedOrders, allowedRanges, allowedIntervals);
     }
+
+    private int[] randomCardIndices(int length, int bound) {
+        
+        Random random = new Random();
+        int[] card = new int[length];
+
+        for (int i = 0; i < length; ) {
+            card[i] = random.nextInt(bound);
+        }
+        return card;
+    }
+    private Card generateCard(int[] indices,
+                              List<Instrument> allowedInstruments,
+                              List<Order> allowedOrders,
+                              List<Range> allowedRanges,
+                              List<Interval> allowedIntervals) {
+
+        Instrument instrument = allowedInstruments.get(indices[0]);
+        Order order           = allowedOrders.get(indices[1]);
+        Range range           = allowedRanges.get(indices[2]);
+        Interval interval     = allowedIntervals.get(indices[3]);
+        return new Card(instrument, order, range, interval);
+    }
+
 }

@@ -1,13 +1,15 @@
 package logic;
 
-
-public class Instrument {
-    String name;
+// @Todo: Make this into an abstract class ==> Strings are several Instruments
+public class Instrument extends Feature {
 
     public Instrument(String instrument) {
-        this.name = instrument;
+        super(instrument, "instrument");
     }
+
     public String getStaccatoString(Range range) {
-        return name;
+        return "Some Staccato String";
     }
+    
+
 }
