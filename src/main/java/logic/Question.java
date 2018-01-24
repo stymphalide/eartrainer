@@ -15,18 +15,13 @@ public class Question {
         int length = 4;
         int bound = allowedInstruments.size(); // Assuming the size of every list is the same.
     	int[] card1Indices = randomCardIndices(length, bound);
-        int[] card2Indices = int[length];
+        int[] card2Indices;
     	do {
     		card2Indices = randomCardIndices(length, bound);
     	} while(card1Indices == card2Indices);
 
-        List<Feature>[] allowedFeatures = {allowedInstruments,
-                                           allowedOrders,
-                                           allowedRanges,
-                                           allowedIntervals};
-
-    	this.card1 = generateCard(card1Indices, allowedFeatures);
-    	this.card2 = generateCard(card2Indices, allowedFeatures);
+    	this.card1 = generateCard(card1Indices, allowedInstruments, allowedOrders, allowedRanges, allowedIntervals);
+    	this.card2 = generateCard(card2Indices, allowedInstruments, allowedOrders, allowedRanges, allowedIntervals);
     }
 
     private int[] randomCardIndices(int length, int bound) {
@@ -39,14 +34,17 @@ public class Question {
         }
         return card;
     }
-    private Card generateCard(int[] indices, List<Feature>[] allowedFeatures) {
-        length = indices.length;
-        Feature[] features = Feature[length];
-        for (int i = 0; i < length; i++) {
-            features[i] = allowedFeatures[i].get(indices[i]);
-        }
-        // @TODO: Create Constructor from array.
-        return new Card(features[0], features[1], features[2], features[3]);
+    private Card generateCard(int[] indices,
+                              List<Instrument> allowedInstruments,
+                              List<Order> allowedOrders,
+                              List<Range> allowedRanges,
+                              List<Interval> allowedIntervals) {
+
+        Instrument instrument = allowedInstruments.get(indices[0]);
+        Order order           = allowedOrders.get(indices[1]);
+        Range range           = allowedRanges.get(indices[2]);
+        Interval interval     = allowedIntervals.get(indices[3]);
+        return new Card(instrument, order, range, interval);
     }
 
 }

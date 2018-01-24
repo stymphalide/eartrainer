@@ -5,9 +5,9 @@ public abstract class Feature {
     String name;
     String featureName;
 
-    Feature(String name, String feature_name) {
+    Feature(String name, String featureName) {
         this.name = name;
-        this.featureName;
+        this.featureName = featureName;
     }
 
     public String getNameString()
@@ -19,8 +19,6 @@ public abstract class Feature {
     {
         return this.featureName;
     }
-
-    public abstract String getStaccatoString();
 }
 
 

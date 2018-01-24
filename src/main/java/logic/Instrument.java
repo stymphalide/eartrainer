@@ -10,4 +10,6 @@ public class Instrument extends Feature {
     public String getStaccatoString(Range range) {
         return "Some Staccato String";
     }
+    
+
 }

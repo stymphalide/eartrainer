@@ -16,4 +16,6 @@ public class Card {
     	this.range = range;
     	this.interval = interval;
     }
+    public Card() { // @TODO: Delete this.
+    }
 }

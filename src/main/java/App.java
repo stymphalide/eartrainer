@@ -1,5 +1,4 @@
-import logic.Level;
-import logic.Sound;
+import logic.*;
 
 public class App {
     public String getGreeting() {
@@ -8,8 +7,7 @@ public class App {
 
     public static void main(String[] args) {
         //System.out.println(new App().getGreeting());
-        Level level = new Level();
-        System.out.println("You have answered "+level.correctAnswers+" Questions correctly.");
+        Level level = new Level1();
         Sound sound = new Sound();
         sound.test();
     }
