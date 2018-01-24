@@ -10,16 +10,16 @@ These are our [Project Goals](#project-goals).
 We try to stick to this [Code of Conduct](#code-of-conduct).
 
 ## TODOS
-- [ ] Initialise Project.
+- [x] Initialise Project.
     - [x] Gradle init
     - [x] Git init
     - [x] Copy this readme.
     - [x] Add .gitignore.
     - [x] Add .gitattributes.
     - [x] Add already defined deps.
-    - [ ] Create predefined directory structure.
-    - [ ] Write first classes.
-    - [ ] Write first tests.
+    - [x] Create predefined directory structure.
+    - [x] Write first classes.
+    - [x] Write first tests.
     - [x] Push to github.
 - [ ] Create the Project Dossier for MSI.
     - [ ] Add a Project Description 1/4 page.
@@ -97,11 +97,11 @@ The blue keys indicate the start of a range whereas the red keys indicate the en
 The pitches are listed in [Scientific Pitch Notation](https://en.wikipedia.org/wiki/Scientific_pitch_notation).
 
 - The low range spans from the zeroth octave to the second.
-(A0-B2)
+(C2-B3)
 - The middle range spans from the third octave to the fifth octave.
-(C3-B5)
+(C4-B5)
 - The high range spans from the sixth to the eigth octave.
-(C6-B8)
+(C6-B7)
 
 #### Instruments
 
@@ -123,9 +123,9 @@ This is a knob that we can not turn, the default orders are:
 
 Interval | Range | Order | Instrument
 ---------|-------|-------|-----------
-perfect fifth | low (A0 - B2) | upwards | piano
-perfect fourth | middle (C3 - B5) | downwards | strings
-perfect octave | high (C6 - B8) | at the same time | brass
+perfect fifth | low (C2 - B3) | upwards | piano
+perfect fourth | middle (C4 - B5) | downwards | strings
+perfect octave | high (C6 - B7) | at the same time | brass
 
 
 [//]: # (@TODO: Refactor this into a project description part)
@@ -202,8 +202,8 @@ A higher level library could be jFugue:
 - [x] Discuss level design.
 - [x] Familiarise oneself with javafx.
 - [ ] Familiarise oneself with jFugue.
-- [ ] Define project structure. -> Define rough class structure.
-- [ ] Implement basic classes.
+- [x] Define project structure. -> Define rough class structure.
+- [x] Implement basic classes.
 - [ ] Write project description for MSI.
 - [ ] Create some UML diagrams from the rough project structure.
 
