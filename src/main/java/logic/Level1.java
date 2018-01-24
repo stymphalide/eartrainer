@@ -90,5 +90,4 @@ public class Level1 extends Level {
 		features.add(feature3);
 		return features;
 	}
-	
 }
