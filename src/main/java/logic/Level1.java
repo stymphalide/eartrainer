@@ -65,7 +65,7 @@ public class Level1 extends Level {
 	
 	@Override
 	public Question getQuestion(){
-		return new Question();
+		return new Question(this.allowedInstruments, this.allowedOrders, this.allowedRanges, this.allowedIntervals);
 	}
 	
 	@Override
