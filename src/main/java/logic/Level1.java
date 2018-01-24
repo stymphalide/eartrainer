@@ -8,6 +8,7 @@ public class Level1 extends Level {
 	private int wrongAnswers;
 	private int totalQuestions;
 	private List<Instrument> allowedInstruments;
+	private List<Order> allowedOrders;
 	
 	public Level1() {
 		super(1);
@@ -15,6 +16,7 @@ public class Level1 extends Level {
 		this.wrongAnswers = 0;
 		this.totalQuestions = 10;
 		this.allowedInstruments = instantiateInstruments("Piano", "Strings", "Brass");
+		this.allowedOrders = instantiateOrders("upwards", "downwards", "chordal");
 	}
 
 	@Override
@@ -53,5 +55,13 @@ public class Level1 extends Level {
 		instruments.add(new Instrument(instrument2));
 		instruments.add(new Instrument(instrument3));
 		return instruments;
+	}
+	
+	private ArrayList<Order> instantiateOrders(String order1, String order2, String order3){
+		ArrayList<Order> orders = new ArrayList();
+		orders.add(new Order(order1));
+		orders.add(new Order(order2));
+		orders.add(new Order(order3));
+		return orders;
 	}
 }
