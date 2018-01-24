@@ -9,6 +9,7 @@ public class Level1 extends Level {
 	private int totalQuestions;
 	private List<Instrument> allowedInstruments;
 	private List<Order> allowedOrders;
+	private List<Range> allowedRanges;
 	
 	public Level1() {
 		super(1);
@@ -17,6 +18,7 @@ public class Level1 extends Level {
 		this.totalQuestions = 10;
 		this.allowedInstruments = instantiateInstruments("Piano", "Strings", "Brass");
 		this.allowedOrders = instantiateOrders("upwards", "downwards", "chordal");
+		this.allowedRanges = instantiateRanges("low", "middle", "high");
 	}
 
 	@Override
@@ -45,6 +47,16 @@ public class Level1 extends Level {
 	}
 	
 	@Override
+	public List<Order> getAllowedOrders(){
+		return this.allowedOrders;
+	}
+	
+	@Override
+	public List<Range> getAllowedRanges(){
+		return this.allowedRanges;
+	}
+	
+	@Override
 	public void play() {
 		// TODO Auto-generated method stub
 	}
@@ -63,5 +75,13 @@ public class Level1 extends Level {
 		orders.add(new Order(order2));
 		orders.add(new Order(order3));
 		return orders;
+	}
+	
+	private ArrayList<Range> instantiateRanges(String range1, String range2, String range3){
+		ArrayList<Range> ranges = new ArrayList();
+		ranges.add(new Range(range1));
+		ranges.add(new Range(range2));
+		ranges.add(new Range(range3));
+		return ranges;
 	}
 }
