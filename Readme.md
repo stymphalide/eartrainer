@@ -215,8 +215,55 @@ The source files i.e. the part that we write is in the ./src/ directory.
 
 ### Tree
 Make a tree of the project structure.
-
-[//]: # (@TODO: tree . > tree_test)
+```
+.
+├── build.gradle
+├── gradle
+│   └── wrapper
+│       ├── gradle-wrapper.jar
+│       └── gradle-wrapper.properties
+├── gradlew
+├── gradlew.bat
+├── lib
+│   └── jfugue-5.0.9.jar
+├── Readme.md
+├── resources
+│   ├── app
+│   │   ├── app_angelo_runable.zip
+│   │   └── app_tobi_runable.zip
+│   ├── current_tree.tree
+│   ├── descriptions
+│   │   └── level_1.txt
+│   └── img
+│       ├── perfect_fifth.png
+│       ├── perfect_fourth.png
+│       ├── perfect_octave.png
+│       ├── range_piano_coloured.png
+│       └── range_piano.png
+├── settings.gradle
+└── src
+    ├── main
+    │   └── java
+    │       ├── App.java
+    │       ├── logic
+    │       │   ├── Card.java
+    │       │   ├── Instrument.java
+    │       │   ├── Interval.java
+    │       │   ├── Level1.java
+    │       │   ├── Level.java
+    │       │   ├── Order.java
+    │       │   ├── Question.java
+    │       │   ├── Range.java
+    │       │   └── Sound.java
+    │       └── view
+    │           ├── Level.java
+    │           └── Menu.java
+    └── test
+        └── java
+            ├── AppTest.java
+            └── viewTest
+                └── MenuTest.java
+```
 
 
 ## Installation
