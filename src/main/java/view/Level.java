@@ -31,24 +31,19 @@ public class Level {
         card1Button.setAlignment(Pos.CENTER);
         Button card2Button = new Button("Listen to the second Interval");
         card1Button.setAlignment(Pos.CENTER);
-        // ComboBoxes
         
-        List<String> sampleElements = new ArrayList();
-
-        sampleElements.add("Hello");
-        sampleElements.add("world");
-
+        // ComboBoxes
         ComboBox<String> cmbInstruments = new ComboBox();
-        setUpComboBox("Instruments", cmbInstruments, sampleElements);
+        setUpComboBox("Instruments", cmbInstruments, level.getAllowedInstruments());
 
         ComboBox<String> cmbOrders = new ComboBox();
-        setUpComboBox("Orders", cmbOrders, sampleElements);
+        setUpComboBox("Orders", cmbOrders, level.getAllowedOrders());
         
         ComboBox<String> cmbRanges = new ComboBox();
-        setUpComboBox("Ranges", cmbRanges, sampleElements);
+        setUpComboBox("Ranges", cmbRanges, level.getAllowedRanges());
         
         ComboBox<String> cmbIntervals = new ComboBox();
-        setUpComboBox("Intervals", cmbIntervals, sampleElements);
+        setUpComboBox("Intervals", cmbIntervals, level.getAllowedIntervals());
 
         VBox comboBoxes = new VBox(20, 
                                    cmbInstruments, 
@@ -83,10 +78,10 @@ public class Level {
         Scene scene = new Scene(root, 700, 500);
         return scene;
     }
-    private void setUpComboBox(String placeholder, ComboBox<String> cmb, List<String> allowedFeatures) {
+    private void setUpComboBox(String placeholder, ComboBox<String> cmb, List<? extends logic.Feature> allowedFeatures) {
         Label phLabel = new Label(placeholder);
         for (int i = 0; i <  allowedFeatures.size(); i++) {
-            String name = allowedFeatures.get(i); // .get(i).getName();
+            String name = allowedFeatures.get(i).getNameString();
             cmb.getItems().add(name);
         }
     }
