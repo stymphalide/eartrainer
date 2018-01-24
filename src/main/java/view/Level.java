@@ -7,7 +7,8 @@ import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.text.Font;
 import javafx.scene.control.Button; 
-import javafx.scene.control.Label; 
+import javafx.scene.control.Label;
+import javafx.scene.control.ComboBox;
 import javafx.scene.layout.VBox; 
 import javafx.scene.layout.HBox; 
 import javafx.stage.Stage;
@@ -23,17 +24,33 @@ public class Level {
         titleRow.setAlignment(Pos.CENTER);
 
         // Main Part
-        //  Card 1
-        /*"
-        logic.Question question = level.getQuestion();
-        logic.Card card1 = question.getCard1();
-        logic.Card card2 = question.getCard2();
-    */
+        
+        // Listen
         Button card1Button = new Button("Listen to the first Interval");
+        card1Button.setAlignment(Pos.CENTER);
         Button card2Button = new Button("Listen to the second Interval");
+        card1Button.setAlignment(Pos.CENTER);
+        // ComboBoxes
+        
+        ComboBox<String> cmbInstruments = new ComboBox();
+        setUpComboBox("Instruments", cmbInstruments);
 
+        ComboBox<String> cmbOrders = new ComboBox();
+        setUpComboBox("Orders", cmbOrders);
+        
+        ComboBox<String> cmbRanges = new ComboBox();
+        setUpComboBox("Ranges", cmbRanges);
+        
+        ComboBox<String> cmbIntervals = new ComboBox();
+        setUpComboBox("Intervals", cmbIntervals);
 
-        HBox mainRow = new HBox(50, card1Button, card2Button);
+        VBox comboBoxes = new VBox(20, 
+                                   cmbInstruments, 
+                                   cmbOrders, 
+                                   cmbRanges, 
+                                   cmbIntervals);
+
+        HBox mainRow = new HBox(50, card1Button, card2Button, comboBoxes);
 
 
         // Navigation
@@ -60,4 +77,9 @@ public class Level {
         Scene scene = new Scene(root, 700, 500);
         return scene;
     }
+    private void setUpComboBox(String placeholder, ComboBox<String> cmb) {
+        Label phLabel = new Label(placeholder);
+        cmb.setPlaceholder(phLabel);
+    }
+
 }
