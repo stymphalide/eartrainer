@@ -16,9 +16,9 @@ import javafx.stage.Stage;
 
 public class Level {
     public Scene renderActive(logic.Level level, Button confirmButton) {
-        Label label = new Label("level " + level.getLevel());
+        Label label = new Label("level " + level.getLevelNumber());
         VBox root = new VBox(50);
-        Label n = new Label("" + level.getN());
+        Label n = new Label("1");
 
         confirmButton.setText("Increase N");
 

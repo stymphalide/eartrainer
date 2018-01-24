@@ -1,29 +1,44 @@
 package logic;
 
-public class Level {
-    int level;
+import java.util.List;
+
+public abstract class Level {
+    int levelNumber;
     boolean isFinished;
-    int n;
 
-    public Level(int n) {
-        this.level = n;
-        this.isFinished = false;
-        this.n = 0;
-    }
-    public void nextQuestion() {
-        n++;
+    Level(int n) {
+        this.isFinished = true;
+        this.levelNumber = n;
     }
 
-    public boolean isFinished() {
-        return n >= 10;
-    }
-    
-    public int getN() {
-        return n;
-    }
+    public abstract List<logic.Range> getAllowedRanges();
 
-    public int getLevel() {
+    public abstract List<logic.Instrument> getAllowedInstruments();
+
+    public abstract List<logic.Interval> getAllowedIntervals();
+
+    public abstract List<logic.Order> getAllowedOrders();
+
+    public abstract int getCorrectAnswers();
+
+    public abstract int getWrongAnswers();
+
+    public abstract int getTotalAnswers();
+
+    public abstract int getTotalQuestions();
+
+    public int getLevelNumber() {
         return level;
     }
 
+    public abstract logic.Question getQuestion();
+
+    public abstract void play();
+
+    public abstract logic.Card correctAnswer(logic.Question question, logic.Card proposedAnswer);
+
+    public abstract boolean validateAnswer(logic.Question question, logic.Card proposedAnswer);
+
+    public boolean isFinished();
 }
+
