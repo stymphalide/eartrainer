@@ -64,7 +64,12 @@ public class Level1 extends Level {
 	}
 	
 	@Override
-	public void play() {
+	public Question getQuestion(){
+		return new Question();
+	}
+	
+	@Override
+	public void play(Card card) {
 		// TODO Auto-generated method stub
 	}
 

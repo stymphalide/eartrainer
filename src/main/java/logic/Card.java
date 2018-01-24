@@ -3,14 +3,14 @@ package logic;
 
 public class Card {
     Instrument instrument;
-    Interval interval;
-    Range range;
     Order order;
+    Range range;
+    Interval interval;
     
-    public Card(Instrument instrument, Interval interval, Range range, Order order) {
+    public Card(Instrument instrument, Order order, Range range, Interval interval) {
     	this.instrument = instrument;
-    	this.interval = interval;
-    	this.range = range;
     	this.order = order;
+    	this.range = range;
+    	this.interval = interval;
     }
 }
