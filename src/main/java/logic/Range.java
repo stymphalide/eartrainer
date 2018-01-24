@@ -2,7 +2,7 @@ package logic;
 
 
 public class Range extends Feature {
-    String[] ranges;
+    private String[] ranges;
 
     public Range(String range) {
         super(range, "range");

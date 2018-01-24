@@ -7,7 +7,10 @@ public class Card {
     Range range;
     Interval interval;
     
-    public Card(Instrument instrument, Order order, Range range, Interval interval) {
+    public Card(Instrument instrument, 
+                Order order,
+                 Range range, 
+                 Interval interval) {
     	this.instrument = instrument;
     	this.order = order;
     	this.range = range;

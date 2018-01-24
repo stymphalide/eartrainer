@@ -8,11 +8,12 @@ public class Interval extends Feature {
     int size;
 
 
-    Interval(String interval) {
+    public Interval(String interval) {
         super(interval, "interval");
         setIntervalSizes();
         this.size = this.intervalSizes.get(interval);
     }
+    
     public String getOrderName() {
         return this.name;
     }
