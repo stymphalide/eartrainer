@@ -1,7 +1,7 @@
 package view;
 
 //private logic.Level logicLevel;
-
+import javafx.collections.ObservableList;
 import javafx.geometry.Pos;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
@@ -77,9 +77,14 @@ public class Level {
         Scene scene = new Scene(root, 700, 500);
         return scene;
     }
-    private void setUpComboBox(String placeholder, ComboBox<String> cmb) {
+    private void setUpComboBox(String placeholder, ComboBox<String> cmb, List<> allowedFeatures) {
         Label phLabel = new Label(placeholder);
-        cmb.setPlaceholder(phLabel);
+        ObservableList<String> elements = new ObservableList();
+        for (int i = 0; i <  allowedFeatures.size(); i++) {
+            String name = allowedFeatures.get(i).getName();
+            elements.add(name);
+        }
+        cmb.setButtonCell(phLabel);
     }
 
 }
