@@ -47,7 +47,7 @@ dependencies {
     testCompile 'junit:junit:4.12'
 
     // Use jFugue.jar file in build/libs
-    compile name: 'jfugue-5.0.1'
+    compile name: 'jfugue-5.0.9'
 
 
 
@@ -63,3 +63,4 @@ jfx {
     // minimal requirement for jfxNative-task
     //vendor = 'YourName'
 }
+
