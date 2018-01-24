@@ -1,4 +1,0 @@
-# Unnecessary or generated files can be added here.
-build/*
-# Gradle needs not be traced from now on.
-.gradle/*

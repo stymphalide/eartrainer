@@ -4,10 +4,8 @@ import java.util.List;
 
 public abstract class Level {
     int levelNumber;
-    boolean isFinished;
 
     Level(int n) {
-        this.isFinished = true;
         this.levelNumber = n;
     }
 
@@ -33,12 +31,12 @@ public abstract class Level {
 
     public abstract logic.Question getQuestion();
 
-    public abstract void play();
+    public abstract void play(Card card);
 
     public abstract logic.Card correctAnswer(logic.Question question, logic.Card proposedAnswer);
 
     public abstract boolean validateAnswer(logic.Question question, logic.Card proposedAnswer);
 
-    public boolean isFinished();
+    public abstract boolean isFinished();
 }
 
