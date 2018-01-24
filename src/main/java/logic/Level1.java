@@ -19,8 +19,8 @@ public class Level1 extends Level {
 		this.totalQuestions = 10;
 		this.allowedInstruments = instantiateInstruments("Piano", "Strings", "Brass");
 		this.allowedOrders = instantiateOrders("upwards", "downwards", "chordal");
-		this.allowedRanges = instantiateRanges("low", "middle", "high");
-		this.allowedIntervals = instantiateIntervals("fourth", "fifth", "octave");
+		this.allowedRanges = instantiateRanges("C2-B3", "C4-B5", "C6-B7");
+		this.allowedIntervals = instantiateIntervals("perfect_fourth", "perfect_fifth", "perfect_octave");
 	}
 
 	@Override
