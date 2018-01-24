@@ -10,6 +10,7 @@ public class Level1 extends Level {
 	private List<Instrument> allowedInstruments;
 	private List<Order> allowedOrders;
 	private List<Range> allowedRanges;
+	private List<Interval> allowedIntervals;
 	
 	public Level1() {
 		super(1);
@@ -19,6 +20,7 @@ public class Level1 extends Level {
 		this.allowedInstruments = instantiateInstruments("Piano", "Strings", "Brass");
 		this.allowedOrders = instantiateOrders("upwards", "downwards", "chordal");
 		this.allowedRanges = instantiateRanges("low", "middle", "high");
+		this.allowedIntervals = instantiateIntervals("fourth", "fifth", "octave");
 	}
 
 	@Override
@@ -57,6 +59,11 @@ public class Level1 extends Level {
 	}
 	
 	@Override
+	public List<Interval> getAllowedIntervals(){
+		return this.allowedIntervals;
+	}
+	
+	@Override
 	public void play() {
 		// TODO Auto-generated method stub
 	}
@@ -83,5 +90,13 @@ public class Level1 extends Level {
 		ranges.add(new Range(range2));
 		ranges.add(new Range(range3));
 		return ranges;
+	}
+	
+	private ArrayList<Interval> instantiateIntervals(String interval1, String interval2, String interval3){
+		ArrayList<Interval> intervals = new ArrayList();
+		intervals.add(new Interval(interval1));
+		intervals.add(new Interval(interval2));
+		intervals.add(new Interval(interval3));
+		return intervals;
 	}
 }
