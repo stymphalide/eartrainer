@@ -1,23 +1,24 @@
 package logic;
 
 
-import java.util.HashMap
+import java.util.HashMap;
 
 public class Interval {
     String name;
-    HashMap<String, Int> intervalSizes;
+    HashMap<String, Integer> intervalSizes;
+    int size;
 
 
     Interval(String interval) {
         this.name = interval;
-        this.intervalSizes = getIntervalSizes();
+        setIntervalSizes();
         this.size = this.intervalSizes.get(interval);
     }
     public String getOrderName() {
         return this.name;
     }
 
-    private HashMap<String, Int> getIntervalSizes() {
+    private void setIntervalSizes() {
         this.intervalSizes.put("perfect_fourth", 5);
         this.intervalSizes.put("perfect_fifth", 7);
         this.intervalSizes.put("perfect_octave", 12);

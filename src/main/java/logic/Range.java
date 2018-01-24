@@ -3,9 +3,10 @@ package logic;
 
 public class Range {
     String name;
+    String[] range;
 
-    public Instrument(Range range) {
+    public Range(String range) {
         this.name = range;
-        this.range = range.split("-")
+        this.range = range.split("-");
     }
 }
