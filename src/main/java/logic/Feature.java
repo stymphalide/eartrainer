@@ -10,9 +10,15 @@ public abstract class Feature {
         this.feature_name;
     }
 
-    public abstract String getNameString();
+    public String getNameString()
+    {
+        return this.name;
+    }
 
-    public abstract String getFeatureName();
+    public String getFeatureName()
+    {
+        return this.feature_name;
+    }
 
     public abstract String getStaccatoString();
 }

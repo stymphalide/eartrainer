@@ -1,12 +1,11 @@
 package logic;
 
 
-public class Range {
-    String name;
-    String[] range;
+public class Range extends Feature {
+    String[] ranges;
 
     public Range(String range) {
-        this.name = range;
-        this.range = range.split("-");
+        super(range, "range");
+        this.ranges = range.split("-");
     }
 }
