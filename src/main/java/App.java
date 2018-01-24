@@ -100,7 +100,7 @@ public class App extends Application {
         window.setTitle("eartrainer - Level 1");
         Button confirm = new Button();
         
-        logic.Level level = new logic.Level1(1);
+        logic.Level level = new logic.Level1();
         view.Level levelView = new view.Level();
         Scene levelScene = levelView.renderActive(level, confirm);
         window.setScene(levelScene);

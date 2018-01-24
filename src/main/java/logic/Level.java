@@ -26,7 +26,7 @@ public abstract class Level {
     public abstract int getTotalQuestions();
 
     public int getLevelNumber() {
-        return level;
+        return this.levelNumber;
     }
 
     public abstract logic.Question getQuestion();

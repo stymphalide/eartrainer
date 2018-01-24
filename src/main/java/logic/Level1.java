@@ -83,6 +83,11 @@ public class Level1 extends Level {
 		return true; // @TODO: Implementate this properly
 	}
 
+	@Override
+	public boolean isFinished() {
+		return this.correctAnswers + this.wrongAnswers == this.totalQuestions;
+	}
+
 	private ArrayList<Instrument> instantiateInstruments(String instrument1, String instrument2, String instrument3){
 		ArrayList<Instrument> instruments = new ArrayList();
 		instruments.add(new Instrument(instrument1));
