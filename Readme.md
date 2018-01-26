@@ -3,7 +3,7 @@ This project is being created as a programming project in informatics class supe
 
 The code can be downloaded in the [installation](#installation) section.
 
-[Time Schedule](#time-schedule)
+Jump to the [Milestone I](#milestone-i)
 
 These are our [Project Goals](#project-goals).
 
@@ -195,8 +195,8 @@ A higher level library could be jFugue:
 
 ### List of important dates.
 - [x] 19.01.2018: Project Goals + Additional Goals defined
-- [ ] 14.02.2018: [Milestone I](http://www.vazquez-informatik.ch/files/AKSA_ProgProjLE1_MilestoneI.pdf "milestone1")
-- [ ] 21.03.2018: [Milestone II](http://www.vazquez-informatik.ch/files/AKSA_ProgProjLE1_MilestoneII.pdf "milestone2")
+- [ ] 14.02.2018: [MSI](#milestone-i)
+- [ ] 21.03.2018: [MSII](#milestone-ii)
 
 ### Short Term Planing (due 'til 26.01.)
 - [x] Discuss level design.
@@ -315,6 +315,26 @@ Everything we stumble upon doing research comes into this part.
 ### JFugue
 - [Some basic examples](http://www.jfugue.org/examples.html "jfugue examples")
 - [Compose music like a pro rapid music programming with java jfugue](https://www.techrepublic.com/article/compose-music-like-a-pro-rapid-music-programming-with-java-jfugue/)
+
+### Others
+- [File API](https://docs.oracle.com/javase/8/docs/api/java/io/File1.html)
+- [IOException API](https://docs.oracle.com/javase/8/docs/api/java/io/IOException.html)
+- [FileUtils API](https://commons.apache.org/proper/commons-io/javadocs/api-2.5/org/apache/commons/io/FileUtils.html)
+- [How to Catch Exceptions](https://stackoverflow.com/questions/8707906/unreported-exception-java-io-ioexception-must-be-caught-or-declared-to-be-throw)
+
+## Milestones
+### Milestone I (14.02.2018)
+
+- src-directory
+- [pdf](https://docs.google.com/document/d/1AZxzqGgnjF5-mWFIIcZr7S34lyCxhZnmstM7S3sX20M/edit?usp=sharing)
+- [Milestone I Vazquez](http://www.vazquez-informatik.ch/files/AKSA_ProgProjLE1_MilestoneI.pdf "milestone1")
+- Email: (martivazquez@hotmail.com)
+
+### Milestone II (21.03.2018)
+- src-directory
+- [pdf](404)
+- [Milestone II Vazquez](http://www.vazquez-informatik.ch/files/AKSA_ProgProjLE1_MilestoneII.pdf "milestone2")
+- Email: (martivazquez@hotmail.com)
 
 ## License
 To be determined
