@@ -19,6 +19,7 @@ public class Interval extends Feature {
     }
 
     private void setIntervalSizes() {
+    	this.intervalSizes = new HashMap<String, Integer>();
         this.intervalSizes.put("perfect_fourth", 5);
         this.intervalSizes.put("perfect_fifth", 7);
         this.intervalSizes.put("perfect_octave", 12);
