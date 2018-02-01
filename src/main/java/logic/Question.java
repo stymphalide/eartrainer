@@ -18,7 +18,7 @@ public class Question {
         int[] card2Indices;
     	do {
     		card2Indices = randomCardIndices(length, bound);
-    	} while(card1Indices == card2Indices);
+    	} while(Arrays.equals(card1Indices, card2Indices));
 
     	this.card1 = generateCard(card1Indices, allowedInstruments, allowedOrders, allowedRanges, allowedIntervals);
     	this.card2 = generateCard(card2Indices, allowedInstruments, allowedOrders, allowedRanges, allowedIntervals);
