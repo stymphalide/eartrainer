@@ -4,7 +4,7 @@ import org.jfugue.player.Player;
 public class Sound {
 
 	public String cardToStaccato(Card card) {
-		return "";
+		return "V0 I[card.instrument.getInstrumentName()]";
 	}
 	
 	public void test() {

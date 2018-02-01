@@ -11,5 +11,8 @@ public class Instrument extends Feature {
         return "Some Staccato String";
     }
     
+    public String getInstrumentName() {
+    	return this.name;
+    }
 
 }
