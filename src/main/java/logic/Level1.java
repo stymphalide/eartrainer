@@ -75,12 +75,12 @@ public class Level1 extends Level {
 
 	@Override
 	public Card correctAnswer(Question question, Card card) {
-		return new Card(); // @TODO: Implementate this and delete constructor
+		return new Card(); // @TODO: Implement this and delete constructor
 	}
 
 	@Override
 	public boolean validateAnswer(Question question, Card card) {
-		return true; // @TODO: Implementate this properly
+		return true; // @TODO: Implement this properly
 	}
 
 	private ArrayList<Instrument> instantiateInstruments(String instrument1, String instrument2, String instrument3){
