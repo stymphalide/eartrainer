@@ -16,6 +16,7 @@ public class Card {
     	this.range = range;
     	this.interval = interval;
     }
+    
     public Card(String instrument, 
             	String order,
             	String range, 
@@ -25,4 +26,13 @@ public class Card {
     		 new Range(range),
     		 new Interval(interval));
     }
+    
+    public String getNote1() {
+    	return "C4";
+    }
+    
+    public String getNote2() {
+    	return "G4";
+    }
+    
 }

@@ -8,4 +8,12 @@ public class Range extends Feature {
         super(range, "range");
         this.ranges = range.split("-");
     }
+    
+    public String getLowerNote() {
+    	return ranges[0];
+    }
+    
+    public String getUpperNote() {
+    	return ranges[1];
+    }
 }
