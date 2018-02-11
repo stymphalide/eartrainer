@@ -7,9 +7,4 @@ public class Sound {
 		return "V0 I["+card.instrument.getInstrumentName()+"] "+card.getNote1()+"h Rh V1 I["+card.instrument.getInstrumentName()+"] Rh "+card.getNote2()+"h";
 	}
 	
-	public void test() {
-       Player player = new Player();
-       player.play("V0 I[Piano] C4h Rh V1 I[Piano] Rh G4h");      	   
-   }
-	
 }

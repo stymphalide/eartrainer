@@ -27,7 +27,9 @@ public class Card {
     		 new Range(range),
     		 new Interval(interval));
     }
-      
+    
+    
+    //TODO: Implement this.
     public String getNote1() {    	
     	return "C4";
     }
