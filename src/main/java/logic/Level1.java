@@ -75,12 +75,12 @@ public class Level1 extends Level {
 
 	@Override
 	public Card correctAnswer(Question question, Card card) {
-		return new Card(); // @TODO: Implementate this and delete constructor
+		return null; // @TODO: Implement this and delete constructor
 	}
 
 	@Override
 	public boolean validateAnswer(Question question, Card card) {
-		return true; // @TODO: Implementate this properly
+		return true; // @TODO: Implement this properly
 	}
 
 	@Override
