@@ -201,11 +201,19 @@ A higher level library could be jFugue:
 ### Short Term Planing (due 'til 26.01.)
 - [x] Discuss level design.
 - [x] Familiarise oneself with javafx.
-- [ ] Familiarise oneself with jFugue.
+- [x] Familiarise oneself with jFugue.
 - [x] Define project structure. -> Define rough class structure.
 - [x] Implement basic classes.
 - [ ] Write project description for MSI.
 - [ ] Create some UML diagrams from the rough project structure.
+
+### Short Term Planing #1 (due 'til 11.02.)
+- [ ] Write project description for MSI.
+- [ ] Write Problem definition for MSI.
+
+- [ ] Create some UML diagrams from the rough project structure. 
+- [ ] Copy code into MSI including comments which classes to look at.
+- [ ] Results and Tests (DC)
 
 
 ## Project Structure
