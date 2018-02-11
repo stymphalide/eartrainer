@@ -1,5 +1,6 @@
 package logic;
 
+import java.util.*;
 
 public class Card {
     Instrument instrument;
@@ -26,8 +27,8 @@ public class Card {
     		 new Range(range),
     		 new Interval(interval));
     }
-    
-    public String getNote1() {
+      
+    public String getNote1() {    	
     	return "C4";
     }
     
