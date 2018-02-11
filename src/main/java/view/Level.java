@@ -48,9 +48,16 @@ public class Level {
         // Listen
         Button card1Button = new Button("Listen to the first Interval");
         card1Button.setAlignment(Pos.CENTER);
+        card1Button.setOnAction(e -> {
+            level.getActiveQuestion().getCard1().play();
+        });
+
         Button card2Button = new Button("Listen to the second Interval");
-        card1Button.setAlignment(Pos.CENTER);
-        
+        card2Button.setAlignment(Pos.CENTER);
+        card2Button.setOnAction(e -> {
+            level.getActiveQuestion().getCard2().play();
+        });
+
         // ComboBoxes
         ComboBox<String> cmbInstruments = new ComboBox();
         setUpComboBox("Instruments", cmbInstruments, level.getAllowedInstruments());

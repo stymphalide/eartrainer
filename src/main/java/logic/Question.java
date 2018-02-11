@@ -24,6 +24,13 @@ public class Question {
     	this.card2 = generateCard(card2Indices, allowedInstruments, allowedOrders, allowedRanges, allowedIntervals);
     }
 
+    public Card getCard1() {
+        return this.card1;
+    }
+    public Card getCard2() {
+        return this.card2;
+    }
+
     private int[] randomCardIndices(int length, int bound) {
         
         Random random = new Random();

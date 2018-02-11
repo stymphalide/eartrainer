@@ -36,5 +36,4 @@ public class Card {
     public String getNote2() {
     	return "G4";
     }
-    
 }

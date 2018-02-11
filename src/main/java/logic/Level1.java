@@ -3,7 +3,6 @@ package logic;
 import java.util.*;
 
 public class Level1 extends Level {
-
 	private int correctAnswers;
 	private int wrongAnswers;
 	private int totalQuestions;
@@ -11,6 +10,8 @@ public class Level1 extends Level {
 	private List<String> allowedOrders;
 	private List<String> allowedRanges;
 	private List<String> allowedIntervals;
+	private Question activeQuestion;
+	private Card answer;
 	
 	public Level1() {
 		super(1);
@@ -21,6 +22,13 @@ public class Level1 extends Level {
 		this.allowedOrders = instantiateFeatures("upwards", "downwards", "chordal");
 		this.allowedRanges = instantiateFeatures("low", "middle", "high");
 		this.allowedIntervals = instantiateFeatures("perfect_fourth", "perfect_fifth", "perfect_octave");
+		//this.activeQuestion = getQuestion();
+        //this.answer = correctAnswer(this.activeQuestion);
+	}
+
+	@Override
+	public Question getActiveQuestion() {
+		return this.activeQuestion;
 	}
 
 	@Override
@@ -64,13 +72,25 @@ public class Level1 extends Level {
 	}
 	
 	@Override
+	public void nextQuestion() {
+		if(this.validateAnswer(this.activeQuestion, this.answer)) {
+			this.correctAnswers++;
+		} else {
+			this.wrongAnswers++;
+		}
+		this.activeQuestion = this.getQuestion();
+	}
+
+	@Override
 	public Question getQuestion(){
 		return new Question(this.allowedInstruments, this.allowedOrders, this.allowedRanges, this.allowedIntervals);
 	}
 
-	@Override
-	public Card correctAnswer(Question question, Card card) {
-		return null; // @TODO: Implement this and delete constructor
+	public Card correctAnswer(Question question) {
+		return new Card(this.allowedInstruments.get(0), 
+						this.allowedOrders.get(0),
+						this.allowedRanges.get(0),
+						this.allowedIntervals.get(0)); // @TODO: Implementate this and delete constructor
 	}
 
 	@Override

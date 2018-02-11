@@ -97,20 +97,21 @@ public class App extends Application {
     }
     private void setUpLevel1() {
         window.setTitle("eartrainer - Level 1");
-        Button confirm = new Button();
         
         logic.Level level = new logic.Level1();
         view.Level levelView = new view.Level();
-        Scene levelScene = levelView.renderActive(level, confirm);
+        Scene levelScene = levelView.renderActive(level, this.confirm);
         window.setScene(levelScene);
         
-        confirm.setOnAction(e -> {
+        this.confirm.setOnAction(e -> {
+            System.out.println("Test");
             if (level.isFinished()) {
                 window.setTitle("eartrainer - Game Over");
                 Scene newLevelScene = levelView.renderFinished(level, backToMenu, startLevel1);
                 window.setScene(newLevelScene);
             } else {
-                level.getQuestion();
+                level.nextQuestion();
+                System.out.println("Test2");
                 Scene newLevelScene = levelView.renderActive(level, confirm);
                 window.setScene(newLevelScene);
             }
