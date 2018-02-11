@@ -10,6 +10,7 @@ import javafx.scene.text.Font;
 import javafx.scene.control.Button; 
 import javafx.scene.control.Label;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.ProgressBar;
 import javafx.scene.layout.VBox; 
 import javafx.scene.layout.HBox; 
 import javafx.stage.Stage;
@@ -23,6 +24,24 @@ public class Level {
     
         HBox titleRow = new HBox(50, title);
         titleRow.setAlignment(Pos.CENTER);
+
+
+        // Score Bar
+        // Level Progress
+        Label progress = new Label("Progress: " + level.getTotalAnswers() + "/" +  level.getTotalQuestions());
+
+        double levelProgress = (double)level.getTotalAnswers() / (double)level.getTotalQuestions();
+        ProgressBar levelBar = new ProgressBar(levelProgress);
+
+        // Correctness Progress
+        Label correctness = new Label("Correct: " + level.getCorrectAnswers() + "/" + level.getTotalAnswers());
+
+        double correctnessProgress = (double)level.getCorrectAnswers() / (double)level.getTotalAnswers();
+        ProgressBar correctnessBar = new ProgressBar(correctnessProgress);
+        correctnessBar.setStyle("-fx-accent: green;");
+        
+        HBox scoreBar = new HBox(50, progress, levelBar, correctness, correctnessBar);
+        scoreBar.setAlignment(Pos.CENTER);
 
         // Main Part
         
@@ -61,7 +80,7 @@ public class Level {
         nav.setAlignment(Pos.CENTER);
 
 
-        VBox root = new VBox(50, titleRow, mainRow, nav);
+        VBox root = new VBox(50, titleRow, scoreBar, mainRow, nav);
 
         Scene scene = new Scene(root, 700, 500);
         return scene;
