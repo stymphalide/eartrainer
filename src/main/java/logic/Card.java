@@ -28,6 +28,7 @@ public class Card {
     		 new Interval(interval));
     }
     
+    //TODO: Implement getters for the features.
     
     //TODO: Implement this.
     public String getNote1() {    	
