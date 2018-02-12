@@ -104,14 +104,12 @@ public class App extends Application {
         window.setScene(levelScene);
         
         this.confirm.setOnAction(e -> {
-            System.out.println("Test");
             if (level.isFinished()) {
                 window.setTitle("eartrainer - Game Over");
                 Scene newLevelScene = levelView.renderFinished(level, backToMenu, startLevel1);
                 window.setScene(newLevelScene);
             } else {
                 level.nextQuestion();
-                System.out.println("Test2");
                 Scene newLevelScene = levelView.renderActive(level, confirm);
                 window.setScene(newLevelScene);
             }

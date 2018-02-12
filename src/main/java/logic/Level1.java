@@ -22,8 +22,8 @@ public class Level1 extends Level {
 		this.allowedOrders = instantiateFeatures("upwards", "downwards", "chordal");
 		this.allowedRanges = instantiateFeatures("low", "middle", "high");
 		this.allowedIntervals = instantiateFeatures("perfect_fourth", "perfect_fifth", "perfect_octave");
-		//this.activeQuestion = getQuestion();
-        //this.answer = correctAnswer(this.activeQuestion);
+		this.activeQuestion = getQuestion();
+        this.answer = correctAnswer(this.activeQuestion);
 	}
 
 	@Override

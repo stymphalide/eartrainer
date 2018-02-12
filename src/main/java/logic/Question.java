@@ -14,12 +14,11 @@ public class Question {
 
         int length = 4;
         int bound = allowedInstruments.size(); // Assuming the size of every list is the same.
-    	int[] card1Indices = randomCardIndices(length, bound);
+        int[] card1Indices = randomCardIndices(length, bound);
         int[] card2Indices;
     	do {
     		card2Indices = randomCardIndices(length, bound);
     	} while(Arrays.equals(card1Indices, card2Indices));
-
     	this.card1 = generateCard(card1Indices, allowedInstruments, allowedOrders, allowedRanges, allowedIntervals);
     	this.card2 = generateCard(card2Indices, allowedInstruments, allowedOrders, allowedRanges, allowedIntervals);
     }
@@ -32,11 +31,10 @@ public class Question {
     }
 
     private int[] randomCardIndices(int length, int bound) {
-        
         Random random = new Random();
         int[] card = new int[length];
 
-        for (int i = 0; i < length; ) {
+        for (int i = 0; i < length; i++) {
             card[i] = random.nextInt(bound);
         }
         return card;
