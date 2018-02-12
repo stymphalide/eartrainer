@@ -3,32 +3,30 @@ package logic;
 import java.util.*;
 
 public class Card {
-    Instrument instrument;
-    Order order;
-    Range range;
-    Interval interval;
+	String instrument;
+	String order;
+	String range;
+	String interval;
     
-    public Card(Instrument instrument, 
-                Order order,
-                Range range, 
-                Interval interval) {
+    public Card(String instrument, 
+    			String order,
+    			String range, 
+    			String interval) {
     	this.instrument = instrument;
     	this.order = order;
     	this.range = range;
     	this.interval = interval;
     }
     
-    public Card(String instrument, 
-            	String order,
-            	String range, 
-            	String interval) {
-    	this(new Instrument(instrument),
-    		 new Order(order),
-    		 new Range(range),
-    		 new Interval(interval));
-    }
     
     //TODO: Implement getters for the features.
+    
+    private void setIntervalSizes() {
+    	this.intervalSizes = new HashMap<String, Integer>();
+        this.intervalSizes.put("perfect_fourth", 5);
+        this.intervalSizes.put("perfect_fifth", 7);
+        this.intervalSizes.put("perfect_octave", 12);
+    }
     
     //TODO: Implement this.
     public String getNote1() {    	
