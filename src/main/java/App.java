@@ -1,14 +1,11 @@
 import logic.*;
 
 public class App {
-    public String getGreeting() {
-        return "Hello world.";
-    }
 
     public static void main(String[] args) {
-        //System.out.println(new App().getGreeting());
         Level level = new Level1();
+        Card card = new Card("Piano", "upwards", "C4-B5", "perfect_fifth");
         Sound sound = new Sound();
-        sound.test();
+        sound.play(card);
     }
 }

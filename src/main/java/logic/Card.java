@@ -21,12 +21,12 @@ public class Card {
     
     //TODO: Implement getters for the features.
     
-    private void setIntervalSizes() {
+    /*private void setIntervalSizes() {
     	this.intervalSizes = new HashMap<String, Integer>();
         this.intervalSizes.put("perfect_fourth", 5);
         this.intervalSizes.put("perfect_fifth", 7);
         this.intervalSizes.put("perfect_octave", 12);
-    }
+    }*/
     
     //TODO: Implement this.
     public String getNote1() {    	
