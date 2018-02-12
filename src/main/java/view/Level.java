@@ -93,13 +93,31 @@ public class Level {
         return scene;
     }
     public Scene renderFinished(logic.Level level, Button backToMenu, Button playAgain) {
-        VBox root = new VBox(50);
+        Label title = new Label("Level " + level.getLevelNumber() + " Over");
+        title.setFont(new Font(40));
 
+        HBox titleRow = new HBox(50, title);
+        titleRow.setAlignment(Pos.CENTER);
+
+        // Results
+        // Correctness Progress
+        Label correctness = new Label("Correct/Wrong " + level.getCorrectAnswers() + "/" + level.getWrongAnswers());
+
+        double correctnessProgress = (double)level.getCorrectAnswers() / (double)level.getTotalAnswers();
+        ProgressBar correctnessBar = new ProgressBar(correctnessProgress);
+        correctnessBar.setStyle("-fx-accent: green;");
+
+        HBox results = new HBox(50, correctness, correctnessBar);
+        results.setAlignment(Pos.CENTER);
+
+        // Navigation
         playAgain.setText("Play Again");
 
-        Label label = new Label("Game Finished");
+        HBox nav = new HBox(50, backToMenu, playAgain);
+        nav.setAlignment(Pos.CENTER);
 
-        root.getChildren().addAll(label, backToMenu, playAgain);
+        VBox root = new VBox(50);
+        root.getChildren().addAll(titleRow, results, nav);
 
         Scene scene = new Scene(root, 700, 500);
         return scene;
