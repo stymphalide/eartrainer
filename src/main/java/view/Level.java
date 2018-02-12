@@ -49,13 +49,15 @@ public class Level {
         Button card1Button = new Button("Listen to the first Interval");
         card1Button.setAlignment(Pos.CENTER);
         card1Button.setOnAction(e -> {
-            level.getActiveQuestion().getCard1().play();
+            logic.Sound sound = new logic.Sound();
+            sound.play(level.getActiveQuestion().getCard1());
         });
 
         Button card2Button = new Button("Listen to the second Interval");
         card2Button.setAlignment(Pos.CENTER);
         card2Button.setOnAction(e -> {
-            level.getActiveQuestion().getCard2().play();
+            logic.Sound sound = new logic.Sound();
+            sound.play(level.getActiveQuestion().getCard2());
         });
 
         // ComboBoxes
@@ -122,10 +124,10 @@ public class Level {
         Scene scene = new Scene(root, 700, 500);
         return scene;
     }
-    private void setUpComboBox(String placeholder, ComboBox<String> cmb, List<? extends logic.Feature> allowedFeatures) {
+    private void setUpComboBox(String placeholder, ComboBox<String> cmb, List<String> allowedFeatures) {
         Label phLabel = new Label(placeholder);
         for (int i = 0; i <  allowedFeatures.size(); i++) {
-            String name = allowedFeatures.get(i).getNameString();
+            String name = allowedFeatures.get(i);
             cmb.getItems().add(name);
         }
     }
