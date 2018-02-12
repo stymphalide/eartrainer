@@ -9,13 +9,13 @@ public abstract class Level {
         this.levelNumber = n;
     }
 
-    public abstract List<logic.Range> getAllowedRanges();
+    public abstract List<String> getAllowedRanges();
 
-    public abstract List<logic.Instrument> getAllowedInstruments();
+    public abstract List<String> getAllowedInstruments();
 
-    public abstract List<logic.Interval> getAllowedIntervals();
+    public abstract List<String> getAllowedIntervals();
 
-    public abstract List<logic.Order> getAllowedOrders();
+    public abstract List<String> getAllowedOrders();
 
     public abstract int getCorrectAnswers();
 
@@ -30,8 +30,6 @@ public abstract class Level {
     }
 
     public abstract logic.Question getQuestion();
-
-    public abstract void play(Card card);
 
     public abstract logic.Card correctAnswer(logic.Question question, logic.Card proposedAnswer);
 

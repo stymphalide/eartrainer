@@ -5,7 +5,6 @@
     Main Sources: TBD
     Code Management: logic: Tobias Seefeld G4L | view: Angelo Birrer G4L
 */
-
 /* classdoc
     This class holds the whole application together. It inherits from the javafx Application.
     The class has the following attributes:
@@ -120,5 +119,4 @@ public class App extends Application {
 
     public static void main(String[] args) {
         Application.launch(args);
-    }
 }

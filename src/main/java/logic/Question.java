@@ -7,10 +7,10 @@ public class Question {
     private Card card2;
     
     // @TODO: Maybe add another variable in the level: allowed Features.
-    public Question(List<Instrument> allowedInstruments,
-    				List<Order> allowedOrders,
-    				List<Range> allowedRanges,
-    				List<Interval> allowedIntervals) {
+    public Question(List<String> allowedInstruments,
+    				List<String> allowedOrders,
+    				List<String> allowedRanges,
+    				List<String> allowedIntervals) {
 
         int length = 4;
         int bound = allowedInstruments.size(); // Assuming the size of every list is the same.
@@ -35,15 +35,15 @@ public class Question {
         return card;
     }
     private Card generateCard(int[] indices,
-                              List<Instrument> allowedInstruments,
-                              List<Order> allowedOrders,
-                              List<Range> allowedRanges,
-                              List<Interval> allowedIntervals) {
+                              List<String> allowedInstruments,
+                              List<String> allowedOrders,
+                              List<String> allowedRanges,
+                              List<String> allowedIntervals) {
 
-        Instrument instrument = allowedInstruments.get(indices[0]);
-        Order order           = allowedOrders.get(indices[1]);
-        Range range           = allowedRanges.get(indices[2]);
-        Interval interval     = allowedIntervals.get(indices[3]);
+    	String instrument = allowedInstruments.get(indices[0]);
+    	String order           = allowedOrders.get(indices[1]);
+    	String range           = allowedRanges.get(indices[2]);
+    	String interval     = allowedIntervals.get(indices[3]);
         return new Card(instrument, order, range, interval);
     }
 
