@@ -7,4 +7,9 @@ public class Sound {
 		return "V0 I["+card.instrument.getInstrumentName()+"] "+card.getNote1()+"h Rh V1 I["+card.instrument.getInstrumentName()+"] Rh "+card.getNote2()+"h";
 	}
 	
+	public void play(Card card) {
+		Sound sound = new Sound();
+		Player player = new Player();
+		player.play(sound.cardToStaccato(card));
+	}
 }

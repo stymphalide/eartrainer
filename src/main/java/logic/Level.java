@@ -27,8 +27,6 @@ public abstract class Level {
 
     public abstract logic.Question getQuestion();
 
-    public abstract void play(Card card);
-
     public abstract logic.Card correctAnswer(logic.Question question, logic.Card proposedAnswer);
 
     public abstract boolean validateAnswer(logic.Question question, logic.Card proposedAnswer);

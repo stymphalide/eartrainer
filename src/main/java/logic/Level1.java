@@ -67,11 +67,6 @@ public class Level1 extends Level {
 	public Question getQuestion(){
 		return new Question(this.allowedInstruments, this.allowedOrders, this.allowedRanges, this.allowedIntervals);
 	}
-	
-	@Override
-	public void play(Card card) {
-		// TODO Auto-generated method stub
-	}
 
 	@Override
 	public Card correctAnswer(Question question, Card card) {
