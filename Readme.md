@@ -22,12 +22,12 @@ We try to stick to this [Code of Conduct](#code-of-conduct).
     - [x] Write first tests.
     - [x] Push to github.
 - [ ] Create the Project Dossier for MSI.
-    - [ ] Add a Project Description 1/4 page.
-    - [ ] Definition of the Problem
-    - [ ] Analysis of the Requirements
+    - [x] Add a Project Description 1/4 page.
+    - [x] Definition of the Problem
+    - [x] Analysis of the Requirements
     - [ ] Specifications
     - [ ] Draft (UML)
-    - [ ] Copy Implementation
+    - [ ] Link Implementation
     - [ ] Results and Tests
 - [ ] Finish the Project.
     - [ ] Write a working interface.
@@ -78,9 +78,9 @@ In the first level of the game the list of intervals, range and instruments are 
 #### Intervals
 
 The list of intervals to choose from is:
-- Perfect fourth ![Perfect fourth](resources/perfect_fourth.png)
-- Perfect fifth ![Perfect fifth](resources/perfect_fifth.png)
-- Perfect octave ![Perfect octave](resources/perfect_octave.png)
+- Perfect fourth ![Perfect fourth](resources/img/perfect_fourth.png)
+- Perfect fifth ![Perfect fifth](resources/img/perfect_fifth.png)
+- Perfect octave ![Perfect octave](resources/img/perfect_octave.png)
 
 (Image source: https://en.wikipedia.org/)
 
@@ -88,7 +88,7 @@ The list of intervals to choose from is:
 
 For the ranges we have taken the range of a piano and cut it roughly in three parts.
 
-![The Range of a Piano](resources/range_piano_coloured.png)
+![The Range of a Piano](resources/img/range_piano_coloured.png)
 
 (Image source: https://i.stack.imgur.com/MpiRg.png)
 
@@ -100,7 +100,7 @@ The pitches are listed in [Scientific Pitch Notation](https://en.wikipedia.org/w
 (C2-B3)
 - The middle range spans from the third octave to the fifth octave.
 (C4-B5)
-- The high range spans from the sixth to the eigth octave.
+- The high range spans from the sixth to the eighth octave.
 (C6-B7)
 
 #### Instruments
@@ -204,15 +204,15 @@ A higher level library could be jFugue:
 - [x] Familiarise oneself with jFugue.
 - [x] Define project structure. -> Define rough class structure.
 - [x] Implement basic classes.
-- [ ] Write project description for MSI.
-- [ ] Create some UML diagrams from the rough project structure.
+- [x] Write project description for MSI.
+- [x] Create some UML diagrams from the rough project structure.
 
 ### Short Term Planing #1 (due 'til 11.02.)
-- [ ] Write project description for MSI.
-- [ ] Write Problem definition for MSI.
+- [x] Write project description for MSI.
+- [x] Write Problem definition for MSI.
 
-- [ ] Create some UML diagrams from the rough project structure. 
-- [ ] Copy code into MSI including comments which classes to look at.
+- [x] Create some UML diagrams from the rough project structure. 
+- [ ] Link code into MSI including comments which classes to look at.
 - [ ] Results and Tests (DC)
 
 
