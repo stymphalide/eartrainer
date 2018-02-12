@@ -40,5 +40,7 @@ public abstract class Level {
     public abstract boolean validateAnswer(logic.Question question, logic.Card proposedAnswer);
 
     public abstract boolean isFinished();
+    
+    public abstract void setAnswer(Card answer);
 }
 

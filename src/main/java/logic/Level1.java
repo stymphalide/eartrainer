@@ -19,9 +19,9 @@ public class Level1 extends Level {
 		this.wrongAnswers = 0;
 		this.totalQuestions = 10;
 		this.allowedInstruments = instantiateFeatures("Piano", "Strings", "Brass");
-		this.allowedOrders = instantiateFeatures("upwards", "downwards", "chordal");
-		this.allowedRanges = instantiateFeatures("low", "middle", "high");
-		this.allowedIntervals = instantiateFeatures("perfect_fourth", "perfect_fifth", "perfect_octave");
+		this.allowedOrders = instantiateFeatures("Upwards", "Downwards", "Chordal");
+		this.allowedRanges = instantiateFeatures("Low", "Middle", "High");
+		this.allowedIntervals = instantiateFeatures("Perfect Fourth", "Perfect Fifth", "Perfect Octave");
 		this.activeQuestion = getQuestion();
         this.answer = correctAnswer(this.activeQuestion);
 	}
@@ -90,17 +90,21 @@ public class Level1 extends Level {
 		return new Card(this.allowedInstruments.get(0), 
 						this.allowedOrders.get(0),
 						this.allowedRanges.get(0),
-						this.allowedIntervals.get(0)); // @TODO: Implementate this and delete constructor
+						this.allowedIntervals.get(0)); // @TODO: Implement this.
 	}
 
 	@Override
 	public boolean validateAnswer(Question question, Card card) {
-		return true; // @TODO: Implement this properly
+		return true; // @TODO: Implement this properly.
 	}
 
 	@Override
 	public boolean isFinished() {
 		return this.correctAnswers + this.wrongAnswers == this.totalQuestions;
+	}
+	
+	public void setAnswer(Card answer) {
+		this.answer = answer;
 	}
 	
 	private ArrayList<String> instantiateFeatures(String feature1, String feature2, String feature3){

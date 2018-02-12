@@ -6,7 +6,6 @@ public class Question {
     private Card card1;
     private Card card2;
     
-    // @TODO: Maybe add another variable in the level: allowed Features.
     public Question(List<String> allowedInstruments,
     				List<String> allowedOrders,
     				List<String> allowedRanges,
@@ -46,9 +45,9 @@ public class Question {
                               List<String> allowedIntervals) {
 
     	String instrument = allowedInstruments.get(indices[0]);
-    	String order           = allowedOrders.get(indices[1]);
-    	String range           = allowedRanges.get(indices[2]);
-    	String interval     = allowedIntervals.get(indices[3]);
+    	String order      = allowedOrders.get(indices[1]);
+    	String range      = allowedRanges.get(indices[2]);
+    	String interval   = allowedIntervals.get(indices[3]);
         return new Card(instrument, order, range, interval);
     }
 

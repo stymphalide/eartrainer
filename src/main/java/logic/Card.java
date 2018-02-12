@@ -23,9 +23,9 @@ public class Card {
     
     /*private void setIntervalSizes() {
     	this.intervalSizes = new HashMap<String, Integer>();
-        this.intervalSizes.put("perfect_fourth", 5);
-        this.intervalSizes.put("perfect_fifth", 7);
-        this.intervalSizes.put("perfect_octave", 12);
+        this.intervalSizes.put("Perfect Fourth", 5);
+        this.intervalSizes.put("Perfect Fifth", 7);
+        this.intervalSizes.put("Perfect Octave", 12);
     }*/
     
     //TODO: Implement this.
