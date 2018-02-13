@@ -3,10 +3,11 @@ package logic;
 import java.util.*;
 
 public class Card {
-	String instrument;
-	String order;
-	String range;
-	String interval;
+	
+	private String instrument;
+	private String order;
+	private String range;
+	private String interval;
     
     public Card(String instrument, 
     			String order,
@@ -19,7 +20,22 @@ public class Card {
     }
     
     
-    //TODO: Implement getters for the features.
+    public String getInstrument() {
+    	return this.instrument;
+    }
+    
+    public String getOrder() {
+    	return this.order;
+    }
+    
+    public String getRange() {
+    	return this.range;
+    }
+    
+    public String getInterval() {
+    	return this.interval;
+    }
+    
     
     /*private void setIntervalSizes() {
     	this.intervalSizes = new HashMap<String, Integer>();
