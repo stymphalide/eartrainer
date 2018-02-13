@@ -100,8 +100,6 @@ public class App extends Application {
         
         logic.Level level = new logic.Level1();
         view.Level levelView = new view.Level();
-        Scene levelScene = levelView.renderActive(level, this.confirm);
-        window.setScene(levelScene);
         
         this.confirm.setOnAction(e -> {
             if (level.isFinished()) {
@@ -114,6 +112,8 @@ public class App extends Application {
                 window.setScene(newLevelScene);
             }
         });
+        Scene levelScene = levelView.renderActive(level, this.confirm);
+        window.setScene(levelScene);
     }
 
     public static void main(String[] args) {
