@@ -86,16 +86,38 @@ public class Level1 extends Level {
 		return new Question(this.allowedInstruments, this.allowedOrders, this.allowedRanges, this.allowedIntervals);
 	}
 
+	private String findFeature(String feature1, String feature2, String allowedFeatures) {
+		
+	}
+	
 	public Card correctAnswer(Question question) {
-		return new Card(this.allowedInstruments.get(0), 
-						this.allowedOrders.get(0),
-						this.allowedRanges.get(0),
-						this.allowedIntervals.get(0)); // @TODO: Implementate this and delete constructor
+		String answerInstrument;
+		String answerOrder;
+		String answerRange;
+		String answerInterval;
+		String[] card1 = {question.getCard1().getInstrument(),
+						  question.getCard1().getOrder(),
+						  question.getCard1().getRange(),
+						  question.getCard1().getInterval};
+		String[] card2 = {question.getCard2().getInstrument(),
+				  		  question.getCard2().getOrder(),
+				  		  question.getCard2().getRange(),
+				  		  question.getCard2().getInterval};
+		
+		if (card1[0] == card2[0]) {
+			answerInstrument = card1[0];
+		}
+		else {
+			int j = 3 - this.allowedInstruments.indexOf(card1[0]) - this.allowedInstruments.indexOf(card2[0]);
+			answerInstrument = this.allowedInstruments.get(j);
+		}
+		
+		return new Card(answerInstrument, answerOrder, answerRange, answerInterval);
 	}
 
 	@Override
 	public boolean validateAnswer(Question question, Card card) {
-		return true; // @TODO: Implement this properly
+		return true;
 	}
 
 	@Override
