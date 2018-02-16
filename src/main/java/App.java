@@ -114,15 +114,15 @@ public class App extends Application {
                 if (values == null) { // Only advance if all comboboxes are set.
                     System.out.println("Set All Combobox Values!");
                 } else {
+                    logic.Card answer = new logic.Card(values.get(0), values.get(1), values.get(2), values.get(3));
+                    level.setAnswer(answer);
                     level.nextQuestion();
-                    System.out.println(values);
                     Scene newLevelScene = levelView.renderActive(level, confirm);
                     window.setScene(newLevelScene);
                 }
             }
         });
     }
-
     public static void main(String[] args) {
         Application.launch(args);
     }
