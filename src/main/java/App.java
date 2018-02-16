@@ -74,6 +74,7 @@ public class App extends Application {
     //Button nextLevel = new Button();
     Button startLevel1 = new Button();
     Button confirm = new Button("Confirm");
+    Button help = new Button("Help");
 
     @Override
     public void start(Stage primaryStage) throws Exception {
@@ -85,13 +86,17 @@ public class App extends Application {
         backToMenu.setOnAction(e -> {
             setUpMenu();
         });
+        help.setOnAction(e -> {
+            final Stage helpView = new Stage();
+            helpView.show();
+        });
 
         setUpMenu();
         //primaryStage.setMaximized(true); // Maximise the window.
         window.show();
     }
     private void setUpMenu() {
-        Scene menuScene = menu.render(startLevel1);
+        Scene menuScene = menu.render(startLevel1, help);
         window.setTitle("eartrainer - Menu");
         window.setScene(menuScene);
     }

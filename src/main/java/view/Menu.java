@@ -51,7 +51,7 @@ import javafx.stage.Stage;              // The JavaFX Stage class is the top lev
 
 
 public class Menu {
-    public Scene render(Button level1Start) {
+    public Scene render(Button level1Start, Button helpButton) {
         // Title row
     	Label title = new Label("Eartrainer"); 
         title.setFont(new Font(40));
@@ -85,14 +85,17 @@ public class Menu {
         level1Row.setMargin(level1Start, new Insets(10, 50, 40, 30));
 
         // Navigation bar Setup
+        helpButton.setText("Help");
+
         Button exitButton = new Button();
         exitButton.setText("Exit");
         exitButton.setOnAction(e -> {
             Platform.exit();
         });
 
-        HBox nav = new HBox(50, exitButton);
+        HBox nav = new HBox(50, helpButton, exitButton);
         nav.setMargin(exitButton, new Insets(20, 50, 40, 30));
+        nav.setMargin(helpButton, new Insets(20, 50, 40, 30));
         nav.setAlignment(Pos.BOTTOM_RIGHT);
 
         // SetUp the VBox.

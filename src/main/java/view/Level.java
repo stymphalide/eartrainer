@@ -140,5 +140,4 @@ public class Level {
             cmb.getItems().add(name);
         }
     }
-
 }
