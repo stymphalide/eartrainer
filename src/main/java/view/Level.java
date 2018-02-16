@@ -61,21 +61,26 @@ public class Level {
         });
 
         // ComboBoxes
+        double minWidth = 180;
         ComboBox<String> cmbInstruments = new ComboBox();
         setUpComboBox("Instruments", cmbInstruments, level.getAllowedInstruments());
         cmbInstruments.setPromptText("Choose Instrument");
+        cmbInstruments.setMinWidth(minWidth);
 
         ComboBox<String> cmbOrders = new ComboBox();
         setUpComboBox("Orders", cmbOrders, level.getAllowedOrders());
         cmbOrders.setPromptText("Choose Order");
+        cmbOrders.setMinWidth(minWidth);
         
         ComboBox<String> cmbRanges = new ComboBox();
         setUpComboBox("Ranges", cmbRanges, level.getAllowedRanges());
         cmbRanges.setPromptText("Choose Range");
+        cmbRanges.setMinWidth(minWidth);
         
         ComboBox<String> cmbIntervals = new ComboBox();
         setUpComboBox("Intervals", cmbIntervals, level.getAllowedIntervals());
         cmbIntervals.setPromptText("Choose Interval");
+        cmbIntervals.setMinWidth(minWidth);
 
         VBox comboBoxes = new VBox(20, 
                                    cmbInstruments, 
