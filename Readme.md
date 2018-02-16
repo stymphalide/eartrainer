@@ -21,14 +21,14 @@ We try to stick to this [Code of Conduct](#code-of-conduct).
     - [x] Write first classes.
     - [x] Write first tests.
     - [x] Push to github.
-- [ ] Create the Project Dossier for MSI.
-    - [ ] Add a Project Description 1/4 page.
-    - [ ] Definition of the Problem
-    - [ ] Analysis of the Requirements
-    - [ ] Specifications
-    - [ ] Draft (UML)
-    - [ ] Copy Implementation
-    - [ ] Results and Tests
+- [x] Create the Project Dossier for MSI.
+    - [x] Add a Project Description 1/4 page.
+    - [x] Definition of the Problem
+    - [x] Analysis of the Requirements
+    - [x] Specifications
+    - [x] Draft (UML)
+    - [x] Copy Implementation
+    - [x] Results and Tests
 - [ ] Finish the Project.
     - [ ] Write a working interface.
     - [ ] Write a working application.
@@ -48,8 +48,9 @@ A game based on the game of set.
 - *They all have the same number or have three different numbers.*
 - *They all have the same symbol or have three different symbols.*
 - *They all have the same shading or have three different shadings.*
+- *They all have the same colo[u]r or have three different colo[u]rs.*
 
-*[..] Given any two cards from the deck there is one and only one other card that forms a set with them.*
+*[...] Given any two cards from the deck there is one and only one other card that forms a set with them.*
 
 *In the standard Set game, the dealer lays out cards on the table until either twelve are laid down or someone sees a set and calls "Set!". The player who called "Set" takes the cards in the set, and the dealer continues to deal out cards until twelve are on the table. A player who sees a set among the twelve cards calls "Set" and takes the three cards, and the dealer lays three more cards on the table.*
 
@@ -128,9 +129,6 @@ perfect fourth | middle (C4 - B5) | downwards | strings
 perfect octave | high (C6 - B7) | at the same time | brass
 
 
-[//]: # (@TODO: Refactor this into a project description part)
-
-
 ## Setup
 
 Note that the sources listed here are not necessarily the ones we used in the end. Those are listed in the [Sources](#sources) section.
@@ -195,7 +193,7 @@ A higher level library could be jFugue:
 
 ### List of important dates.
 - [x] 19.01.2018: Project Goals + Additional Goals defined
-- [ ] 14.02.2018: [MSI](#milestone-i)
+- [x] 14.02.2018: [MSI](#milestone-i)
 - [ ] 21.03.2018: [MSII](#milestone-ii)
 
 ### Short Term Planing (due 'til 26.01.)
@@ -204,15 +202,15 @@ A higher level library could be jFugue:
 - [x] Familiarise oneself with jFugue.
 - [x] Define project structure. -> Define rough class structure.
 - [x] Implement basic classes.
-- [ ] Write project description for MSI.
-- [ ] Create some UML diagrams from the rough project structure.
+- [x] Write project description for MSI.
+- [x] Create some UML diagrams from the rough project structure.
 
 ### Short Term Planing #1 (due 'til 11.02.)
-- [ ] Write project description for MSI.
-- [ ] Write Problem definition for MSI.
+- [x] Write project description for MSI.
+- [x] Write Problem definition for MSI.
 
-- [ ] Create some UML diagrams from the rough project structure. 
-- [ ] Copy code into MSI including comments which classes to look at.
+- [x] Create some UML diagrams from the rough project structure. 
+- [x] Copy code into MSI including comments which classes to look at.
 - [ ] Results and Tests (DC)
 
 
@@ -224,53 +222,62 @@ The source files i.e. the part that we write is in the ./src/ directory.
 ### Tree
 Make a tree of the project structure.
 ```
-.
+[01;34m.[00m
 ├── build.gradle
-├── gradle
-│   └── wrapper
-│       ├── gradle-wrapper.jar
+├── [01;34mgradle[00m
+│   └── [01;34mwrapper[00m
+│       ├── [01;31mgradle-wrapper.jar[00m
 │       └── gradle-wrapper.properties
-├── gradlew
+├── [01;32mgradlew[00m
 ├── gradlew.bat
-├── lib
-│   └── jfugue-5.0.9.jar
+├── [01;34mlib[00m
+│   └── [01;31mjfugue-5.0.9.jar[00m
 ├── Readme.md
-├── resources
-│   ├── app
-│   │   ├── app_angelo_runable.zip
-│   │   └── app_tobi_runable.zip
+├── [01;34mresources[00m
+│   ├── [01;34mapp[00m
+│   │   ├── [01;31mapp_angelo_runable.zip[00m
+│   │   └── [01;31mapp_tobi_runable.zip[00m
 │   ├── current_tree.tree
-│   ├── descriptions
+│   ├── [01;34mdescriptions[00m
 │   │   └── level_1.txt
-│   └── img
-│       ├── perfect_fifth.png
-│       ├── perfect_fourth.png
-│       ├── perfect_octave.png
-│       ├── range_piano_coloured.png
-│       └── range_piano.png
+│   ├── [01;35mEartrainer.png[00m
+│   ├── Eartrainer.ucls
+│   ├── [01;34mimg[00m
+│   │   ├── [01;35mafter_game_screen.png[00m
+│   │   ├── [01;35mLevel_1_view.png[00m
+│   │   ├── [01;35mlevel_1_view_progress.png[00m
+│   │   ├── [01;35mMenu_hover_view.png[00m
+│   │   ├── [01;35mmenu_view.png[00m
+│   │   ├── [01;35mperfect_fifth.png[00m
+│   │   ├── [01;35mperfect_fourth.png[00m
+│   │   ├── [01;35mperfect_octave.png[00m
+│   │   ├── [01;35mrange_piano_coloured.png[00m
+│   │   └── [01;35mrange_piano.png[00m
+│   └── [01;35mUML_Logic.png[00m
 ├── settings.gradle
-└── src
-    ├── main
-    │   └── java
+└── [01;34msrc[00m
+    ├── [01;34mmain[00m
+    │   └── [01;34mjava[00m
     │       ├── App.java
-    │       ├── logic
+    │       ├── [01;34mlogic[00m
     │       │   ├── Card.java
-    │       │   ├── Instrument.java
-    │       │   ├── Interval.java
     │       │   ├── Level1.java
     │       │   ├── Level.java
-    │       │   ├── Order.java
     │       │   ├── Question.java
-    │       │   ├── Range.java
     │       │   └── Sound.java
-    │       └── view
+    │       └── [01;34mview[00m
     │           ├── Level.java
     │           └── Menu.java
-    └── test
-        └── java
+    └── [01;34mtest[00m
+        └── [01;34mjava[00m
             ├── AppTest.java
-            └── viewTest
+            ├── [01;34mlogic[00m
+            │   └── SoundTest.java
+            └── [01;34mviewTestcat [00m
                 └── MenuTest.java
+
+16 directories, 36 files
+
 ```
 
 
@@ -346,8 +353,6 @@ Based on the requirements in the Milestone I file.
 ```
 
 
-
-[//]: # (@TODO: Evaluate main sources. Code sharing follows from task sharing.)
 
 - Every Class has a `/*classdoc*/` comment where the usage of the class is described.
 - After every import there is a `// What is this for` comment
