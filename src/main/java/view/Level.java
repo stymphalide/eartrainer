@@ -15,7 +15,7 @@ import javafx.scene.layout.VBox;
 import javafx.scene.layout.HBox; 
 import javafx.stage.Stage;
 
-public class Level {
+public class Level { 
     public Scene renderActive(logic.Level level, Button confirmButton) {
 
         // Title Row
@@ -63,15 +63,19 @@ public class Level {
         // ComboBoxes
         ComboBox<String> cmbInstruments = new ComboBox();
         setUpComboBox("Instruments", cmbInstruments, level.getAllowedInstruments());
+        cmbInstruments.setPromptText("Choose Instrument");
 
         ComboBox<String> cmbOrders = new ComboBox();
         setUpComboBox("Orders", cmbOrders, level.getAllowedOrders());
+        cmbOrders.setPromptText("Choose Order");
         
         ComboBox<String> cmbRanges = new ComboBox();
         setUpComboBox("Ranges", cmbRanges, level.getAllowedRanges());
+        cmbRanges.setPromptText("Choose Range");
         
         ComboBox<String> cmbIntervals = new ComboBox();
         setUpComboBox("Intervals", cmbIntervals, level.getAllowedIntervals());
+        cmbIntervals.setPromptText("Choose Interval");
 
         VBox comboBoxes = new VBox(20, 
                                    cmbInstruments, 
