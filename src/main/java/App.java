@@ -65,6 +65,7 @@ import javafx.application.Application; // Application class from which JavaFX ap
 import javafx.scene.control.Button;    // A simple Button Control. Can be a event Target and Contains text and/or graphic [JavaFX API].
 import javafx.scene.Scene;             // The JavaFX Scene class is the container for all content in a scene graph. The background of the scene is filled as specified by the fill property. [JavaFX API]
 import javafx.stage.Stage;             // The JavaFX Stage class is the top level JavaFX container. The primary Stage is constructed by the platform. Additional Stage objects may be constructed by the application. [JavaFX API]
+import java.util.*;
 
 public class App extends Application {
     Stage window;
@@ -109,9 +110,15 @@ public class App extends Application {
                 Scene newLevelScene = levelView.renderFinished(level, backToMenu, startLevel1);
                 window.setScene(newLevelScene);
             } else {
-                level.nextQuestion();
-                Scene newLevelScene = levelView.renderActive(level, confirm);
-                window.setScene(newLevelScene);
+                List<String> values = levelView.getComboBoxValues();
+                if (values == null) { // Only advance if all comboboxes are set.
+                    System.out.println("Set All Combobox Values!");
+                } else {
+                    level.nextQuestion();
+                    System.out.println(values);
+                    Scene newLevelScene = levelView.renderActive(level, confirm);
+                    window.setScene(newLevelScene);
+                }
             }
         });
     }
