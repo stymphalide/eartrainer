@@ -87,8 +87,7 @@ public class App extends Application {
             setUpMenu();
         });
         help.setOnAction(e -> {
-            final Stage helpView = new Stage();
-            helpView.show();
+            setUpHelp();
         });
 
         setUpMenu();
@@ -120,6 +119,13 @@ public class App extends Application {
             }
         });
     }
+    private void setUpHelp() {
+        final Stage helpView = new Stage();
+        view.Help helpScene = new view.Help();
+        helpView.setScene(helpScene.render());
+        helpView.show();
+    }
+
 
     public static void main(String[] args) {
         Application.launch(args);
