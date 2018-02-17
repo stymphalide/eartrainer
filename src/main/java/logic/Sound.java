@@ -12,7 +12,7 @@ public class Sound {
 			staccato = "V0 I["+card.getInstrument()+"] "+card.getNote2()+"h Rh V1 I["+card.getInstrument()+"] Rh "+card.getNote1()+"h";
 		}
 		else {
-			staccato = "V0 I["+card.getInstrument()+"] "+card.getNote1()+"h V1 I["+card.getInstrument()+"] "+card.getNote2()+"h";
+			staccato = "V0 I["+card.getInstrument()+"] "+card.getNote1()+"h. V1 I["+card.getInstrument()+"] "+card.getNote2()+"h.";
 		}
 		return staccato;
 	}

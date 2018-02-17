@@ -86,9 +86,6 @@ public class Level1 extends Level {
 		return new Question(this.allowedInstruments, this.allowedOrders, this.allowedRanges, this.allowedIntervals);
 	}
 
-	private String findFeature(String feature1, String feature2, String allowedFeatures) {
-		
-	}
 	
 	public Card correctAnswer(Question question) {
 		String answerInstrument;
@@ -112,13 +109,42 @@ public class Level1 extends Level {
 			answerInstrument = this.allowedInstruments.get(j);
 		}
 		
+		if (card1[1] == card2[1]) {
+			answerOrder = card1[1];
+		}
+		else {
+			int j = 3 - this.allowedOrders.indexOf(card1[0]) - this.allowedOrders.indexOf(card2[0]);
+			answerOrder = this.allowedOrders.get(j);
+		}
+		
+		if (card1[2] == card2[2]) {
+			answerRange = card1[2];
+		}
+		else {
+			int j = 3 - this.allowedRanges.indexOf(card1[0]) - this.allowedRanges.indexOf(card2[0]);
+			answerRange = this.allowedRanges.get(j);
+		}
+		
+		if (card1[3] == card2[3]) {
+			answerInterval = card1[3];
+		}
+		else {
+			int j = 3 - this.allowedIntervals.indexOf(card1[0]) - this.allowedIntervals.indexOf(card2[0]);
+			answerInterval = this.allowedIntervals.get(j);
+		}
+		
 		return new Card(answerInstrument, answerOrder, answerRange, answerInterval);
 	}
 
 	@Override
 	public boolean validateAnswer(Question question, Card card) {
 
-		return true; // @TODO: Implement this properly.
+		if (this.answer == correctAnswer(this.activeQuestion)) {
+			return true;
+		}
+		else {
+			return false;
+		}
 
 	}
 
