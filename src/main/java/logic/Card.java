@@ -8,7 +8,7 @@ public class Card {
 	private String order;
 	private String range;
 	private String interval;
-	private HashMap intervalSizes;
+	private HashMap<String, Integer> intervalSizes;
     
     public Card(String instrument, 
     			String order,
@@ -38,7 +38,6 @@ public class Card {
     }
     
     private void setIntervalSizes() {
-    	this.intervalSizes = new HashMap<String, Integer>();
     	this.intervalSizes.put("Minor Second", 1);
     	this.intervalSizes.put("Major Second", 2);
     	this.intervalSizes.put("Minor Third", 3);
@@ -57,12 +56,26 @@ public class Card {
         this.intervalSizes.put("Major Tenth", 16);
     }
     
-    //TODO: Implement this.
-    public String getNote1() {    	
-    	return "C4";
+
+    public int getNote1() {
+    	Random random =new Random();
+    	int bound = 24 - this.intervalSizes.get(this.getInterval());
+    	int note = random.nextInt(bound);
+    	
+    	if (this.getRange() == "Low") {
+    		note += 24;
+    	}
+    	else if (this.getRange() == "Middle") {
+    		note += 48;
+    	}
+    	else {
+    		note += 72;
+    	}
+    	
+    	return note;
     }
     
-    public String getNote2() {
-    	return "G4";
+    public int getNote2() {
+    	return this.getNote1() + this.intervalSizes.get(this.getInterval());
     }
 }
