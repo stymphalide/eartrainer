@@ -5,10 +5,10 @@ public class Sound {
 	
 	public String cardToStaccato(Card card) {
 		String staccato;
-		if (card.getOrder() == "upwards") {
+		if (card.getOrder() == "Upwards") {
 			staccato = "V0 I["+card.getActualInstrument()+"] ["+card.getNote1()+"]h ["+card.getNote2()+"]h";
 		}
-		else if (card.getOrder() == "downwards") {
+		else if (card.getOrder() == "Downwards") {
 			staccato = "V0 I["+card.getActualInstrument()+"] ["+card.getNote2()+"]h ["+card.getNote1()+"]h";
 		}
 		else {
