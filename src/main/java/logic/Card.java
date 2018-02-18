@@ -56,6 +56,39 @@ public class Card {
         this.intervalSizes.put("Major Tenth", 16);
     }
     
+    
+    public String getActualInstrument() {
+    	String actualInstrument;
+    	
+    	if (this.getInstrument() == "Strings") {
+    		if (this.getRange() == "Low") {
+    			actualInstrument = "Cello";
+    		}
+    		else if (this.getRange() == "Middle") {
+    			actualInstrument = "Viola";
+    		}
+    		else {
+    			actualInstrument = "Violin";
+    		}
+    	}
+    	
+    	else if (this.getInstrument() == "Brass") {
+    		if (this.getRange() == "Low") {
+    			actualInstrument = "Trombone";
+    		}
+    		else if (this.getRange() == "Middle") {
+    			actualInstrument = "French Horn";
+    		}
+    		else {
+    			actualInstrument = "Trumpet";
+    		}
+    	}
+    	else {
+    		actualInstrument = this.getInstrument();
+    	}
+    	
+    	return actualInstrument;
+    }
 
     public int getNote1() {
     	Random random =new Random();
