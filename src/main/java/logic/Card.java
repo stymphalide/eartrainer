@@ -4,21 +4,24 @@ import java.util.*;
 
 public class Card {
 	
+	private HashMap<String, Integer> intervalSizes = new HashMap<String, Integer>();
 	private String instrument;
 	private String order;
 	private String range;
 	private String interval;
-	private HashMap<String, Integer> intervalSizes = new HashMap<String, Integer>();
+	private int note1;
+	
     
     public Card(String instrument, 
     			String order,
     			String range, 
     			String interval) {
+    	setIntervalSizes();
     	this.instrument = instrument;
     	this.order = order;
     	this.range = range;
     	this.interval = interval;
-        setIntervalSizes();
+    	this.note1 = createNote1();
     }
     
     
@@ -78,7 +81,7 @@ public class Card {
     			actualInstrument = "Trombone";
     		}
     		else if (this.getRange() == "Middle") {
-    			actualInstrument = "French Horn";
+    			actualInstrument = "French_Horn";
     		}
     		else {
     			actualInstrument = "Trumpet";
@@ -91,15 +94,15 @@ public class Card {
     	return actualInstrument;
     }
 
-    public int getNote1() {
+    private int createNote1() {
     	Random random = new Random();
-    	int bound = 24 - this.intervalSizes.get(this.getInterval());
+    	int bound = 24 - this.intervalSizes.get(this.interval);
     	int note = random.nextInt(bound);
     	
-    	if (this.getRange() == "Low") {
+    	if (this.range == "Low") {
     		note += 24;
     	}
-    	else if (this.getRange() == "Middle") {
+    	else if (this.range == "Middle") {
     		note += 48;
     	}
     	else {
@@ -109,7 +112,11 @@ public class Card {
     	return note;
     }
     
+    public int getNote1() {
+    	return this.note1;
+    }
+    
     public int getNote2() {
-    	return this.getNote1() + this.intervalSizes.get(this.getInterval());
+    	return this.note1 + this.intervalSizes.get(this.interval);
     }
 }
