@@ -9,6 +9,8 @@ public abstract class Level {
         this.levelNumber = n;
     }
 
+    public abstract void setAnswer(logic.Card answer);
+
     public abstract void nextQuestion();
 
     public abstract logic.Question getActiveQuestion();
