@@ -1,5 +1,5 @@
 package logic;
-import org.jfugue.player.Player;
+import org.jfugue.*;
 
 public class Sound {
 	
@@ -20,6 +20,8 @@ public class Sound {
 	public void play(Card card) {
 		Sound sound = new Sound();
 		Player player = new Player();
-		player.play(sound.cardToStaccato(card));
+		String stac = sound.cardToStaccato(card);
+		System.out.println(stac);
+		player.play(stac);
 	}
 }

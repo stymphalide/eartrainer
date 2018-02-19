@@ -113,7 +113,7 @@ public class Level1 extends Level {
 			answerOrder = card1[1];
 		}
 		else {
-			int j = 3 - this.allowedOrders.indexOf(card1[0]) - this.allowedOrders.indexOf(card2[0]);
+			int j = 3 - this.allowedOrders.indexOf(card1[1]) - this.allowedOrders.indexOf(card2[1]);
 			answerOrder = this.allowedOrders.get(j);
 		}
 		
@@ -121,7 +121,7 @@ public class Level1 extends Level {
 			answerRange = card1[2];
 		}
 		else {
-			int j = 3 - this.allowedRanges.indexOf(card1[0]) - this.allowedRanges.indexOf(card2[0]);
+			int j = 3 - this.allowedRanges.indexOf(card1[2]) - this.allowedRanges.indexOf(card2[2]);
 			answerRange = this.allowedRanges.get(j);
 		}
 		
@@ -129,7 +129,7 @@ public class Level1 extends Level {
 			answerInterval = card1[3];
 		}
 		else {
-			int j = 3 - this.allowedIntervals.indexOf(card1[0]) - this.allowedIntervals.indexOf(card2[0]);
+			int j = 3 - this.allowedIntervals.indexOf(card1[3]) - this.allowedIntervals.indexOf(card2[3]);
 			answerInterval = this.allowedIntervals.get(j);
 		}
 		

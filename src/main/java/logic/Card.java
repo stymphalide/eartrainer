@@ -8,7 +8,7 @@ public class Card {
 	private String order;
 	private String range;
 	private String interval;
-	private HashMap<String, Integer> intervalSizes;
+	private HashMap<String, Integer> intervalSizes = new HashMap<String, Integer>();
     
     public Card(String instrument, 
     			String order,
@@ -18,6 +18,7 @@ public class Card {
     	this.order = order;
     	this.range = range;
     	this.interval = interval;
+        setIntervalSizes();
     }
     
     
@@ -91,7 +92,7 @@ public class Card {
     }
 
     public int getNote1() {
-    	Random random =new Random();
+    	Random random = new Random();
     	int bound = 24 - this.intervalSizes.get(this.getInterval());
     	int note = random.nextInt(bound);
     	
