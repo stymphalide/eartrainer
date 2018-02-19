@@ -73,6 +73,18 @@ public class Level1 extends Level {
 	
 	@Override
 	public void nextQuestion() {
+		System.out.println(this.activeQuestion.getCard1().getInstrument()+", "+
+						   this.activeQuestion.getCard1().getOrder()+", "+
+						   this.activeQuestion.getCard1().getRange()+", "+
+						   this.activeQuestion.getCard1().getInterval());
+		System.out.println(this.activeQuestion.getCard2().getInstrument()+", "+
+				   		   this.activeQuestion.getCard2().getOrder()+", "+
+				   		   this.activeQuestion.getCard2().getRange()+", "+
+				   		   this.activeQuestion.getCard2().getInterval());
+		System.out.println(this.answer.getInstrument()+", "+
+				   		   this.answer.getOrder()+", "+
+				   		   this.answer.getRange()+", "+
+				   		   this.answer.getInterval());
 		if(this.validateAnswer(this.activeQuestion, this.answer)) {
 			this.correctAnswers++;
 		} else {
@@ -111,8 +123,11 @@ public class Level1 extends Level {
 
 	@Override
 	public boolean validateAnswer(Question question, Card card) {
-
-		if (this.answer == correctAnswer(this.activeQuestion)) {
+		Card correctAnswer = correctAnswer(this.activeQuestion);
+		if (this.answer.getInstrument() == correctAnswer.getInstrument() &&
+			this.answer.getOrder() == correctAnswer.getOrder() &&
+			this.answer.getRange() == correctAnswer.getRange() &&
+			this.answer.getInterval() == correctAnswer.getInterval()) {
 			return true;
 		}
 		else {
