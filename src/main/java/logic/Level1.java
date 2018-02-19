@@ -101,37 +101,10 @@ public class Level1 extends Level {
 				  		  question.getCard2().getRange(),
 				  		  question.getCard2().getInterval()};
 		
-		if (card1[0] == card2[0]) {
-			answerInstrument = card1[0];
-		}
-		else {
-			int j = 3 - this.allowedInstruments.indexOf(card1[0]) - this.allowedInstruments.indexOf(card2[0]);
-			answerInstrument = this.allowedInstruments.get(j);
-		}
-		
-		if (card1[1] == card2[1]) {
-			answerOrder = card1[1];
-		}
-		else {
-			int j = 3 - this.allowedOrders.indexOf(card1[1]) - this.allowedOrders.indexOf(card2[1]);
-			answerOrder = this.allowedOrders.get(j);
-		}
-		
-		if (card1[2] == card2[2]) {
-			answerRange = card1[2];
-		}
-		else {
-			int j = 3 - this.allowedRanges.indexOf(card1[2]) - this.allowedRanges.indexOf(card2[2]);
-			answerRange = this.allowedRanges.get(j);
-		}
-		
-		if (card1[3] == card2[3]) {
-			answerInterval = card1[3];
-		}
-		else {
-			int j = 3 - this.allowedIntervals.indexOf(card1[3]) - this.allowedIntervals.indexOf(card2[3]);
-			answerInterval = this.allowedIntervals.get(j);
-		}
+		answerInstrument = correctFeature(card1[0], card2[0], this.allowedInstruments);
+		answerOrder 	 = correctFeature(card1[1], card2[1], this.allowedOrders);
+		answerRange 	 = correctFeature(card1[2], card2[2], this.allowedRanges);
+		answerInterval   = correctFeature(card1[3], card2[3], this.allowedIntervals);
 		
 		return new Card(answerInstrument, answerOrder, answerRange, answerInterval);
 	}
@@ -163,5 +136,15 @@ public class Level1 extends Level {
 		features.add(feature2);
 		features.add(feature3);
 		return features;
+	}
+
+	private String correctFeature(String feature1, String feature2, List<String> allowedFeatures) {
+		if (feature1 == feature2) {
+			return feature1;
+		}
+		else {
+			int j = 3 - allowedFeatures.indexOf(feature1) - allowedFeatures.indexOf(feature2);
+			return allowedFeatures.get(j);
+		}
 	}
 }
