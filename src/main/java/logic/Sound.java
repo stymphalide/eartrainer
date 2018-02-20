@@ -1,15 +1,27 @@
 package logic;
-import org.jfugue.player.Player;
+import org.jfugue.*;
 
 public class Sound {
 	
 	public String cardToStaccato(Card card) {
-		return "V0 I["+card.instrument+"] "+card.getNote1()+"h Rh V1 I["+card.instrument+"] Rh "+card.getNote2()+"h";
+		String staccato;
+		if (card.getOrder() == "Upwards") {
+			staccato = "V0 I["+card.getActualInstrument()+"] ["+card.getNote1()+"]h ["+card.getNote2()+"]h";
+		}
+		else if (card.getOrder() == "Downwards") {
+			staccato = "V0 I["+card.getActualInstrument()+"] ["+card.getNote2()+"]h ["+card.getNote1()+"]h";
+		}
+		else {
+			staccato = "V0 I["+card.getActualInstrument()+"] ["+card.getNote1()+"]h.+["+card.getNote2()+"]h.";
+		}
+		return staccato;
 	}
 	
 	public void play(Card card) {
 		Sound sound = new Sound();
 		Player player = new Player();
-		player.play(sound.cardToStaccato(card));
+		String stac = sound.cardToStaccato(card);
+		System.out.println(stac);
+		player.play(stac);
 	}
 }

@@ -15,9 +15,22 @@ import javafx.scene.layout.VBox;
 import javafx.scene.layout.HBox; 
 import javafx.stage.Stage;
 
-public class Level { 
+public class Level {
+    private List<ComboBox> cmbs;
+    public List<String> getComboBoxValues() {
+        List<String> list = new ArrayList<String>();
+        for(int i = 0; i < this.cmbs.size(); i++) {
+            if(this.cmbs.get(i).getValue() == null)  {
+                return null;
+            } else {
+                String value = "" + this.cmbs.get(i).getValue();
+                list.add(value);
+            }
+        }
+        return list;
+    }
     public Scene renderActive(logic.Level level, Button confirmButton) {
-
+        this.cmbs = new ArrayList<ComboBox>();
         // Title Row
         Label title = new Label("Level " + level.getLevelNumber());
         title.setFont(new Font(40));
@@ -61,26 +74,22 @@ public class Level {
         });
 
         // ComboBoxes
-        double minWidth = 180;
         ComboBox<String> cmbInstruments = new ComboBox();
         setUpComboBox("Instruments", cmbInstruments, level.getAllowedInstruments());
         cmbInstruments.setPromptText("Choose Instrument");
-        cmbInstruments.setMinWidth(minWidth);
 
         ComboBox<String> cmbOrders = new ComboBox();
         setUpComboBox("Orders", cmbOrders, level.getAllowedOrders());
         cmbOrders.setPromptText("Choose Order");
-        cmbOrders.setMinWidth(minWidth);
         
         ComboBox<String> cmbRanges = new ComboBox();
         setUpComboBox("Ranges", cmbRanges, level.getAllowedRanges());
         cmbRanges.setPromptText("Choose Range");
-        cmbRanges.setMinWidth(minWidth);
+        
         
         ComboBox<String> cmbIntervals = new ComboBox();
         setUpComboBox("Intervals", cmbIntervals, level.getAllowedIntervals());
         cmbIntervals.setPromptText("Choose Interval");
-        cmbIntervals.setMinWidth(minWidth);
 
         VBox comboBoxes = new VBox(20, 
                                    cmbInstruments, 
@@ -90,13 +99,11 @@ public class Level {
 
         HBox mainRow = new HBox(50, card1Button, card2Button, comboBoxes);
 
-
         // Navigation
         confirmButton.setText("Confirm");
 
         HBox nav = new HBox(50, confirmButton);
         nav.setAlignment(Pos.CENTER);
-
 
         VBox root = new VBox(50, titleRow, scoreBar, mainRow, nav);
 
@@ -134,10 +141,13 @@ public class Level {
         return scene;
     }
     private void setUpComboBox(String placeholder, ComboBox<String> cmb, List<String> allowedFeatures) {
+        double minWidth = 180;
         Label phLabel = new Label(placeholder);
         for (int i = 0; i <  allowedFeatures.size(); i++) {
             String name = allowedFeatures.get(i);
             cmb.getItems().add(name);
         }
+        cmb.setMinWidth(minWidth);
+        this.cmbs.add(cmb);
     }
 }
