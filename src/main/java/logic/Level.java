@@ -43,6 +43,5 @@ public abstract class Level {
 
     public abstract boolean isFinished();
     
-    public abstract void setAnswer(Card answer);
 }
 

@@ -23,7 +23,6 @@ public class Level1 extends Level {
 		this.allowedRanges = instantiateFeatures("Low", "Middle", "High");
 		this.allowedIntervals = instantiateFeatures("Perfect Fourth", "Perfect Fifth", "Perfect Octave");
 		this.activeQuestion = getQuestion();
-        this.answer = correctAnswer(this.activeQuestion);
 	}
 
 	@Override
@@ -124,10 +123,10 @@ public class Level1 extends Level {
 	@Override
 	public boolean validateAnswer(Question question, Card card) {
 		Card correctAnswer = correctAnswer(this.activeQuestion);
-		if (this.answer.getInstrument() == correctAnswer.getInstrument() &&
-			this.answer.getOrder() == correctAnswer.getOrder() &&
-			this.answer.getRange() == correctAnswer.getRange() &&
-			this.answer.getInterval() == correctAnswer.getInterval()) {
+		if (this.answer.getInstrument() .equals(correctAnswer.getInstrument()) &&
+			this.answer.getOrder() .equals(correctAnswer.getOrder()) &&
+			this.answer.getRange() .equals(correctAnswer.getRange()) &&
+			this.answer.getInterval() .equals(correctAnswer.getInterval())) {
 			return true;
 		}
 		else {
@@ -141,6 +140,7 @@ public class Level1 extends Level {
 		return this.correctAnswers + this.wrongAnswers == this.totalQuestions;
 	}
 	
+	@Override
 	public void setAnswer(Card answer) {
 		this.answer = answer;
 	}
