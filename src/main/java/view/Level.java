@@ -6,6 +6,7 @@ import javafx.collections.ObservableList;
 import javafx.geometry.Pos;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
+import javafx.scene.Node;
 import javafx.scene.text.Font;
 import javafx.scene.control.Button; 
 import javafx.scene.control.Label;
@@ -17,6 +18,7 @@ import javafx.stage.Stage;
 
 public class Level {
     private List<ComboBox> cmbs;
+
     public List<String> getComboBoxValues() {
         List<String> list = new ArrayList<String>();
         for(int i = 0; i < this.cmbs.size(); i++) {
@@ -29,6 +31,7 @@ public class Level {
         }
         return list;
     }
+
     public Scene renderActive(logic.Level level, Button confirmButton) {
         this.cmbs = new ArrayList<ComboBox>();
         // Title Row
@@ -74,28 +77,14 @@ public class Level {
         });
 
         // ComboBoxes
-        ComboBox<String> cmbInstruments = new ComboBox();
-        setUpComboBox("Instruments", cmbInstruments, level.getAllowedInstruments());
-        cmbInstruments.setPromptText("Choose Instrument");
+        createComboBox("Instrument", level.getAllowedInstruments());
+        createComboBox("Order",      level.getAllowedOrders());
+        createComboBox("Range",      level.getAllowedRanges());
+        createComboBox("Interval",   level.getAllowedIntervals());
 
-        ComboBox<String> cmbOrders = new ComboBox();
-        setUpComboBox("Orders", cmbOrders, level.getAllowedOrders());
-        cmbOrders.setPromptText("Choose Order");
-        
-        ComboBox<String> cmbRanges = new ComboBox();
-        setUpComboBox("Ranges", cmbRanges, level.getAllowedRanges());
-        cmbRanges.setPromptText("Choose Range");
-        
-        
-        ComboBox<String> cmbIntervals = new ComboBox();
-        setUpComboBox("Intervals", cmbIntervals, level.getAllowedIntervals());
-        cmbIntervals.setPromptText("Choose Interval");
-
-        VBox comboBoxes = new VBox(20, 
-                                   cmbInstruments, 
-                                   cmbOrders, 
-                                   cmbRanges, 
-                                   cmbIntervals);
+        // Inspired by [ArrayList to VarArgs]
+        VBox comboBoxes = new VBox(20);
+        comboBoxes.getChildren().addAll(this.cmbs);
 
         HBox mainRow = new HBox(50, card1Button, card2Button, comboBoxes);
 
@@ -110,6 +99,7 @@ public class Level {
         Scene scene = new Scene(root, 700, 500);
         return scene;
     }
+
     public Scene renderFinished(logic.Level level, Button backToMenu, Button playAgain) {
         Label title = new Label("Level " + level.getLevelNumber() + " Over");
         title.setFont(new Font(40));
@@ -140,9 +130,12 @@ public class Level {
         Scene scene = new Scene(root, 700, 500);
         return scene;
     }
-    private void setUpComboBox(String placeholder, ComboBox<String> cmb, List<String> allowedFeatures) {
+
+
+    private void createComboBox(String placeholder, List<String> allowedFeatures) {
+        ComboBox<String> cmb = new ComboBox<String>();
         double minWidth = 180;
-        Label phLabel = new Label(placeholder);
+        cmb.setPromptText("Choose " + placeholder);
         for (int i = 0; i <  allowedFeatures.size(); i++) {
             String name = allowedFeatures.get(i);
             cmb.getItems().add(name);
@@ -150,5 +143,4 @@ public class Level {
         cmb.setMinWidth(minWidth);
         this.cmbs.add(cmb);
     }
-
 }

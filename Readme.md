@@ -417,6 +417,7 @@ Everything we stumble upon doing research comes into this part.
 - [100 JavaFX Tutorials](http://javafxjq.blogspot.ch)
 - [How to create multiple scenes and switch between scenes in JavaFX](http://www.learningaboutelectronics.com/Articles/How-to-create-multiple-scenes-and-switch-between-scenes-in-JavaFX.php)
 -[Hover Effect Over Icon](https://stackoverflow.com/questions/20143548/hover-effect-over-icon)
+- [ArrayList to VarArgs](https://stackoverflow.com/questions/9863742/how-to-pass-an-arraylist-to-a-varargs-method-parameter)
 
 ### JFugue
 - [Some basic examples](http://www.jfugue.org/examples.html "jfugue examples")
