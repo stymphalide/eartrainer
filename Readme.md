@@ -115,9 +115,9 @@ In the first level of the game the list of intervals, range and instruments are 
 #### Intervals
 
 The list of intervals to choose from is:
-- Perfect fourth ![Perfect fourth](resources/perfect_fourth.png)
-- Perfect fifth ![Perfect fifth](resources/perfect_fifth.png)
-- Perfect octave ![Perfect octave](resources/perfect_octave.png)
+- Perfect fourth ![Perfect fourth](resources/img/perfect_fourth.png)
+- Perfect fifth ![Perfect fifth](resources/img/perfect_fifth.png)
+- Perfect octave ![Perfect octave](resources/img/perfect_octave.png)
 
 (Image source: https://en.wikipedia.org/)
 
@@ -125,7 +125,7 @@ The list of intervals to choose from is:
 
 For the ranges we have taken the range of a piano and cut it roughly in three parts.
 
-![The Range of a Piano](resources/range_piano_coloured.png)
+![The Range of a Piano](resources/img/range_piano_coloured.png)
 
 (Image source: https://i.stack.imgur.com/MpiRg.png)
 
@@ -137,7 +137,7 @@ The pitches are listed in [Scientific Pitch Notation](https://en.wikipedia.org/w
 (C2-B3)
 - The middle range spans from the third octave to the fifth octave.
 (C4-B5)
-- The high range spans from the sixth to the eigth octave.
+- The high range spans from the sixth to the eighth octave.
 (C6-B7)
 
 #### Instruments
@@ -242,12 +242,19 @@ A higher level library could be jFugue:
 - [x] Write project description for MSI.
 - [x] Create some UML diagrams from the rough project structure.
 
+
 ### Short Term Planing #2 (due 'til 11.02.)
 - [x] Write project description for MSI.
 - [x] Write Problem definition for MSI.
 - [x] Create some UML diagrams from the rough project structure. 
 - [x] Copy code into MSI including comments which classes to look at.
-- [ ] Results and Tests (DC)
+
+### Short Term Planing #1 (due 'til 11.02.)
+- [x] Write project description for MSI.
+- [x] Write Problem definition for MSI.
+
+- [x] Create some UML diagrams from the rough project structure. 
+- [ ] Link code into MSI including comments which classes to look at.
 
 ### Short Term Planing #3 (due 'til 25.02.)
 - [ ] Merge all branches correctly.
