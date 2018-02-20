@@ -3,7 +3,9 @@ This project is being created as a programming project in informatics class supe
 
 The code can be downloaded in the [installation](#installation) section.
 
-Jump to the [Milestone II](#milestone-ii)
+Here is are [Time Schedule](#time-schedule).
+
+Jump to the [Milestone II](#milestone-ii-21032018).
 
 These are our [Project Goals](#project-goals).
 
@@ -228,10 +230,10 @@ A higher level library could be jFugue:
 
 ### List of important dates.
 - [x] 19.01.2018: Project Goals + Additional Goals defined
-- [x] 14.02.2018: [MSI](#milestone-i)
-- [ ] 25.02.2018: [1.0.0 Release](#v1.0.0)
+- [x] 14.02.2018: [MSI](#milestone-i-14022018)
+- [ ] 25.02.2018: [1.0.0 Release](#v100)
 - [ ] 18.03.2018: Final Release
-- [ ] 21.03.2018: [MSII](#milestone-ii)
+- [ ] 21.03.2018: [MSII](#milestone-ii-21032018)
 
 ### Short Term Planing #1 (due 'til 26.01.)
 - [x] Discuss level design.
@@ -249,16 +251,10 @@ A higher level library could be jFugue:
 - [x] Create some UML diagrams from the rough project structure. 
 - [x] Copy code into MSI including comments which classes to look at.
 
-### Short Term Planing #1 (due 'til 11.02.)
-- [x] Write project description for MSI.
-- [x] Write Problem definition for MSI.
-
-- [x] Create some UML diagrams from the rough project structure. 
-- [ ] Link code into MSI including comments which classes to look at.
-
 ### Short Term Planing #3 (due 'til 25.02.)
-- [ ] Merge all branches correctly.
+- [x] Merge all branches correctly.
 - [ ] Create the v1.0.0.
+- [ ] Start with addditional goals.
 
 
 ## Project Structure
@@ -268,59 +264,59 @@ The source files i.e. the part that we write is in the ./src/ directory.
 
 ### Tree
 Make a tree of the project structure.
-```bash
-[01;34m.[00m
+```
+.
 ├── build.gradle
-├── [01;34mgradle[00m
-│   └── [01;34mwrapper[00m
-│       ├── [01;31mgradle-wrapper.jar[00m
+├── gradle
+│   └── wrapper
+│       ├── gradle-wrapper.jar
 │       └── gradle-wrapper.properties
-├── [01;32mgradlew[00m
+├── gradlew
 ├── gradlew.bat
-├── [01;34mlib[00m
-│   └── [01;31mjfugue-5.0.9.jar[00m
+├── lib
+│   └── jfugue-5.0.9.jar
 ├── Readme.md
-├── [01;34mresources[00m
-│   ├── [01;34mapp[00m
-│   │   ├── [01;31mapp_angelo_runable.zip[00m
-│   │   └── [01;31mapp_tobi_runable.zip[00m
+├── resources
+│   ├── app
+│   │   ├── app_angelo_runable.zip
+│   │   └── app_tobi_runable.zip
 │   ├── current_tree.tree
-│   ├── [01;34mdescriptions[00m
+│   ├── descriptions
 │   │   └── level_1.txt
-│   ├── [01;35mEartrainer.png[00m
+│   ├── Eartrainer.png
 │   ├── Eartrainer.ucls
-│   ├── [01;34mimg[00m
-│   │   ├── [01;35mafter_game_screen.png[00m
-│   │   ├── [01;35mLevel_1_view.png[00m
-│   │   ├── [01;35mlevel_1_view_progress.png[00m
-│   │   ├── [01;35mMenu_hover_view.png[00m
-│   │   ├── [01;35mmenu_view.png[00m
-│   │   ├── [01;35mperfect_fifth.png[00m
-│   │   ├── [01;35mperfect_fourth.png[00m
-│   │   ├── [01;35mperfect_octave.png[00m
-│   │   ├── [01;35mrange_piano_coloured.png[00m
-│   │   └── [01;35mrange_piano.png[00m
-│   └── [01;35mUML_Logic.png[00m
+│   ├── img
+│   │   ├── after_game_screen.png
+│   │   ├── Level_1_view.png
+│   │   ├── level_1_view_progress.png
+│   │   ├── Menu_hover_view.png
+│   │   ├── menu_view.png
+│   │   ├── perfect_fifth.png
+│   │   ├── perfect_fourth.png
+│   │   ├── perfect_octave.png
+│   │   ├── range_piano_coloured.png
+│   │   └── range_piano.png
+│   └── UML_Logic.png
 ├── settings.gradle
-└── [01;34msrc[00m
-    ├── [01;34mmain[00m
-    │   └── [01;34mjava[00m
+└── src
+    ├── main
+    │   └── java
     │       ├── App.java
-    │       ├── [01;34mlogic[00m
+    │       ├── logic
     │       │   ├── Card.java
     │       │   ├── Level1.java
     │       │   ├── Level.java
     │       │   ├── Question.java
     │       │   └── Sound.java
-    │       └── [01;34mview[00m
+    │       └── view
     │           ├── Level.java
     │           └── Menu.java
-    └── [01;34mtest[00m
-        └── [01;34mjava[00m
+    └── test
+        └── java
             ├── AppTest.java
-            ├── [01;34mlogic[00m
+            ├── logic
             │   └── SoundTest.java
-            └── [01;34mviewTestcat [00m
+            └── viewTest
                 └── MenuTest.java
 
 16 directories, 36 files
@@ -328,6 +324,8 @@ Make a tree of the project structure.
 ```
 
 ## Installation
+Right now the only way to use our app is by building it from source.
+
 ### Prerequisites
 You need to have gradle installed:
 [Gradle Build Tool](https://gradle.org/ "gradle build tool")
@@ -335,7 +333,7 @@ You need to have gradle installed:
 ### Download
 Download an exectuable .jar archive [here](somerepository "exectuable") (Not available yet.)
 
-[//]: # (@TODO: Create a repository where an executable .jar file will be placed. I have done some research that .exe file is not likely to work. byAB)
+[//]: # (@TODO: Add an executable .jar with its own JRE.)
 
 Or clone this repository
 
@@ -344,6 +342,7 @@ Or clone this repository
     cd eartrainer
     gradle build # Compiles all classes and runs all tests
     gradle run # Runs the compiled classes
+
 
 ## Project Goals
  - Desktop-App: Eartrainer
