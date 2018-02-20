@@ -3,7 +3,9 @@ This project is being created as a programming project in informatics class supe
 
 The code can be downloaded in the [installation](#installation) section.
 
-Jump to the [Milestone I](#milestone-i)
+Here is are [Time Schedule](#time-schedule).
+
+Jump to the [Milestone II](#milestone-ii-21032018).
 
 These are our [Project Goals](#project-goals).
 
@@ -21,35 +23,72 @@ We try to stick to this [Code of Conduct](#code-of-conduct).
     - [x] Write first classes.
     - [x] Write first tests.
     - [x] Push to github.
-- [ ] Create the Project Dossier for MSI.
-    - [ ] Add a Project Description 1/4 page.
-    - [ ] Definition of the Problem
-    - [ ] Analysis of the Requirements
-    - [ ] Specifications
-    - [ ] Draft (UML)
-    - [ ] Copy Implementation
-    - [ ] Results and Tests
+- [x] Create the Project Dossier for MSI.
+    - [x] Add a Project Description 1/4 page.
+    - [x] Definition of the Problem
+    - [x] Analysis of the Requirements
+    - [x] Specifications
+    - [x] Draft (UML)
+    - [x] Copy Implementation
+    - [x] Results and Tests
 - [ ] Finish the Project.
-    - [ ] Write a working interface.
-    - [ ] Write a working application.
+    - [x] Write a working interface.
+    - [x] Write a working application.
+    - [ ] Use threading to play the sound.
+    - [ ] Refactor the `logic.Level` class.
+    - [ ] Add multiple levels.
+    - [ ] Write an info page, where the rules are explained.
+    - [ ] Compose the background music. And make it playable in the menu and in the after game screen.
+    - [ ] Improve the after game screen by adding a timer.
+    - [ ] Make a ranking pop-up window that works locally.
+    - [ ] Add Jana & Co's logo.
+    - [ ] Add a 'Honourable Mentions' part or something like that.
+    - [ ] Improve the overall style using css.
+    - [ ] Make sure the file is deployed with a custom JRE version that is then used. This ensures cross-platform handling.
     - [ ] Add Salt and Pepper!!!
 - [ ] Create the Project Dossier for MSII.
     - [ ] Write the TODO for this part.
+    - [ ] Improve the 'Project Description' part especially the part about the game.
+    - [ ] Extend the 'Problem Definition' for the 'Local Ranking' point.
+    - [ ] In the 'Requirements Analysis' explicitly say that everything was done in java.
+    - [ ] Complete the Specification part for MSII. And keep up the level.
+    - [ ] The Draft part should be refactored.
+        - [ ] Larger UML diagrams
+        - [ ] No Lines going over a description part.
+        - [ ] Small description
+        - [ ] Add a graphical representation of the whole Application procedure.
+    - [ ] Make sure to add additional classes with links.
+    - [ ] Write the 'Results and Test' part.
+        - [ ] Add a comment with 2-5 lines (possibly more) about how the application was tested.
+            - [ ] Maybe make reference to the test part.
+            - [ ] What had to be debugged, where did compilation errors occur?
+            - [ ] What was easy to implement?
+        - [ ] Show the results (9 points!!!)
+            - [ ] Add screenshots from the GUI and add descriptions (1-2 Sentences per image).
+            - [ ] Additional criterias must be documented too.
+    - [ ] Write the 'Discussion and Outlook'.
+        - [ ] What have we learnt (> 2 sentences).
+        - [ ] Have we planned realistacally?
+        - [ ] Explain difficulties (in the group?).
+        - [ ] Add a list with possible additions for the game.
+    - [ ] Ensure every class fulfills the [Code of Conduct](#code-of-conduct).
+    - [ ] Ensure consistent presentation of the document. (No in-topic page breaks).
 - [ ] Have a Beer where we celebrate the finished Project!!!
     - [ ] Evaluate over an appropriate location.
     - [ ] Go to the bar and order a beer.
     - [ ] Enjoy!!!
 
 ## The Idea
-A game based on the game of set.
+A game based on the game of set. TODO
 
 ### The Game
 *Set is a real-time card game [...]. The deck consists of 81 cards varying in four features: number (one, two, or three); symbol (diamond, squiggle, oval); shading (solid, striped, or open); and colo[u]r (red, green, or purple). Each possible combination of features (e.g., a card with three striped green diamonds) appears precisely once in the deck. [...] Several Games can be played with these cards, all involving the concept of a set. A set consists of three cards satisfying all of these conditions:*
 - *They all have the same number or have three different numbers.*
 - *They all have the same symbol or have three different symbols.*
 - *They all have the same shading or have three different shadings.*
+- *They all have the same colo[u]r or have three different colo[u]rs.*
 
-*[..] Given any two cards from the deck there is one and only one other card that forms a set with them.*
+*[...] Given any two cards from the deck there is one and only one other card that forms a set with them.*
 
 *In the standard Set game, the dealer lays out cards on the table until either twelve are laid down or someone sees a set and calls "Set!". The player who called "Set" takes the cards in the set, and the dealer continues to deal out cards until twelve are on the table. A player who sees a set among the twelve cards calls "Set" and takes the three cards, and the dealer lays three more cards on the table.*
 
@@ -78,9 +117,9 @@ In the first level of the game the list of intervals, range and instruments are 
 #### Intervals
 
 The list of intervals to choose from is:
-- Perfect fourth ![Perfect fourth](resources/perfect_fourth.png)
-- Perfect fifth ![Perfect fifth](resources/perfect_fifth.png)
-- Perfect octave ![Perfect octave](resources/perfect_octave.png)
+- Perfect fourth ![Perfect fourth](resources/img/perfect_fourth.png)
+- Perfect fifth ![Perfect fifth](resources/img/perfect_fifth.png)
+- Perfect octave ![Perfect octave](resources/img/perfect_octave.png)
 
 (Image source: https://en.wikipedia.org/)
 
@@ -88,7 +127,7 @@ The list of intervals to choose from is:
 
 For the ranges we have taken the range of a piano and cut it roughly in three parts.
 
-![The Range of a Piano](resources/range_piano_coloured.png)
+![The Range of a Piano](resources/img/range_piano_coloured.png)
 
 (Image source: https://i.stack.imgur.com/MpiRg.png)
 
@@ -100,7 +139,7 @@ The pitches are listed in [Scientific Pitch Notation](https://en.wikipedia.org/w
 (C2-B3)
 - The middle range spans from the third octave to the fifth octave.
 (C4-B5)
-- The high range spans from the sixth to the eigth octave.
+- The high range spans from the sixth to the eighth octave.
 (C6-B7)
 
 #### Instruments
@@ -128,9 +167,6 @@ perfect fourth | middle (C4 - B5) | downwards | strings
 perfect octave | high (C6 - B7) | at the same time | brass
 
 
-[//]: # (@TODO: Refactor this into a project description part)
-
-
 ## Setup
 
 Note that the sources listed here are not necessarily the ones we used in the end. Those are listed in the [Sources](#sources) section.
@@ -141,7 +177,6 @@ We use quite a few tools that make development easier.
 - [Testing Library](#testing)
 - [GUI](#graphical-user-interface)
 - [Further Library](#further-libraries)
-
 
 ### Git and Github
 Git is a version management tool. It makes version management a breeze. Github makes distributed working easy.
@@ -195,25 +230,31 @@ A higher level library could be jFugue:
 
 ### List of important dates.
 - [x] 19.01.2018: Project Goals + Additional Goals defined
-- [ ] 14.02.2018: [MSI](#milestone-i)
-- [ ] 21.03.2018: [MSII](#milestone-ii)
+- [x] 14.02.2018: [MSI](#milestone-i-14022018)
+- [ ] 25.02.2018: [1.0.0 Release](#v100)
+- [ ] 18.03.2018: Final Release
+- [ ] 21.03.2018: [MSII](#milestone-ii-21032018)
 
-### Short Term Planing (due 'til 26.01.)
+### Short Term Planing #1 (due 'til 26.01.)
 - [x] Discuss level design.
 - [x] Familiarise oneself with javafx.
 - [x] Familiarise oneself with jFugue.
 - [x] Define project structure. -> Define rough class structure.
 - [x] Implement basic classes.
-- [ ] Write project description for MSI.
-- [ ] Create some UML diagrams from the rough project structure.
+- [x] Write project description for MSI.
+- [x] Create some UML diagrams from the rough project structure.
 
-### Short Term Planing #1 (due 'til 11.02.)
-- [ ] Write project description for MSI.
-- [ ] Write Problem definition for MSI.
 
-- [ ] Create some UML diagrams from the rough project structure. 
-- [ ] Copy code into MSI including comments which classes to look at.
-- [ ] Results and Tests (DC)
+### Short Term Planing #2 (due 'til 11.02.)
+- [x] Write project description for MSI.
+- [x] Write Problem definition for MSI.
+- [x] Create some UML diagrams from the rough project structure. 
+- [x] Copy code into MSI including comments which classes to look at.
+
+### Short Term Planing #3 (due 'til 25.02.)
+- [x] Merge all branches correctly.
+- [ ] Create the v1.0.0.
+- [ ] Start with addditional goals.
 
 
 ## Project Structure
@@ -242,12 +283,20 @@ Make a tree of the project structure.
 │   ├── current_tree.tree
 │   ├── descriptions
 │   │   └── level_1.txt
-│   └── img
-│       ├── perfect_fifth.png
-│       ├── perfect_fourth.png
-│       ├── perfect_octave.png
-│       ├── range_piano_coloured.png
-│       └── range_piano.png
+│   ├── Eartrainer.png
+│   ├── Eartrainer.ucls
+│   ├── img
+│   │   ├── after_game_screen.png
+│   │   ├── Level_1_view.png
+│   │   ├── level_1_view_progress.png
+│   │   ├── Menu_hover_view.png
+│   │   ├── menu_view.png
+│   │   ├── perfect_fifth.png
+│   │   ├── perfect_fourth.png
+│   │   ├── perfect_octave.png
+│   │   ├── range_piano_coloured.png
+│   │   └── range_piano.png
+│   └── UML_Logic.png
 ├── settings.gradle
 └── src
     ├── main
@@ -255,13 +304,9 @@ Make a tree of the project structure.
     │       ├── App.java
     │       ├── logic
     │       │   ├── Card.java
-    │       │   ├── Instrument.java
-    │       │   ├── Interval.java
     │       │   ├── Level1.java
     │       │   ├── Level.java
-    │       │   ├── Order.java
     │       │   ├── Question.java
-    │       │   ├── Range.java
     │       │   └── Sound.java
     │       └── view
     │           ├── Level.java
@@ -269,21 +314,26 @@ Make a tree of the project structure.
     └── test
         └── java
             ├── AppTest.java
+            ├── logic
+            │   └── SoundTest.java
             └── viewTest
                 └── MenuTest.java
+
+16 directories, 36 files
+
 ```
 
-
 ## Installation
+Right now the only way to use our app is by building it from source.
+
 ### Prerequisites
 You need to have gradle installed:
 [Gradle Build Tool](https://gradle.org/ "gradle build tool")
 
 ### Download
-
 Download an exectuable .jar archive [here](somerepository "exectuable") (Not available yet.)
 
-[//]: # (@TODO: Create a repository where an executable .jar file will be placed. I have done some research that .exe file is not likely to work. byAB)
+[//]: # (@TODO: Add an executable .jar with its own JRE.)
 
 Or clone this repository
 
@@ -292,6 +342,7 @@ Or clone this repository
     cd eartrainer
     gradle build # Compiles all classes and runs all tests
     gradle run # Runs the compiled classes
+
 
 ## Project Goals
  - Desktop-App: Eartrainer
@@ -347,8 +398,6 @@ Based on the requirements in the Milestone I file.
 
 
 
-[//]: # (@TODO: Evaluate main sources. Code sharing follows from task sharing.)
-
 - Every Class has a `/*classdoc*/` comment where the usage of the class is described.
 - After every import there is a `// What is this for` comment
 - Important variables (Probably instance variables of the class) are explained
@@ -372,6 +421,7 @@ Everything we stumble upon doing research comes into this part.
 ### JFugue
 - [Some basic examples](http://www.jfugue.org/examples.html "jfugue examples")
 - [Compose music like a pro rapid music programming with java jfugue](https://www.techrepublic.com/article/compose-music-like-a-pro-rapid-music-programming-with-java-jfugue/)
+- [Main JFugue Source](ftp://ftp.cs.utexas.edu/pub/novak/cs315/jfugue-chapter2.pdf)
 
 ### Others
 - [File API](https://docs.oracle.com/javase/8/docs/api/java/io/File1.html)
@@ -381,17 +431,23 @@ Everything we stumble upon doing research comes into this part.
 
 ## Milestones
 ### Milestone I (14.02.2018)
-
 - src-directory
-- [pdf](https://docs.google.com/document/d/1AZxzqGgnjF5-mWFIIcZr7S34lyCxhZnmstM7S3sX20M/edit?usp=sharing)
+- [pdf](https://docs.google.com/document/d/11oOIbdYNdyYFIZrn3Ub0UFDf7-bSwdoFziUbVNsw0D0/edit?usp=sharing)
 - [Milestone I Vazquez](http://www.vazquez-informatik.ch/files/AKSA_ProgProjLE1_MilestoneI.pdf "milestone1")
 - Email: (martivazquez@hotmail.com)
 
 ### Milestone II (21.03.2018)
 - src-directory
-- [pdf](404)
+- [pdf](https://docs.google.com/document/d/1AZxzqGgnjF5-mWFIIcZr7S34lyCxhZnmstM7S3sX20M/edit?usp=sharing)
 - [Milestone II Vazquez](http://www.vazquez-informatik.ch/files/AKSA_ProgProjLE1_MilestoneII.pdf "milestone2")
 - Email: (martivazquez@hotmail.com)
+
+
+## Releases
+### v0.8.0
+The reference for MSI.
+### v1.0.0
+Completion of the basic features described in the [Project Goals](#project-goals).
 
 ## License
 To be determined

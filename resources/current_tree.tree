@@ -1,6 +1,5 @@
 .
 ├── build.gradle
-├── current_tree
 ├── gradle
 │   └── wrapper
 │       ├── gradle-wrapper.jar
@@ -14,14 +13,23 @@
 │   ├── app
 │   │   ├── app_angelo_runable.zip
 │   │   └── app_tobi_runable.zip
+│   ├── current_tree.tree
 │   ├── descriptions
 │   │   └── level_1.txt
-│   └── img
-│       ├── perfect_fifth.png
-│       ├── perfect_fourth.png
-│       ├── perfect_octave.png
-│       ├── range_piano_coloured.png
-│       └── range_piano.png
+│   ├── Eartrainer.png
+│   ├── Eartrainer.ucls
+│   ├── img
+│   │   ├── after_game_screen.png
+│   │   ├── Level_1_view.png
+│   │   ├── level_1_view_progress.png
+│   │   ├── Menu_hover_view.png
+│   │   ├── menu_view.png
+│   │   ├── perfect_fifth.png
+│   │   ├── perfect_fourth.png
+│   │   ├── perfect_octave.png
+│   │   ├── range_piano_coloured.png
+│   │   └── range_piano.png
+│   └── UML_Logic.png
 ├── settings.gradle
 └── src
     ├── main
@@ -29,13 +37,9 @@
     │       ├── App.java
     │       ├── logic
     │       │   ├── Card.java
-    │       │   ├── Instrument.java
-    │       │   ├── Interval.java
     │       │   ├── Level1.java
     │       │   ├── Level.java
-    │       │   ├── Order.java
     │       │   ├── Question.java
-    │       │   ├── Range.java
     │       │   └── Sound.java
     │       └── view
     │           ├── Level.java
@@ -43,7 +47,9 @@
     └── test
         └── java
             ├── AppTest.java
+            ├── logic
+            │   └── SoundTest.java
             └── viewTest
                 └── MenuTest.java
 
-15 directories, 31 files
+16 directories, 36 files
