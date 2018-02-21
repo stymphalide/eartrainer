@@ -100,7 +100,7 @@ public class App extends Application {
         window.setTitle("eartrainer - Level 1");
         
         logic.Level level = new logic.Level1();
-        view.Level levelView = new view.Level();
+        view.Level levelView = new view.Level(level, this.confirm);
         
         this.confirm.setOnAction(e -> {
             if (level.isFinished()) {
@@ -115,12 +115,10 @@ public class App extends Application {
                     logic.Card answer = new logic.Card(values.get(0), values.get(1), values.get(2), values.get(3));
                     level.setAnswer(answer);
                     level.nextQuestion();
-                    Scene newLevelScene = levelView.renderActive(level, confirm);
-                    window.setScene(newLevelScene);
                 }
             }
         });
-        Scene levelScene = levelView.renderActive(level, this.confirm);
+        Scene levelScene = levelView.renderActive();
         window.setScene(levelScene);
     }
     public static void main(String[] args) {

@@ -18,6 +18,28 @@ import javafx.stage.Stage;
 
 public class Level {
     private List<ComboBox> cmbs;
+    private logic.Level level;
+    private VBox root;
+
+    public Level(logic.Level level, Button confirmButton) {
+        this.level = level;
+        createComboBoxes(); // ComboBoxes (This changes the this.cmbs instance variable)
+
+        // Title Row
+        Label title = new Label("Level " + level.getLevelNumber());
+        title.setFont(new Font(40));
+    
+        HBox titleRow = new HBox(50, title);
+        titleRow.setAlignment(Pos.CENTER);
+        
+        // Navigation
+        confirmButton.setText("Confirm");
+
+        HBox nav = new HBox(50, confirmButton);
+        nav.setAlignment(Pos.CENTER);
+
+        this.root = new VBox(50, titleRow, createScoreBar(), createMainRow(), nav);
+    }
 
     public List<String> getComboBoxValues() {
         List<String> list = new ArrayList<String>();
@@ -31,72 +53,8 @@ public class Level {
         }
         return list;
     }
-
-    public Scene renderActive(logic.Level level, Button confirmButton) {
-        this.cmbs = new ArrayList<ComboBox>();
-        // Title Row
-        Label title = new Label("Level " + level.getLevelNumber());
-        title.setFont(new Font(40));
-    
-        HBox titleRow = new HBox(50, title);
-        titleRow.setAlignment(Pos.CENTER);
-
-
-        // Score Bar
-        // Level Progress
-        Label progress = new Label("Progress: " + level.getTotalAnswers() + "/" +  level.getTotalQuestions());
-
-        double levelProgress = (double)level.getTotalAnswers() / (double)level.getTotalQuestions();
-        ProgressBar levelBar = new ProgressBar(levelProgress);
-
-        // Correctness Progress
-        Label correctness = new Label("Correct: " + level.getCorrectAnswers() + "/" + level.getTotalAnswers());
-
-        double correctnessProgress = (double)level.getCorrectAnswers() / (double)level.getTotalAnswers();
-        ProgressBar correctnessBar = new ProgressBar(correctnessProgress);
-        correctnessBar.setStyle("-fx-accent: green;");
-        
-        HBox scoreBar = new HBox(50, progress, levelBar, correctness, correctnessBar);
-        scoreBar.setAlignment(Pos.CENTER);
-
-        // Main Part
-        
-        // Listen
-        Button card1Button = new Button("Listen to the first Interval");
-        card1Button.setAlignment(Pos.CENTER);
-        card1Button.setOnAction(e -> {
-            logic.Sound sound = new logic.Sound();
-            sound.play(level.getActiveQuestion().getCard1());
-        });
-
-        Button card2Button = new Button("Listen to the second Interval");
-        card2Button.setAlignment(Pos.CENTER);
-        card2Button.setOnAction(e -> {
-            logic.Sound sound = new logic.Sound();
-            sound.play(level.getActiveQuestion().getCard2());
-        });
-
-        // ComboBoxes
-        createComboBox("Instrument", level.getAllowedInstruments());
-        createComboBox("Order",      level.getAllowedOrders());
-        createComboBox("Range",      level.getAllowedRanges());
-        createComboBox("Interval",   level.getAllowedIntervals());
-
-        // Inspired by [ArrayList to VarArgs]
-        VBox comboBoxes = new VBox(20);
-        comboBoxes.getChildren().addAll(this.cmbs);
-
-        HBox mainRow = new HBox(50, card1Button, card2Button, comboBoxes);
-
-        // Navigation
-        confirmButton.setText("Confirm");
-
-        HBox nav = new HBox(50, confirmButton);
-        nav.setAlignment(Pos.CENTER);
-
-        VBox root = new VBox(50, titleRow, scoreBar, mainRow, nav);
-
-        Scene scene = new Scene(root, 700, 500);
+    public Scene renderActive() {      
+        Scene scene = new Scene(this.root, 700, 500);
         return scene;
     }
 
@@ -124,11 +82,62 @@ public class Level {
         HBox nav = new HBox(50, backToMenu, playAgain);
         nav.setAlignment(Pos.CENTER);
 
-        VBox root = new VBox(50);
-        root.getChildren().addAll(titleRow, results, nav);
+        this.root = new VBox(50);
+        this.root.getChildren().addAll(titleRow, results, nav);
 
-        Scene scene = new Scene(root, 700, 500);
+        Scene scene = new Scene(this.root, 700, 500);
         return scene;
+    }
+
+
+
+    private HBox createScoreBar() {
+        // Level Progress
+        Label progress = new Label("Progress: " + level.getTotalAnswers() + "/" +  level.getTotalQuestions());
+
+        double levelProgress = (double)level.getTotalAnswers() / (double)level.getTotalQuestions();
+        ProgressBar levelBar = new ProgressBar(levelProgress);
+
+        // Correctness Progress
+        double correctnessProgress = (double)level.getCorrectAnswers() / (double)level.getTotalAnswers();
+        Label correctness = new Label("Correct: " + level.getCorrectAnswers() + "/" + level.getTotalAnswers());
+        ProgressBar correctnessBar = new ProgressBar(correctnessProgress);
+        correctnessBar.setStyle("-fx-accent: green;");
+
+        HBox scoreBar = new HBox(50, progress, levelBar, correctness, correctnessBar);
+        scoreBar.setAlignment(Pos.CENTER);
+        return scoreBar;
+    }
+
+
+    private HBox createMainRow() {
+        Button card1Button = new Button("Listen to the first Interval");
+        card1Button.setAlignment(Pos.CENTER);
+        card1Button.setOnAction(e -> {
+            logic.Sound sound = new logic.Sound();
+            sound.play(this.level.getActiveQuestion().getCard1());
+        });
+        
+        Button card2Button = new Button("Listen to the second Interval");
+        card2Button.setAlignment(Pos.CENTER);
+        card2Button.setOnAction(e -> {
+            logic.Sound sound = new logic.Sound();
+            sound.play(this.level.getActiveQuestion().getCard2());
+        });
+
+
+        VBox comboBoxes = new VBox(20);
+        comboBoxes.getChildren().addAll(this.cmbs); // Inspired by [VarArgs]
+
+        return new HBox(50, card1Button, card2Button, comboBoxes);
+    }
+
+    private void createComboBoxes() {
+        this.cmbs =  new ArrayList<ComboBox>();
+        createComboBox("Instrument", level.getAllowedInstruments());
+        createComboBox("Order",      level.getAllowedOrders());
+        createComboBox("Range",      level.getAllowedRanges());
+        createComboBox("Interval",   level.getAllowedIntervals());
     }
 
 
