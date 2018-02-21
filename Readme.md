@@ -428,6 +428,8 @@ Everything we stumble upon doing research comes into this part.
 - [IOException API](https://docs.oracle.com/javase/8/docs/api/java/io/IOException.html)
 - [FileUtils API](https://commons.apache.org/proper/commons-io/javadocs/api-2.5/org/apache/commons/io/FileUtils.html)
 - [How to Catch Exceptions](https://stackoverflow.com/questions/8707906/unreported-exception-java-io-ioexception-must-be-caught-or-declared-to-be-throw)
+- [VarArgs](https://docs.oracle.com/javase/1.5.0/docs/guide/language/varargs.html)
+- [Concurrency](https://docs.oracle.com/javase/tutorial/essential/concurrency/index.html)
 
 ## Milestones
 ### Milestone I (14.02.2018)
