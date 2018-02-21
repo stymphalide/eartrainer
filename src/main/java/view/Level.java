@@ -2,7 +2,6 @@ package view;
 
 import java.util.*;
 
-import javafx.collections.ObservableList;
 import javafx.geometry.Pos;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
@@ -20,6 +19,11 @@ public class Level {
     private List<ComboBox> cmbs;
     private logic.Level level;
     private VBox root;
+    private Label levelProgress;
+    private Label correctnessProgress;
+    private ProgressBar levelBar;
+    private ProgressBar correctnessBar;
+
 
     public Level(logic.Level level, Button confirmButton) {
         this.level = level;
@@ -53,9 +57,14 @@ public class Level {
         }
         return list;
     }
-    public Scene renderActive() {      
+    public Scene renderActive() {
         Scene scene = new Scene(this.root, 700, 500);
         return scene;
+    }
+
+    public void update() {
+        updateScores();
+        updateComboBoxes();
     }
 
     public Scene renderFinished(logic.Level level, Button backToMenu, Button playAgain) {
@@ -89,22 +98,32 @@ public class Level {
         return scene;
     }
 
-
+    private void updateScores() {
+        this.levelProgress.setText("Progress: " + this.level.getTotalAnswers() + "/" +  this.level.getTotalQuestions());
+        
+        double levelProgress = (double)this.level.getTotalAnswers() / (double)this.level.getTotalQuestions();
+        this.levelBar.setProgress(levelProgress);
+        
+        this.correctnessProgress.setText("Correct: " + this.level.getCorrectAnswers() + "/" + this.level.getTotalAnswers());
+        
+        double correctnessProgress = (double)this.level.getCorrectAnswers() / (double)this.level.getTotalAnswers();
+        this.correctnessBar.setProgress(correctnessProgress);
+    }
 
     private HBox createScoreBar() {
         // Level Progress
-        Label progress = new Label("Progress: " + level.getTotalAnswers() + "/" +  level.getTotalQuestions());
-
-        double levelProgress = (double)level.getTotalAnswers() / (double)level.getTotalQuestions();
-        ProgressBar levelBar = new ProgressBar(levelProgress);
+        this.levelProgress = new Label("Progress: " + this.level.getTotalAnswers() + "/" +  this.level.getTotalQuestions());
+        double levelProgress = (double)this.level.getTotalAnswers() / (double)this.level.getTotalQuestions();
+        this.levelBar = new ProgressBar(levelProgress);
 
         // Correctness Progress
-        double correctnessProgress = (double)level.getCorrectAnswers() / (double)level.getTotalAnswers();
-        Label correctness = new Label("Correct: " + level.getCorrectAnswers() + "/" + level.getTotalAnswers());
-        ProgressBar correctnessBar = new ProgressBar(correctnessProgress);
-        correctnessBar.setStyle("-fx-accent: green;");
+        double correctnessProgress = (double)this.level.getCorrectAnswers() / (double)this.level.getTotalAnswers();
+        this.correctnessProgress = new Label("Correct: " + this.level.getCorrectAnswers() + "/" + this.level.getTotalAnswers());
 
-        HBox scoreBar = new HBox(50, progress, levelBar, correctness, correctnessBar);
+        this.correctnessBar = new ProgressBar(correctnessProgress);
+        this.correctnessBar.setStyle("-fx-accent: green;");
+
+        HBox scoreBar = new HBox(50, this.levelProgress, this.levelBar, this.correctnessProgress, this.correctnessBar);
         scoreBar.setAlignment(Pos.CENTER);
         return scoreBar;
     }
@@ -132,24 +151,29 @@ public class Level {
         return new HBox(50, card1Button, card2Button, comboBoxes);
     }
 
-    private void createComboBoxes() {
-        this.cmbs =  new ArrayList<ComboBox>();
-        createComboBox("Instrument", level.getAllowedInstruments());
-        createComboBox("Order",      level.getAllowedOrders());
-        createComboBox("Range",      level.getAllowedRanges());
-        createComboBox("Interval",   level.getAllowedIntervals());
+    private void updateComboBoxes() {
+        for(int i = 0; i < this.cmbs.size(); i++) {
+            this.cmbs.get(i).setEditable(true);
+            this.cmbs.get(i).getSelectionModel().clearSelection(-1);
+            this.cmbs.get(i).setValue(null);
+            this.cmbs.get(i).setEditable(false);
+        }
     }
 
+    private void createComboBoxes() {
+        this.cmbs = new ArrayList<ComboBox>();
+        this.cmbs.add(createComboBox("Instrument", level.getAllowedInstruments()));
+        this.cmbs.add(createComboBox("Order",      level.getAllowedOrders()));
+        this.cmbs.add(createComboBox("Range",      level.getAllowedRanges()));
+        this.cmbs.add(createComboBox("Interval",   level.getAllowedIntervals()));
+    }
 
-    private void createComboBox(String placeholder, List<String> allowedFeatures) {
-        ComboBox<String> cmb = new ComboBox<String>();
+    private ComboBox<String> createComboBox(String placeholder, List<String> allowedFeatures) {
         double minWidth = 180;
+        ComboBox<String> cmb = new ComboBox<String>();
+        cmb.getItems().addAll(allowedFeatures);
         cmb.setPromptText("Choose " + placeholder);
-        for (int i = 0; i <  allowedFeatures.size(); i++) {
-            String name = allowedFeatures.get(i);
-            cmb.getItems().add(name);
-        }
         cmb.setMinWidth(minWidth);
-        this.cmbs.add(cmb);
+        return cmb;
     }
 }

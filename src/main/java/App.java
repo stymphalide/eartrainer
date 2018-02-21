@@ -115,6 +115,7 @@ public class App extends Application {
                     logic.Card answer = new logic.Card(values.get(0), values.get(1), values.get(2), values.get(3));
                     level.setAnswer(answer);
                     level.nextQuestion();
+                    levelView.update();
                 }
             }
         });
