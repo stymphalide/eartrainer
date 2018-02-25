@@ -3,6 +3,9 @@ package view;
 import java.io.File;                    // An abstract representation of file and directory pathnames. [File API]
 import java.io.IOException;             // Signals that an I/O exception of some sort has occurred. [IOException API]
 import org.apache.commons.io.FileUtils; // General file manipulation utilities. [FileUtils API]
+import org.commonmark.node.*;
+import org.commonmark.parser.Parser;
+import org.commonmark.renderer.html.HtmlRenderer;
 
 import javafx.application.Application;
 import javafx.geometry.HPos;
@@ -32,22 +35,27 @@ class Browser extends Region {
         getStyleClass().add("browser");
         // load the web page
         String source = "Not Found";
+        
         try {
             source = getSource();
         } catch (IOException e) {
             e.printStackTrace();
         }
+        // https://github.com/atlassian/commonmark-java
+        Parser parser = Parser.builder().build();
+        org.commonmark.node.Node document = parser.parse("This is *Sparta*");
+        HtmlRenderer renderer = HtmlRenderer.builder().build();
+        source = renderer.render(document);
         webEngine.loadContent(source);
         //add the web view to the scene
         getChildren().add(browser);
     }
 
     private String getSource() throws IOException {
+
         String path = "./resources/html/help.html";
         return FileUtils.readFileToString(new File(path), "UTF-8");
     }
-
-
 
     private Node createSpacer() {
         Region spacer = new Region();
