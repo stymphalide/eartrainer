@@ -1,11 +1,74 @@
 package view;
 
-import javafx.scene.Scene;              // The JavaFX Scene class is the container for all content in a scene graph. The background of the scene is filled as specified by the fill property. [JavaFX API]
-import javafx.scene.layout.VBox;        // VBox lays out its children in a single vertical column. If the vbox has a border and/or padding set, then the contents will be layed out within those insets. [JavaFX API]
+import java.io.File;                    // An abstract representation of file and directory pathnames. [File API]
+import java.io.IOException;             // Signals that an I/O exception of some sort has occurred. [IOException API]
+import org.apache.commons.io.FileUtils; // General file manipulation utilities. [FileUtils API]
+
+import javafx.application.Application;
+import javafx.geometry.HPos;
+import javafx.geometry.VPos;
+import javafx.scene.Node;
+import javafx.scene.Scene;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.Priority;
+import javafx.scene.layout.Region;
+import javafx.scene.paint.Color;
+import javafx.scene.web.WebEngine;
+import javafx.scene.web.WebView;
+import javafx.stage.Stage;
 
 public class Help {
     public Scene render() {
-        VBox root = new VBox(50);
-        return new Scene(root, 300, 200);
+        return new Scene(new Browser());
+    }
+}
+// https://docs.oracle.com/javafx/2/webview/jfxpub-webview.htm
+class Browser extends Region {
+    final WebView browser = new WebView();
+    final WebEngine webEngine = browser.getEngine();
+     
+    public Browser() {
+        //apply the styles
+        getStyleClass().add("browser");
+        // load the web page
+        String source = "Not Found";
+        try {
+            source = getSource();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        webEngine.loadContent(source);
+        //add the web view to the scene
+        getChildren().add(browser);
+    }
+
+    private String getSource() throws IOException {
+        String path = "./resources/html/help.html";
+        return FileUtils.readFileToString(new File(path), "UTF-8");
+    }
+
+
+
+    private Node createSpacer() {
+        Region spacer = new Region();
+        HBox.setHgrow(spacer, Priority.ALWAYS);
+        return spacer;
+    }
+ 
+    @Override 
+    protected void layoutChildren() {
+        double w = getWidth();
+        double h = getHeight();
+        layoutInArea(browser,0,0,w,h,0, HPos.CENTER, VPos.CENTER);
+    }
+ 
+    @Override 
+    protected double computePrefWidth(double height) {
+        return 750;
+    }
+ 
+    @Override 
+    protected double computePrefHeight(double width) {
+        return 500;
     }
 }
