@@ -43,7 +43,7 @@ class Browser extends Region {
         }
         // https://github.com/atlassian/commonmark-java
         Parser parser = Parser.builder().build();
-        org.commonmark.node.Node document = parser.parse("This is *Sparta*");
+        org.commonmark.node.Node document = parser.parse(source);
         HtmlRenderer renderer = HtmlRenderer.builder().build();
         source = renderer.render(document);
         webEngine.loadContent(source);
@@ -52,8 +52,7 @@ class Browser extends Region {
     }
 
     private String getSource() throws IOException {
-
-        String path = "./resources/html/help.html";
+        String path = "./resources/md/help.md";
         return FileUtils.readFileToString(new File(path), "UTF-8");
     }
 
