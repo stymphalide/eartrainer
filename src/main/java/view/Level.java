@@ -3,22 +3,18 @@ package view;
 import java.util.*;
 
 import javafx.geometry.Pos;
-import javafx.geometry.Insets;
 import javafx.scene.Scene;
-import javafx.scene.Node;
 import javafx.scene.text.Font;
 import javafx.scene.control.Button; 
 import javafx.scene.control.Label;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.ProgressBar;
-import javafx.scene.layout.VBox; 
+import javafx.scene.layout.VBox;
 import javafx.scene.layout.HBox; 
-import javafx.stage.Stage;
 
-public class Level {
+public class Level extends VBox {
     private List<ComboBox> cmbs;
     private logic.Level level;
-    private VBox root;
     private Label levelProgress;
     private Label correctnessProgress;
     private ProgressBar levelBar;
@@ -26,23 +22,21 @@ public class Level {
 
 
     public Level(logic.Level level, Button confirmButton) {
+        super(50);
         this.level = level;
         createComboBoxes(); // ComboBoxes (This changes the this.cmbs instance variable)
 
-        // Title Row
-        Label title = new Label("Level " + level.getLevelNumber());
-        title.setFont(new Font(40));
-    
-        HBox titleRow = new HBox(50, title);
-        titleRow.setAlignment(Pos.CENTER);
-        
         // Navigation
         confirmButton.setText("Confirm");
 
         HBox nav = new HBox(50, confirmButton);
         nav.setAlignment(Pos.CENTER);
 
-        this.root = new VBox(50, titleRow, createScoreBar(), createMainRow(), nav);
+        getChildren().addAll(
+            createTitle("Level " + level.getLevelNumber()), 
+            createScoreBar(), 
+            createMainRow(), 
+            nav);
     }
 
     public List<String> getComboBoxValues() {
@@ -57,33 +51,13 @@ public class Level {
         }
         return list;
     }
-    public Scene renderActive() {
-        Scene scene = new Scene(this.root, 700, 500);
+
+    public Scene render() {
+        Scene scene = new Scene(this, 700, 500);
         return scene;
     }
 
-    public void update() {
-        updateScores();
-        updateComboBoxes();
-    }
-
-    public Scene renderFinished(logic.Level level, Button backToMenu, Button playAgain) {
-        Label title = new Label("Level " + level.getLevelNumber() + " Over");
-        title.setFont(new Font(40));
-
-        HBox titleRow = new HBox(50, title);
-        titleRow.setAlignment(Pos.CENTER);
-
-        // Results
-        // Correctness Progress
-        Label correctness = new Label("Correct/Wrong " + level.getCorrectAnswers() + "/" + level.getWrongAnswers());
-
-        double correctnessProgress = (double)level.getCorrectAnswers() / (double)level.getTotalAnswers();
-        ProgressBar correctnessBar = new ProgressBar(correctnessProgress);
-        correctnessBar.setStyle("-fx-accent: green;");
-
-        HBox results = new HBox(50, correctness, correctnessBar);
-        results.setAlignment(Pos.CENTER);
+    public void viewFinished(logic.Level level, Button backToMenu, Button playAgain) {
 
         // Navigation
         playAgain.setText("Play Again");
@@ -91,23 +65,26 @@ public class Level {
         HBox nav = new HBox(50, backToMenu, playAgain);
         nav.setAlignment(Pos.CENTER);
 
-        this.root = new VBox(50);
-        this.root.getChildren().addAll(titleRow, results, nav);
-
-        Scene scene = new Scene(this.root, 700, 500);
-        return scene;
+        getChildren().setAll(
+            createTitle("Level " + level.getLevelNumber() + " Over"), 
+            createScoreBar(), 
+            nav);
     }
 
-    private void updateScores() {
-        this.levelProgress.setText("Progress: " + this.level.getTotalAnswers() + "/" +  this.level.getTotalQuestions());
-        
-        double levelProgress = (double)this.level.getTotalAnswers() / (double)this.level.getTotalQuestions();
-        this.levelBar.setProgress(levelProgress);
-        
-        this.correctnessProgress.setText("Correct: " + this.level.getCorrectAnswers() + "/" + this.level.getTotalAnswers());
-        
-        double correctnessProgress = (double)this.level.getCorrectAnswers() / (double)this.level.getTotalAnswers();
-        this.correctnessBar.setProgress(correctnessProgress);
+    public void update() {
+        updateScores();
+        updateComboBoxes();
+    }
+
+
+    private HBox createTitle(String titleString) {
+        // Title Row
+        Label title = new Label(titleString);
+        title.setFont(new Font(40));
+    
+        HBox titleRow = new HBox(50, title);
+        titleRow.setAlignment(Pos.CENTER);
+        return titleRow;
     }
 
     private HBox createScoreBar() {
@@ -128,6 +105,17 @@ public class Level {
         return scoreBar;
     }
 
+    private void updateScores() {
+        this.levelProgress.setText("Progress: " + this.level.getTotalAnswers() + "/" +  this.level.getTotalQuestions());
+        
+        double levelProgress = (double)this.level.getTotalAnswers() / (double)this.level.getTotalQuestions();
+        this.levelBar.setProgress(levelProgress);
+        
+        this.correctnessProgress.setText("Correct: " + this.level.getCorrectAnswers() + "/" + this.level.getTotalAnswers());
+        
+        double correctnessProgress = (double)this.level.getCorrectAnswers() / (double)this.level.getTotalAnswers();
+        this.correctnessBar.setProgress(correctnessProgress);
+    }
 
     private HBox createMainRow() {
         Button card1Button = new Button("Listen to the first Interval");
@@ -151,14 +139,6 @@ public class Level {
         return new HBox(50, card1Button, card2Button, comboBoxes);
     }
 
-    private void updateComboBoxes() {
-        for(int i = 0; i < this.cmbs.size(); i++) {
-            this.cmbs.get(i).setEditable(true);
-            this.cmbs.get(i).getSelectionModel().clearSelection(-1);
-            this.cmbs.get(i).setValue(null);
-            this.cmbs.get(i).setEditable(false);
-        }
-    }
 
     private void createComboBoxes() {
         this.cmbs = new ArrayList<ComboBox>();
@@ -176,4 +156,18 @@ public class Level {
         cmb.setMinWidth(minWidth);
         return cmb;
     }
+
+    private void updateComboBoxes() {
+        for(int i = 0; i < this.cmbs.size(); i++) {
+            this.cmbs.get(i).setEditable(true);
+            this.cmbs.get(i).getSelectionModel().clearSelection(-1);
+            this.cmbs.get(i).setValue(null);
+            this.cmbs.get(i).setEditable(false);
+        }
+    }
 }
+
+
+
+
+

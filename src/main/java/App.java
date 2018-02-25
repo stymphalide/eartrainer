@@ -105,8 +105,7 @@ public class App extends Application {
         this.confirm.setOnAction(e -> {
             if (level.isFinished()) {
                 window.setTitle("eartrainer - Game Over");
-                Scene newLevelScene = levelView.renderFinished(level, backToMenu, startLevel1);
-                window.setScene(newLevelScene);
+                levelView.viewFinished(level, backToMenu, startLevel1);
             } else {
                 List<String> values = levelView.getComboBoxValues();
                 if (values == null) { // Only advance if all comboboxes are set.
@@ -119,8 +118,7 @@ public class App extends Application {
                 }
             }
         });
-        Scene levelScene = levelView.renderActive();
-        window.setScene(levelScene);
+        window.setScene(levelView.render());
     }
     public static void main(String[] args) {
         Application.launch(args);
