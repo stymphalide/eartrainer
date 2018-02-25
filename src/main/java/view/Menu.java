@@ -2,14 +2,15 @@ package view;
 
 /* classdoc
     This class renders the Menu view of the app.
-    Which consists of:
-        - The View consists of three rows.
+    The View consists of three rows.
         - The Title (This is to be extended).
         - The Levels to choose from
         - A navigation bar with an exit button.
     
+    
+
     The class consists of one public method:
-    - public Scene render(Button level1Start);
+    - public Scene render();
     
     The render method takes in a Button as argument, the reason the button is not created in this method is because of its event binding.
     The Menu is composed of a VBox and several HBox's that are then added to the scene
@@ -46,9 +47,6 @@ import javafx.scene.control.Button;     // A simple Button Control. Can be a eve
 import javafx.scene.control.Label;      // Label is a non-editable text control. A Label is useful for displaying text that is required to fit within a specific space, and thus may need to use an ellipsis or truncation to size the string to fit. [JavaFX API]
 import javafx.scene.layout.VBox;        // VBox lays out its children in a single vertical column. If the vbox has a border and/or padding set, then the contents will be layed out within those insets. [JavaFX API]
 import javafx.scene.layout.HBox;        // HBox lays out its children in a single horizontal row. If the hbox has a border and/or padding set, then the contents will be layed out within those insets. [JavaFX API]
-import javafx.stage.Stage;              // The JavaFX Stage class is the top level JavaFX container. The primary Stage is constructed by the platform. Additional Stage objects may be constructed by the application. [JavaFX API]
-
-
 
 public class Menu extends VBox {
     public Menu(Button level1Start) {
@@ -103,6 +101,7 @@ public class Menu extends VBox {
     public Scene render() {
         return new Scene(this, 700, 500);
     }
+
     private void showLevelDescription(Label label, String description) {
         label.setText(description);
     }
