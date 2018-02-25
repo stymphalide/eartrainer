@@ -69,11 +69,10 @@ import java.util.*;
 
 public class App extends Application {
     Stage window;
-    view.Menu menu = new view.Menu();
-
     Button backToMenu = new Button("Main Menu");
-    //Button nextLevel = new Button();
     Button startLevel1 = new Button();
+
+    view.Menu menu = new view.Menu(startLevel1);
     Button confirm = new Button("Confirm");
 
     @Override
@@ -92,9 +91,8 @@ public class App extends Application {
         window.show();
     }
     private void setUpMenu() {
-        Scene menuScene = menu.render(startLevel1);
         window.setTitle("eartrainer - Menu");
-        window.setScene(menuScene);
+        window.setScene(menu.render());
     }
     private void setUpLevel1() {
         window.setTitle("eartrainer - Level 1");

@@ -50,10 +50,11 @@ import javafx.stage.Stage;              // The JavaFX Stage class is the top lev
 
 
 
-public class Menu {
-    public Scene render(Button level1Start) {
+public class Menu extends VBox {
+    public Menu(Button level1Start) {
+        super(50);
         // Title row
-    	Label title = new Label("Eartrainer"); 
+        Label title = new Label("Eartrainer"); 
         title.setFont(new Font(40));
         title.setAlignment(Pos.CENTER);
 
@@ -96,8 +97,11 @@ public class Menu {
         nav.setAlignment(Pos.BOTTOM_RIGHT);
 
         // SetUp the VBox.
-        VBox root = new VBox(50, titleRow, level1Row, nav);
-        return new Scene(root, 700, 500);
+        getChildren().addAll(titleRow, level1Row, nav);
+    }
+
+    public Scene render() {
+        return new Scene(this, 700, 500);
     }
     private void showLevelDescription(Label label, String description) {
         label.setText(description);
