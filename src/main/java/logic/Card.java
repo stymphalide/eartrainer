@@ -88,6 +88,30 @@ public class Card {
     		}
     	}
     	
+    	else if (this.getInstrument() == "Saxophone") {
+    		if (this.getRange() == "Low") {
+    			actualInstrument = "Baritone_Sax";
+    		}
+    		else if (this.getRange() == "Middle") {
+    			actualInstrument = "Alto_Sax";
+    		}
+    		else {
+    			actualInstrument = "Soprano_Sax";
+    		}
+    	}
+    	
+    	else if (this.getInstrument() == "Double Reed") {
+    		if (this.getRange() == "Low") {
+    			actualInstrument = "Bassoon";
+    		}
+    		else if (this.getRange() == "Middle") {
+    			actualInstrument = "English_Horn";
+    		}
+    		else {
+    			actualInstrument = "Oboe";
+    		}
+    	}
+    	
     	else if (this.getInstrument() == "Organ") {
     		actualInstrument = "Church_Organ";
     	}
