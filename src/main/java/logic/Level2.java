@@ -19,7 +19,7 @@ public class Level2 extends Level {
 		this.correctAnswers = 0;
 		this.wrongAnswers = 0;
 		this.totalQuestions = 10;
-		this.allowedInstruments = instantiateFeatures("Piano", "Harpsichord", "Organ");
+		this.allowedInstruments = instantiateFeatures("Piano", "Harpischord", "Organ");
 		this.allowedOrders = instantiateFeatures("Upwards", "Downwards", "Chordal");
 		this.allowedRanges = instantiateFeatures("Low", "Middle", "High");
 		this.allowedIntervals = instantiateFeatures("Minor Second", "Major Second", "Minor Third");
@@ -81,6 +81,10 @@ public class Level2 extends Level {
 				   		   this.activeQuestion.getCard2().getOrder()+", "+
 				   		   this.activeQuestion.getCard2().getRange()+", "+
 				   		   this.activeQuestion.getCard2().getInterval());
+		System.out.println(this.correctAnswer(this.activeQuestion).getInstrument()+", "+
+				   		   this.correctAnswer(this.activeQuestion).getOrder()+", "+
+				   		   this.correctAnswer(this.activeQuestion).getRange()+", "+
+				   		   this.correctAnswer(this.activeQuestion).getInterval());
 		System.out.println(this.answer.getInstrument()+", "+
 				   		   this.answer.getOrder()+", "+
 				   		   this.answer.getRange()+", "+
