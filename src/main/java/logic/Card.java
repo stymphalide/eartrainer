@@ -112,6 +112,10 @@ public class Card {
     		}
     	}
     	
+		else if (this.getInstrument() == "Harpsichord") {
+    		actualInstrument = "Harpischord"; //This is a mistake in the library.
+    	}
+		
     	else if (this.getInstrument() == "Organ") {
     		actualInstrument = "Church_Organ";
     	}
