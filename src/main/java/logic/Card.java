@@ -87,6 +87,11 @@ public class Card {
     			actualInstrument = "Trumpet";
     		}
     	}
+    	
+    	else if (this.getInstrument() == "Organ") {
+    		actualInstrument = "Church_Organ";
+    	}
+    	
     	else {
     		actualInstrument = this.getInstrument();
     	}
