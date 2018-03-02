@@ -81,6 +81,10 @@ public class Level3 extends Level {
 				   		   this.activeQuestion.getCard2().getOrder()+", "+
 				   		   this.activeQuestion.getCard2().getRange()+", "+
 				   		   this.activeQuestion.getCard2().getInterval());
+		System.out.println(this.correctAnswer(this.activeQuestion).getInstrument()+", "+
+				   		   this.correctAnswer(this.activeQuestion).getOrder()+", "+
+				   		   this.correctAnswer(this.activeQuestion).getRange()+", "+
+				   		   this.correctAnswer(this.activeQuestion).getInterval());
 		System.out.println(this.answer.getInstrument()+", "+
 				   		   this.answer.getOrder()+", "+
 				   		   this.answer.getRange()+", "+
