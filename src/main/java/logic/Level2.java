@@ -22,7 +22,7 @@ public class Level2 extends Level {
 		this.allowedInstruments = instantiateFeatures("Piano", "Harpsichord", "Organ");
 		this.allowedOrders = instantiateFeatures("Upwards", "Downwards", "Chordal");
 		this.allowedRanges = instantiateFeatures("Low", "Middle", "High");
-		this.allowedIntervals = instantiateFeatures("Major Second", "Minor Third", "Major Third");
+		this.allowedIntervals = instantiateFeatures("Minor Second", "Major Second", "Minor Third");
 		this.activeQuestion = getQuestion();
 	}
 
