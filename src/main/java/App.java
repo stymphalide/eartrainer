@@ -103,8 +103,6 @@ public class App extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
         window = primaryStage;
-        
-
         setUpMenu();
         //primaryStage.setMaximized(true); // Maximise the window.
         window.show();

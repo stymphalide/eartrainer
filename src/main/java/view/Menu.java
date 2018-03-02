@@ -84,6 +84,7 @@ public class Menu extends VBox {
 
             HBox levelRow = new HBox(50);
             levelRow.getChildren().addAll(startLevels.get(i), levelLabel);
+            levelRow.setMargin(startLevels.get(i), new Insets(10, 50, 25, 30));
             levels.getChildren().add(levelRow);
         }
 
