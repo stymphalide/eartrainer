@@ -72,16 +72,16 @@ public class Menu extends VBox {
             // In order to be used in a lambda method this needs to be final.
             final String levelDescription = description;
             final Label levelLabel = new Label(""); 
-            levelStart.setText("Level " + (i+1));
+            startLevels.get(i).get(i).setText("Level " + (i+1));
             // Inspired by: [Hover Effect Over Icon]
-            levelStart.setOnMouseEntered(e -> {
+            startLevels.get(i).setOnMouseEntered(e -> {
                     showLevelDescription(levelLabel, levelDescription);
             });
-            levelStart.setOnMouseExited(e -> {
+            startLevels.get(i).setOnMouseExited(e -> {
                 hideLevelDescription(levelLabel);
             });
 
-            HBox levelRow = new HBox(50, levelStart. levelDescription);
+            HBox levelRow = new HBox(50, startLevels.get(i), levelDescription);
             levels.getChildren().add(levelRow);
         }
 

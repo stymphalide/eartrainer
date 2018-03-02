@@ -82,7 +82,7 @@ public class App extends Application {
         for (int i = 0; i < this.startLevels.size(); i++) {
             this.startLevels.get(i).setOnAction(e -> {
                 setUpLevel(i + 1);
-            })
+            });
         }
     }
 
@@ -104,14 +104,16 @@ public class App extends Application {
     private void setUpLevel(int n) {
         window.setTitle("eartrainer - Level " + n);
         
+        logic.Level level;
         switch(n) {
             case 1: 
-                logic.Level level = new logic.Level1();
+                level = new logic.Level1();
                 break;
             case 2:
-                logic.Level level = new logic.Level2();
+                level = new logic.Level2();
                 break;
             default: 
+                level = new logic.Level2();
                 break;
         }
         
@@ -121,7 +123,7 @@ public class App extends Application {
         this.confirm.setOnAction(e -> {
             if (level.isFinished()) {
                 window.setTitle("eartrainer - Game Over");
-                levelView.viewFinished(level, backToMenu, startLevel1);
+                levelView.viewFinished(level, backToMenu, startLevels.get(n - 1));
             } else {
                 List<String> values = levelView.getComboBoxValues();
                 if (values == null) { // Only advance if all comboboxes are set.
