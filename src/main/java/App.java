@@ -75,6 +75,8 @@ public class App extends Application {
     view.Menu menu;
     Button confirm = new Button("Confirm");
 
+    logic.Level level;
+
     @Override
     public void init() throws Exception {
         Button startLevel1 = new Button();
@@ -82,11 +84,11 @@ public class App extends Application {
             setUpLevel(1);
         });
         Button startLevel2 = new Button();
-        startLevel1.setOnAction(e  -> {
+        startLevel2.setOnAction(e  -> {
             setUpLevel(2);
         });
         Button startLevel3 = new Button();
-        startLevel1.setOnAction(e  -> {
+        startLevel3.setOnAction(e  -> {
             setUpLevel(3);
         });
         this.startLevels = new ArrayList<Button>();
@@ -112,22 +114,23 @@ public class App extends Application {
         window.setScene(menu.render());
     }
     private void setUpLevel(int n) {
-        window.setTitle("eartrainer - Level " + n);
-        
-        logic.Level level;
+        System.out.println(n);
         switch(n) {
             case 1: 
-                level = new logic.Level1();
+                this.level = new logic.Level1();
                 break;
             case 2:
-                level = new logic.Level2();
+                this.level = new logic.Level2();
+                break;
+            case 3:
+                this.level = new logic.Level3();
                 break;
             default: 
-                level = new logic.Level2();
+                this.level = new logic.Level1();
                 break;
         }
-        
-
+        System.out.println(this.level.getLevelNumber());
+        window.setTitle("eartrainer - Level " + level.getLevelNumber());
         view.Level levelView = new view.Level(level, this.confirm);
         
         this.confirm.setOnAction(e -> {
