@@ -49,7 +49,7 @@ import javafx.scene.layout.VBox;        // VBox lays out its children in a singl
 import javafx.scene.layout.HBox;        // HBox lays out its children in a single horizontal row. If the hbox has a border and/or padding set, then the contents will be layed out within those insets. [JavaFX API]
 
 public class Menu extends VBox {
-    public Menu(Button level1Start) {
+    public Menu(List<Button> startLevels) {
         super(50);
         // Title row
         Label title = new Label("Eartrainer"); 
@@ -59,29 +59,32 @@ public class Menu extends VBox {
         HBox titleRow = new HBox(50, title);
         titleRow.setAlignment(Pos.CENTER);
 
-        // Level 1 Setup
+        // Level Setup
+        VBox levels = new VBox(50);
+        for(int i = 0; i < startLevels.size(); i++) {
+            String description = "Not Found Description";
+            // Inspired by: [How to Catch Exceptions]
+            try {
+                description = getLevelDescription(i+1);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            // In order to be used in a lambda method this needs to be final.
+            final String levelDescription = description;
+            final Label levelLabel = new Label(""); 
+            levelStart.setText("Level " + (i+1));
+            // Inspired by: [Hover Effect Over Icon]
+            levelStart.setOnMouseEntered(e -> {
+                    showLevelDescription(levelLabel, levelDescription);
+            });
+            levelStart.setOnMouseExited(e -> {
+                hideLevelDescription(levelLabel);
+            });
 
-        String description = "Not Found Description";
-        // Inspired by: [How to Catch Exceptions]
-        try {
-            description = getLevelDescription(1);
-        } catch (IOException e) {
-            e.printStackTrace();
+            HBox levelRow = new HBox(50, levelStart. levelDescription);
+            levels.getChildren().add(levelRow);
         }
-        // In order to be used in a lambda method this needs to be final.
-        final String level1Description = description;
-        final Label level1Label = new Label(""); 
-        level1Start.setText("Level 1");
-        // Inspired by: [Hover Effect Over Icon]
-        level1Start.setOnMouseEntered(e -> {
-                showLevelDescription(level1Label, level1Description);
-        });
-        level1Start.setOnMouseExited(e -> {
-            hideLevelDescription(level1Label);
-        });
 
-        HBox level1Row = new HBox(50, level1Start, level1Label);
-        level1Row.setMargin(level1Start, new Insets(10, 50, 40, 30));
 
         // Navigation bar Setup
         Button exitButton = new Button();
@@ -95,7 +98,7 @@ public class Menu extends VBox {
         nav.setAlignment(Pos.BOTTOM_RIGHT);
 
         // SetUp the VBox.
-        getChildren().addAll(titleRow, level1Row, nav);
+        getChildren().addAll(titleRow, levels, nav);
     }
 
     public Scene render() {
