@@ -70,18 +70,25 @@ import java.util.*;
 public class App extends Application {
     Stage window;
     Button backToMenu = new Button("Main Menu");
-    Button startLevel1 = new Button();
+    List<Button> startLevels;
 
-    view.Menu menu = new view.Menu(startLevel1);
+    view.Menu menu = new view.Menu(startLevels);
     Button confirm = new Button("Confirm");
+
+    public App() {
+        this.startLevels = new ArrayList<Button>();
+        this.startLevels.add(new Button());
+        this.startLevels.add(new Button());
+        for (int i = 0; i < this.startLevels.size(); i++) {
+            this.startLevels.get(i).setOnAction(e -> {
+                setUpLevel(i + 1);
+            })
+        }
+    }
 
     @Override
     public void start(Stage primaryStage) throws Exception {
         window = primaryStage;
-
-        startLevel1.setOnAction(e -> {
-            setUpLevel1();
-        });
         backToMenu.setOnAction(e -> {
             setUpMenu();
         });
@@ -94,10 +101,21 @@ public class App extends Application {
         window.setTitle("eartrainer - Menu");
         window.setScene(menu.render());
     }
-    private void setUpLevel1() {
-        window.setTitle("eartrainer - Level 1");
+    private void setUpLevel(int n) {
+        window.setTitle("eartrainer - Level " + n);
         
-        logic.Level level = new logic.Level1();
+        switch(n) {
+            case 1: 
+                logic.Level level = new logic.Level1();
+                break;
+            case 2:
+                logic.Level level = new logic.Level2();
+                break;
+            default: 
+                break;
+        }
+        
+
         view.Level levelView = new view.Level(level, this.confirm);
         
         this.confirm.setOnAction(e -> {
