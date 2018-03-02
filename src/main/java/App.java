@@ -72,26 +72,38 @@ public class App extends Application {
     Button backToMenu = new Button("Main Menu");
     List<Button> startLevels;
 
-    view.Menu menu = new view.Menu(startLevels);
+    view.Menu menu;
     Button confirm = new Button("Confirm");
 
-    public App() {
+    @Override
+    public void init() throws Exception {
+        Button startLevel1 = new Button();
+        startLevel1.setOnAction(e -> {
+            setUpLevel(1);
+        });
+        Button startLevel2 = new Button();
+        startLevel1.setOnAction(e  -> {
+            setUpLevel(2);
+        });
+        Button startLevel3 = new Button();
+        startLevel1.setOnAction(e  -> {
+            setUpLevel(3);
+        });
         this.startLevels = new ArrayList<Button>();
-        this.startLevels.add(new Button());
-        this.startLevels.add(new Button());
-        for (int i = 0; i < this.startLevels.size(); i++) {
-            this.startLevels.get(i).setOnAction(e -> {
-                setUpLevel(i + 1);
-            });
-        }
+        this.startLevels.add(startLevel1);
+        this.startLevels.add(startLevel2);
+        this.startLevels.add(startLevel3);
+
+        this.backToMenu.setOnAction(e -> {
+            setUpMenu();
+        });
+        this.menu = new view.Menu(startLevels);
     }
 
     @Override
     public void start(Stage primaryStage) throws Exception {
         window = primaryStage;
-        backToMenu.setOnAction(e -> {
-            setUpMenu();
-        });
+        
 
         setUpMenu();
         //primaryStage.setMaximized(true); // Maximise the window.

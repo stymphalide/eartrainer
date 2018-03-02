@@ -34,6 +34,7 @@ package view;
 /*
     Main Sources: JavaFX API; 100 JavaFX Tutorials
 */
+import java.util.*;
 import java.io.File;                    // An abstract representation of file and directory pathnames. [File API]
 import java.io.IOException;             // Signals that an I/O exception of some sort has occurred. [IOException API]
 import org.apache.commons.io.FileUtils; // General file manipulation utilities. [FileUtils API]
@@ -72,7 +73,7 @@ public class Menu extends VBox {
             // In order to be used in a lambda method this needs to be final.
             final String levelDescription = description;
             final Label levelLabel = new Label(""); 
-            startLevels.get(i).get(i).setText("Level " + (i+1));
+            startLevels.get(i).setText("Level " + (i+1));
             // Inspired by: [Hover Effect Over Icon]
             startLevels.get(i).setOnMouseEntered(e -> {
                     showLevelDescription(levelLabel, levelDescription);
@@ -81,7 +82,8 @@ public class Menu extends VBox {
                 hideLevelDescription(levelLabel);
             });
 
-            HBox levelRow = new HBox(50, startLevels.get(i), levelDescription);
+            HBox levelRow = new HBox(50);
+            levelRow.getChildren().addAll(startLevels.get(i), levelLabel);
             levels.getChildren().add(levelRow);
         }
 
