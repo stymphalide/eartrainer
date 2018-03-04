@@ -50,6 +50,8 @@ import javafx.scene.layout.VBox;        // VBox lays out its children in a singl
 import javafx.scene.layout.HBox;        // HBox lays out its children in a single horizontal row. If the hbox has a border and/or padding set, then the contents will be layed out within those insets. [JavaFX API]
 
 public class Menu extends VBox {
+    private Scene scene;
+
     public Menu(List<Button> startLevels) {
         super(50);
         // Title row
@@ -105,7 +107,11 @@ public class Menu extends VBox {
     }
 
     public Scene render() {
-        return new Scene(this, 700, 500);
+        if(this.scene == null) {
+            this.scene = new Scene(this, 700, 500);
+        }
+        return this.scene;
+        
     }
 
     private void showLevelDescription(Label label, String description) {
