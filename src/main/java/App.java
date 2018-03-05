@@ -126,10 +126,15 @@ public class App extends Application {
                 level = new logic.Level2();
                 break;
         }
-        
+        System.out.println(level.soundThread.getState());
+        level.soundThread.start();
+        System.out.println(level.soundThread.getState());
 
         view.Level levelView = new view.Level(level, this.confirm);
         
+        System.out.println(level.soundThread.getState());
+        level.soundThread.start();
+
         this.confirm.setOnAction(e -> {
             if (level.isFinished()) {
                 window.setTitle("eartrainer - Game Over");

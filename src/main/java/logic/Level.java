@@ -5,8 +5,16 @@ import java.util.List;
 public abstract class Level {
     int levelNumber;
 
+    public Thread soundThread;    
+
     Level(int n) {
         this.levelNumber = n;
+        this.soundThread = new Thread() {
+            @Override
+            public void run() {
+                System.out.println("Hello World");
+            }
+        };
     }
 
     public abstract void setAnswer(logic.Card answer);
