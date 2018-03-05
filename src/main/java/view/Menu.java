@@ -51,19 +51,53 @@ import javafx.scene.layout.HBox;        // HBox lays out its children in a singl
 
 public class Menu extends VBox {
     private Scene scene;
+    private List<Button> startLevels;
+    private HBox titleRow;
+    private VBox levelCol;
+    private HBox nav;
 
     public Menu(List<Button> startLevels) {
         super(50);
+        this.startLevels = startLevels;
         // Title row
         Label title = new Label("Eartrainer"); 
         title.setFont(new Font(40));
         title.setAlignment(Pos.CENTER);
 
-        HBox titleRow = new HBox(50, title);
-        titleRow.setAlignment(Pos.CENTER);
+        this.titleRow = new HBox(50, title);
+        this.titleRow.setAlignment(Pos.CENTER);
 
         // Level Setup
-        VBox levels = new VBox(50);
+        this.levelCol = new VBox(50);
+        setUpLevels();
+        
+        // Navigation bar Setup
+        Button exitButton = new Button();
+        exitButton.setText("Exit");
+        exitButton.setOnAction(e -> {
+            Platform.exit();
+        });
+
+        this.nav = new HBox(50, exitButton);
+        this.nav.setMargin(exitButton, new Insets(20, 50, 40, 30));
+        this.nav.setAlignment(Pos.BOTTOM_RIGHT);
+
+        // SetUp the VBox.
+        getChildren().addAll(this.titleRow, this.levelCol, this.nav);
+    }
+
+    public Scene render() {
+        if(this.scene == null) {
+            this.scene = new Scene(this, 700, 500);
+        } else {
+            setUpLevels();
+        }
+        return this.scene;
+        
+    }
+
+    private void setUpLevels() {
+        this.levelCol.getChildren().clear();
         for(int i = 0; i < startLevels.size(); i++) {
             String description = "Not Found Description";
             // Inspired by: [How to Catch Exceptions]
@@ -87,31 +121,8 @@ public class Menu extends VBox {
             HBox levelRow = new HBox(50);
             levelRow.getChildren().addAll(startLevels.get(i), levelLabel);
             levelRow.setMargin(startLevels.get(i), new Insets(10, 50, 25, 30));
-            levels.getChildren().add(levelRow);
+            this.levelCol.getChildren().add(levelRow);
         }
-
-
-        // Navigation bar Setup
-        Button exitButton = new Button();
-        exitButton.setText("Exit");
-        exitButton.setOnAction(e -> {
-            Platform.exit();
-        });
-
-        HBox nav = new HBox(50, exitButton);
-        nav.setMargin(exitButton, new Insets(20, 50, 40, 30));
-        nav.setAlignment(Pos.BOTTOM_RIGHT);
-
-        // SetUp the VBox.
-        getChildren().addAll(titleRow, levels, nav);
-    }
-
-    public Scene render() {
-        if(this.scene == null) {
-            this.scene = new Scene(this, 700, 500);
-        }
-        return this.scene;
-        
     }
 
     private void showLevelDescription(Label label, String description) {
