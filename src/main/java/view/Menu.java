@@ -82,6 +82,7 @@ public class Menu extends VBox {
 
         this.nav = new HBox(50, helpButton, exitButton);
         this.nav.setMargin(exitButton, new Insets(20, 50, 40, 30));
+        this.nav.setMargin(helpButton, new Insets(20, 50, 40, 30));
         this.nav.setAlignment(Pos.BOTTOM_RIGHT);
 
         // SetUp the VBox.
