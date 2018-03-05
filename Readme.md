@@ -417,6 +417,7 @@ Everything we stumble upon doing research comes into this part.
 - [100 JavaFX Tutorials](http://javafxjq.blogspot.ch)
 - [How to create multiple scenes and switch between scenes in JavaFX](http://www.learningaboutelectronics.com/Articles/How-to-create-multiple-scenes-and-switch-between-scenes-in-JavaFX.php)
 -[Hover Effect Over Icon](https://stackoverflow.com/questions/20143548/hover-effect-over-icon)
+- [ArrayList to VarArgs](https://stackoverflow.com/questions/9863742/how-to-pass-an-arraylist-to-a-varargs-method-parameter)
 
 ### JFugue
 - [Some basic examples](http://www.jfugue.org/examples.html "jfugue examples")
@@ -428,6 +429,8 @@ Everything we stumble upon doing research comes into this part.
 - [IOException API](https://docs.oracle.com/javase/8/docs/api/java/io/IOException.html)
 - [FileUtils API](https://commons.apache.org/proper/commons-io/javadocs/api-2.5/org/apache/commons/io/FileUtils.html)
 - [How to Catch Exceptions](https://stackoverflow.com/questions/8707906/unreported-exception-java-io-ioexception-must-be-caught-or-declared-to-be-throw)
+- [VarArgs](https://docs.oracle.com/javase/1.5.0/docs/guide/language/varargs.html)
+- [Concurrency](https://docs.oracle.com/javase/tutorial/essential/concurrency/index.html)
 
 ## Milestones
 ### Milestone I (14.02.2018)

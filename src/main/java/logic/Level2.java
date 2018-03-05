@@ -2,7 +2,8 @@ package logic;
 
 import java.util.*;
 
-public class Level1 extends Level {
+public class Level2 extends Level {
+
 	private int correctAnswers;
 	private int wrongAnswers;
 	private int totalQuestions;
@@ -13,15 +14,15 @@ public class Level1 extends Level {
 	private Question activeQuestion;
 	private Card answer;
 	
-	public Level1() {
-		super(1);
+	public Level2() {
+		super(2);
 		this.correctAnswers = 0;
 		this.wrongAnswers = 0;
 		this.totalQuestions = 10;
-		this.allowedInstruments = instantiateFeatures("Piano", "Strings", "Brass");
+		this.allowedInstruments = instantiateFeatures("Piano", "Harpsichord", "Organ");
 		this.allowedOrders = instantiateFeatures("Upwards", "Downwards", "Chordal");
 		this.allowedRanges = instantiateFeatures("Low", "Middle", "High");
-		this.allowedIntervals = instantiateFeatures("Perfect Fourth", "Perfect Fifth", "Perfect Octave");
+		this.allowedIntervals = instantiateFeatures("Minor Second", "Major Second", "Minor Third");
 		this.activeQuestion = getQuestion();
 	}
 

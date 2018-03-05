@@ -87,6 +87,39 @@ public class Card {
     			actualInstrument = "Trumpet";
     		}
     	}
+    	
+    	else if (this.getInstrument() == "Saxophone") {
+    		if (this.getRange() == "Low") {
+    			actualInstrument = "Baritone_Sax";
+    		}
+    		else if (this.getRange() == "Middle") {
+    			actualInstrument = "Alto_Sax";
+    		}
+    		else {
+    			actualInstrument = "Soprano_Sax";
+    		}
+    	}
+    	
+    	else if (this.getInstrument() == "Double Reed") {
+    		if (this.getRange() == "Low") {
+    			actualInstrument = "Bassoon";
+    		}
+    		else if (this.getRange() == "Middle") {
+    			actualInstrument = "English_Horn";
+    		}
+    		else {
+    			actualInstrument = "Oboe";
+    		}
+    	}
+    	
+		else if (this.getInstrument() == "Harpsichord") {
+    		actualInstrument = "Harpischord"; //This is a mistake in the library.
+    	}
+		
+    	else if (this.getInstrument() == "Organ") {
+    		actualInstrument = "Church_Organ";
+    	}
+    	
     	else {
     		actualInstrument = this.getInstrument();
     	}

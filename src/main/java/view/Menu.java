@@ -2,14 +2,15 @@ package view;
 
 /* classdoc
     This class renders the Menu view of the app.
-    Which consists of:
-        - The View consists of three rows.
+    The View consists of three rows.
         - The Title (This is to be extended).
         - The Levels to choose from
         - A navigation bar with an exit button.
     
+    
+
     The class consists of one public method:
-    - public Scene render(Button level1Start);
+    - public Scene render();
     
     The render method takes in a Button as argument, the reason the button is not created in this method is because of its event binding.
     The Menu is composed of a VBox and several HBox's that are then added to the scene
@@ -33,6 +34,7 @@ package view;
 /*
     Main Sources: JavaFX API; 100 JavaFX Tutorials
 */
+import java.util.*;
 import java.io.File;                    // An abstract representation of file and directory pathnames. [File API]
 import java.io.IOException;             // Signals that an I/O exception of some sort has occurred. [IOException API]
 import org.apache.commons.io.FileUtils; // General file manipulation utilities. [FileUtils API]
@@ -46,44 +48,29 @@ import javafx.scene.control.Button;     // A simple Button Control. Can be a eve
 import javafx.scene.control.Label;      // Label is a non-editable text control. A Label is useful for displaying text that is required to fit within a specific space, and thus may need to use an ellipsis or truncation to size the string to fit. [JavaFX API]
 import javafx.scene.layout.VBox;        // VBox lays out its children in a single vertical column. If the vbox has a border and/or padding set, then the contents will be layed out within those insets. [JavaFX API]
 import javafx.scene.layout.HBox;        // HBox lays out its children in a single horizontal row. If the hbox has a border and/or padding set, then the contents will be layed out within those insets. [JavaFX API]
-import javafx.stage.Stage;              // The JavaFX Stage class is the top level JavaFX container. The primary Stage is constructed by the platform. Additional Stage objects may be constructed by the application. [JavaFX API]
 
+public class Menu extends VBox {
+    private Scene scene;
+    private List<Button> startLevels;
+    private HBox titleRow;
+    private VBox levelCol;
+    private HBox nav;
 
-
-public class Menu {
-    public Scene render(Button level1Start, Button helpButton) {
+    public Menu(List<Button> startLevels, Button helpButton) {
+        super(50);
+        this.startLevels = startLevels;
         // Title row
-    	Label title = new Label("Eartrainer"); 
+        Label title = new Label("Eartrainer"); 
         title.setFont(new Font(40));
         title.setAlignment(Pos.CENTER);
 
-        HBox titleRow = new HBox(50, title);
-        titleRow.setAlignment(Pos.CENTER);
+        this.titleRow = new HBox(50, title);
+        this.titleRow.setAlignment(Pos.CENTER);
 
-        // Level 1 Setup
-
-        String description = "Not Found Description";
-        // Inspired by: [How to Catch Exceptions]
-        try {
-            description = getLevelDescription(1);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        // In order to be used in a lambda method this needs to be final.
-        final String level1Description = description;
-        final Label level1Label = new Label(""); 
-        level1Start.setText("Level 1");
-        // Inspired by: [Hover Effect Over Icon]
-        level1Start.setOnMouseEntered(e -> {
-                showLevelDescription(level1Label, level1Description);
-        });
-        level1Start.setOnMouseExited(e -> {
-            hideLevelDescription(level1Label);
-        });
-
-        HBox level1Row = new HBox(50, level1Start, level1Label);
-        level1Row.setMargin(level1Start, new Insets(10, 50, 40, 30));
-
+        // Level Setup
+        this.levelCol = new VBox(50);
+        setUpLevels();
+        
         // Navigation bar Setup
         helpButton.setText("Help");
 
@@ -93,15 +80,53 @@ public class Menu {
             Platform.exit();
         });
 
-        HBox nav = new HBox(50, helpButton, exitButton);
-        nav.setMargin(exitButton, new Insets(20, 50, 40, 30));
-        nav.setMargin(helpButton, new Insets(20, 50, 40, 30));
-        nav.setAlignment(Pos.BOTTOM_RIGHT);
+        this.nav = new HBox(50, helpButton, exitButton);
+        this.nav.setMargin(exitButton, new Insets(20, 50, 40, 30));
+        this.nav.setAlignment(Pos.BOTTOM_RIGHT);
 
         // SetUp the VBox.
-        VBox root = new VBox(50, titleRow, level1Row, nav);
-        return new Scene(root, 700, 500);
+        getChildren().addAll(this.titleRow, this.levelCol, this.nav);
     }
+
+    public Scene render() {
+        if(this.scene == null) {
+            this.scene = new Scene(this, 700, 500);
+        } else {
+            setUpLevels();
+        }
+        return this.scene;
+        
+    }
+
+    private void setUpLevels() {
+        this.levelCol.getChildren().clear();
+        for(int i = 0; i < startLevels.size(); i++) {
+            String description = "Not Found Description";
+            // Inspired by: [How to Catch Exceptions]
+            try {
+                description = getLevelDescription(i+1);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            // In order to be used in a lambda method this needs to be final.
+            final String levelDescription = description;
+            final Label levelLabel = new Label(""); 
+            startLevels.get(i).setText("Level " + (i+1));
+            // Inspired by: [Hover Effect Over Icon]
+            startLevels.get(i).setOnMouseEntered(e -> {
+                    showLevelDescription(levelLabel, levelDescription);
+            });
+            startLevels.get(i).setOnMouseExited(e -> {
+                hideLevelDescription(levelLabel);
+            });
+
+            HBox levelRow = new HBox(50);
+            levelRow.getChildren().addAll(startLevels.get(i), levelLabel);
+            levelRow.setMargin(startLevels.get(i), new Insets(10, 50, 25, 30));
+            this.levelCol.getChildren().add(levelRow);
+        }
+    }
+
     private void showLevelDescription(Label label, String description) {
         label.setText(description);
     }

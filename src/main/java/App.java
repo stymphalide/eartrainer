@@ -69,50 +69,78 @@ import java.util.*;
 
 public class App extends Application {
     Stage window;
-    view.Menu menu = new view.Menu();
-
     Button backToMenu = new Button("Main Menu");
-    //Button nextLevel = new Button();
-    Button startLevel1 = new Button();
+    List<Button> startLevels;
+
+    view.Menu menu;
     Button confirm = new Button("Confirm");
     Button help = new Button("Help");
+
+    logic.Level level;
+
+    @Override
+    public void init() throws Exception {
+        Button startLevel1 = new Button();
+        startLevel1.setOnAction(e -> {
+            setUpLevel(1);
+        });
+        Button startLevel2 = new Button();
+        startLevel2.setOnAction(e  -> {
+            setUpLevel(2);
+        });
+        Button startLevel3 = new Button();
+        startLevel3.setOnAction(e  -> {
+            setUpLevel(3);
+        });
+        this.startLevels = new ArrayList<Button>();
+        this.startLevels.add(startLevel1);
+        this.startLevels.add(startLevel2);
+        this.startLevels.add(startLevel3);
+
+        this.backToMenu.setOnAction(e -> {
+            setUpMenu();
+        });
+        this.help.setOnAction(e -> {
+            setUpHelp();
+        });
+        this.menu = new view.Menu(this.startLevels, this.help);
+    }
 
     @Override
     public void start(Stage primaryStage) throws Exception {
         window = primaryStage;
-
-        startLevel1.setOnAction(e -> {
-            setUpLevel1();
-        });
-        backToMenu.setOnAction(e -> {
-            setUpMenu();
-        });
-        help.setOnAction(e -> {
-            setUpHelp();
-        });
-
         setUpMenu();
         //primaryStage.setMaximized(true); // Maximise the window.
         window.show();
     }
     private void setUpMenu() {
-        Scene menuScene = menu.render(startLevel1, help);
         window.setTitle("eartrainer - Menu");
-        window.setScene(menuScene);
+        window.setScene(menu.render());
     }
-    private void setUpLevel1() {
-        window.setTitle("eartrainer - Level 1");
-        
-        logic.Level level = new logic.Level1();
-        view.Level levelView = new view.Level();
-        Scene levelScene = levelView.renderActive(level, this.confirm);
-        window.setScene(levelScene);
+    private void setUpLevel(int n) {
+        System.out.println(n);
+        switch(n) {
+            case 1: 
+                this.level = new logic.Level1();
+                break;
+            case 2:
+                this.level = new logic.Level2();
+                break;
+            case 3:
+                this.level = new logic.Level3();
+                break;
+            default: 
+                this.level = new logic.Level1();
+                break;
+        }
+        System.out.println(this.level.getLevelNumber());
+        window.setTitle("eartrainer - Level " + level.getLevelNumber());
+        view.Level levelView = new view.Level(level, this.confirm);
         
         this.confirm.setOnAction(e -> {
             if (level.isFinished()) {
                 window.setTitle("eartrainer - Game Over");
-                Scene newLevelScene = levelView.renderFinished(level, backToMenu, startLevel1);
-                window.setScene(newLevelScene);
+                levelView.viewFinished(level, backToMenu, startLevels.get(n - 1));
             } else {
                 List<String> values = levelView.getComboBoxValues();
                 if (values == null) { // Only advance if all comboboxes are set.
@@ -121,11 +149,11 @@ public class App extends Application {
                     logic.Card answer = new logic.Card(values.get(0), values.get(1), values.get(2), values.get(3));
                     level.setAnswer(answer);
                     level.nextQuestion();
-                    Scene newLevelScene = levelView.renderActive(level, confirm);
-                    window.setScene(newLevelScene);
+                    levelView.update();
                 }
             }
         });
+        window.setScene(levelView.render());
     }
     private void setUpHelp() {
         final Stage helpView = new Stage();
