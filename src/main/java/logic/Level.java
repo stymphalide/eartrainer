@@ -131,7 +131,13 @@ public abstract class Level {
 	}
 
     public boolean isFinished() {
-		return this.correctAnswers + this.wrongAnswers == this.totalQuestions;
+        if (this.correctAnswers + this.wrongAnswers == this.totalQuestions) {
+            soundThread.interrupt(); // Stop the sound Thread.
+            soundThread = null; // is this correct? TODO
+            return true;
+        } else {
+            return false;
+        }
 	}
     
     protected ArrayList<String> instantiateFeatures(String feature1, String feature2, String feature3){
