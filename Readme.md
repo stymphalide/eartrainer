@@ -34,9 +34,9 @@ We try to stick to this [Code of Conduct](#code-of-conduct).
 - [ ] Finish the Project.
     - [x] Write a working interface.
     - [x] Write a working application.
-    - [ ] Use threading to play the sound.
-    - [ ] Refactor the `logic.Level` class.
-    - [ ] Add multiple levels.
+    - [x] Use threading to play the sound.
+    - [x] Refactor the `logic.Level` class.
+    - [x] Add multiple levels.
     - [ ] Write an info page, where the rules are explained.
     - [ ] Compose the background music. And make it playable in the menu and in the after game screen.
     - [ ] Improve the after game screen by adding a timer.
@@ -231,7 +231,7 @@ A higher level library could be jFugue:
 ### List of important dates.
 - [x] 19.01.2018: Project Goals + Additional Goals defined
 - [x] 14.02.2018: [MSI](#milestone-i-14022018)
-- [ ] 25.02.2018: [1.0.0 Release](#v100)
+- [x] 25.02.2018: [1.0.0 Release](#v100)
 - [ ] 18.03.2018: Final Release
 - [ ] 21.03.2018: [MSII](#milestone-ii-21032018)
 
@@ -253,9 +253,15 @@ A higher level library could be jFugue:
 
 ### Short Term Planing #3 (due 'til 25.02.)
 - [x] Merge all branches correctly.
-- [ ] Create the v1.0.0.
-- [ ] Start with addditional goals.
+- [x] Create the v1.0.0.
+- [x] Start with addditional goals.
 
+### Short Term Planning #4 (due 'til 14.03.)
+- [ ] Add a timer to the level class.
+- [ ] Add a ranking system.
+- [ ] Make it possible to play music in the menu screen.
+- [ ] Start composing music.
+- [ ] Improve the quality of the help text.
 
 ## Project Structure
 The Project has the basic gradle structure.
@@ -430,7 +436,13 @@ Everything we stumble upon doing research comes into this part.
 - [FileUtils API](https://commons.apache.org/proper/commons-io/javadocs/api-2.5/org/apache/commons/io/FileUtils.html)
 - [How to Catch Exceptions](https://stackoverflow.com/questions/8707906/unreported-exception-java-io-ioexception-must-be-caught-or-declared-to-be-throw)
 - [VarArgs](https://docs.oracle.com/javase/1.5.0/docs/guide/language/varargs.html)
+
+
+### Threading
 - [Concurrency](https://docs.oracle.com/javase/tutorial/essential/concurrency/index.html)
+- [Notify/Wait](https://docs.oracle.com/javase/7/docs/technotes/guides/concurrency/threadPrimitiveDeprecation.html)
+
+
 
 ## Milestones
 ### Milestone I (14.02.2018)
