@@ -3,7 +3,7 @@ package logic;
 import java.util.*;
 
 public class Level {
-    public int levelNumber;
+    private int levelNumber;
     private int correctAnswers;
     private int wrongAnswers;
     private int totalQuestions;
@@ -16,6 +16,9 @@ public class Level {
 
     public Level(int n) {
         this.levelNumber = n;
+		this.correctAnswers = 0;
+		this.wrongAnswers = 0;
+		this.totalQuestions = 10;
 		switch(levelNumber){
 			case 1: this.allowedInstruments = instantiateFeatures("Piano", "Strings", "Brass");
 					this.allowedIntervals = instantiateFeatures("Perfect Fourth", "Perfect Fifth", "Perfect Octave");
@@ -29,9 +32,6 @@ public class Level {
 		}
 		this.allowedOrders = instantiateFeatures("Upwards", "Downwards", "Chordal");
 		this.allowedRanges = instantiateFeatures("Low", "Middle", "High");
-		this.correctAnswers = 0;
-		this.wrongAnswers = 0;
-		this.totalQuestions = 10;
 		this.activeQuestion = getQuestion();
     }
 
