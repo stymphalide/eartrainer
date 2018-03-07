@@ -3,7 +3,7 @@ package logic;
 import java.util.*;
 
 public class Level {
-    int levelNumber;
+    public int levelNumber;
     private int correctAnswers;
     private int wrongAnswers;
     private int totalQuestions;
@@ -18,21 +18,17 @@ public class Level {
         this.levelNumber = n;
 		switch(levelNumber){
 			case 1: this.allowedInstruments = instantiateFeatures("Piano", "Strings", "Brass");
-					this.allowedOrders = instantiateFeatures("Upwards", "Downwards", "Chordal");
-					this.allowedRanges = instantiateFeatures("Low", "Middle", "High");
 					this.allowedIntervals = instantiateFeatures("Perfect Fourth", "Perfect Fifth", "Perfect Octave");
 					break;
 			case 2: this.allowedInstruments = instantiateFeatures("Piano", "Harpsichord", "Organ");
-					this.allowedOrders = instantiateFeatures("Upwards", "Downwards", "Chordal");
-					this.allowedRanges = instantiateFeatures("Low", "Middle", "High");
 					this.allowedIntervals = instantiateFeatures("Minor Second", "Major Second", "Minor Third");
 					break;
 			case 3: this.allowedInstruments = instantiateFeatures("Saxophone", "Double Reed", "Brass");
-					this.allowedOrders = instantiateFeatures("Upwards", "Downwards", "Chordal");
-					this.allowedRanges = instantiateFeatures("Low", "Middle", "High");
 					this.allowedIntervals = instantiateFeatures("Major Sixth", "Minor Seventh", "Major Seventh");
 					break;
 		}
+		this.allowedOrders = instantiateFeatures("Upwards", "Downwards", "Chordal");
+		this.allowedRanges = instantiateFeatures("Low", "Middle", "High");
 		this.correctAnswers = 0;
 		this.wrongAnswers = 0;
 		this.totalQuestions = 10;
@@ -171,4 +167,3 @@ public class Level {
 	}
     
 }
-
