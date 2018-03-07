@@ -121,15 +121,13 @@ public class Level extends VBox {
         Button card1Button = new Button("Listen to the first Interval");
         card1Button.setAlignment(Pos.CENTER);
         card1Button.setOnAction(e -> {
-            logic.Sound sound = new logic.Sound();
-            sound.play(this.level.getActiveQuestion().getCard1());
+            this.level.play(this.level.getActiveQuestion().getCard1());
         });
         
         Button card2Button = new Button("Listen to the second Interval");
         card2Button.setAlignment(Pos.CENTER);
         card2Button.setOnAction(e -> {
-            logic.Sound sound = new logic.Sound();
-            sound.play(this.level.getActiveQuestion().getCard2());
+            this.level.play(this.level.getActiveQuestion().getCard2());
         });
 
 

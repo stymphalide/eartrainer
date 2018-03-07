@@ -14,7 +14,7 @@ public abstract class Level {
     protected Question activeQuestion;
     protected Card answer;
 
-    public Sound soundThread;    
+    protected Sound soundThread;    
 
     Level(int n) {
         this.levelNumber = n;
@@ -51,6 +51,14 @@ public abstract class Level {
 		}
 		this.activeQuestion = this.getQuestion();
 	}
+
+    public void play(Card card) {
+        // Only play sound if the State is waiting
+        System.out.println(this.soundThread.getState());
+        if (this.soundThread.getState() == Thread.State.WAITING) {
+            this.soundThread.play(card);
+        } else {}
+    }
 
     public Question getActiveQuestion() {
 		return this.activeQuestion;

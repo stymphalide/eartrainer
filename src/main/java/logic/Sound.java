@@ -16,7 +16,7 @@ public class Sound extends Thread {
                     player.play(stac);
                 }
             
-            } catch (InterruptedException e){}
+            } catch (InterruptedException e){ e.printStackTrace();}
         }
     }
 
@@ -34,7 +34,7 @@ public class Sound extends Thread {
         return staccato;
     }
     
-    public void play(Card card) {
+    public synchronized void play(Card card) {
         this.card = card;
         this.notify();
     }
