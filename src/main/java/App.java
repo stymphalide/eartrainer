@@ -114,25 +114,15 @@ public class App extends Application {
         window.setScene(menu.render());
     }
     private void setUpLevel(int n) {
-        System.out.println(n);
-        switch(n) {
-            case 1: 
-                this.level = new logic.Level1();
-                break;
-            case 2:
-                this.level = new logic.Level2();
-                break;
-            case 3:
-                this.level = new logic.Level3();
-                break;
-            default: 
-                this.level = new logic.Level1();
-                break;
-        }
-        System.out.println(this.level.getLevelNumber());
-        window.setTitle("eartrainer - Level " + level.getLevelNumber());
-        view.Level levelView = new view.Level(level, this.confirm);
         
+        System.out.println(n);// Test that setting level works 
+        this.level = new logic.Level(n);
+        System.out.println(this.level.getLevelNumber()); // Test that setting level works 
+
+        window.setTitle("eartrainer - Level " + level.getLevelNumber());
+
+        view.Level levelView = new view.Level(level, this.confirm);
+
         this.confirm.setOnAction(e -> {
             if (level.isFinished()) {
                 window.setTitle("eartrainer - Game Over");
