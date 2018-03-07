@@ -4,15 +4,15 @@ import java.util.*;
 
 public class Level {
     int levelNumber;
-    protected int correctAnswers;
-    protected int wrongAnswers;
-    protected int totalQuestions;
-    protected List<String> allowedInstruments;
-    protected List<String> allowedOrders;
-    protected List<String> allowedRanges;
-    protected List<String> allowedIntervals;
-    protected Question activeQuestion;
-    protected Card answer;
+    private int correctAnswers;
+    private int wrongAnswers;
+    private int totalQuestions;
+    private List<String> allowedInstruments;
+    private List<String> allowedOrders;
+    private List<String> allowedRanges;
+    private List<String> allowedIntervals;
+    private Question activeQuestion;
+    private Card answer;
 
     public Level(int n) {
         this.levelNumber = n;
@@ -152,7 +152,7 @@ public class Level {
 		return this.correctAnswers + this.wrongAnswers == this.totalQuestions;
 	}
     
-    protected ArrayList<String> instantiateFeatures(String feature1, String feature2, String feature3){
+    private ArrayList<String> instantiateFeatures(String feature1, String feature2, String feature3){
 		ArrayList<String> features = new ArrayList();
 		features.add(feature1);
 		features.add(feature2);
@@ -160,7 +160,7 @@ public class Level {
 		return features;
 	}
     
-    protected String correctFeature(String feature1, String feature2, List<String> allowedFeatures) {
+    private String correctFeature(String feature1, String feature2, List<String> allowedFeatures) {
 		if (feature1 == feature2) {
 			return feature1;
 		}
