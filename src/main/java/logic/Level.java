@@ -14,11 +14,13 @@ public abstract class Level {
     protected Question activeQuestion;
     protected Card answer;
 
-    public Thread soundThread;    
+    public Sound soundThread;    
 
     Level(int n) {
         this.levelNumber = n;
-        this.soundThread = (new Sound()).start();
+        this.soundThread = new logic.Sound();
+        this.soundThread.setDaemon(true);
+        this.soundThread.start();
     }
 
     public void setAnswer(Card answer) {
@@ -131,7 +133,7 @@ public abstract class Level {
 	}
 
     public boolean isFinished() {
-        if (this.correctAnswers + this.wrongAnswers == this.totalQuestions) {
+        if (this.getTotalAnswers() == this.totalQuestions) {
             soundThread.interrupt(); // Stop the sound Thread.
             soundThread = null; // is this correct? TODO
             return true;
