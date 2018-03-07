@@ -2,22 +2,44 @@ package logic;
 
 import java.util.*;
 
-public abstract class Level {
-    int levelNumber;
-    protected int correctAnswers;
-    protected int wrongAnswers;
-    protected int totalQuestions;
-    protected List<String> allowedInstruments;
-    protected List<String> allowedOrders;
-    protected List<String> allowedRanges;
-    protected List<String> allowedIntervals;
-    protected Question activeQuestion;
-    protected Card answer;
 
-    protected Sound soundThread;    
 
-    Level(int n) {
+        
+
+public class Level {
+    private int levelNumber;
+    private int correctAnswers;
+    private int wrongAnswers;
+    private int totalQuestions;
+    private List<String> allowedInstruments;
+    private List<String> allowedOrders;
+    private List<String> allowedRanges;
+    private List<String> allowedIntervals;
+    private Question activeQuestion;
+    private Card answer;
+    private Sound soundThread;
+
+    public Level(int n) {
         this.levelNumber = n;
+		this.correctAnswers = 0;
+		this.wrongAnswers = 0;
+		this.totalQuestions = 10;
+		switch(levelNumber){
+			case 1: this.allowedInstruments = instantiateFeatures("Piano", "Strings", "Brass");
+					this.allowedIntervals = instantiateFeatures("Perfect Fourth", "Perfect Fifth", "Perfect Octave");
+					break;
+			case 2: this.allowedInstruments = instantiateFeatures("Piano", "Harpsichord", "Organ");
+					this.allowedIntervals = instantiateFeatures("Minor Second", "Major Second", "Minor Third");
+					break;
+			case 3: this.allowedInstruments = instantiateFeatures("Saxophone", "Double Reed", "Brass");
+					this.allowedIntervals = instantiateFeatures("Major Sixth", "Minor Seventh", "Major Seventh");
+					break;
+		}
+		this.allowedOrders = instantiateFeatures("Upwards", "Downwards", "Chordal");
+		this.allowedRanges = instantiateFeatures("Low", "Middle", "High");
+		this.activeQuestion = getQuestion();
+
+        // Instantiate the Sound Thread
         this.soundThread = new logic.Sound();
         this.soundThread.setDaemon(true);
         this.soundThread.start();
@@ -150,7 +172,7 @@ public abstract class Level {
         }
 	}
     
-    protected ArrayList<String> instantiateFeatures(String feature1, String feature2, String feature3){
+    private ArrayList<String> instantiateFeatures(String feature1, String feature2, String feature3){
 		ArrayList<String> features = new ArrayList();
 		features.add(feature1);
 		features.add(feature2);
@@ -158,7 +180,7 @@ public abstract class Level {
 		return features;
 	}
     
-    protected String correctFeature(String feature1, String feature2, List<String> allowedFeatures) {
+    private String correctFeature(String feature1, String feature2, List<String> allowedFeatures) {
 		if (feature1 == feature2) {
 			return feature1;
 		}
@@ -169,4 +191,3 @@ public abstract class Level {
 	}
     
 }
-
