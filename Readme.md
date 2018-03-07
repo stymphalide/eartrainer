@@ -3,7 +3,7 @@ This project is being created as a programming project in informatics class supe
 
 The code can be downloaded in the [installation](#installation) section.
 
-Here is are [Time Schedule](#time-schedule).
+Here is our [Time Schedule](#time-schedule).
 
 Jump to the [Milestone II](#milestone-ii-21032018).
 
@@ -280,6 +280,7 @@ Make a tree of the project structure.
 ├── gradlew
 ├── gradlew.bat
 ├── lib
+│   ├── jfugue-4.0.3.jar
 │   └── jfugue-5.0.9.jar
 ├── Readme.md
 ├── resources
@@ -288,9 +289,12 @@ Make a tree of the project structure.
 │   │   └── app_tobi_runable.zip
 │   ├── current_tree.tree
 │   ├── descriptions
-│   │   └── level_1.txt
+│   │   ├── level_1.txt
+│   │   ├── level_2.txt
+│   │   └── level_3.txt
 │   ├── Eartrainer.png
 │   ├── Eartrainer.ucls
+│   ├── html
 │   ├── img
 │   │   ├── after_game_screen.png
 │   │   ├── Level_1_view.png
@@ -301,7 +305,8 @@ Make a tree of the project structure.
 │   │   ├── perfect_fourth.png
 │   │   ├── perfect_octave.png
 │   │   ├── range_piano_coloured.png
-│   │   └── range_piano.png
+│   │   ├── range_piano.png
+│   │   └── UML_MSI.png
 │   └── UML_Logic.png
 ├── settings.gradle
 └── src
@@ -310,7 +315,6 @@ Make a tree of the project structure.
     │       ├── App.java
     │       ├── logic
     │       │   ├── Card.java
-    │       │   ├── Level1.java
     │       │   ├── Level.java
     │       │   ├── Question.java
     │       │   └── Sound.java
@@ -325,7 +329,8 @@ Make a tree of the project structure.
             └── viewTest
                 └── MenuTest.java
 
-16 directories, 36 files
+17 directories, 39 files
+
 
 ```
 
