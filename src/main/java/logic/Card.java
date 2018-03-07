@@ -65,51 +65,48 @@ public class Card {
     	String actualInstrument;
     	
     	if (this.getInstrument() == "Strings") {
-    		if (this.getRange() == "Low") {
-    			actualInstrument = "Cello";
-    		}
-    		else if (this.getRange() == "Middle") {
-    			actualInstrument = "Viola";
-    		}
-    		else {
-    			actualInstrument = "Violin";
-    		}
+    		switch(this.getRange) {
+				case "Low": actualInstrument = "Cello";
+				break;
+				case "Middle": actualInstrument = "Viola";
+				break;
+				case "High": actualInstrument = "Violin";
+				break;
+			}	
+			
     	}
     	
     	else if (this.getInstrument() == "Brass") {
-    		if (this.getRange() == "Low") {
-    			actualInstrument = "Trombone";
-    		}
-    		else if (this.getRange() == "Middle") {
-    			actualInstrument = "French_Horn";
-    		}
-    		else {
-    			actualInstrument = "Trumpet";
-    		}
+    		switch(this.getRange) {
+				case "Low": actualInstrument = "Trombone";
+				break;
+				case "Middle": actualInstrument = "French_Horn";
+				break;
+				case "High": actualInstrument = "Trumpet";
+				break;
+			}
     	}
     	
     	else if (this.getInstrument() == "Saxophone") {
-    		if (this.getRange() == "Low") {
-    			actualInstrument = "Baritone_Sax";
-    		}
-    		else if (this.getRange() == "Middle") {
-    			actualInstrument = "Alto_Sax";
-    		}
-    		else {
-    			actualInstrument = "Soprano_Sax";
-    		}
+    		switch(this.getRange) {
+				case "Low": actualInstrument = "Baritone_Sax";
+				break;
+				case "Middle": actualInstrument = "Alto_Sax";
+				break;
+				case "High": actualInstrument = "Soprano_Sax";
+				break;
+			}
     	}
     	
     	else if (this.getInstrument() == "Double Reed") {
-    		if (this.getRange() == "Low") {
-    			actualInstrument = "Bassoon";
-    		}
-    		else if (this.getRange() == "Middle") {
-    			actualInstrument = "English_Horn";
-    		}
-    		else {
-    			actualInstrument = "Oboe";
-    		}
+    		switch(this.getRange) {
+				case "Low": actualInstrument = "Bassoon";
+				break;
+				case "Middle": actualInstrument = "English_Horn";
+				break;
+				case "High": actualInstrument = "Oboe";
+				break;
+			}
     	}
     	
 		else if (this.getInstrument() == "Harpsichord") {
