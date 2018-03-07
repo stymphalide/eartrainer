@@ -9,12 +9,7 @@ public abstract class Level {
 
     Level(int n) {
         this.levelNumber = n;
-        this.soundThread = new Thread() {
-            @Override
-            public void run() {
-                System.out.println("Hello World");
-            }
-        };
+        this.soundThread = (new Sound()).start();
     }
 
     public abstract void setAnswer(logic.Card answer);

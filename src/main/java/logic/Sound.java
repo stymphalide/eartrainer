@@ -1,8 +1,23 @@
 package logic;
 import org.jfugue.*;
 
-public class Sound {
-	
+public class Sound extends Thread {
+	private Card card;
+	@Override
+	public void run() {
+		synchronized(this) {
+			while(true) {
+				while(card == null) wait();
+
+				Player player = new Player();
+				String stac = this.cardToStaccato(card);
+				this.card = null;
+				//System.out.println(stac);
+				player.play(stac);
+			}
+		}
+	}
+
 	public String cardToStaccato(Card card) {
 		String staccato;
 		if (card.getOrder() == "Upwards") {
@@ -18,10 +33,7 @@ public class Sound {
 	}
 	
 	public void play(Card card) {
-		Sound sound = new Sound();
-		Player player = new Player();
-		String stac = sound.cardToStaccato(card);
-		System.out.println(stac);
-		player.play(stac);
+		this.card = card;
+		this.notify();
 	}
 }
