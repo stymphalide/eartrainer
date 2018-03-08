@@ -116,6 +116,13 @@ public class App extends Application {
         //primaryStage.setMaximized(true); // Maximise the window.
         window.show();
     }
+
+    public void stop() throws Exception {
+        if(this.musicThread != null) {
+            this.musicThread.cancel();
+        }
+    }
+
     private void setUpMenu() {
         this.musicThread = new view.Music();
         this.musicThread.start();
