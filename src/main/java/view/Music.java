@@ -1,9 +1,29 @@
+package view;
+
 import javax.sound.sampled.*;
 import java.io.File;
 import java.io.IOException;
 import javax.sound.sampled.LineEvent.Type;
 
 public class Music {
+    public static void play() {
+        File file = new File("./resources/sound/example.wav");
+        try {
+            playClip(file);
+        } catch(IOException e) {
+            e.printStackTrace();
+        } catch(UnsupportedAudioFileException e) {
+            e.printStackTrace();
+        } catch(LineUnavailableException e) {
+            e.printStackTrace();
+        } catch(InterruptedException e) {
+            e.printStackTrace();
+        }
+        finally {
+            System.out.println("Something went wrong.");
+        }
+    }
+
     private static void playClip(File clipFile) throws IOException, UnsupportedAudioFileException, LineUnavailableException, InterruptedException {
         class AudioListener implements LineListener {
             private boolean done = false;
