@@ -95,7 +95,6 @@ public class Menu extends VBox {
             @Override
             public void handle(MouseEvent event) {
                 System.out.println(event);
-                view.Music.play();
                 event.consume();
             }
         });

@@ -5,8 +5,15 @@ import java.io.File;
 import java.io.IOException;
 import javax.sound.sampled.LineEvent.Type;
 
-public class Music {
-    public static void play() {
+public class Music extends Thread {
+    public void run() {
+        play();
+    }
+    public void cancel() {
+        interrupt();
+    }
+
+    private void play() {
         File file = new File("./resources/sound/example.wav");
         try {
             playClip(file);
@@ -24,7 +31,7 @@ public class Music {
         }
     }
 
-    private static void playClip(File clipFile) throws IOException, UnsupportedAudioFileException, LineUnavailableException, InterruptedException {
+    private void playClip(File clipFile) throws IOException, UnsupportedAudioFileException, LineUnavailableException, InterruptedException {
         class AudioListener implements LineListener {
             private boolean done = false;
             @Override 

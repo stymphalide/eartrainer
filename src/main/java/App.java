@@ -77,6 +77,8 @@ public class App extends Application {
 
     logic.Level level;
 
+    view.Music musicThread;
+
     @Override
     public void init() throws Exception {
         Button startLevel1 = new Button();
@@ -115,11 +117,13 @@ public class App extends Application {
         window.show();
     }
     private void setUpMenu() {
+        this.musicThread = new view.Music();
+        this.musicThread.start();
         window.setTitle("eartrainer - Menu");
         window.setScene(menu.render());
     }
     private void setUpLevel(int n) {
-        
+        this.musicThread.cancel();
         System.out.println(n);// Test that setting level works 
         this.level = new logic.Level(n);
         System.out.println(this.level.getLevelNumber()); // Test that setting level works 
