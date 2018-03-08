@@ -42,8 +42,13 @@ import org.apache.commons.io.FileUtils; // General file manipulation utilities. 
 import javafx.application.Platform;     // Application platform support class. [JavaFX API] (The exit() method from this class is needed.)
 import javafx.geometry.Pos;             // A set of values for describing vertical and horizontal positioning and alignment. [JavaFX API]
 import javafx.geometry.Insets;          // A set of inside offsets for the 4 side of a rectangular area. [JavaFX API] (Used for setting margins)
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.scene.Scene;              // The JavaFX Scene class is the container for all content in a scene graph. The background of the scene is filled as specified by the fill property. [JavaFX API]
 import javafx.scene.text.Font;          // The Font class represents fonts, which are used to render text on screen. [JavaFX API]
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.control.Button;     // A simple Button Control. Can be a event Target and Contains text and/or graphic [JavaFX API].
 import javafx.scene.control.Label;      // Label is a non-editable text control. A Label is useful for displaying text that is required to fit within a specific space, and thus may need to use an ellipsis or truncation to size the string to fit. [JavaFX API]
 import javafx.scene.layout.VBox;        // VBox lays out its children in a single vertical column. If the vbox has a border and/or padding set, then the contents will be layed out within those insets. [JavaFX API]
@@ -78,8 +83,27 @@ public class Menu extends VBox {
             Platform.exit();
         });
 
-        this.nav = new HBox(50, exitButton);
+        
+        Image img = new Image("file:./resources/img/music_icon.png");
+        
+        
+        ImageView imgHolder = new ImageView();
+        imgHolder.setImage(img);
+        imgHolder.setFitWidth(30);
+        imgHolder.setFitHeight(30);
+        imgHolder.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                System.out.println(event);
+                File 
+                view.Music.playClip();
+                event.consume();
+            }
+        });
+
+        this.nav = new HBox(50, imgHolder, exitButton);
         this.nav.setMargin(exitButton, new Insets(20, 50, 40, 30));
+        this.nav.setMargin(imgHolder, new Insets(20, 50, 40, 30));
         this.nav.setAlignment(Pos.BOTTOM_RIGHT);
 
         // SetUp the VBox.
@@ -135,5 +159,6 @@ public class Menu extends VBox {
         String path = "./resources/descriptions/level_" + level + ".txt";
         return FileUtils.readFileToString(new File(path), "UTF-8");
     }
+ 
 
 }
