@@ -122,8 +122,8 @@ public class App extends Application {
                     stopMusic();
                     menu.toggleMusic();
                 } else {
-                    startMusic();
                     menu.toggleMusic();
+                    startMusic();
                 }
                 System.out.println(event);
                 event.consume();
@@ -145,8 +145,10 @@ public class App extends Application {
     }
 
     private void startMusic() {
-        this.musicThread = new view.Music();
-        this.musicThread.start();
+        if (this.menu.getMusic()) {
+            this.musicThread = new view.Music();
+            this.musicThread.start();
+        }
     }
 
     private void stopMusic() {

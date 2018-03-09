@@ -103,6 +103,13 @@ public class Menu extends VBox {
         getChildren().addAll(this.titleRow, this.levelCol, this.nav);
     }
 
+    public boolean getMusic() {
+        return this.isMusicOn;
+    }
+
+    public void setMusic(boolean onoff) {
+        this.isMusicOn = onoff;
+    }
     public Scene render() {
         if(this.scene == null) {
             this.scene = new Scene(this, 700, 600);
