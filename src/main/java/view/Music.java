@@ -1,9 +1,41 @@
 package view;
 
-import javax.sound.sampled.*;
-import java.io.File;
-import java.io.IOException;
-import javax.sound.sampled.LineEvent.Type;
+import javax.sound.sampled.*;               // Provides interfaces and classes for capture, processing, and playback of sampled audio data.
+import java.io.File;                        // An abstract representation of file and directory pathnames.
+import java.io.IOException;                 // Signals that an I/O exception of some sort has occurred.
+import javax.sound.sampled.LineEvent.Type;  // The LineEvent.Type inner class identifies what kind of event occurred on a line. Static instances are provided for the common types (OPEN, CLOSE, START, and STOP).
+
+/* classdoc
+Provides the music to be played in the application. 
+This class inherits from the Thread class. Meaning that the music plays in a separate thread. 
+A thread is a lightweight process that runs on the java virtual machine.
+
+The class has two public methods.
+- public void run()
+- public void cancel()
+
+One necessary method that needs to be defined when inheriting from a thread is the public void run() method. 
+This method is called when one calls the start() method on an instance of this class. 
+The method does nothing else than calling the private play method. (Note: redundant TODO)
+
+Additionally the Music class has another public method, 
+called public void cancel() this interrupts the playback and lets the thread terminate.
+
+
+This class has two private methods:
+- private void play()
+- private void playClip(File clipFile)
+
+The play method opens a new file, it is a wrapper for the playClip method. meaning it opens a sound File. and calls the playClip method.
+It also catches all exceptions.
+
+
+The playClip method stems almost with no changes from [PlaySoundFile]. 
+
+Note: This class plays a prepared music file and is used before and after the level. 
+Not to be mistaken by the sound played in the level. That sound is provided in the logic.Sound class.
+
+*/
 
 public class Music extends Thread {
     public void run() {
@@ -54,13 +86,13 @@ public class Music extends Thread {
             Clip clip = AudioSystem.getClip();
             clip.addLineListener(listener);
             clip.open(audioInputStream);
-            clip.loop(Clip.LOOP_CONTINUOUSLY);
-        try {
-            clip.start();
-            listener.waitUntilDone();
-        } finally {
-            clip.close();
-        }
+            clip.loop(Clip.LOOP_CONTINUOUSLY); // Custom change: Make the clip play in a loop.
+            try {
+                clip.start();
+                listener.waitUntilDone();
+            } finally {
+                clip.close();
+            }
         } finally {
             audioInputStream.close();
         }
