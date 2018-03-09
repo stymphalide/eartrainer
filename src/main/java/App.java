@@ -65,6 +65,11 @@ import javafx.application.Application; // Application class from which JavaFX ap
 import javafx.scene.control.Button;    // A simple Button Control. Can be a event Target and Contains text and/or graphic [JavaFX API].
 import javafx.scene.Scene;             // The JavaFX Scene class is the container for all content in a scene graph. The background of the scene is filled as specified by the fill property. [JavaFX API]
 import javafx.stage.Stage;             // The JavaFX Stage class is the top level JavaFX container. The primary Stage is constructed by the platform. Additional Stage objects may be constructed by the application. [JavaFX API]
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import java.util.*;
 
 public class App extends Application {
@@ -78,6 +83,7 @@ public class App extends Application {
     logic.Level level;
 
     view.Music musicThread;
+    ImageView musicToggler;
 
     @Override
     public void init() throws Exception {
@@ -106,7 +112,22 @@ public class App extends Application {
         this.backToMenu.setOnAction(e -> {
             setUpMenu();
         });
-        this.menu = new view.Menu(startLevels);
+
+        this.musicToggler = new ImageView();
+        this.musicToggler.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                System.out.println(musicThread.getState());
+                if (musicThread.getState() == Thread.State.WAITING) {
+                    stopMusic();
+                } else {
+                    startMusic();
+                }
+                System.out.println(event);
+                event.consume();
+            }
+        });
+        this.menu = new view.Menu(startLevels, musicToggler);
     }
 
     @Override
@@ -118,19 +139,27 @@ public class App extends Application {
     }
 
     public void stop() throws Exception {
+        stopMusic();
+    }
+
+    private void startMusic() {
+        this.musicThread = new view.Music();
+        this.musicThread.start();
+    }
+
+    private void stopMusic() {
         if(this.musicThread != null) {
             this.musicThread.cancel();
         }
     }
 
     private void setUpMenu() {
-        this.musicThread = new view.Music();
-        this.musicThread.start();
+        startMusic();
         window.setTitle("eartrainer - Menu");
-        window.setScene(menu.render());
+        window.setScene(this.menu.render());
     }
     private void setUpLevel(int n) {
-        this.musicThread.cancel();
+        stopMusic();
         System.out.println(n);// Test that setting level works 
         this.level = new logic.Level(n);
         System.out.println(this.level.getLevelNumber()); // Test that setting level works 

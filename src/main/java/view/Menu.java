@@ -61,7 +61,7 @@ public class Menu extends VBox {
     private VBox levelCol;
     private HBox nav;
 
-    public Menu(List<Button> startLevels) {
+    public Menu(List<Button> startLevels, ImageView imgHolder) {
         super(50);
         this.startLevels = startLevels;
         // Title row
@@ -85,19 +85,11 @@ public class Menu extends VBox {
 
         
         Image img = new Image("file:./resources/img/music_icon.png");
-        
-        
-        ImageView imgHolder = new ImageView();
+                
         imgHolder.setImage(img);
         imgHolder.setFitWidth(30);
         imgHolder.setFitHeight(30);
-        imgHolder.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent event) {
-                System.out.println(event);
-                event.consume();
-            }
-        });
+        
 
         this.nav = new HBox(50, imgHolder, exitButton);
         this.nav.setMargin(exitButton, new Insets(20, 50, 40, 30));
