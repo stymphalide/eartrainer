@@ -79,25 +79,10 @@ public class Menu extends VBox {
         // Level Setup
         this.levelCol = new VBox(50);
         setUpLevels();
-        
-        // Navigation bar Setup
-        Button exitButton = new Button();
-        exitButton.setText("Exit");
-        exitButton.setOnAction(e -> {
-            Platform.exit();
-        });
-
-        
-        Image img = new Image("file:./resources/img/music_on_icon.png");
                 
-        this.musicToggler.setImage(img);
-        this.musicToggler.setFitWidth(30);
-        this.musicToggler.setFitHeight(30);
-
-        this.nav = new HBox(50, musicToggler, exitButton);
-        this.nav.setMargin(exitButton, new Insets(20, 50, 40, 30));
-        this.nav.setMargin(musicToggler, new Insets(20, 50, 40, 30));
-        this.nav.setAlignment(Pos.BOTTOM_RIGHT);
+        this.nav = new HBox(50);
+        setUpNav();
+        
 
         // SetUp the VBox.
         getChildren().addAll(this.titleRow, this.levelCol, this.nav);
@@ -106,15 +91,12 @@ public class Menu extends VBox {
     public boolean getMusic() {
         return this.isMusicOn;
     }
-
-    public void setMusic(boolean onoff) {
-        this.isMusicOn = onoff;
-    }
     public Scene render() {
         if(this.scene == null) {
             this.scene = new Scene(this, 700, 600);
         } else {
             setUpLevels();
+            setUpNav();
         }
         return this.scene;
         
@@ -129,6 +111,25 @@ public class Menu extends VBox {
         }
         this.musicToggler.setImage(img);
         this.isMusicOn = !this.isMusicOn;
+    }
+
+    private void setUpNav() {
+        Button exitButton = new Button();
+        exitButton.setText("Exit");
+        exitButton.setOnAction(e -> {
+            Platform.exit();
+        });
+
+        // Music toggle icon
+        Image img = new Image("file:./resources/img/music_on_icon.png");
+        this.musicToggler.setImage(img);
+        this.musicToggler.setFitWidth(30);
+        this.musicToggler.setFitHeight(30);
+
+        this.nav.setMargin(exitButton, new Insets(20, 50, 40, 30));
+        this.nav.setMargin(musicToggler, new Insets(20, 50, 40, 30));
+        this.nav.setAlignment(Pos.BOTTOM_RIGHT);
+        this.nav.getChildren().setAll(this.musicToggler, exitButton);
     }
 
     private void setUpLevels() {
@@ -166,6 +167,7 @@ public class Menu extends VBox {
     private void hideLevelDescription(Label label) {
         label.setText("");
     }
+
     private String getLevelDescription(int level) throws IOException {
         String path = "./resources/descriptions/level_" + level + ".txt";
         return FileUtils.readFileToString(new File(path), "UTF-8");

@@ -9,6 +9,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.ProgressBar;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.VBox;
 import javafx.scene.layout.HBox; 
 
@@ -57,12 +58,12 @@ public class Level extends VBox {
         return scene;
     }
 
-    public void viewFinished(logic.Level level, Button backToMenu, Button playAgain) {
+    public void viewFinished(logic.Level level, Button backToMenu, Button playAgain, ImageView musicToggler) {
 
         // Navigation
         playAgain.setText("Play Again");
 
-        HBox nav = new HBox(50, backToMenu, playAgain);
+        HBox nav = new HBox(50, musicToggler, backToMenu, playAgain);
         nav.setAlignment(Pos.CENTER);
 
         getChildren().setAll(

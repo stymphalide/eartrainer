@@ -135,6 +135,7 @@ public class App extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
         window = primaryStage;
+        startMusic();
         setUpMenu();
         //primaryStage.setMaximized(true); // Maximise the window.
         window.show();
@@ -158,7 +159,6 @@ public class App extends Application {
     }
 
     private void setUpMenu() {
-        startMusic();
         window.setTitle("eartrainer - Menu");
         window.setScene(this.menu.render());
     }
@@ -175,7 +175,7 @@ public class App extends Application {
         this.confirm.setOnAction(e -> {
             if (level.isFinished()) {
                 window.setTitle("eartrainer - Game Over");
-                levelView.viewFinished(level, backToMenu, startLevels.get(n - 1));
+                levelView.viewFinished(level, backToMenu, startLevels.get(n - 1), this.musicToggler);
             } else {
                 List<String> values = levelView.getComboBoxValues();
                 if (values == null) { // Only advance if all comboboxes are set.
