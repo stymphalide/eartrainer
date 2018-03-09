@@ -54,6 +54,7 @@ public class Music extends Thread {
             Clip clip = AudioSystem.getClip();
             clip.addLineListener(listener);
             clip.open(audioInputStream);
+            clip.loop(Clip.LOOP_CONTINUOUSLY);
         try {
             clip.start();
             listener.waitUntilDone();
