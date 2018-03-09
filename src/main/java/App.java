@@ -175,6 +175,7 @@ public class App extends Application {
         this.confirm.setOnAction(e -> {
             if (level.isFinished()) {
                 window.setTitle("eartrainer - Game Over");
+                startMusic();
                 levelView.viewFinished(level, backToMenu, startLevels.get(n - 1), this.musicToggler);
             } else {
                 List<String> values = levelView.getComboBoxValues();

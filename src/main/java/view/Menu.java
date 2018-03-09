@@ -121,7 +121,12 @@ public class Menu extends VBox {
         });
 
         // Music toggle icon
-        Image img = new Image("file:./resources/img/music_on_icon.png");
+        Image img;
+        if(this.isMusicOn) {
+            img = new Image("file:./resources/img/music_on_icon.png");
+        } else {
+            img = new Image("file:./resources/img/music_off_icon.png");
+        }
         this.musicToggler.setImage(img);
         this.musicToggler.setFitWidth(30);
         this.musicToggler.setFitHeight(30);
