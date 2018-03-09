@@ -120,8 +120,10 @@ public class App extends Application {
                 System.out.println(musicThread.getState());
                 if (musicThread.getState() == Thread.State.WAITING) {
                     stopMusic();
+                    menu.toggleMusic();
                 } else {
                     startMusic();
+                    menu.toggleMusic();
                 }
                 System.out.println(event);
                 event.consume();

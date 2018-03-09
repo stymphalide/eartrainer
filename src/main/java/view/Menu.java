@@ -60,10 +60,14 @@ public class Menu extends VBox {
     private HBox titleRow;
     private VBox levelCol;
     private HBox nav;
+    private ImageView musicToggler;
+    private boolean isMusicOn;
 
-    public Menu(List<Button> startLevels, ImageView imgHolder) {
+    public Menu(List<Button> startLevels, ImageView musicToggler) {
         super(50);
         this.startLevels = startLevels;
+        this.musicToggler = musicToggler;
+        this.isMusicOn = true;
         // Title row
         Label title = new Label("Eartrainer"); 
         title.setFont(new Font(40));
@@ -84,16 +88,15 @@ public class Menu extends VBox {
         });
 
         
-        Image img = new Image("file:./resources/img/music_icon.png");
+        Image img = new Image("file:./resources/img/music_on_icon.png");
                 
-        imgHolder.setImage(img);
-        imgHolder.setFitWidth(30);
-        imgHolder.setFitHeight(30);
-        
+        this.musicToggler.setImage(img);
+        this.musicToggler.setFitWidth(30);
+        this.musicToggler.setFitHeight(30);
 
-        this.nav = new HBox(50, imgHolder, exitButton);
+        this.nav = new HBox(50, musicToggler, exitButton);
         this.nav.setMargin(exitButton, new Insets(20, 50, 40, 30));
-        this.nav.setMargin(imgHolder, new Insets(20, 50, 40, 30));
+        this.nav.setMargin(musicToggler, new Insets(20, 50, 40, 30));
         this.nav.setAlignment(Pos.BOTTOM_RIGHT);
 
         // SetUp the VBox.
@@ -108,6 +111,17 @@ public class Menu extends VBox {
         }
         return this.scene;
         
+    }
+
+    public void toggleMusic() {
+        Image img;
+        if (this.isMusicOn) {
+            img = new Image("file:./resources/img/music_off_icon.png");
+        } else {
+            img = new Image("file:./resources/img/music_on_icon.png");
+        }
+        this.musicToggler.setImage(img);
+        this.isMusicOn = !this.isMusicOn;
     }
 
     private void setUpLevels() {
