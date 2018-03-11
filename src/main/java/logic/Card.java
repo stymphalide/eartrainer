@@ -62,10 +62,10 @@ public class Card {
     
     
     public String getActualInstrument() {
-    	String actualInstrument = "Invalid Instrument";
+    	String actualInstrument = null;
     	
     	if (this.getInstrument() == "Strings") {
-    		switch(this.getRange()) {
+    		switch (this.getRange()) {
 				case "Low": actualInstrument = "Cello";
 				break;
 				case "Middle": actualInstrument = "Viola";
@@ -77,7 +77,7 @@ public class Card {
     	}
     	
     	else if (this.getInstrument() == "Brass") {
-    		switch(this.getRange()) {
+    		switch (this.getRange()) {
 				case "Low": actualInstrument = "Trombone";
 				break;
 				case "Middle": actualInstrument = "French_Horn";
@@ -88,7 +88,7 @@ public class Card {
     	}
     	
     	else if (this.getInstrument() == "Saxophone") {
-    		switch(this.getRange()) {
+    		switch (this.getRange()) {
 				case "Low": actualInstrument = "Baritone_Sax";
 				break;
 				case "Middle": actualInstrument = "Alto_Sax";
@@ -99,7 +99,7 @@ public class Card {
     	}
     	
     	else if (this.getInstrument() == "Double Reed") {
-    		switch(this.getRange()) {
+    		switch (this.getRange()) {
 				case "Low": actualInstrument = "Bassoon";
 				break;
 				case "Middle": actualInstrument = "English_Horn";

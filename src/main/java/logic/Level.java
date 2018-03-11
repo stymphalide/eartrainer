@@ -24,7 +24,7 @@ public class Level {
 		this.correctAnswers = 0;
 		this.wrongAnswers = 0;
 		this.totalQuestions = 10;
-		switch(levelNumber){
+		switch (levelNumber){
 			case 1: this.allowedInstruments = instantiateFeatures("Piano", "Strings", "Brass");
 					this.allowedIntervals = instantiateFeatures("Perfect Fourth", "Perfect Fifth", "Perfect Octave");
 					break;
