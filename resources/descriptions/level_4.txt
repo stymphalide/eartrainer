@@ -1,0 +1,4 @@
+- Intervals: Major Sixth, Minor Seventh, Major Seventh.
+- Ranges: Low (C2-B3), Middle (C4-B5), High (C6-B7).
+- Instruments: Saxophone, Double Reed, Brass.
+- Order: Upwards, Downwards, Chordal.

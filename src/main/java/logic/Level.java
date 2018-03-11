@@ -2,10 +2,6 @@ package logic;
 
 import java.util.*;
 
-
-
-        
-
 public class Level {
     private int levelNumber;
     private int correctAnswers;
@@ -31,9 +27,13 @@ public class Level {
 			case 2: this.allowedInstruments = instantiateFeatures("Piano", "Harpsichord", "Organ");
 					this.allowedIntervals = instantiateFeatures("Minor Second", "Major Second", "Minor Third");
 					break;
-			case 3: this.allowedInstruments = instantiateFeatures("Saxophone", "Double Reed", "Brass");
+			case 3: this.allowedInstruments = instantiateFeatures("Harpsichord", "Strings", "Double Reed");
+					this.allowedIntervals = instantiateFeatures("Major Third", "Tritone", "Minor Sixth");
+					break;
+			case 4: this.allowedInstruments = instantiateFeatures("Saxophone", "Double Reed", "Brass");
 					this.allowedIntervals = instantiateFeatures("Major Sixth", "Minor Seventh", "Major Seventh");
 					break;
+			
 		}
 		this.allowedOrders = instantiateFeatures("Upwards", "Downwards", "Chordal");
 		this.allowedRanges = instantiateFeatures("Low", "Middle", "High");
