@@ -76,8 +76,8 @@ public class Ranking extends Group {
         TableColumn correctCol = new TableColumn("Correct");
 
         this.table = new TableView<>();
-        table.setItems(getValues());
-        table.getColums().addAll(
+        this.table.setItems(getValues());
+        this.table.getColumns().addAll(
             nameCol, 
             levelCol, 
             dateCol, 
@@ -100,24 +100,24 @@ public class Ranking extends Group {
                     header = !header;
                 } else {
                     values.add(new RankingVal(line));
-
+                    System.out.println(line);
                 }
             }
         } catch (IOException e) {
             e.printStackTrace();
         }
+        return values;
     }
-    return values;
 }
-private class RankingVal {
+class RankingVal {
     private String name;
     private int level;
-    private long date;
+    private String date;
     private long time;
     private double correct;
     public RankingVal(String name, 
                       int level, 
-                      long date, 
+                      String date, 
                       long time, 
                       double correct) {
         this.name = name;
@@ -130,7 +130,7 @@ private class RankingVal {
         if(level.isFinished()) {
             this.name = "Some Name";
             this.level = level.getLevelNumber();
-            this.date = level.getStartTime().getEpochSeconds();
+            this.date = level.getStartTime().toString();
             this.time = level.getDuration().getSeconds();
             this.correct = (double)(level.getCorrectAnswers() / level.getWrongAnswers());
         } else {
@@ -141,7 +141,7 @@ private class RankingVal {
         String[] values = line.split(",");
         this.name = values[0];
         this.level = Integer.parseInt(values[1]);
-        this.date = Long.parseLong(values[2]);
+        this.date = values[2];
         this.time = Long.parseLong(values[3]);
         this.correct = Double.parseDouble(values[4]);
     }
@@ -153,10 +153,12 @@ private class RankingVal {
         return this.level;
     }
     public String getDate() {
-        return "No Date";
+        return this.date;
     }
     public String getTime() {
-        return "No Time";
+        long minutes = this.time / 60;
+        long seconds = this.time % 60;
+        return "" + minutes + ":" + seconds;
     }
     public double getCorrect() {
         return this.correct;
@@ -167,7 +169,7 @@ private class RankingVal {
     public void setLevel(int level) {
         this.level = level;
     }
-    public void setDate(long date) {
+    public void setDate(String date) {
         this.date = date;
     }
     public void setTime(long time) {
