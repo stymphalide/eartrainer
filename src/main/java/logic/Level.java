@@ -1,10 +1,7 @@
 package logic;
 
 import java.util.*;
-
-
-
-        
+import java.time.*;
 
 public class Level {
     private int levelNumber;
@@ -45,7 +42,7 @@ public class Level {
         this.soundThread = new logic.Sound();
         this.soundThread.setDaemon(true);
         this.soundThread.start();
-        this.startTime = time.Instant.now();
+        this.startTime = Instant.now();
     }
 
     public void setAnswer(Card answer) {
@@ -165,19 +162,20 @@ public class Level {
 
 	}
 
-    public time.Duration getLevelDuration() {
+    public Duration getLevelDuration() {
         if (this.endTime == null) {
-            return time.Duration.between(this.startTime, time.Instant.now());
+            return Duration.between(this.startTime, Instant.now());
         } else {
-            return time.Duration.between(this.startTime, this.endTime);
+            return Duration.between(this.startTime, this.endTime);
         }
+
     }
 
     public boolean isFinished() {
         if (this.getTotalAnswers() == this.totalQuestions) {
             soundThread.interrupt(); // Stop the sound Thread.
             soundThread = null; // is this correct? TODO
-            this.endTime = time.Instant.now();
+            this.endTime = Instant.now();
             return true;
         } else {
             return false;
