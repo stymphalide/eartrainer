@@ -1,5 +1,25 @@
 package view;
 
+import java.util.*;
+import java.io.File;                    // An abstract representation of file and directory pathnames. [File API]
+import java.io.IOException;             // Signals that an I/O exception of some sort has occurred. [IOException API]
+import org.apache.commons.io.FileUtils; // General file manipulation utilities. [FileUtils API]
+
+import javafx.application.Platform;     // Application platform support class. [JavaFX API] (The exit() method from this class is needed.)
+import javafx.geometry.Pos;             // A set of values for describing vertical and horizontal positioning and alignment. [JavaFX API]
+import javafx.geometry.Insets;          // A set of inside offsets for the 4 side of a rectangular area. [JavaFX API] (Used for setting margins)
+import javafx.event.ActionEvent;        // An Event representing some type of action. [JavaFX API]
+import javafx.event.EventHandler;       // Handler for events of a specific class / type. [JavaFX API]
+import javafx.scene.Scene;              // The JavaFX Scene class is the container for all content in a scene graph. The background of the scene is filled as specified by the fill property. [JavaFX API]
+import javafx.scene.text.Font;          // The Font class represents fonts, which are used to render text on screen. [JavaFX API]
+import javafx.scene.image.Image;        // 
+import javafx.scene.image.ImageView;    // 
+import javafx.scene.input.MouseEvent;   // 
+import javafx.scene.control.Button;     // A simple Button Control. Can be a event Target and Contains text and/or graphic [JavaFX API].
+import javafx.scene.control.Label;      // Label is a non-editable text control. A Label is useful for displaying text that is required to fit within a specific space, and thus may need to use an ellipsis or truncation to size the string to fit. [JavaFX API]
+import javafx.scene.layout.VBox;        // VBox lays out its children in a single vertical column. If the vbox has a border and/or padding set, then the contents will be layed out within those insets. [JavaFX API]
+import javafx.scene.layout.HBox;        // HBox lays out its children in a single horizontal row. If the hbox has a border and/or padding set, then the contents will be layed out within those insets. [JavaFX API]
+
 /* classdoc
     This class renders the Menu view of the app.
     The View consists of three rows.
@@ -34,25 +54,6 @@ package view;
 /*
     Main Sources: JavaFX API; 100 JavaFX Tutorials
 */
-import java.util.*;
-import java.io.File;                    // An abstract representation of file and directory pathnames. [File API]
-import java.io.IOException;             // Signals that an I/O exception of some sort has occurred. [IOException API]
-import org.apache.commons.io.FileUtils; // General file manipulation utilities. [FileUtils API]
-
-import javafx.application.Platform;     // Application platform support class. [JavaFX API] (The exit() method from this class is needed.)
-import javafx.geometry.Pos;             // A set of values for describing vertical and horizontal positioning and alignment. [JavaFX API]
-import javafx.geometry.Insets;          // A set of inside offsets for the 4 side of a rectangular area. [JavaFX API] (Used for setting margins)
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
-import javafx.scene.Scene;              // The JavaFX Scene class is the container for all content in a scene graph. The background of the scene is filled as specified by the fill property. [JavaFX API]
-import javafx.scene.text.Font;          // The Font class represents fonts, which are used to render text on screen. [JavaFX API]
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
-import javafx.scene.input.MouseEvent;
-import javafx.scene.control.Button;     // A simple Button Control. Can be a event Target and Contains text and/or graphic [JavaFX API].
-import javafx.scene.control.Label;      // Label is a non-editable text control. A Label is useful for displaying text that is required to fit within a specific space, and thus may need to use an ellipsis or truncation to size the string to fit. [JavaFX API]
-import javafx.scene.layout.VBox;        // VBox lays out its children in a single vertical column. If the vbox has a border and/or padding set, then the contents will be layed out within those insets. [JavaFX API]
-import javafx.scene.layout.HBox;        // HBox lays out its children in a single horizontal row. If the hbox has a border and/or padding set, then the contents will be layed out within those insets. [JavaFX API]
 
 public class Menu extends VBox {
     private Scene scene;
