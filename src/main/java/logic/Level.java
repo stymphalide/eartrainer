@@ -168,7 +168,9 @@ public class Level {
         } else {
             return Duration.between(this.startTime, this.endTime);
         }
-
+    }
+    public Instant getStartTime() {
+        return this.startTime;
     }
 
     public boolean isFinished() {

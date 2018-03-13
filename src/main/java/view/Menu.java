@@ -56,7 +56,7 @@ public class Menu extends VBox {
     private VBox levelCol;
     private HBox nav;
 
-    public Menu(List<Button> startLevels) {
+    public Menu(List<Button> startLevels, Button rankingButton) {
         super(50);
         this.startLevels = startLevels;
         // Title row
@@ -78,8 +78,9 @@ public class Menu extends VBox {
             Platform.exit();
         });
 
-        this.nav = new HBox(50, exitButton);
+        this.nav = new HBox(50, rankingButton, exitButton);
         this.nav.setMargin(exitButton, new Insets(20, 50, 40, 30));
+        this.nav.setMargin(rankingButton, new Insets(20, 50, 40, 30));
         this.nav.setAlignment(Pos.BOTTOM_RIGHT);
 
         // SetUp the VBox.
@@ -93,7 +94,6 @@ public class Menu extends VBox {
             setUpLevels();
         }
         return this.scene;
-        
     }
 
     private void setUpLevels() {

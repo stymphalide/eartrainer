@@ -74,6 +74,7 @@ public class App extends Application {
 
     view.Menu menu;
     Button confirm = new Button("Confirm");
+    Button viewRanking = new Button("Leaderboard");
 
     logic.Level level;
 
@@ -99,7 +100,10 @@ public class App extends Application {
         this.backToMenu.setOnAction(e -> {
             setUpMenu();
         });
-        this.menu = new view.Menu(startLevels);
+        this.viewRanking.setOnAction(e -> {
+            setUpRanking();
+        });
+        this.menu = new view.Menu(startLevels, this.viewRanking);
     }
 
     @Override
@@ -142,6 +146,14 @@ public class App extends Application {
         });
         window.setScene(levelView.render());
     }
+
+    private void setUpRanking() {
+        final Stage ranking = new Stage();
+        view.Ranking rankingScene = new view.Ranking();
+        ranking.setScene(rankingScene.render());
+        ranking.show();
+    }
+
     public static void main(String[] args) {
         Application.launch(args);
     }
