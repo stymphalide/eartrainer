@@ -172,7 +172,7 @@ public class Level {
     }
 
     public boolean isFinished() {
-        if (this.getTotalAnswers() == this.totalQuestions) {
+        if (this.getTotalAnswers() == this.totalQuestions) { // This -1 is required, since the query is done before the level is updated.
             soundThread.interrupt(); // Stop the sound Thread.
             soundThread = null; // is this correct? TODO
             this.endTime = Instant.now();

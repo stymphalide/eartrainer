@@ -123,18 +123,19 @@ public class App extends Application {
 
         view.Level levelView = new view.Level(level, this.confirm);
 
+
         this.confirm.setOnAction(e -> {
+            List<String> values = levelView.getComboBoxValues();
+            logic.Card answer = new logic.Card(values.get(0), values.get(1), values.get(2), values.get(3));
+            level.setAnswer(answer);
+            level.nextQuestion();
             if (level.isFinished()) {
                 window.setTitle("eartrainer - Game Over");
                 levelView.viewFinished(level, backToMenu, startLevels.get(n - 1));
             } else {
-                List<String> values = levelView.getComboBoxValues();
                 if (values == null) { // Only advance if all comboboxes are set.
                     System.out.println("Set All Combobox Values!");
                 } else {
-                    logic.Card answer = new logic.Card(values.get(0), values.get(1), values.get(2), values.get(3));
-                    level.setAnswer(answer);
-                    level.nextQuestion();
                     levelView.update();
                 }
             }
