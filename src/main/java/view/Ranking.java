@@ -1,6 +1,14 @@
 package view;
 
 
+import java.io.File;                    // An abstract representation of file and directory pathnames. [File API]
+import java.io.IOException;             // Signals that an I/O exception of some sort has occurred. [IOException API]
+import java.io.BufferedReader;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.FileSystems;
+import java.nio.charset.Charset;
+
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.Group;
@@ -24,12 +32,12 @@ public class Ranking extends Group {
     Scene scene;
 
     public static void updateRanking(logic.Level level) {
-        Path file = "./resources/ranking.csv";
-
+        Path file = FileSystems.getDefault().getPath("./resources/ranking.csv");
+        Charset charset = Charset.forName("UTF-8");
         // Open file
         try (BufferedReader reader = Files.newBufferedReader(file, charset)) {
             String line = null;
-            while ((line = reader.readline()) != null) {
+            while ((line = reader.readLine()) != null) {
                 System.out.println(line);
             }
         } catch (IOException e) {
