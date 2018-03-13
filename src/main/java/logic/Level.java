@@ -18,6 +18,8 @@ public class Level {
     private Question activeQuestion;
     private Card answer;
     private Sound soundThread;
+    private Instant startTime;
+    private Instant endTime;
 
     public Level(int n) {
         this.levelNumber = n;
@@ -43,6 +45,7 @@ public class Level {
         this.soundThread = new logic.Sound();
         this.soundThread.setDaemon(true);
         this.soundThread.start();
+        this.startTime = time.Instant.now();
     }
 
     public void setAnswer(Card answer) {
@@ -162,10 +165,19 @@ public class Level {
 
 	}
 
+    public time.Duration getLevelDuration() {
+        if (this.endTime == null) {
+            return time.Duration.between(this.startTime, time.Instant.now());
+        } else {
+            return time.Duration.between(this.startTime, this.endTime);
+        }
+    }
+
     public boolean isFinished() {
         if (this.getTotalAnswers() == this.totalQuestions) {
             soundThread.interrupt(); // Stop the sound Thread.
             soundThread = null; // is this correct? TODO
+            this.endTime = time.Instant.now();
             return true;
         } else {
             return false;
