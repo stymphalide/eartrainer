@@ -1,13 +1,8 @@
 package view;
 
-
-import java.io.File;                    // An abstract representation of file and directory pathnames. [File API]
-import java.io.IOException;             // Signals that an I/O exception of some sort has occurred. [IOException API]
-import java.io.BufferedReader;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.FileSystems;
-import java.nio.charset.Charset;
+import static java.nio.file.StandardOpenOption.*;
+import java.io.*;
+import java.nio.file.*;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -33,24 +28,26 @@ public class Ranking extends Group {
     TableView table;
 
     public static void updateRanking(logic.Level level) {
+
+        RankingVal rank = new RankingVal(level);
+
         Path file = FileSystems.getDefault().getPath("./resources/ranking.csv");
         Charset charset = Charset.forName("UTF-8");
         // Open file
         try (BufferedReader reader = Files.newBufferedReader(file, charset)) {
             String line = null;
+            boolean set = false;
+            // Read file
             while ((line = reader.readLine()) != null) {
                 System.out.println(line);
+            }
+            if(!set) {
+                // Write to file
+
             }
         } catch (IOException e) {
             e.printStackTrace();
         }
-
-        // Read from file.
-
-        // Write to file
-
-        // Close file
-
     }
 
     public Ranking() {
@@ -144,6 +141,26 @@ class RankingVal {
         this.date = values[2];
         this.time = Long.parseLong(values[3]);
         this.correct = Double.parseDouble(values[4]);
+    }
+    public boolean greater(RankingVal rank2) {
+        if(this.level == rank2.getLevel()) {
+            if (this.correct == rank2.getCorrect()) {
+                if(this.time > rank2.getTime()) {
+                    return false;
+                } else {
+                    return true;
+                }
+            } else if (this.correct < rank2.getCorrect()) {
+                return false;
+            } else {
+                return true;
+            }
+        } else if(this.level < rank2.getLevel()) {
+            return false;
+        } else {
+            return true;
+        }
+        return false;
     }
 
     public String getName() {
