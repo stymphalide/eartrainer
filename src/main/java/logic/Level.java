@@ -162,7 +162,7 @@ public class Level {
 
 	}
 
-    public Duration getLevelDuration() {
+    public Duration getDuration() {
         if (this.endTime == null) {
             return Duration.between(this.startTime, Instant.now());
         } else {
