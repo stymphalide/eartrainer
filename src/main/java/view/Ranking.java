@@ -44,6 +44,7 @@ import javafx.beans.property.SimpleStringProperty;
 */
 
 public class Ranking extends Group {
+    private static String jsonPath = "./resources/ranking.json";
     private Scene scene;
     private TabPane header;
     private TableView table;
@@ -65,17 +66,21 @@ public class Ranking extends Group {
             Leaderboard leaderboard = openRankingFile();
             leaderboard.add(rank, level.getLevelNumber());
             
+            leaderboard.sort();
+
             GsonBuilder builder = new GsonBuilder();
             Gson gson = builder.create();
             
-
             System.out.println(gson.toJson(leaderboard));
+            try (Writer writer = new FileWriter(jsonPath)) {
+                gson.toJson(leaderboard, writer);
+            }
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
     private static Leaderboard openRankingFile() throws IOException {
-        Path file = FileSystems.getDefault().getPath("./resources/ranking.json");
+        Path file = FileSystems.getDefault().getPath(jsonPath);
 
         BufferedReader reader = Files.newBufferedReader(file, StandardCharsets.UTF_8);
 
@@ -199,6 +204,10 @@ class Leaderboard {
             case 3: addToLevel3(value); break;
             case 4: addToLevel4(value); break;
         }
+    }
+
+    public void sort() {
+        
     }
 
     private void addToLevel1(RankingVal value) {

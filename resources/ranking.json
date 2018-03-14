@@ -1,13 +1,1 @@
-{
-    "level1": [
-        {
-            "name": "Angelo",
-            "date": 1521060359,
-            "time": 27,
-            "correct": 0.8
-            }
-        ],
-    "level2": [],
-    "level3": [],
-    "level4": []
-}
+{"level1":[{"name":"Angelo","date":1521060359,"time":27,"correct":0.8},{"name":"Angelo","date":1521068264,"time":30,"correct":0.0}],"level2":[],"level3":[],"level4":[]}
