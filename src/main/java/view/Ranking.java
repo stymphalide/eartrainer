@@ -16,6 +16,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.Group;
 import javafx.scene.Scene;
+import javafx.scene.control.TabPane;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -39,6 +40,7 @@ public class Ranking extends Group {
     private Scene scene;
     private TableView table;
     private int levelNumber;
+    private Leaderboard leaderboard;
 
     public static void updateRanking(logic.Level level) {
         RankingVal rank = new RankingVal(level, "Angelo");
@@ -66,8 +68,13 @@ public class Ranking extends Group {
     }
 
     public Ranking() {
-        this.levelNumber = 1;
-        setUpTable();
+        try {
+            this.levelNumber = 1;
+            this.leaderboard = openRankingFile();
+            setUpTable();
+         } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
     public Scene render() {
         if(this.scene == null) {
@@ -81,6 +88,15 @@ public class Ranking extends Group {
 
     }
     private void setUpTable() {
+        TableColumn rankCol = new TableColumn("Rank");
+        rankCol.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<RankingVal, String>, ObservableValue<String>>() {
+            public ObservableValue<String> call(TableColumn.CellDataFeatures<RankingVal, String> value) {
+                SimpleStringProperty obsVal = new SimpleStringProperty();
+                int rank = leaderboard.get(levelNumber).indexOf(value.getValue());
+                obsVal.set("#" + (rank + 1));
+                return obsVal;
+            }
+        });
         TableColumn nameCol = new TableColumn("Name");
         nameCol.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<RankingVal, String>, ObservableValue<String>>() {
             public ObservableValue<String> call(TableColumn.CellDataFeatures<RankingVal, String> value) {
@@ -117,6 +133,7 @@ public class Ranking extends Group {
         this.table = new TableView<>();
         this.table.setItems(getValues());
         this.table.getColumns().addAll(
+            rankCol,
             nameCol, 
             dateCol, 
             timeCol, 
@@ -126,14 +143,11 @@ public class Ranking extends Group {
 
     private ObservableList getValues() {
         ObservableList<RankingVal> values = FXCollections.observableArrayList();
-        try {
-            Leaderboard leaderboard = openRankingFile();
-             for (RankingVal value : leaderboard.get(this.levelNumber)) {
-                values.add(value);
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
+    
+         for (RankingVal value : this.leaderboard.get(this.levelNumber)) {
+            values.add(value);
         }
+    
         System.out.println(values.get(0).getDateString());
         return values;
     }
