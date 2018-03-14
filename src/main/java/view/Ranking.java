@@ -16,6 +16,12 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.Group;
 import javafx.scene.Scene;
+import javafx.scene.layout.VBox;        // VBox lays out its children in a single vertical column. If the vbox has a border and/or padding set, then the contents will be layed out within those insets. [JavaFX API]
+
+import javafx.scene.control.TextField;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextArea;
+import javafx.scene.control.Button;
 import javafx.scene.control.TabPane;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TableView;
@@ -44,8 +50,17 @@ public class Ranking extends Group {
     private int levelNumber;
     private Leaderboard leaderboard;
 
-    public static void updateRanking(logic.Level level) {
-        RankingVal rank = new RankingVal(level, "Angelo");
+    public static Scene getPopUp(Button submit, TextField input) {
+        Label text = new Label("Add your Name here:");
+        input.setPromptText("Username");
+        submit.setText("Submit");
+        VBox box = new VBox(text, input, submit);
+        Scene popup = new Scene(box, 200, 100);
+        return popup;
+    }
+
+    public static void updateRanking(logic.Level level, String username) {
+        RankingVal rank = new RankingVal(level, username);
         try {
             Leaderboard leaderboard = openRankingFile();
             leaderboard.add(rank, level.getLevelNumber());

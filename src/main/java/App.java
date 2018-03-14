@@ -66,6 +66,7 @@ import javafx.scene.control.Button;    // A simple Button Control. Can be a even
 import javafx.scene.Scene;             // The JavaFX Scene class is the container for all content in a scene graph. The background of the scene is filled as specified by the fill property. [JavaFX API]
 import javafx.stage.Stage;             // The JavaFX Stage class is the top level JavaFX container. The primary Stage is constructed by the platform. Additional Stage objects may be constructed by the application. [JavaFX API]
 import java.util.*;
+import javafx.scene.control.TextField;
 
 public class App extends Application {
     Stage window;
@@ -75,7 +76,7 @@ public class App extends Application {
     view.Menu menu;
     Button confirm = new Button("Confirm");
     Button viewRanking = new Button("Leaderboard");
-
+    TextField userInput;
     logic.Level level;
 
     @Override
@@ -131,9 +132,20 @@ public class App extends Application {
             level.setAnswer(answer);
             level.nextQuestion();
             if (level.isFinished()) {
+                this.userInput = new TextField();
+                Button submit = new Button();
+                final Stage popUp = new Stage();
+                submit.setOnAction(event -> {
+                    String username = userInput.getText();
+                    view.Ranking.updateRanking(level, username);
+                    popUp.close();
+                });
+                popUp.setScene(view.Ranking.getPopUp(submit, this.userInput));
+                popUp.show();
+
                 window.setTitle("eartrainer - Game Over");
                 levelView.viewFinished(level, backToMenu, startLevels.get(n - 1));
-                view.Ranking.updateRanking(level);
+                
             } else {
                 if (values == null) { // Only advance if all comboboxes are set.
                     System.out.println("Set All Combobox Values!");
