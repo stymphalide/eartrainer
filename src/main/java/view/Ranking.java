@@ -17,6 +17,7 @@ import javafx.collections.ObservableList;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.control.TabPane;
+import javafx.scene.control.Tab;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -38,6 +39,7 @@ import javafx.beans.property.SimpleStringProperty;
 
 public class Ranking extends Group {
     private Scene scene;
+    private TabPane header;
     private TableView table;
     private int levelNumber;
     private Leaderboard leaderboard;
@@ -69,9 +71,13 @@ public class Ranking extends Group {
 
     public Ranking() {
         try {
-            this.levelNumber = 1;
             this.leaderboard = openRankingFile();
-            setUpTable();
+            this.header = new TabPane();
+            setUpTab(1);
+            setUpTab(2);
+            setUpTab(3);
+            setUpTab(4);
+            this.getChildren().add(this.header);
          } catch (IOException e) {
             e.printStackTrace();
         }
@@ -87,12 +93,21 @@ public class Ranking extends Group {
     private void update() {
 
     }
+    private void setUpTab(int i) {
+        Tab tab = new Tab("Level " + i);
+        this.levelNumber = i;    
+        setUpTable();
+        tab.setContent(this.table);
+        this.header.getTabs().add(tab);
+    }
+
     private void setUpTable() {
         TableColumn rankCol = new TableColumn("Rank");
         rankCol.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<RankingVal, String>, ObservableValue<String>>() {
             public ObservableValue<String> call(TableColumn.CellDataFeatures<RankingVal, String> value) {
                 SimpleStringProperty obsVal = new SimpleStringProperty();
                 int rank = leaderboard.get(levelNumber).indexOf(value.getValue());
+                System.out.println(rank);
                 obsVal.set("#" + (rank + 1));
                 return obsVal;
             }
@@ -138,7 +153,6 @@ public class Ranking extends Group {
             dateCol, 
             timeCol, 
             correctCol);
-        this.getChildren().add(this.table);
     }
 
     private ObservableList getValues() {
@@ -147,8 +161,6 @@ public class Ranking extends Group {
          for (RankingVal value : this.leaderboard.get(this.levelNumber)) {
             values.add(value);
         }
-    
-        System.out.println(values.get(0).getDateString());
         return values;
     }
 }
