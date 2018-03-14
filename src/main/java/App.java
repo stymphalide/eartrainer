@@ -119,14 +119,11 @@ public class App extends Application {
     }
     private void setUpLevel(int n) {
         
-        System.out.println(n);// Test that setting level works 
         this.level = new logic.Level(n);
-        System.out.println(this.level.getLevelNumber()); // Test that setting level works 
 
         window.setTitle("eartrainer - Level " + level.getLevelNumber());
 
         view.Level levelView = new view.Level(level, this.confirm);
-
 
         this.confirm.setOnAction(e -> {
             List<String> values = levelView.getComboBoxValues();
@@ -136,6 +133,7 @@ public class App extends Application {
             if (level.isFinished()) {
                 window.setTitle("eartrainer - Game Over");
                 levelView.viewFinished(level, backToMenu, startLevels.get(n - 1));
+                view.Ranking.updateRanking(level);
             } else {
                 if (values == null) { // Only advance if all comboboxes are set.
                     System.out.println("Set All Combobox Values!");

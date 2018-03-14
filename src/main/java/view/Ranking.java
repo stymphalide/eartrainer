@@ -1,8 +1,16 @@
 package view;
 
+
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+
+import java.util.*;
+import java.text.SimpleDateFormat;
+
 import static java.nio.file.StandardOpenOption.*;
 import java.io.*;
 import java.nio.file.*;
+import java.nio.charset.StandardCharsets;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -26,25 +34,22 @@ import javafx.scene.control.cell.PropertyValueFactory;
 public class Ranking extends Group {
     Scene scene;
     TableView table;
+    Leaderboard leaderboard;
 
     public static void updateRanking(logic.Level level) {
-
-        RankingVal rank = new RankingVal(level);
-
-        Path file = FileSystems.getDefault().getPath("./resources/ranking.csv");
-        Charset charset = Charset.forName("UTF-8");
+        GsonBuilder builder = new GsonBuilder();
+        Gson gson = builder.create();
+        RankingVal rank;
+        System.out.println(level);
+        rank = new RankingVal(level, "Angelo");
+        System.out.println(gson.toJson(rank));
+        Path file = FileSystems.getDefault().getPath("./resources/ranking.json");
         // Open file
-        try (BufferedReader reader = Files.newBufferedReader(file, charset)) {
-            String line = null;
-            boolean set = false;
-            // Read file
-            while ((line = reader.readLine()) != null) {
-                System.out.println(line);
-            }
-            if(!set) {
-                // Write to file
-
-            }
+        Leaderboard leaderboard;
+        try (BufferedReader reader = Files.newBufferedReader(file, StandardCharsets.UTF_8)) {
+             leaderboard = gson.fromJson(reader, Leaderboard.class);
+             leaderboard.add(rank, level.getLevelNumber());
+             System.out.println(gson.toJson(leaderboard));
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -55,7 +60,7 @@ public class Ranking extends Group {
     }
     public Scene render() {
         if(this.scene == null) {
-            this.scene = new Scene(this, 700, 500);
+            this.scene = new Scene(this, 400, 500);
         } else {
             update();
         }
@@ -64,7 +69,6 @@ public class Ranking extends Group {
     private void update() {
 
     }
-
     private void setUpTable() {
         TableColumn nameCol = new TableColumn("Name");
         TableColumn levelCol = new TableColumn("Level");
@@ -81,95 +85,102 @@ public class Ranking extends Group {
             timeCol, 
             correctCol);
         this.getChildren().add(this.table);
-
     }
 
     private ObservableList getValues() {
         ObservableList values = FXCollections.observableArrayList();
-        Path file = FileSystems.getDefault().getPath("./resources/ranking.csv");
-        Charset charset = Charset.forName("UTF-8");
-        // Open file
-        try (BufferedReader reader = Files.newBufferedReader(file, charset)) {
-            String line = null;
-            boolean header = true;
-            while ((line = reader.readLine()) != null) {
-                if(header) {
-                    header = !header;
-                } else {
-                    values.add(new RankingVal(line));
-                    System.out.println(line);
-                }
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        
         return values;
+    }
+}
+class Leaderboard {
+    private List<RankingVal> level1;
+    private List<RankingVal> level2;
+    private List<RankingVal> level3;
+    private List<RankingVal> level4;
+
+    public Leaderboard() {
+        this.level1 = new ArrayList<RankingVal>();
+        this.level2 = new ArrayList<RankingVal>();
+        this.level3 = new ArrayList<RankingVal>();
+        this.level4 = new ArrayList<RankingVal>();
+    }
+
+    public void add(RankingVal value, int level) {
+        switch (level) {
+            case 1: addToLevel1(value);
+            case 2: addToLevel1(value);
+            case 3: addToLevel1(value);
+            case 4: addToLevel1(value);
+        }
+    }
+
+    private void addToLevel1(RankingVal value) {
+        this.level1.add(value);
+    }
+    private void addToLevel2(RankingVal value) {
+        this.level1.add(value);
+    }
+    private void addToLevel3(RankingVal value) {
+        this.level1.add(value);
+    }
+    private void addToLevel4(RankingVal value) {
+        this.level1.add(value);
+    }
+    public void setLevel1(List<RankingVal> level1) {
+        this.level1 = level1;
+    }
+    public List<RankingVal> getLevel1() {
+        return this.level1;
+    }
+    public void setLevel2(List<RankingVal> level2) {
+        this.level2 = level2;
+    }
+    public List<RankingVal> getLevel2() {
+        return this.level2;
+    }
+    public void setLevel3(List<RankingVal> level3) {
+        this.level3 = level3;
+    }
+    public List<RankingVal> getLevel3() {
+        return this.level3;
+    }
+    public void setLevel4(List<RankingVal> level4) {
+        this.level4 = level4;
+    }
+    public List<RankingVal> getLevel4() {
+        return this.level4;
     }
 }
 class RankingVal {
     private String name;
-    private int level;
-    private String date;
+    private long date;
     private long time;
     private double correct;
     public RankingVal(String name, 
-                      int level, 
-                      String date, 
+                      long date, 
                       long time, 
                       double correct) {
         this.name = name;
-        this.level = level;
         this.date = date;
         this.time = time;
         this.correct = correct;
     }
-    public RankingVal(logic.Level level) throws Exception {
+    public RankingVal(logic.Level level, String name) {
         if(level.isFinished()) {
-            this.name = "Some Name";
-            this.level = level.getLevelNumber();
-            this.date = level.getStartTime().toString();
+            this.name = name;
+            this.date = level.getStartTime().getEpochSecond();
             this.time = level.getDuration().getSeconds();
             this.correct = (double)(level.getCorrectAnswers() / level.getWrongAnswers());
         } else {
             throw new java.lang.RuntimeException("The level must be finished.");
         }
     }
-    public RankingVal(String line) {
-        String[] values = line.split(",");
-        this.name = values[0];
-        this.level = Integer.parseInt(values[1]);
-        this.date = values[2];
-        this.time = Long.parseLong(values[3]);
-        this.correct = Double.parseDouble(values[4]);
-    }
-    public boolean greater(RankingVal rank2) {
-        if(this.level == rank2.getLevel()) {
-            if (this.correct == rank2.getCorrect()) {
-                if(this.time > rank2.getTime()) {
-                    return false;
-                } else {
-                    return true;
-                }
-            } else if (this.correct < rank2.getCorrect()) {
-                return false;
-            } else {
-                return true;
-            }
-        } else if(this.level < rank2.getLevel()) {
-            return false;
-        } else {
-            return true;
-        }
-        return false;
-    }
 
     public String getName() {
         return this.name;
     }
-    public int getLevel() {
-        return this.level;
-    }
-    public String getDate() {
+    public long getDate() {
         return this.date;
     }
     public String getTime() {
@@ -183,10 +194,7 @@ class RankingVal {
     public void setName(String name) {
         this.name = name;
     }
-    public void setLevel(int level) {
-        this.level = level;
-    }
-    public void setDate(String date) {
+    public void setDate(long date) {
         this.date = date;
     }
     public void setTime(long time) {
@@ -195,6 +203,12 @@ class RankingVal {
     public void setCorrect(double correct) {
         this.correct = correct;
     }
-
+    public String getDateString() {
+        long millis = this.date * 1000;
+        Date date = new Date(millis);
+        SimpleDateFormat sdf = new SimpleDateFormat("dd.MM.yyyy hh:mm:ss", Locale.ENGLISH);
+        sdf.setTimeZone(TimeZone.getTimeZone("UTC+1"));
+        return sdf.format(date);
+    }
 
 }
