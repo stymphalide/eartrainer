@@ -207,7 +207,33 @@ class Leaderboard {
     }
 
     public void sort() {
-        
+        Comparator<RankingVal> comp = new Comparator<RankingVal>() {
+            public int compare(RankingVal o1, RankingVal o2) {
+                if (o1.getCorrect() == o2.getCorrect()) {
+                    if(o1.getTime() == o2.getTime()) {
+                        if (o1.getDate() == o2.getDate()) {
+                            return 0;
+                        }
+                        if (o1.getDate() < o2.getDate()) {
+                            return -1;
+                        }
+                        return 1;
+                    }
+                    if(o1.getTime() < o2.getTime()) {
+                        return -1;
+                    }
+                    return 1;
+                }
+                if (o1.getCorrect() > o2.getCorrect()) {
+                    return -1;
+                } 
+                return 1;
+            }
+        };
+        this.level1.sort(comp);
+        this.level2.sort(comp);
+        this.level3.sort(comp);
+        this.level4.sort(comp);
     }
 
     private void addToLevel1(RankingVal value) {
