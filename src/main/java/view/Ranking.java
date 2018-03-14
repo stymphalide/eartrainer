@@ -115,18 +115,26 @@ public class Ranking extends Group {
     }
     private void setUpTab(int i) {
         Tab tab = new Tab("Level " + i);
-        this.levelNumber = i;    
-        setUpTable();
+        this.levelNumber = i;
+        setUpTable(i);
         tab.setContent(this.table);
         this.header.getTabs().add(tab);
     }
 
-    private void setUpTable() {
+    private void setUpTable(int levelN) {
+        Leaderboard leaderboard = this.leaderboard;
+        System.out.println(leaderboard);
+        for (RankingVal value : leaderboard.get(levelN)) {
+            System.out.println(value);
+        }
         TableColumn rankCol = new TableColumn("Rank");
         rankCol.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<RankingVal, String>, ObservableValue<String>>() {
             public ObservableValue<String> call(TableColumn.CellDataFeatures<RankingVal, String> value) {
                 SimpleStringProperty obsVal = new SimpleStringProperty();
-                int rank = leaderboard.get(levelNumber).indexOf(value.getValue());
+                System.out.println(leaderboard);
+                System.out.println(levelN);
+                System.out.println(value.getValue());
+                int rank = leaderboard.get(levelN).indexOf(value.getValue());
                 System.out.println(rank);
                 obsVal.set("#" + (rank + 1));
                 return obsVal;
@@ -166,7 +174,7 @@ public class Ranking extends Group {
         });
 
         this.table = new TableView<>();
-        this.table.setItems(getValues());
+        this.table.setItems(getValues(levelN));
         this.table.getColumns().addAll(
             rankCol,
             nameCol, 
@@ -175,10 +183,9 @@ public class Ranking extends Group {
             correctCol);
     }
 
-    private ObservableList getValues() {
+    private ObservableList getValues(int levelN) {
         ObservableList<RankingVal> values = FXCollections.observableArrayList();
-    
-         for (RankingVal value : this.leaderboard.get(this.levelNumber)) {
+         for (RankingVal value : this.leaderboard.get(levelN)) {
             values.add(value);
         }
         return values;
@@ -198,6 +205,7 @@ class Leaderboard {
     }
 
     public void add(RankingVal value, int level) {
+        System.out.println(level);
         switch (level) {
             case 1: addToLevel1(value); break;
             case 2: addToLevel2(value); break;
@@ -240,13 +248,13 @@ class Leaderboard {
         this.level1.add(value);
     }
     private void addToLevel2(RankingVal value) {
-        this.level1.add(value);
+        this.level2.add(value);
     }
     private void addToLevel3(RankingVal value) {
-        this.level1.add(value);
+        this.level3.add(value);
     }
     private void addToLevel4(RankingVal value) {
-        this.level1.add(value);
+        this.level4.add(value);
     }
     public List<RankingVal> get(int n) {
         //List<RankingVal> default = new ArrayList<RankingVal>();
@@ -311,7 +319,7 @@ class RankingVal {
             this.name = name;
             this.date = level.getStartTime().getEpochSecond();
             this.time = level.getDuration().getSeconds();
-            this.correct = (double)(level.getCorrectAnswers() / level.getWrongAnswers());
+            this.correct = (double)((double)level.getCorrectAnswers() / (double)level.getWrongAnswers());
         } else {
             throw new java.lang.RuntimeException("The level must be finished.");
         }
