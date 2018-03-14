@@ -62,45 +62,42 @@ public class Ranking extends Group {
 
     public static void updateRanking(logic.Level level, String username) {
         RankingVal rank = new RankingVal(level, username);
-        try {
-            Leaderboard leaderboard = openRankingFile();
-            leaderboard.add(rank, level.getLevelNumber());
+        
+        Leaderboard leaderboard = openRankingFile();
+        leaderboard.add(rank, level.getLevelNumber());
+        leaderboard.sort();
             
-            leaderboard.sort();
-
-            GsonBuilder builder = new GsonBuilder();
-            Gson gson = builder.create();
-            
-            System.out.println(gson.toJson(leaderboard));
-            try (Writer writer = new FileWriter(jsonPath)) {
-                gson.toJson(leaderboard, writer);
-            }
-        } catch (IOException e) {
+        
+        GsonBuilder builder = new GsonBuilder();
+        Gson gson = builder.create();
+        try (Writer writer = new FileWriter(jsonPath)) {
+            gson.toJson(leaderboard, writer);
+        } catch (IOException e ) {
             e.printStackTrace();
         }
     }
-    private static Leaderboard openRankingFile() throws IOException {
+    private static Leaderboard openRankingFile() {
         Path file = FileSystems.getDefault().getPath(jsonPath);
-
-        BufferedReader reader = Files.newBufferedReader(file, StandardCharsets.UTF_8);
 
         GsonBuilder builder = new GsonBuilder();
         Gson gson = builder.create();
-        return gson.fromJson(reader, Leaderboard.class);
+        Leaderboard leaderboard = new Leaderboard();;
+        try (BufferedReader reader = Files.newBufferedReader(file, StandardCharsets.UTF_8)) {
+            leaderboard = gson.fromJson(reader, Leaderboard.class);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return leaderboard;
     }
 
     public Ranking() {
-        try {
-            this.leaderboard = openRankingFile();
-            this.header = new TabPane();
-            setUpTab(1);
-            setUpTab(2);
-            setUpTab(3);
-            setUpTab(4);
-            this.getChildren().add(this.header);
-         } catch (IOException e) {
-            e.printStackTrace();
-        }
+        this.leaderboard = openRankingFile();
+        this.header = new TabPane();
+        setUpTab(1);
+        setUpTab(2);
+        setUpTab(3);
+        setUpTab(4);
+        this.getChildren().add(this.header);
     }
     public Scene render() {
         if(this.scene == null) {
@@ -123,19 +120,11 @@ public class Ranking extends Group {
 
     private void setUpTable(int levelN) {
         Leaderboard leaderboard = this.leaderboard;
-        System.out.println(leaderboard);
-        for (RankingVal value : leaderboard.get(levelN)) {
-            System.out.println(value);
-        }
         TableColumn rankCol = new TableColumn("Rank");
         rankCol.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<RankingVal, String>, ObservableValue<String>>() {
             public ObservableValue<String> call(TableColumn.CellDataFeatures<RankingVal, String> value) {
                 SimpleStringProperty obsVal = new SimpleStringProperty();
-                System.out.println(leaderboard);
-                System.out.println(levelN);
-                System.out.println(value.getValue());
                 int rank = leaderboard.get(levelN).indexOf(value.getValue());
-                System.out.println(rank);
                 obsVal.set("#" + (rank + 1));
                 return obsVal;
             }
@@ -205,7 +194,6 @@ class Leaderboard {
     }
 
     public void add(RankingVal value, int level) {
-        System.out.println(level);
         switch (level) {
             case 1: addToLevel1(value); break;
             case 2: addToLevel2(value); break;
