@@ -53,7 +53,7 @@ public class Level extends VBox {
     }
 
     public Scene render() {
-        Scene scene = new Scene(this, 700, 500);
+        Scene scene = new Scene(this, 700, 600);
         return scene;
     }
 

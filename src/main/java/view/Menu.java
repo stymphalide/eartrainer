@@ -88,7 +88,7 @@ public class Menu extends VBox {
 
     public Scene render() {
         if(this.scene == null) {
-            this.scene = new Scene(this, 700, 500);
+            this.scene = new Scene(this, 700, 600);
         } else {
             setUpLevels();
         }

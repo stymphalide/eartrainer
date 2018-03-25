@@ -91,10 +91,15 @@ public class App extends Application {
         startLevel3.setOnAction(e  -> {
             setUpLevel(3);
         });
+        Button startLevel4 = new Button();
+        startLevel4.setOnAction(e  -> {
+            setUpLevel(4);
+        });
         this.startLevels = new ArrayList<Button>();
         this.startLevels.add(startLevel1);
         this.startLevels.add(startLevel2);
         this.startLevels.add(startLevel3);
+        this.startLevels.add(startLevel4);
 
         this.backToMenu.setOnAction(e -> {
             setUpMenu();
