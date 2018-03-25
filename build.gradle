@@ -42,6 +42,7 @@ apply plugin: 'javafx-gradle-plugin'
 dependencies {
     // This dependency is found on compile classpath of this component and consumers.
     compile 'com.google.guava:guava:23.0'
+    compile 'com.google.code.gson:gson:2.8.2'
 
     compile 'org.apache.commons:commons-io:1.3.2'
 

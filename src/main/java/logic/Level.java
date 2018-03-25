@@ -1,6 +1,7 @@
 package logic;
 
 import java.util.*;
+import java.time.*;
 
 public class Level {
     private int levelNumber;
@@ -14,6 +15,8 @@ public class Level {
     private Question activeQuestion;
     private Card answer;
     private Sound soundThread;
+    private Instant startTime;
+    private Instant endTime;
 
     public Level(int n) {
         this.levelNumber = n;
@@ -43,6 +46,7 @@ public class Level {
         this.soundThread = new logic.Sound();
         this.soundThread.setDaemon(true);
         this.soundThread.start();
+        this.startTime = Instant.now();
     }
 
     public void setAnswer(Card answer) {
@@ -162,10 +166,24 @@ public class Level {
 
 	}
 
+    public Duration getDuration() {
+        if (this.endTime == null) {
+            return Duration.between(this.startTime, Instant.now());
+        } else {
+            return Duration.between(this.startTime, this.endTime);
+        }
+    }
+    public Instant getStartTime() {
+        return this.startTime;
+    }
+
     public boolean isFinished() {
-        if (this.getTotalAnswers() == this.totalQuestions) {
-            soundThread.interrupt(); // Stop the sound Thread.
-            soundThread = null; // is this correct? TODO
+        if (this.getTotalAnswers() == this.totalQuestions) { // This -1 is required, since the query is done before the level is updated.
+            if(soundThread != null) {
+                soundThread.interrupt(); // Stop the sound Thread.
+                soundThread = null; // is this correct? TODO
+            }
+            this.endTime = Instant.now();
             return true;
         } else {
             return false;

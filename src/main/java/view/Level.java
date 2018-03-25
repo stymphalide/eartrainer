@@ -2,6 +2,7 @@ package view;
 
 import java.util.*;
 
+import javafx.util.Duration;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.text.Font;
@@ -12,6 +13,9 @@ import javafx.scene.control.ProgressBar;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.VBox;
 import javafx.scene.layout.HBox; 
+import javafx.animation.Animation;
+import javafx.animation.Timeline;
+import javafx.animation.KeyFrame;
 
 public class Level extends VBox {
     private List<ComboBox> cmbs;
@@ -20,7 +24,7 @@ public class Level extends VBox {
     private Label correctnessProgress;
     private ProgressBar levelBar;
     private ProgressBar correctnessBar;
-
+    private Label time;
 
     public Level(logic.Level level, Button confirmButton) {
         super(50);
@@ -101,9 +105,28 @@ public class Level extends VBox {
         this.correctnessBar = new ProgressBar(correctnessProgress);
         this.correctnessBar.setStyle("-fx-accent: green;");
 
-        HBox scoreBar = new HBox(50, this.levelProgress, this.levelBar, this.correctnessProgress, this.correctnessBar);
+        // Time axis
+        this.time = new Label(durationString());
+        Timeline timeline = new Timeline(new KeyFrame(
+            Duration.millis(1000),
+            ae -> updateTime()));
+        timeline.setCycleCount(Animation.INDEFINITE);
+        timeline.play();
+        HBox scoreBar = new HBox(50, this.time, this.levelProgress, this.levelBar, this.correctnessProgress, this.correctnessBar);
         scoreBar.setAlignment(Pos.CENTER);
         return scoreBar;
+    }
+
+    private void updateTime() {
+        this.time.setText(durationString());
+    }
+
+    private String durationString() {
+        long duration = this.level.getDuration().getSeconds();
+        long seconds = duration % 60;
+        long minutes = duration / 60;
+
+        return ""  + minutes + ":" + seconds;
     }
 
     private void updateScores() {

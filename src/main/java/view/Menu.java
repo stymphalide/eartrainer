@@ -63,12 +63,14 @@ public class Menu extends VBox {
     private HBox nav;
     private ImageView musicToggler;
     private boolean isMusicOn;
+    private Button rankingButton;
 
-    public Menu(List<Button> startLevels, ImageView musicToggler) {
+    public Menu(List<Button> startLevels, ImageView musicToggler, Button rankingButton) {
         super(50);
         this.startLevels = startLevels;
         this.musicToggler = musicToggler;
         this.isMusicOn = true;
+        this.rankingButton = rankingButton;
         // Title row
         Label title = new Label("Eartrainer"); 
         title.setFont(new Font(40));
@@ -100,7 +102,6 @@ public class Menu extends VBox {
             setUpNav();
         }
         return this.scene;
-        
     }
 
     public void toggleMusic() {
@@ -132,10 +133,11 @@ public class Menu extends VBox {
         this.musicToggler.setFitWidth(30);
         this.musicToggler.setFitHeight(30);
 
+        this.nav.setMargin(this.musicToggler, new Insets(20, 50, 40, 30));
+        this.nav.setMargin(this.rankingButton, new Insets(20, 50, 40, 30));
         this.nav.setMargin(exitButton, new Insets(20, 50, 40, 30));
-        this.nav.setMargin(musicToggler, new Insets(20, 50, 40, 30));
         this.nav.setAlignment(Pos.BOTTOM_RIGHT);
-        this.nav.getChildren().setAll(this.musicToggler, exitButton);
+        this.nav.getChildren().setAll(this.musicToggler, this.rankingButton, exitButton);
     }
 
     private void setUpLevels() {

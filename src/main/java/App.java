@@ -71,6 +71,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import java.util.*;
+import javafx.scene.control.TextField;
 
 public class App extends Application {
     Stage window;
@@ -79,7 +80,8 @@ public class App extends Application {
 
     view.Menu menu;
     Button confirm = new Button("Confirm");
-
+    Button viewRanking = new Button("Leaderboard");
+    TextField userInput;
     logic.Level level;
 
     view.Music musicThread;
@@ -112,7 +114,6 @@ public class App extends Application {
         this.backToMenu.setOnAction(e -> {
             setUpMenu();
         });
-
         this.musicToggler = new ImageView();
         this.musicToggler.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
             @Override
@@ -129,7 +130,10 @@ public class App extends Application {
                 event.consume();
             }
         });
-        this.menu = new view.Menu(startLevels, musicToggler);
+        this.menu = new view.Menu(startLevels, this.musicToggler, this.viewRanking);
+        this.viewRanking.setOnAction(e -> {
+            setUpRanking();
+        });
     }
 
     @Override
@@ -164,33 +168,50 @@ public class App extends Application {
     }
     private void setUpLevel(int n) {
         stopMusic();
-        System.out.println(n);// Test that setting level works 
         this.level = new logic.Level(n);
-        System.out.println(this.level.getLevelNumber()); // Test that setting level works 
 
         window.setTitle("eartrainer - Level " + level.getLevelNumber());
 
         view.Level levelView = new view.Level(level, this.confirm);
 
         this.confirm.setOnAction(e -> {
+            List<String> values = levelView.getComboBoxValues();
+            logic.Card answer = new logic.Card(values.get(0), values.get(1), values.get(2), values.get(3));
+            level.setAnswer(answer);
+            level.nextQuestion();
             if (level.isFinished()) {
+                this.userInput = new TextField();
+                Button submit = new Button();
+                final Stage popUp = new Stage();
+                submit.setOnAction(event -> {
+                    String username = userInput.getText();
+                    view.Ranking.updateRanking(level, username);
+                    popUp.close();
+                });
+                popUp.setScene(view.Ranking.getPopUp(submit, this.userInput));
+                popUp.show();
+
                 window.setTitle("eartrainer - Game Over");
                 startMusic();
-                levelView.viewFinished(level, backToMenu, startLevels.get(n - 1), this.musicToggler);
+                levelView.viewFinished(level, backToMenu, startLevels.get(n - 1), this.musicToggler);                
             } else {
-                List<String> values = levelView.getComboBoxValues();
                 if (values == null) { // Only advance if all comboboxes are set.
                     System.out.println("Set All Combobox Values!");
                 } else {
-                    logic.Card answer = new logic.Card(values.get(0), values.get(1), values.get(2), values.get(3));
-                    level.setAnswer(answer);
-                    level.nextQuestion();
                     levelView.update();
                 }
             }
         });
         window.setScene(levelView.render());
     }
+
+    private void setUpRanking() {
+        final Stage ranking = new Stage();
+        view.Ranking rankingScene = new view.Ranking();
+        ranking.setScene(rankingScene.render());
+        ranking.show();
+    }
+
     public static void main(String[] args) {
         Application.launch(args);
     }
