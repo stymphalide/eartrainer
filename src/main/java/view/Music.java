@@ -46,7 +46,7 @@ public class Music extends Thread {
     }
 
     private void play() {
-        File file = new File("./resources/sound/example.wav");
+        File file = new File("./resources/Soundtrack/Eartrainer.wav");
         try {
             playClip(file);
         } catch(IOException e) {
