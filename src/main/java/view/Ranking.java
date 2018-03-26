@@ -61,13 +61,12 @@ public class Ranking extends Group {
     }
 
     public static void updateRanking(logic.Level level, String username) {
-        RankingVal rank = new RankingVal(level, username);
         
+        RankingVal rank = new RankingVal(level, username);
         Leaderboard leaderboard = openRankingFile();
         leaderboard.add(rank, level.getLevelNumber());
         leaderboard.sort();
             
-        
         GsonBuilder builder = new GsonBuilder();
         Gson gson = builder.create();
         try (Writer writer = new FileWriter(jsonPath)) {
@@ -307,7 +306,7 @@ class RankingVal {
             this.name = name;
             this.date = level.getStartTime().getEpochSecond();
             this.time = level.getDuration().getSeconds();
-            this.correct = (double)((double)level.getCorrectAnswers() / (double)level.getWrongAnswers());
+            this.correct = (double)((double)level.getCorrectAnswers() / (double)level.getTotalAnswers());
         } else {
             throw new java.lang.RuntimeException("The level must be finished.");
         }
