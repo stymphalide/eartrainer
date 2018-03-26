@@ -187,10 +187,10 @@ public class App extends Application {
                     String username = userInput.getText();
                     view.Ranking.updateRanking(level, username);
                     popUp.close();
+                    setUpRanking();
                 });
                 popUp.setScene(view.Ranking.getPopUp(submit, this.userInput));
                 popUp.show();
-
                 window.setTitle("eartrainer - Game Over");
                 startMusic();
                 levelView.viewFinished(level, backToMenu, startLevels.get(n - 1), this.musicToggler);                
