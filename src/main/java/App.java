@@ -82,6 +82,7 @@ public class App extends Application {
     Button confirm = new Button("Confirm");
     Button viewRanking = new Button("Leaderboard");
     TextField userInput;
+    Button help = new Button("Help");
     logic.Level level;
 
     view.Music musicThread;
@@ -130,10 +131,13 @@ public class App extends Application {
                 event.consume();
             }
         });
-        this.menu = new view.Menu(startLevels, this.musicToggler, this.viewRanking);
         this.viewRanking.setOnAction(e -> {
             setUpRanking();
         });
+        this.help.setOnAction(e -> {
+            setUpHelp();
+        });
+        this.menu = new view.Menu(this.startLevels, this.musicToggler, this.viewRanking, this.help);
     }
 
     @Override
@@ -204,14 +208,19 @@ public class App extends Application {
         });
         window.setScene(levelView.render());
     }
-
     private void setUpRanking() {
         final Stage ranking = new Stage();
         view.Ranking rankingScene = new view.Ranking();
         ranking.setScene(rankingScene.render());
         ranking.show();
     }
-
+    private void setUpHelp() {
+        final Stage helpView = new Stage();
+        view.Help helpScene = new view.Help();
+        helpView.setScene(helpScene.render());
+        helpView.show();
+    }
+    
     public static void main(String[] args) {
         Application.launch(args);
     }

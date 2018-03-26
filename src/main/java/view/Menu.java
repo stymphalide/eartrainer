@@ -64,13 +64,15 @@ public class Menu extends VBox {
     private ImageView musicToggler;
     private boolean isMusicOn;
     private Button rankingButton;
+    private Button helpButton;
 
-    public Menu(List<Button> startLevels, ImageView musicToggler, Button rankingButton) {
+    public Menu(List<Button> startLevels, ImageView musicToggler, Button rankingButton, Button helpButton) {
         super(20);
         this.startLevels = startLevels;
         this.musicToggler = musicToggler;
         this.isMusicOn = true;
         this.rankingButton = rankingButton;
+        this.helpButton = helpButton;
         // Title row
         Label title = new Label("Eartrainer"); 
         title.setFont(new Font(40));
@@ -86,7 +88,6 @@ public class Menu extends VBox {
         this.nav = new HBox(30);
         setUpNav();
         
-
         // SetUp the VBox.
         getChildren().addAll(this.titleRow, this.levelCol, this.nav);
     }
@@ -116,12 +117,6 @@ public class Menu extends VBox {
     }
 
     private void setUpNav() {
-        Button exitButton = new Button();
-        exitButton.setText("Exit");
-        exitButton.setOnAction(e -> {
-            Platform.exit();
-        });
-
         // Music toggle icon
         Image img;
         if(this.isMusicOn) {
@@ -132,12 +127,22 @@ public class Menu extends VBox {
         this.musicToggler.setImage(img);
         this.musicToggler.setFitWidth(30);
         this.musicToggler.setFitHeight(30);
+        // Help Text
+        this.helpButton.setText("Help");
+        // Exit 
+        Button exitButton = new Button();
+        exitButton.setText("Exit");
+        exitButton.setOnAction(e -> {
+            Platform.exit();
+        });
 
+        // Basic set up
         this.nav.setMargin(this.musicToggler, new Insets(20, 50, 40, 30));
         this.nav.setMargin(this.rankingButton, new Insets(20, 50, 40, 30));
+        this.nav.setMargin(this.helpButton, new Insets(20, 50, 40, 30));
         this.nav.setMargin(exitButton, new Insets(20, 50, 40, 30));
         this.nav.setAlignment(Pos.BOTTOM_RIGHT);
-        this.nav.getChildren().setAll(this.musicToggler, this.rankingButton, exitButton);
+        this.nav.getChildren().setAll(this.musicToggler, this.rankingButton, this.helpButton, exitButton);
     }
 
     private void setUpLevels() {
