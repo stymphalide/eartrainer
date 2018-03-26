@@ -66,7 +66,7 @@ public class Menu extends VBox {
     private Button rankingButton;
 
     public Menu(List<Button> startLevels, ImageView musicToggler, Button rankingButton) {
-        super(50);
+        super(20);
         this.startLevels = startLevels;
         this.musicToggler = musicToggler;
         this.isMusicOn = true;
@@ -83,7 +83,7 @@ public class Menu extends VBox {
         this.levelCol = new VBox(50);
         setUpLevels();
                 
-        this.nav = new HBox(50);
+        this.nav = new HBox(30);
         setUpNav();
         
 
@@ -152,7 +152,8 @@ public class Menu extends VBox {
             }
             // In order to be used in a lambda method this needs to be final.
             final String levelDescription = description;
-            final Label levelLabel = new Label(""); 
+            final Label levelLabel = new Label("");
+            //showLevelDescription(levelLabel, levelDescription);
             startLevels.get(i).setText("Level " + (i+1));
             // Inspired by: [Hover Effect Over Icon]
             startLevels.get(i).setOnMouseEntered(e -> {
@@ -162,9 +163,9 @@ public class Menu extends VBox {
                 hideLevelDescription(levelLabel);
             });
 
-            HBox levelRow = new HBox(50);
+            HBox levelRow = new HBox(0);
             levelRow.getChildren().addAll(startLevels.get(i), levelLabel);
-            levelRow.setMargin(startLevels.get(i), new Insets(10, 50, 25, 30));
+            levelRow.setMargin(startLevels.get(i), new Insets(15, 10, 25, 20));
             this.levelCol.getChildren().add(levelRow);
         }
     }
