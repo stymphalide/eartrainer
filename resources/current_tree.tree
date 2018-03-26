@@ -15,10 +15,12 @@
 │   │   ├── app_angelo_runable.zip
 │   │   └── app_tobi_runable.zip
 │   ├── current_tree.tree
+│   ├── default_ranking.json
 │   ├── descriptions
 │   │   ├── level_1.txt
 │   │   ├── level_2.txt
-│   │   └── level_3.txt
+│   │   ├── level_3.txt
+│   │   └── level_4.txt
 │   ├── Eartrainer.png
 │   ├── Eartrainer.ucls
 │   ├── html
@@ -28,12 +30,24 @@
 │   │   ├── level_1_view_progress.png
 │   │   ├── Menu_hover_view.png
 │   │   ├── menu_view.png
+│   │   ├── music_icon.png
+│   │   ├── music_off_icon.png
+│   │   ├── music_on_icon.png
 │   │   ├── perfect_fifth.png
 │   │   ├── perfect_fourth.png
 │   │   ├── perfect_octave.png
 │   │   ├── range_piano_coloured.png
 │   │   ├── range_piano.png
+│   │   ├── set_all_cards.png
 │   │   └── UML_MSI.png
+│   ├── md
+│   │   └── help.md
+│   ├── ranking.json
+│   ├── sound
+│   │   └── example.wav
+│   ├── Soundtrack
+│   │   ├── Eartrainer.mscz
+│   │   └── Eartrainer.wav
 │   └── UML_Logic.png
 ├── settings.gradle
 └── src
@@ -46,8 +60,11 @@
     │       │   ├── Question.java
     │       │   └── Sound.java
     │       └── view
+    │           ├── Help.java
     │           ├── Level.java
-    │           └── Menu.java
+    │           ├── Menu.java
+    │           ├── Music.java
+    │           └── Ranking.java
     └── test
         └── java
             ├── AppTest.java
@@ -56,4 +73,4 @@
             └── viewTest
                 └── MenuTest.java
 
-17 directories, 39 files
+20 directories, 53 files

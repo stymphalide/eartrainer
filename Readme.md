@@ -37,10 +37,10 @@ We try to stick to this [Code of Conduct](#code-of-conduct).
     - [x] Use threading to play the sound.
     - [x] Refactor the `logic.Level` class.
     - [x] Add multiple levels.
-    - [ ] Write an info page, where the rules are explained.
-    - [ ] Compose the background music. And make it playable in the menu and in the after game screen.
-    - [ ] Improve the after game screen by adding a timer.
-    - [ ] Make a ranking pop-up window that works locally.
+    - [x] Write an info page, where the rules are explained.
+    - [x] Compose the background music. And make it playable in the menu and in the after game screen.
+    - [x] Improve the after game screen by adding a timer.
+    - [x] Make a ranking pop-up window that works locally.
     - [ ] Add Jana & Co's logo.
     - [ ] Add a 'Honourable Mentions' part or something like that.
     - [ ] Improve the overall style using css.
@@ -232,8 +232,8 @@ A higher level library could be jFugue:
 - [x] 19.01.2018: Project Goals + Additional Goals defined
 - [x] 14.02.2018: [MSI](#milestone-i-14022018)
 - [x] 25.02.2018: [1.0.0 Release](#v100)
-- [ ] 18.03.2018: Final Release
-- [ ] 21.03.2018: [MSII](#milestone-ii-21032018)
+- [ ] 27.03.2018: Final Release
+- [ ] 28.03.2018: [MSII](#milestone-ii-21032018)
 
 ### Short Term Planing #1 (due 'til 26.01.)
 - [x] Discuss level design.
@@ -257,11 +257,11 @@ A higher level library could be jFugue:
 - [x] Start with addditional goals.
 
 ### Short Term Planning #4 (due 'til 14.03.)
-- [ ] Add a timer to the level class.
-- [ ] Add a ranking system.
-- [ ] Make it possible to play music in the menu screen.
-- [ ] Start composing music.
-- [ ] Improve the quality of the help text.
+- [x] Add a timer to the level class.
+- [x] Add a ranking system.
+- [x] Make it possible to play music in the menu screen.
+- [x] Start composing music.
+- [x] Improve the quality of the help text.
 
 ## Project Structure
 The Project has the basic gradle structure.
@@ -288,10 +288,12 @@ Make a tree of the project structure.
 │   │   ├── app_angelo_runable.zip
 │   │   └── app_tobi_runable.zip
 │   ├── current_tree.tree
+│   ├── default_ranking.json
 │   ├── descriptions
 │   │   ├── level_1.txt
 │   │   ├── level_2.txt
-│   │   └── level_3.txt
+│   │   ├── level_3.txt
+│   │   └── level_4.txt
 │   ├── Eartrainer.png
 │   ├── Eartrainer.ucls
 │   ├── html
@@ -301,12 +303,24 @@ Make a tree of the project structure.
 │   │   ├── level_1_view_progress.png
 │   │   ├── Menu_hover_view.png
 │   │   ├── menu_view.png
+│   │   ├── music_icon.png
+│   │   ├── music_off_icon.png
+│   │   ├── music_on_icon.png
 │   │   ├── perfect_fifth.png
 │   │   ├── perfect_fourth.png
 │   │   ├── perfect_octave.png
 │   │   ├── range_piano_coloured.png
 │   │   ├── range_piano.png
+│   │   ├── set_all_cards.png
 │   │   └── UML_MSI.png
+│   ├── md
+│   │   └── help.md
+│   ├── ranking.json
+│   ├── sound
+│   │   └── example.wav
+│   ├── Soundtrack
+│   │   ├── Eartrainer.mscz
+│   │   └── Eartrainer.wav
 │   └── UML_Logic.png
 ├── settings.gradle
 └── src
@@ -319,8 +333,11 @@ Make a tree of the project structure.
     │       │   ├── Question.java
     │       │   └── Sound.java
     │       └── view
+    │           ├── Help.java
     │           ├── Level.java
-    │           └── Menu.java
+    │           ├── Menu.java
+    │           ├── Music.java
+    │           └── Ranking.java
     └── test
         └── java
             ├── AppTest.java
@@ -329,8 +346,7 @@ Make a tree of the project structure.
             └── viewTest
                 └── MenuTest.java
 
-17 directories, 39 files
-
+20 directories, 53 files
 
 ```
 
@@ -406,8 +422,6 @@ Based on the requirements in the Milestone I file.
     Code Management: logic: Tobias Seefeld G4L | view: Angelo Birrer G4L
 */
 ```
-
-
 
 - Every Class has a `/*classdoc*/` comment where the usage of the class is described.
 - After every import there is a `// What is this for` comment
