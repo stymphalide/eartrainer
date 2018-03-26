@@ -1,87 +1,120 @@
-# The Idea
-A game based on the game of set. TODO
+# Help
+In order to be able to play the game, you first need to understand the game [set!](#set!). We have modified the features of the original set game such that the visual features are replaced by auditive ones.
 
-## The Game
-*Set is a real-time card game [...]. The deck consists of 81 cards varying in four features: number (one, two, or three); symbol (diamond, squiggle, oval); shading (solid, striped, or open); and colo[u]r (red, green, or purple). Each possible combination of features (e.g., a card with three striped green diamonds) appears precisely once in the deck. [...] Several Games can be played with these cards, all involving the concept of a set. A set consists of three cards satisfying all of these conditions:*
+## Set!
+Set is a game with 81 cards. Each card is unique and has a certain **shape**, **colour** , **number** and **filling**.
+
+The possible shapes are:
+- rectangular
+- oval
+- squiggle
+
+The possible colours are:
+- red
+- green
+- purple
+
+The possible numbers are:
+- 1
+- 2
+- 3
+
+The possible fillings are:
+- empty
+- striped
+- filled
+
+These are therefore all possible cards:
+![Set All Cards](http://pics.livejournal.com/6_bleen_7/pic/0006pq54)
+
+A set is now defined as three cards, where:
+- *They all have the same shape or have three different shapes.*
+- *They all have the same colour or have three different colours.*
 - *They all have the same number or have three different numbers.*
-- *They all have the same symbol or have three different symbols.*
 - *They all have the same shading or have three different shadings.*
-- *They all have the same colo[u]r or have three different colo[u]rs.*
 
-*[...] Given any two cards from the deck there is one and only one other card that forms a set with them.*
+One important fact, is that any set is uniquely defined with just two given cards.
 
-*In the standard Set game, the dealer lays out cards on the table until either twelve are laid down or someone sees a set and calls "Set!". The player who called "Set" takes the cards in the set, and the dealer continues to deal out cards until twelve are on the table. A player who sees a set among the twelve cards calls "Set" and takes the three cards, and the dealer lays three more cards on the table.*
+Let's say we have the following two cards:
+- rectangular, green, 1 empty
+- squiggle, purple, 2, striped
 
-Source: https://en.wikipedia.org/wiki/Set_(game)
+Then with the rules for a set we can see that the third card must be:
+- oval, red, 3, filled
 
-## An Example of a Set
+![Set Example](https://upload.wikimedia.org/wikipedia/commons/8/8f/Set-game-cards.png)
 
-![An example of a set](https://upload.wikimedia.org/wikipedia/commons/8/8f/Set-game-cards.png)
+If you understood this example then you're almost ready to play our game.
 
-## Our Tweaks
-However, we do not want to create a clone of this game but rather convert it into something new.
-Our idea is to use this notion of a set and apply it to music. 
-Instead of having a 4x3 grid where one has to find a set, we will use a simpler version of the game.
-In this version two 'cards' already lie on the table. By the rules of set, the third card is clearly determined.
+## Eartrainer
 
-In our version of the game the visual features of colour, number, symbol and shading are replaced by auditive features.
-These auditive features are:
- - Which interval is it (out of a predetermined list of three)?
- - Is the lower or the higher note played first or are they played simultaneously?
- - In which range is the interval (high, middle, low)?
- - By which instrument is the interval played (out of a predetermined list of three)?
- 
-## Level 1 Specifications
-In the first level of the game the list of intervals, range and instruments are quite simple. In further levels these features will be adapted in order to achieve a more difficult version.
+The game has four different levels, but all follow the same principle. You will be presented with ten questions. In every question you get two *intervals*, those intervals act like the two card from the above example. 
+However, instead of pictures you will get a generated sound clip to listen to. Like in the original game you will have to distinguish four features. This time, however, they will be *auditive*. 
 
-### Intervals
+### The Features
+Let's cut to the chase, those features are:
+- Instrument
+- Order
+- Range
+- Interval Size
 
-The list of intervals to choose from is:
-- Perfect fourth ![Perfect fourth](resources/img/perfect_fourth.png)
-- Perfect fifth ![Perfect fifth](resources/img/perfect_fifth.png)
-- Perfect octave ![Perfect octave](resources/img/perfect_octave.png)
+The *Instrument* and *Interval Size* feature vary for every level, however the *Order* and *Range* stay the same.
 
-(Image source: https://en.wikipedia.org/)
+The *Order* has the following features:
+- upwards
+- downwards
+- chordal
 
-### Ranges
+where chordal means played at the same time.
 
-For the ranges we have taken the range of a piano and cut it roughly in three parts.
+The range is built by splitting up in 
+- high
+- middle
+- low. 
 
-![The Range of a Piano](resources/img/range_piano_coloured.png)
+While these are qualitative features we mean specific ranges, namely
+- C2-B3
+- C4-B5
+- C6-B7
 
-(Image source: https://i.stack.imgur.com/MpiRg.png)
+However, most of the time it suffices to think about high middle and low. Depending on the range it may be that you hear different instruments. This is why we usually refer to a group of instruments as one instrument. For example the instrument *Strings* consists of violine, viola and cello each played in the ranges high, middle and low respectively.
 
-The blue keys indicate the start of a range whereas the red keys indicate the end of a range.
+### Level Specifications
+The Levels have the following instruments/interval sizes:
+#### Level 1
+- Piano, Strings, Brass
+- Perfect Fourth, Perfect Fifth, Perfect Octave
 
-The pitches are listed in [Scientific Pitch Notation](https://en.wikipedia.org/wiki/Scientific_pitch_notation).
+#### Level 2
+- Piano, Harpsichord, Organ
+- Minor Second, Major Second, Minor Third
 
-- The low range spans from the zeroth octave to the second.
-(C2-B3)
-- The middle range spans from the third octave to the fifth octave.
-(C4-B5)
-- The high range spans from the sixth to the eighth octave.
-(C6-B7)
+#### Level 3
+- Harpsichord, Strings, Double Reed
+- Intervals: Major Third, Tritone, Minor Sixth
 
-### Instruments
+#### Level 4
+- Saxophone, Double Reed, Brass
+- Major Sixth, Minor Seventh, Major Seventh
 
-The instruments we chose are:
- - Piano
- - Strings
- - Brass
+## How to play
+So for every interval you need to determine the four features and the you need to think of the remaining features that are needed to finish the set. 
 
-Note that strings and brass are not specific instruments but rather a group of instruments. This is done to achieve the wide range of tones to be played.
+### Let's see an example:
+Let's assume you have chosen level 1:
 
-### Order
+In the first question you get two buttons, first you press the first one. You being very good at hearing intervals immediately know:
 
-This is a knob that we can not turn, the default orders are:
-- Upwards - meaning the lower note is played before the higher.
-- Downwards - meaning the higher note is played before the lower.
-- Chordal - both notes are played simultaneously.
+This is a *piano*, playing a *perfect fourth*  *upwards* in a very *low* range.
 
-### Overview
+Next you listen to the second interval and you hear:
 
-Interval | Range | Order | Instrument
----------|-------|-------|-----------
-perfect fifth | low (C2 - B3) | upwards | piano
-perfect fourth | middle (C4 - B5) | downwards | strings
-perfect octave | high (C6 - B7) | at the same time | brass
+A *brass* instrument, playing a *perfect fourth* *downwards* in a *middle* range.
+
+Now you have four comboboxes, each comboboxes give you the possible answers for each feature.
+Since the *Instruments* varied we have to choose the third one, which is *Strings*. Then we heard the interval being played *upwards* and *downwards*, therefore the third interval would have to be played *chordal*. The third feature is the range, since one was *low* and the other one *middle*, the third one must be *high*. The interval size must be equal to the other two since you heard twice the same interval, a *perfect fourth*.
+
+Then you press the confirm button and that's it!
+
+Happy listening!
+
