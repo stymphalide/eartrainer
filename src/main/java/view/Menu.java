@@ -14,7 +14,7 @@ import javafx.scene.Scene;              // The JavaFX Scene class is the contain
 import javafx.scene.text.Font;          // The Font class represents fonts, which are used to render text on screen. [JavaFX API]
 import javafx.scene.image.Image;        // The Image class represents graphical images and is used for loading images from a specified URL. [JavaFX]
 import javafx.scene.image.ImageView;    // The ImageView is a Node used for painting images loaded with Image class. [JavaFX]
-import javafx.scene.paint.Color;
+import javafx.scene.paint.Color;        // The Color class is used to encapsulate colors in the default sRGB color space. [JavaFX]
 import javafx.scene.input.MouseEvent;   // When mouse event occurs, the top-most node under cursor is picked and the event is delivered to it through capturing and bubbling phases described at EventDispatcher. [JavaFX]
 import javafx.scene.control.Button;     // A simple Button Control. Can be a event Target and Contains text and/or graphic [JavaFX API].
 import javafx.scene.control.Label;      // Label is a non-editable text control. A Label is useful for displaying text that is required to fit within a specific space, and thus may need to use an ellipsis or truncation to size the string to fit. [JavaFX API]
@@ -29,30 +29,76 @@ import javafx.scene.layout.HBox;        // HBox lays out its children in a singl
         - The levels to choose from
         - A navigation bar
 
-    The class has one constructor:
+    -- INSTANCE VARIABLES --
+    The class has nine private instance variables:
+    1. Scene scene
 
+    2. VBox levelCol
+    3. HBox nav
 
+    4. List startLevels
+    5. ImageView musicToggler
+    6. boolean isMusicOn
+    7. Button rankingButton
+    8. Button helpButton
+
+    The first attribute is the scene that is going to hold an instantiated Menu object.
+
+    The next attributes is a holder for all the buttons to start the levels and their descriptions.
+    Another important variable is the nav variable, which is going to hold the navigation bar.
+    Those two attributes are needed since they are used in some helper methods.
+
+    Next are just all the buttons that can be pressed in the screen. With the exception of the musicToggler, but this basically acts like a button as well.
+    And the `isMusicOn` which holds the value whether the music should be playing. This value is crucial in order for the application when to start playing music
+    and which icon to show.
+
+    -- CONSTRUCTORS --
+    The class has got one constructor:
+    As arguments it mainly gets button objects. Those objects already have event handles attached to them. However they are not yet visible.
+    This is why they are incorporated in the creation of the object.
+
+    The constructor first assigns the arguments to the instance variables.
+    It also sets the music to playing at the start.
+
+    Then the title row is created. This is basically an image and a label in some fancy colour and spacing.
+
+    Next the levelCol is instantiated and the private method `setUpLevels()` is called.
+
+    Similarly the navigation bar is created in the next two lines.
+
+    Lastly all those parts are added to the VBox that sits underneath the Menu object.
+
+    -- METHODS --
+    -- public --
     The class consists of three public methods:
-    - public Scene render();
-    
-    The render method takes in a Button as argument, the reason the button is not created in this method is because of its event binding.
-    The Menu is composed of a VBox and several HBox's that are then added to the scene
-    The VBox adds elements in a column, the HBox adds elements in a row.
+    - Scene render()
+    - boolean getMusic()
+    - void toggleMusic()
 
-    Part of the first HBox is the Title of the application.
-    The title is just a Label with a text of the application name.
+    The render method creates a new Scene and assigns it to the instance variable if there is not already an existing one. Otherwise it just
+    calls the setUp methods for the levels and the navigation bar. This makes sure, that all buttons are positioned correctly.
+    In the end the scene is returned.
+    Note that there is only one Menu created during one application.
 
-    The second HBox consists of one button (which after click starts a new level).
-    When hovering over the button a level description is shown.
+    -- private --
+    It also has five private methods:
+    - void setUpNav()
+    - void setUpLevels()
+    - void showLevelDescription(Label label, String description)
+    - void hideLevelDescription(Label label)
+    - void getLevelDescription(int level)
 
-    The last HBox consists of the Exit Button.
-    The Exit button calls the `Platform.exit()` method, which stops the application.
+    The `setUpNav` is responsible for correctly setting up the navigation bar, which consists of the music icon. 
+    This changes depending on whether the music is currently playing. Next the help button gets a text. 
+    The exit button calls the `Platform.exit()` method, which stops the application.
+    All buttons get some margins applied.
+    In the end all are added to a HBox which hold the buttons together.
 
-    And two private methods:
-    - private void showLevelDescription(Label label, String description);
-    - private void hideLevelDescription(Label label);
-    
-    These are helper methods that are called from within a lambda expression.
+    The `setUpLevels` method first clears the levelCol, which holds all the buttons and descriptions and then loops over all level Buttons.
+    Each button gets a hover event listener, that shows the description for each level.
+    Buttons and Descriptions are joind in a HBox and then the HBox is added to the levelCol.
+
+    The last three methods are just methods that are called from within the event listeners of the hovers, to properly display and hide the descriptions.
 */
 /*
     Main Sources: JavaFX API; 100 JavaFX Tutorials
@@ -60,10 +106,10 @@ import javafx.scene.layout.HBox;        // HBox lays out its children in a singl
 
 public class Menu extends VBox {
     private Scene scene;
-    private List<Button> startLevels;
     private HBox titleRow;
     private VBox levelCol;
     private HBox nav;
+    private List<Button> startLevels;
     private ImageView musicToggler;
     private boolean isMusicOn;
     private Button rankingButton;
