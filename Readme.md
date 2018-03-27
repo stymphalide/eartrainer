@@ -41,7 +41,7 @@ We try to stick to this [Code of Conduct](#code-of-conduct).
     - [x] Compose the background music. And make it playable in the menu and in the after game screen.
     - [x] Improve the after game screen by adding a timer.
     - [x] Make a ranking pop-up window that works locally.
-    - [ ] Add Jana & Co's logo.
+    - [x] Add Jana & Co's logo.
     - [ ] Add a 'Honourable Mentions' part or something like that.
     - [ ] Improve the overall style using css.
     - [ ] Make sure the file is deployed with a custom JRE version that is then used. This ensures cross-platform handling.
@@ -443,6 +443,8 @@ Everything we stumble upon doing research comes into this part.
 - [How to create multiple scenes and switch between scenes in JavaFX](http://www.learningaboutelectronics.com/Articles/How-to-create-multiple-scenes-and-switch-between-scenes-in-JavaFX.php)
 -[Hover Effect Over Icon](https://stackoverflow.com/questions/20143548/hover-effect-over-icon)
 - [ArrayList to VarArgs](https://stackoverflow.com/questions/9863742/how-to-pass-an-arraylist-to-a-varargs-method-parameter)
+-[WebView](https://docs.oracle.com/javafx/2/webview/jfxpub-webview.htm)
+
 
 ### JFugue
 - [Some basic examples](http://www.jfugue.org/examples.html "jfugue examples")
@@ -456,6 +458,9 @@ Everything we stumble upon doing research comes into this part.
 - [How to Catch Exceptions](https://stackoverflow.com/questions/8707906/unreported-exception-java-io-ioexception-must-be-caught-or-declared-to-be-throw)
 - [VarArgs](https://docs.oracle.com/javase/1.5.0/docs/guide/language/varargs.html)
 - [PlaySoundFile](https://stackoverflow.com/questions/577724/trouble-playing-wav-in-java/577926#577926)
+- [Gson API](http://google.github.io/gson/apidocs/)
+- [Commonmark API](https://www.javadoc.io/doc/com.atlassian.commonmark/)
+- [File IO](https://docs.oracle.com/javase/tutorial/essential/io/file.html)
 
 
 ### Threading
