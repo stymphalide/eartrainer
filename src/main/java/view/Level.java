@@ -2,21 +2,24 @@ package view;
 
 import java.util.*;
 
-import javafx.util.Duration;
-import javafx.geometry.Pos;
-import javafx.scene.Scene;
-import javafx.scene.text.Font;
-import javafx.scene.control.Button; 
-import javafx.scene.control.Label;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.ProgressBar;
-import javafx.scene.image.ImageView;
-import javafx.scene.layout.VBox;
-import javafx.scene.layout.HBox; 
-import javafx.animation.Animation;
-import javafx.animation.Timeline;
-import javafx.animation.KeyFrame;
+import javafx.util.Duration;                // A class that defines a duration of time. [JavaFX API]
+import javafx.geometry.Pos;                 // A set of values for describing vertical and horizontal positioning and alignment. [JavaFX API]
+import javafx.scene.Scene;                  // The JavaFX Scene class is the container for all content in a scene graph. The background of the scene is filled as specified by the fill property. [JavaFX API]
+import javafx.scene.text.Font;              // The Font class represents fonts, which are used to render text on screen. [JavaFX API]
+import javafx.scene.control.Button;         // A simple Button Control. Can be a event Target and Contains text and/or graphic [JavaFX API].
+import javafx.scene.control.Label;          // Label is a non-editable text control. A Label is useful for displaying text that is required to fit within a specific space, and thus may need to use an ellipsis or truncation to size the string to fit. [JavaFX API]
+import javafx.scene.control.ComboBox;       // An implementation of the ComboBoxBase abstract class for the most common form of ComboBox [JavaFX API]
+import javafx.scene.control.ProgressBar;    // A specialization of the ProgressIndicator which is represented as a horizontal bar. [JavaFX API]
+import javafx.scene.image.ImageView;        // The ImageView is a Node used for painting images loaded with Image class. [JavaFX API]
+import javafx.scene.layout.VBox;            // VBox lays out its children in a single vertical column. If the vbox has a border and/or padding set, then the contents will be layed out within those insets. [JavaFX API]
+import javafx.scene.layout.HBox;            // HBox lays out its children in a single horizontal row. If the hbox has a border and/or padding set, then the contents will be layed out within those insets. [JavaFX API]
+import javafx.animation.Animation;          // The class Animation provides the core functionality of all animations used in the JavaFX runtime. [JavaFX API]
+import javafx.animation.Timeline;           // A Timeline can be used to define a free form animation of any WritableValue, e.g. all JavaFX Properties. [JavaFX API]
+import javafx.animation.KeyFrame;           // Defines target values at a specified point in time for a set of variables that are interpolated along a Timeline. [JavaFX API]
 
+
+/* classdoc
+*/
 public class Level extends VBox {
     private List<ComboBox> cmbs;
     private logic.Level level;
