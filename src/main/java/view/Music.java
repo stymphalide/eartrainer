@@ -7,7 +7,7 @@ import javax.sound.sampled.LineEvent.Type;  // The LineEvent.Type inner class id
 
 /* classdoc
 Provides the music to be played in the application. 
-This class inherits from the Thread class. Meaning that the music plays in a separate thread. 
+This class inherits from the Thread class. Meaning that the music plays in a separate thread.
 A thread is a lightweight process that runs on the java virtual machine.
 
 The class has two public methods.
@@ -15,37 +15,38 @@ The class has two public methods.
 - public void cancel()
 
 One necessary method that needs to be defined when inheriting from a thread is the public void run() method. 
-This method is called when one calls the start() method on an instance of this class. 
-The method does nothing else than calling the private play method. (Note: redundant TODO)
+This method is called when one calls the `start()` method on an instance of this class. 
+This method opens a .wav file calls the `playClip()` method giving in that file.
 
 Additionally the Music class has another public method, 
-called public void cancel() this interrupts the playback and lets the thread terminate.
+called `public void cancel()` this interrupts the playback and lets the thread terminate.
 
 
-This class has two private methods:
-- private void play()
+This class has one private methods:
 - private void playClip(File clipFile)
-
-The play method opens a new file, it is a wrapper for the playClip method. meaning it opens a sound File. and calls the playClip method.
-It also catches all exceptions.
-
 
 The playClip method stems almost with no changes from [PlaySoundFile]. 
 
-Note: This class plays a prepared music file and is used before and after the level. 
-Not to be mistaken by the sound played in the level. That sound is provided in the logic.Sound class.
+It first defines another class, that implements the LineListener interface. 
+This class is responsible for canceling the music if somebody wants to stop or cancel it.
+Meaning that it does nothing until an update event occurs.
 
+Then a listener is instantiated and additionally an input stream. This converts the .wav file into frames.
+
+Next a clip object is created, this object can actually play the input stream provided by the audioInputStream object.
+The listener is added to the clip. Lastly the clip is set to loop over the music.
+
+Then the clip is actually played by calling `clip.start()`.
+
+
+Note:
+This class plays a prepared music file and is used before and after the level. 
+The sheet music to the music is accessible in the resources/Soundtrack directory as a museScore (.mscz) file.
+Not to be mistaken by the sound played in the level. That sound is provided in the logic.Sound class.
 */
 
 public class Music extends Thread {
     public void run() {
-        play();
-    }
-    public void cancel() {
-        interrupt();
-    }
-
-    private void play() {
         File file = new File("./resources/Soundtrack/Eartrainer.wav");
         try {
             playClip(file);
@@ -58,9 +59,9 @@ public class Music extends Thread {
         } catch(InterruptedException e) {
             e.printStackTrace();
         }
-        finally {
-            System.out.println("Something went wrong.");
-        }
+    }
+    public void cancel() {
+        interrupt();
     }
 
     private void playClip(File clipFile) throws IOException, UnsupportedAudioFileException, LineUnavailableException, InterruptedException {
