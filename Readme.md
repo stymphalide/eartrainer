@@ -42,8 +42,6 @@ We try to stick to this [Code of Conduct](#code-of-conduct).
     - [x] Improve the after game screen by adding a timer.
     - [x] Make a ranking pop-up window that works locally.
     - [x] Add Jana & Co's logo.
-    - [ ] Add a 'Honourable Mentions' part or something like that.
-    - [ ] Improve the overall style using css.
     - [ ] Make sure the file is deployed with a custom JRE version that is then used. This ensures cross-platform handling.
     - [ ] Add Salt and Pepper!!!
 - [ ] Create the Project Dossier for MSII.
@@ -77,7 +75,13 @@ We try to stick to this [Code of Conduct](#code-of-conduct).
     - [ ] Evaluate over an appropriate location.
     - [ ] Go to the bar and order a beer.
     - [ ] Enjoy!!!
-
+- [ ] First Patch
+	- [ ] Add a 'Credits' part.
+    - [ ] Improve the overall style using css.
+    - [ ] Get better sound quality.
+    - [ ] Be able to change the volume of the menu screen music.
+    - [ ] Show and play the correct answer right after the answer was confirmed.
+    
 ## The Idea
 A game based on the game of set. TODO
 
