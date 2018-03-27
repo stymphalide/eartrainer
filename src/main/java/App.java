@@ -23,20 +23,23 @@ import javafx.scene.control.TextField;      // Text input component that allows 
     This class holds the whole application together. It inherits from the javafx Application class.
     The class has the following attributes:
      1. Stage window
+     2. Image icon
     
-     2. Button backToMenu
-     3. List<Button> startLevels
-     4. Button confirm
-     5. Button viewRanking
-     6. TextField userInput
-     7. Button help
-     8. ImageView musicToggler
+     3. Button backToMenu
+     4. List<Button> startLevels
+     5. Button confirm
+     6. Button viewRanking
+     7. TextField userInput
+     8. Button help
+     9. ImageView musicToggler
 
-     9. view.Menu menu
-    10. logic.Level level
-    11. view.Music musicThread
+    10. view.Menu menu
+    11. logic.Level level
+    12. view.Music musicThread
 
     The first attribute is the the actual window, where most parts of the game are rendered in.
+    The second attribute is an Image holding the icon specifically designed for this project (thanks to the Ebig and Sbig students Jana Kissling and Lea Reimann)
+
     The next seven instance variables are control elements, that are used in several methods or that are passed to other objects as parameters.
     Most of them have some kind of action set that is called when clicked.
 
