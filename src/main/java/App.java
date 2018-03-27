@@ -18,7 +18,6 @@ import javafx.scene.control.TextField;      // Text input component that allows 
     Code Management: logic: Tobias Seefeld G4L | view: Angelo Birrer G4L
 */
 /* classdoc
-
     -- INSTANCE VARIABLES --
     This class holds the whole application together. It inherits from the javafx Application class.
     The class has the following attributes:
