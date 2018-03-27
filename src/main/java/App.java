@@ -154,6 +154,8 @@ public class App extends Application {
     view.Music musicThread;
     ImageView musicToggler;
 
+    Image icon = new Image("file:./resources/img/icon.png");
+
     @Override
     public void init() throws Exception {
         Button startLevel1 = new Button();
@@ -208,10 +210,11 @@ public class App extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        window = primaryStage;
+        this.window = primaryStage;
         startMusic();
         setUpMenu();
-        window.show();
+        this.window.getIcons().add(this.icon);
+        this.window.show();
     }
 
     @Override
@@ -280,6 +283,7 @@ public class App extends Application {
         view.Ranking rankingScene = new view.Ranking();
         ranking.setScene(rankingScene.render());
         ranking.setTitle("Leaderboard");
+        ranking.getIcons().add(this.icon);
         ranking.show();
     }
     
@@ -288,6 +292,7 @@ public class App extends Application {
         view.Help helpScene = new view.Help();
         helpView.setScene(helpScene.render());
         helpView.setTitle("Help!");
+        helpView.getIcons().add(this.icon);
         helpView.show();
     }
 
