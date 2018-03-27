@@ -12,24 +12,27 @@ import javafx.event.ActionEvent;        // An Event representing some type of ac
 import javafx.event.EventHandler;       // Handler for events of a specific class / type. [JavaFX API]
 import javafx.scene.Scene;              // The JavaFX Scene class is the container for all content in a scene graph. The background of the scene is filled as specified by the fill property. [JavaFX API]
 import javafx.scene.text.Font;          // The Font class represents fonts, which are used to render text on screen. [JavaFX API]
-import javafx.scene.image.Image;        // 
-import javafx.scene.image.ImageView;    // 
-import javafx.scene.input.MouseEvent;   // 
+import javafx.scene.image.Image;        // The Image class represents graphical images and is used for loading images from a specified URL. [JavaFX]
+import javafx.scene.image.ImageView;    // The ImageView is a Node used for painting images loaded with Image class. [JavaFX]
+import javafx.scene.paint.Color;
+import javafx.scene.input.MouseEvent;   // When mouse event occurs, the top-most node under cursor is picked and the event is delivered to it through capturing and bubbling phases described at EventDispatcher. [JavaFX]
 import javafx.scene.control.Button;     // A simple Button Control. Can be a event Target and Contains text and/or graphic [JavaFX API].
 import javafx.scene.control.Label;      // Label is a non-editable text control. A Label is useful for displaying text that is required to fit within a specific space, and thus may need to use an ellipsis or truncation to size the string to fit. [JavaFX API]
 import javafx.scene.layout.VBox;        // VBox lays out its children in a single vertical column. If the vbox has a border and/or padding set, then the contents will be layed out within those insets. [JavaFX API]
 import javafx.scene.layout.HBox;        // HBox lays out its children in a single horizontal row. If the hbox has a border and/or padding set, then the contents will be layed out within those insets. [JavaFX API]
 
 /* classdoc
-    This class renders the Menu view of the app.
-    The View consists of three rows.
-        - The Title (This is to be extended).
-        - The Levels to choose from
-        - A navigation bar with an exit button.
-    
-    
+    This class renders the Menu view of the app. It inherits from the javaFX VBox.
 
-    The class consists of one public method:
+    The View consists of three rows.
+        - The title.
+        - The levels to choose from
+        - A navigation bar
+
+    The class has one constructor:
+
+
+    The class consists of three public methods:
     - public Scene render();
     
     The render method takes in a Button as argument, the reason the button is not created in this method is because of its event binding.
@@ -67,18 +70,22 @@ public class Menu extends VBox {
     private Button helpButton;
 
     public Menu(List<Button> startLevels, ImageView musicToggler, Button rankingButton, Button helpButton) {
-        super(20);
+        super(15);
         this.startLevels = startLevels;
         this.musicToggler = musicToggler;
         this.isMusicOn = true;
         this.rankingButton = rankingButton;
         this.helpButton = helpButton;
         // Title row
-        Label title = new Label("Eartrainer"); 
+        Image icon = new Image("file:./resources/img/icon_rot.png", 150, 150, true, true);
+        ImageView iconHolder=  new ImageView(icon);
+        Label title = new Label("artrainer");
+        title.setTextFill(Color.web("#feb76b"));
         title.setFont(new Font(40));
-        title.setAlignment(Pos.CENTER);
 
-        this.titleRow = new HBox(50, title);
+        this.titleRow = new HBox(0, iconHolder, title);
+        this.titleRow.setMargin(iconHolder, new Insets(15, 0, -50, 0));
+        this.titleRow.setMargin(title, new Insets(-10, 0, -50, -10));
         this.titleRow.setAlignment(Pos.CENTER);
 
         // Level Setup
@@ -92,9 +99,6 @@ public class Menu extends VBox {
         getChildren().addAll(this.titleRow, this.levelCol, this.nav);
     }
 
-    public boolean getMusic() {
-        return this.isMusicOn;
-    }
     public Scene render() {
         if(this.scene == null) {
             this.scene = new Scene(this, 700, 600);
@@ -103,6 +107,10 @@ public class Menu extends VBox {
             setUpNav();
         }
         return this.scene;
+    }
+
+    public boolean getMusic() {
+        return this.isMusicOn;
     }
 
     public void toggleMusic() {
@@ -137,10 +145,10 @@ public class Menu extends VBox {
         });
 
         // Basic set up
-        this.nav.setMargin(this.musicToggler, new Insets(20, 50, 40, 30));
-        this.nav.setMargin(this.rankingButton, new Insets(20, 50, 40, 30));
-        this.nav.setMargin(this.helpButton, new Insets(20, 50, 40, 30));
-        this.nav.setMargin(exitButton, new Insets(20, 50, 40, 30));
+        this.nav.setMargin(this.musicToggler, new Insets(0, 50, 40, 30));
+        this.nav.setMargin(this.rankingButton, new Insets(0, 50, 40, 30));
+        this.nav.setMargin(this.helpButton, new Insets(0, 50, 40, 30));
+        this.nav.setMargin(exitButton, new Insets(0, 50, 40, 30));
         this.nav.setAlignment(Pos.BOTTOM_RIGHT);
         this.nav.getChildren().setAll(this.musicToggler, this.rankingButton, this.helpButton, exitButton);
     }
