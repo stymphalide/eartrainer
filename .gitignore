@@ -6,4 +6,4 @@ build/*
 bin/*
 /.gradle/
 /build/
-*ranking.json
+resources/ranking.json
