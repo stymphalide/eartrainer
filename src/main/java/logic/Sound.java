@@ -16,8 +16,8 @@ public class Sound extends Thread {
                     while(card == null) wait();
 
                     Player player = new Player();
-                    this.card = null;
                     player.play(this.cardToMusicString(card));
+                    this.card = null;
                 }
             
             } catch (InterruptedException e){ e.printStackTrace();}
