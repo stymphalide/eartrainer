@@ -3,6 +3,11 @@ package logic;
 import java.util.*;
 import java.time.*;
 
+/**
+ * This class holds all the information concerning the current level.
+ * This includes defining the features that differ between the levels.
+ * @author Tobias
+ */
 public class Level {
     private int levelNumber;
     private int correctAnswers;
@@ -18,6 +23,10 @@ public class Level {
     private Instant startTime;
     private Instant endTime;
 
+    /**
+     * Based on the respective level number, the changing features (instrument and interval) for the level are defined.
+     * @param n
+     */
     public Level(int n) {
         this.levelNumber = n;
 		this.correctAnswers = 0;
@@ -49,6 +58,9 @@ public class Level {
         this.startTime = Instant.now();
     }
 
+    /**
+     * @param answer
+     */
     public void setAnswer(Card answer) {
 		this.answer = answer;
 	}
@@ -78,6 +90,9 @@ public class Level {
 		this.activeQuestion = this.getQuestion();
 	}
 
+    /**
+     * @param card
+     */
     public void play(Card card) {
         // Only play sound if the State is waiting
         System.out.println(this.soundThread.getState());
@@ -86,50 +101,88 @@ public class Level {
         } else {}
     }
 
+    /**
+     * @return the question that is currently visible on the screen.
+     */
     public Question getActiveQuestion() {
 		return this.activeQuestion;
 	}
 
+    /**
+     * @return the allowed instruments for the current level.
+     */
     public List<String> getAllowedInstruments(){
 		return this.allowedInstruments;
 	}
 
+    /**
+     * @return the allowed orders for the current level.
+     */
     public List<String> getAllowedOrders(){
 		return this.allowedOrders;
 	}
 
+    /**
+     * @return the allowed ranges for the current level.
+     */
     public List<String> getAllowedRanges(){
 		return this.allowedRanges;
 	}
 
+    /**
+     * @return the allowed intervals for the current level.
+     */
     public List<String> getAllowedIntervals(){
 		return this.allowedIntervals;
 	}
 
+    /**
+     * @return the number of correct answers already given.
+     */
     public int getCorrectAnswers() {
 		return this.correctAnswers;
 	}
 
+    /**
+     * @return the number of wrong answers already given.
+     */
     public int getWrongAnswers() {
 		return this.wrongAnswers;
 	}
 
+    /**
+     * @return the number of total answers already given.
+     */
     public int getTotalAnswers() {
 		return this.correctAnswers + this.wrongAnswers;
 	}
 
+    /**
+     * @return the number of total questions in the level (always ten).
+     */
     public int getTotalQuestions() {
 		return this.totalQuestions;
 	}
 
+    /**
+     * @return the level number of the current level.
+     */
     public int getLevelNumber() {
         return this.levelNumber;
     }
 
+    /**
+     * @return a new question.
+     */
     public Question getQuestion(){
 		return new Question(this.allowedInstruments, this.allowedOrders, this.allowedRanges, this.allowedIntervals);
 	}
 
+    /**
+     * Calculates the card that completes the set of three and is thus distinct if the other two cards are given.
+     * @param question
+     * @return a card containing the features that are to be determined by the player.
+     */
     public Card correctAnswer(Question question) {
 		String answerInstrument;
 		String answerOrder;
@@ -152,6 +205,12 @@ public class Level {
 		return new Card(answerInstrument, answerOrder, answerRange, answerInterval);
 	}
 
+    /**
+     * Compares the answer of the player with the correct answer.
+     * @param question
+     * @param card
+     * @return the statement, whether the question was solved correctly or not.
+     */
     public boolean validateAnswer(Question question, Card card) {
 		Card correctAnswer = correctAnswer(this.activeQuestion);
 		if (this.answer.getInstrument() .equals(correctAnswer.getInstrument()) &&
@@ -166,6 +225,10 @@ public class Level {
 
 	}
 
+
+    /**
+    * @return If the level is finished the time the level took. Or the start time until now.
+    */
     public Duration getDuration() {
         if (this.endTime == null) {
             return Duration.between(this.startTime, Instant.now());
@@ -173,10 +236,19 @@ public class Level {
             return Duration.between(this.startTime, this.endTime);
         }
     }
+
+    /**
+    * @return the start time of the level.
+    */
+
     public Instant getStartTime() {
         return this.startTime;
     }
 
+    /**
+     * Looks if there is the same number of answers given as there are questions in the level.
+     * @return the statement, whether or not the level is finished already.
+     */
     public boolean isFinished() {
         if (this.getTotalAnswers() == this.totalQuestions) { // This -1 is required, since the query is done before the level is updated.
             if(soundThread != null) {
@@ -189,7 +261,13 @@ public class Level {
             return false;
         }
 	}
-
+    
+    /**
+     * @param feature1
+     * @param feature2
+     * @param feature3
+     * @return a list of features.
+     */
     private ArrayList<String> instantiateFeatures(String feature1, String feature2, String feature3){
 		ArrayList<String> features = new ArrayList();
 		features.add(feature1);
@@ -198,6 +276,12 @@ public class Level {
 		return features;
 	}
     
+    /**
+     * @param feature1
+     * @param feature2
+     * @param allowedFeatures
+     * @return the complementing feature of the third card in respect to the cards one and two.
+     */
     private String correctFeature(String feature1, String feature2, List<String> allowedFeatures) {
 		if (feature1 == feature2) {
 			return feature1;
