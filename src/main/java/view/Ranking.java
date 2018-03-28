@@ -1,9 +1,6 @@
 package view;
 
 
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-
 import java.util.*;
 import java.text.SimpleDateFormat;
 
@@ -12,35 +9,81 @@ import java.io.*;
 import java.nio.file.*;
 import java.nio.charset.StandardCharsets;
 
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
-import javafx.scene.Group;
-import javafx.scene.Scene;
-import javafx.scene.layout.VBox;        // VBox lays out its children in a single vertical column. If the vbox has a border and/or padding set, then the contents will be layed out within those insets. [JavaFX API]
+import com.google.gson.Gson;                            // This is the main class for using Gson. Gson is typically used by first constructing a Gson instance and then invoking toJson(Object) or fromJson(String, Class) methods on it. [Gson API]
+import com.google.gson.GsonBuilder;                     // Use this builder to construct a Gson instance when you need to set configuration options other than the default. [Gson API]
 
-import javafx.scene.control.TextField;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.Button;
-import javafx.scene.control.TabPane;
-import javafx.scene.control.Tab;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.util.Callback;
-import javafx.beans.value.ObservableValue;
-import javafx.beans.property.SimpleStringProperty;
+import javafx.collections.FXCollections;                // Utility class that consists of static methods that are 1:1 copies of java.util.Collections methods. [JavaFX API]
+import javafx.collections.ObservableList;               // A list that allows listeners to track changes when they occur. [JavaFX API]
+import javafx.scene.Group;                              // A Group node contains an ObservableList of children that are rendered in order whenever this node is rendered. [JavaFX API]
+import javafx.scene.Scene;                              // The JavaFX Scene class is the container for all content in a scene graph. The background of the scene is filled as specified by the fill property. [JavaFX API]
+import javafx.scene.layout.VBox;                        // VBox lays out its children in a single vertical column. If the vbox has a border and/or padding set, then the contents will be layed out within those insets. [JavaFX API]
+import javafx.scene.control.Label;                      // Label is a non-editable text control. A Label is useful for displaying text that is required to fit within a specific space, and thus may need to use an ellipsis or truncation to size the string to fit. [JavaFX API]
+import javafx.scene.control.TextField;                  // Text input component that allows a user to enter a single line of unformatted text. [JavaFX API]
+import javafx.scene.control.TextArea;                   // Text input component that allows a user to enter multiple lines of plain text. [JavaFX API]
+import javafx.scene.control.Button;                     // A simple Button Control. Can be a event Target and Contains text and/or graphic [JavaFX API].
+import javafx.scene.control.Tab;                        // Tabs are placed within a TabPane, where each tab represents a single 'page'. [JavaFX API]
+import javafx.scene.control.TabPane;                    // A control that allows switching between a group of Tabs. [JavaFX API]
+import javafx.scene.control.TableView;                  // The TableView control is designed to visualize an unlimited number of rows of data, broken out into columns. [JavaFX API]
+import javafx.scene.control.TableColumn;                // A TableView is made up of a number of TableColumn instances. [JavaFX API]
+import javafx.scene.control.cell.PropertyValueFactory;  // A convenience implementation of the Callback interface [JavaFX API]
+import javafx.util.Callback;                            // The Callback interface is designed to allow for a common, reusable interface to exist for defining APIs that requires a call back in certain situations. [JavaFX API]
+import javafx.beans.value.ObservableValue;              // An ObservableValue is an entity that wraps a value and allows to observe the value for changes. [JavaFX API]
+import javafx.beans.property.SimpleStringProperty;      // This class provides a full implementation of a Property wrapping a String value. [JavaFX API]
 
 
 /* classdoc
-    Opens a .csv file and renders it.
-    The static methods can add an entry to the table.
+    Opens a .json file and renders it in a table.
+    The static methods can add entries to the table.
+
+    This class inherits from the javaFX Group class.
+
+    -- CLASSES --
+    There is the public class Ranking
+    and two additionaly classes Leaderboard and RankingVal which represent the values that are saved.
+
+    -- STATIC METHODS --
+    This class has two static methods.
+    the `Scene getPopUp(Button submit, TextField input)` and
+    `void updateRanking(logic.Level level, String username)`
+
+    The first one creates a window where the player can type his username.
+
+    The second one needs a level and a username and saves the new entry into the leaderboard.
+    This is done by serialising the ranking file into a leaderboard object
+    and creating a RankingVal object of the level and the user. 
+    Lastly the leaderboard is sorted and deserialised to the same file.
+
+    The private static method is used to actually open the .json file. 
+
+    -- INSTANCE VARIABLES --
+    There is one static variable, that holds the location of the ranking files.
     
-    https://docs.oracle.com/javase/tutorial/essential/io/file.html
+    The scene variable that is associated with the leaderboard.
+    The header and the table variables are needed to use this variable in different private methods.
 
+    The leaderboard is the representation of the whole .json file. Which acts as a little non-relational database.
 
+    -- CONSTRUCTOR --
+    This method serialises the leaderboard and assigns it to the leaderboard variable.
+    It then creates a new TabPane with four tabs.
+    In the end the tabPane is added to the group object.
 
+    -- METHODS --
+    -- public --
+    There is one public method, the render method.
+    It assigns the scene instance variable and adds the Group object to that scene.
+    Then the scene is returned
 
+    -- private --
+    There are three private methods:
+    - void setUpTab(int i)
+    - void setUpTable(int levelN)
+    - ObservableList getValues(int levelN)
+
+    The setUpTab method renders the various tabs in the tabPane. Going from level 1 to 4 the most important thing is
+    that each tab is associated to a table view, which is created in the `setUpTable` method. 
+    This sets up the lists of the leadeboard into an observable list (`getValues`). 
+    There the way to render the rows are specified.
 */
 
 public class Ranking extends Group {
@@ -48,7 +91,6 @@ public class Ranking extends Group {
     private Scene scene;
     private TabPane header;
     private TableView table;
-    private int levelNumber;
     private Leaderboard leaderboard;
 
     public static Scene getPopUp(Button submit, TextField input) {
@@ -101,17 +143,11 @@ public class Ranking extends Group {
     public Scene render() {
         if(this.scene == null) {
             this.scene = new Scene(this, 400, 500);
-        } else {
-            update();
-        }
+        } 
         return this.scene;
-    }
-    private void update() {
-
     }
     private void setUpTab(int i) {
         Tab tab = new Tab("Level " + i);
-        this.levelNumber = i;
         setUpTable(i);
         tab.setContent(this.table);
         this.header.getTabs().add(tab);
@@ -179,6 +215,16 @@ public class Ranking extends Group {
         return values;
     }
 }
+
+/* classdoc
+A Holder for the whole ranking. It consists basically of four lists, one for each level.
+It also has methods to add new values and sort itself.
+
+The sorting is done using a comparator object. The compare method needs to be overriden.
+THe priorities for the sorting is:
+correctness > duration > starting time
+Since all games are just done locally and no two games can be played at the same time this suffices to never run into troubles.
+*/
 class Leaderboard {
     private List<RankingVal> level1;
     private List<RankingVal> level2;
@@ -203,6 +249,7 @@ class Leaderboard {
 
     public void sort() {
         Comparator<RankingVal> comp = new Comparator<RankingVal>() {
+            @Override
             public int compare(RankingVal o1, RankingVal o2) {
                 if (o1.getCorrect() == o2.getCorrect()) {
                     if(o1.getTime() == o2.getTime()) {
@@ -287,6 +334,17 @@ class Leaderboard {
         return this.level4;
     }
 }
+
+/* classdoc
+
+    This class holds the values of any game. Additionally it takes in
+    the username of the player, stores the start time. 
+    This class is rendered into one row of the table.
+    It stores the date as a large integer value of seconds since the unix epoch (01-01-1970)
+    The duration is saved as number of seconds.
+    
+    All getter methods with a ...String() at the end are needed to format those values in a human-readable style.
+*/
 class RankingVal {
     private String name;
     private long date;

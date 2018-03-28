@@ -189,7 +189,7 @@ public class Level {
             return false;
         }
 	}
-    
+
     private ArrayList<String> instantiateFeatures(String feature1, String feature2, String feature3){
 		ArrayList<String> features = new ArrayList();
 		features.add(feature1);
@@ -207,5 +207,4 @@ public class Level {
 			return allowedFeatures.get(j);
 		}
 	}
-    
 }

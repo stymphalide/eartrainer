@@ -2,29 +2,106 @@ package view;
 
 import java.util.*;
 
-import javafx.util.Duration;
-import javafx.geometry.Pos;
-import javafx.scene.Scene;
-import javafx.scene.text.Font;
-import javafx.scene.control.Button; 
-import javafx.scene.control.Label;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.ProgressBar;
-import javafx.scene.image.ImageView;
-import javafx.scene.layout.VBox;
-import javafx.scene.layout.HBox; 
-import javafx.animation.Animation;
-import javafx.animation.Timeline;
-import javafx.animation.KeyFrame;
+import javafx.util.Duration;                // A class that defines a duration of time. [JavaFX API]
+import javafx.geometry.Pos;                 // A set of values for describing vertical and horizontal positioning and alignment. [JavaFX API]
+import javafx.scene.Scene;                  // The JavaFX Scene class is the container for all content in a scene graph. The background of the scene is filled as specified by the fill property. [JavaFX API]
+import javafx.scene.text.Font;              // The Font class represents fonts, which are used to render text on screen. [JavaFX API]
+import javafx.scene.control.Button;         // A simple Button Control. Can be a event Target and Contains text and/or graphic [JavaFX API].
+import javafx.scene.control.Label;          // Label is a non-editable text control. A Label is useful for displaying text that is required to fit within a specific space, and thus may need to use an ellipsis or truncation to size the string to fit. [JavaFX API]
+import javafx.scene.control.ComboBox;       // An implementation of the ComboBoxBase abstract class for the most common form of ComboBox [JavaFX API]
+import javafx.scene.control.ProgressBar;    // A specialization of the ProgressIndicator which is represented as a horizontal bar. [JavaFX API]
+import javafx.scene.image.ImageView;        // The ImageView is a Node used for painting images loaded with Image class. [JavaFX API]
+import javafx.scene.layout.VBox;            // VBox lays out its children in a single vertical column. If the vbox has a border and/or padding set, then the contents will be layed out within those insets. [JavaFX API]
+import javafx.scene.layout.HBox;            // HBox lays out its children in a single horizontal row. If the hbox has a border and/or padding set, then the contents will be layed out within those insets. [JavaFX API]
+import javafx.animation.Animation;          // The class Animation provides the core functionality of all animations used in the JavaFX runtime. [JavaFX API]
+import javafx.animation.Timeline;           // A Timeline can be used to define a free form animation of any WritableValue, e.g. all JavaFX Properties. [JavaFX API]
+import javafx.animation.KeyFrame;           // Defines target values at a specified point in time for a set of variables that are interpolated along a Timeline. [JavaFX API]
 
+
+/* classdoc
+    This class is responsible for showing the level screen. It inherits from the VBox component.
+
+    The view has four rows. The title, the score bar, the main row and a navigation bar.
+
+
+
+    -- INSTANCE VARIABLES --
+    there are six variables:
+    - List<ComboBox> cmbs
+    - Label levelProgress
+    - Label correctnessProgress
+    - ProgressBar levelBar
+    - ProgressBar correctnessBar
+    - Label time
+    - logic.Level level
+
+    the first five variables are javaFX components that are needed in different parts of the level.
+    The last variable is the logic.Level object that is associated with that view.
+
+    -- CONSTRUCTOR --
+    Here the class is constructed giving the logic.Level class and the confirmButton which already has a button
+    attached to it.
+    It assigns the level to the instance variable.
+    Then creates the four combo boxes.
+    Adds the confirm button to a HBox.
+
+    In the end the title row is created, as well as the score bar, the main row and the navigation bar.
+    All those components are HBoxes that are added to the view.Level class as children.
+
+    -- METHODS --
+    -- public --
+    There are three public methods:
+    - Scene render()
+    - void viewFinished(logic.Level level, Button backToMenu, Button playAgain, ImageView musicToggler)
+    - void update()
+
+    The render method creates a scene for that level and adds the view.Level object to it.
+
+    The viewFinished method drastically changes the look of the window.
+    In the end it shows a title, the output of the level and a navigation bar.
+    It gets some buttons as inputs, those are used in the navigation bar.
+    Then it sets the children of the view.Menu object to a new title, adds the score bar and adds the new navigation bar.
+
+    the update method calls the two private methods that update the score and reset the combo boxes.
+    -- private --
+    There are nine private methods.
+    1. HBox createTitle(String titleString)
+    2. HBox createScoreBar()
+    3. void updateTime()
+    4. String durationString()
+    5. void updateScores()
+    6. HBox createMainRow()
+    7. void createComboBoxes()
+    8. ComboBox<String> createComboBox(String placeholder, List<String> allowedFeatures)
+    9. void updateComboBoxes()
+
+    The first method creates a label with the string given as an argument.
+
+    The second method creates the score bar, this consists of a timer and two progress bars. 
+    One to show how many questions have been answered and one to show how many have been correct
+    Everything that changes over time and after one question is saved in an instance variable.
+
+    The third and fourth methods are helper methods for the timer. They are responsible for updating the timer every second.
+    
+    The fifth method changes the correctness label and the number of answered questions.
+
+    The sixth method is responsible for creating the main row of the level. It consists of two buttons for the intervals (card1, card2)
+    and four comboboxes.
+    The two cards both have events attached that cause the interval to play.
+    The four comboboxes are just a list of comboboxes one for each feature.
+
+    This list is created in the seventh method and written to the cmbs instance variable.
+    The last method is a helper method for creating the comboBoxes. Those are created by reading the allowed features for each of those four features.
+
+*/
 public class Level extends VBox {
     private List<ComboBox> cmbs;
-    private logic.Level level;
     private Label levelProgress;
     private Label correctnessProgress;
     private ProgressBar levelBar;
     private ProgressBar correctnessBar;
     private Label time;
+    private logic.Level level;
 
     public Level(logic.Level level, Button confirmButton) {
         super(50);
@@ -62,7 +139,7 @@ public class Level extends VBox {
         return scene;
     }
 
-    public void viewFinished(logic.Level level, Button backToMenu, Button playAgain, ImageView musicToggler) {
+    public void viewFinished(Button backToMenu, Button playAgain, ImageView musicToggler) {
 
         // Navigation
         playAgain.setText("Play Again");
@@ -71,7 +148,7 @@ public class Level extends VBox {
         nav.setAlignment(Pos.CENTER);
 
         getChildren().setAll(
-            createTitle("Level " + level.getLevelNumber() + " Over"), 
+            createTitle("Level " + this.level.getLevelNumber() + " Over"), 
             createScoreBar(), 
             nav);
     }

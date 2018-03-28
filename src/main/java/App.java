@@ -11,7 +11,7 @@ import javafx.scene.image.Image;            // The Image class represents graphi
 import javafx.scene.image.ImageView;        // The ImageView is a Node used for painting images loaded with Image class. [JavaFX]
 import javafx.scene.control.TextField;      // Text input component that allows a user to enter a single line of unformatted text. [JavaFX]
 /*
-    Date: 28.03.2018
+    Date: 30.03.2018
     Project Name: Eartrainer
     Names: Angelo Birrer G4L and Tobias Seefeld G4L
     Main Sources: JavaFX API
@@ -271,7 +271,7 @@ public class App extends Application {
                     popUp.show();
                     window.setTitle("eartrainer - Game Over");
                     startMusic();
-                    levelView.viewFinished(level, backToMenu, startLevels.get(n - 1), this.musicToggler);                
+                    levelView.viewFinished(backToMenu, startLevels.get(n - 1), this.musicToggler);                
                 } else {
                     levelView.update();
                 }
