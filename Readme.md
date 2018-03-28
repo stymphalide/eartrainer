@@ -31,7 +31,7 @@ We try to stick to this [Code of Conduct](#code-of-conduct).
     - [x] Draft (UML)
     - [x] Copy Implementation
     - [x] Results and Tests
-- [ ] Finish the Project.
+- [x] Finish the Project.
     - [x] Write a working interface.
     - [x] Write a working application.
     - [x] Use threading to play the sound.
@@ -42,10 +42,9 @@ We try to stick to this [Code of Conduct](#code-of-conduct).
     - [x] Improve the after game screen by adding a timer.
     - [x] Make a ranking pop-up window that works locally.
     - [x] Add Jana & Co's logo.
-    - [ ] Make sure the file is deployed with a custom JRE version that is then used. This ensures cross-platform handling.
-    - [ ] Add Salt and Pepper!!!
+    - [x] Add Salt and Pepper!!!
 - [ ] Create the Project Dossier for MSII.
-    - [ ] Write the TODO for this part.
+    - [x] Write the TODO for this part.
     - [ ] Improve the 'Project Description' part especially the part about the game.
     - [ ] Extend the 'Problem Definition' for the 'Local Ranking' point.
     - [ ] In the 'Requirements Analysis' explicitly say that everything was done in java.
@@ -81,6 +80,7 @@ We try to stick to this [Code of Conduct](#code-of-conduct).
     - [ ] Get better sound quality.
     - [ ] Be able to change the volume of the menu screen music.
     - [ ] Show and play the correct answer right after the answer was confirmed.
+    - [ ] Make sure the file is deployed with a custom JRE version that is then used. This ensures cross-platform handling.
     
 ## The Idea
 A game based on the game of set. TODO
@@ -236,7 +236,7 @@ A higher level library could be jFugue:
 - [x] 19.01.2018: Project Goals + Additional Goals defined
 - [x] 14.02.2018: [MSI](#milestone-i-14022018)
 - [x] 25.02.2018: [1.0.0 Release](#v100)
-- [ ] 27.03.2018: Final Release
+- [x] 27.03.2018: Final Release
 - [ ] 28.03.2018: [MSII](#milestone-ii-21032018)
 
 ### Short Term Planing #1 (due 'til 26.01.)
@@ -288,9 +288,6 @@ Make a tree of the project structure.
 │   └── jfugue-5.0.9.jar
 ├── Readme.md
 ├── resources
-│   ├── app
-│   │   ├── app_angelo_runable.zip
-│   │   └── app_tobi_runable.zip
 │   ├── current_tree.tree
 │   ├── default_ranking.json
 │   ├── descriptions
@@ -300,9 +297,10 @@ Make a tree of the project structure.
 │   │   └── level_4.txt
 │   ├── Eartrainer.png
 │   ├── Eartrainer.ucls
-│   ├── html
 │   ├── img
 │   │   ├── after_game_screen.png
+│   │   ├── icon.png
+│   │   ├── icon_rot.png
 │   │   ├── Level_1_view.png
 │   │   ├── level_1_view_progress.png
 │   │   ├── Menu_hover_view.png
@@ -343,15 +341,8 @@ Make a tree of the project structure.
     │           ├── Music.java
     │           └── Ranking.java
     └── test
-        └── java
-            ├── AppTest.java
-            ├── logic
-            │   └── SoundTest.java
-            └── viewTest
-                └── MenuTest.java
 
-20 directories, 53 files
-
+15 directories, 50 files
 ```
 
 ## Installation

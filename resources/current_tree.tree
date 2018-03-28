@@ -11,9 +11,6 @@
 │   └── jfugue-5.0.9.jar
 ├── Readme.md
 ├── resources
-│   ├── app
-│   │   ├── app_angelo_runable.zip
-│   │   └── app_tobi_runable.zip
 │   ├── current_tree.tree
 │   ├── default_ranking.json
 │   ├── descriptions
@@ -23,9 +20,10 @@
 │   │   └── level_4.txt
 │   ├── Eartrainer.png
 │   ├── Eartrainer.ucls
-│   ├── html
 │   ├── img
 │   │   ├── after_game_screen.png
+│   │   ├── icon.png
+│   │   ├── icon_rot.png
 │   │   ├── Level_1_view.png
 │   │   ├── level_1_view_progress.png
 │   │   ├── Menu_hover_view.png
@@ -66,11 +64,5 @@
     │           ├── Music.java
     │           └── Ranking.java
     └── test
-        └── java
-            ├── AppTest.java
-            ├── logic
-            │   └── SoundTest.java
-            └── viewTest
-                └── MenuTest.java
 
-20 directories, 53 files
+15 directories, 50 files
