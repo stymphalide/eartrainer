@@ -50,6 +50,7 @@ import javafx.beans.property.SimpleStringProperty;      // This class provides a
 
     The second one needs a level and a username and saves the new entry into the leaderboard.
     This is done by serialising the ranking file into a leaderboard object
+
     and creating a RankingVal object of the level and the user. 
     Lastly the leaderboard is sorted and deserialised to the same file.
 
@@ -62,6 +63,7 @@ import javafx.beans.property.SimpleStringProperty;      // This class provides a
     The header and the table variables are needed to use this variable in different private methods.
 
     The leaderboard is the representation of the whole .json file. Which acts as a little non-relational database.
+
 
     -- CONSTRUCTOR --
     This method serialises the leaderboard and assigns it to the leaderboard variable.
